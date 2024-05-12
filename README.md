@@ -44,6 +44,7 @@ bash setup/install.sh
   - [alacritty](./alacritty/)
   - [kitty](./kitty/)
 - Shell: [zsh](./zsh/)
+- Shell prompt: [starship](./starship/)
 - Multiplexer: [tmux](./tmux/)
   - Session manager: [sesh](./sesh/)
 - Editor: [neovim](./nvim)

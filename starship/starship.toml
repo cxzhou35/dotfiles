@@ -6,13 +6,23 @@ $git_state\
 $git_status\
 $git_metrics\
 $conda\
+$nodejs\
+$rust\
+$golang\
 $fill\
-$cmd_duration $jobs $time\
+$cmd_duration\
+$jobs\
+$time\
 $line_break\
 $character"""
 
-[nodejs]
-format = "[$symbol($version )]($style)"
+[os]
+disabled = true
+
+[username]
+show_always = true
+format = '[$user ]($style)'
+disabled = true
 
 [fill]
 symbol = " "
@@ -63,10 +73,25 @@ disabled = false
 format = "[$duration]($style)"
 style = "yellow"
 
+[nodejs]
+symbol = ""
+style = "fg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
 [conda]
 symbol = " "
 style = "fg:#f9e2af"
 format = '[$symbol$environment]($style) '
+
+[rust]
+symbol = ""
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false

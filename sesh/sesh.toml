@@ -77,7 +77,7 @@ path = "~/Code/cpp"
 startup_command = "code cpp.code-workspace"
 
 [[session]]
-name = "neovim config"
+name = "nvim config"
 path = "~/Github/dotfiles/nvim"
 startup_command = "nvim init.lua"
 

@@ -1,0 +1,51 @@
+{
+  "mkdocs metadata index page": {
+    "prefix": "mkmip",
+    "body": ["---", "comments: false", "statistics: false", "---"],
+    "description": "Add metadata for mkdocs index page"
+  },
+  "mkdocs metadata post page": {
+    "prefix": "mkmpp",
+    "body": ["---", "comments: true", "---"],
+    "description": "Add metadata for mkdocs post page"
+  },
+  "mkdocs image": {
+    "prefix": "mkimg",
+    "body": [
+      "<figure markdown>",
+      "  ![](${1}){width = ${2}}",
+      "  <figcaption>${3}</figcaption>",
+      "</figure>"
+    ],
+    "description": "Add mkdocs markdown image"
+  },
+
+  "mkdocs callout-show": {
+    "prefix": "mkcos",
+    "body": ["!!! ${1} \"${2}\"", "    ${3}", "${0}"],
+    "description": "Add mkdocs expanded admonitions"
+  },
+  "mkdocs callout-option": {
+    "prefix": "mkcoo",
+    "body": ["???+ ${1} \"${2}\"", "    ${3}", "${0}"],
+    "description": "Add mkdocs optional admonitions"
+  },
+  "mkdocs callout-hidden": {
+    "prefix": "mkcoh",
+    "body": ["??? ${1} \"${2}\"", "    ${3}", "${0}"],
+    "description": "Add mkdocs unexpanded admonitions"
+  },
+  "mkdocs quote-template": {
+    "prefix": "mkqt",
+    "body": [
+      "???+ quote \"${1}\"",
+      "    :material-calendar: ${2} &nbsp;",
+      "    :fontawesome-solid-user-pen: ${3} &nbsp;",
+      "    :octicons-link-16: [${4}](${5}) &nbsp;",
+      "    :octicons-tag-16: #${6} &nbsp;\n",
+      "    > ${7}",
+      "${0}"
+    ],
+    "description": "Add mkdocs templates for quotes"
+  }
+}

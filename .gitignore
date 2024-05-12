@@ -1,0 +1,9 @@
+.DS_STORE
+
+gh/hosts.yml
+
+zsh/secret.zsh
+
+tmux/.tmux/plugins/*
+
+yazi/plugins/*

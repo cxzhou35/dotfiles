@@ -1,12 +1,11 @@
 format = """
-[](fg:#f5c2e7)\
+$os\
 $directory\
 $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
 $conda\
-$nodejs\
 $rust\
 $golang\
 $fill\
@@ -17,7 +16,12 @@ $line_break\
 $character"""
 
 [os]
-disabled = true
+style = "fg:#f5c2e7"
+format = '[$symbol]($style)'
+disabled = false
+
+[os.symbols]
+Macos = ""
 
 [username]
 show_always = true

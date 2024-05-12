@@ -12,13 +12,11 @@ return {
       auto_jump = true,
       jump_highlight_duration = 300,
       center_on_jump = true,
-
       show_numbers = false,
       show_relative_numbers = false,
       wrap = false,
       show_cursorline = true,
       hide_cursor = false,
-
       focus_on_open = true,
     },
     guides = {
@@ -30,10 +28,29 @@ return {
       },
     },
     symbol_folding = {
-      autofold_depth = 1,
+      autofold_depth = 2,
       auto_unfold = {
         hovered = true,
+        only = true,
       },
+    },
+    preview_window = {
+      auto_preview = false,
+      live = true,
+    },
+    keymaps = {
+      goto_location = "<Cr>",
+      hover_symbol = "K",
+      peek_location = "P",
+      toggle_preview = "T",
+      goto_and_close = "O",
+      fold_all = "F",
+      unfold_all = "U",
+      fold_reset = "R",
+      rename_symbol = "r",
+      code_actions = "a",
+      down_and_jump = "<C-d>",
+      up_and_jump = "<C-u>",
     },
   },
 }

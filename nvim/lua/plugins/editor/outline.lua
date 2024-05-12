@@ -21,13 +21,18 @@ return {
 
       focus_on_open = true,
     },
-
     guides = {
       enabled = true,
       markers = {
         bottom = "└",
         middle = "├",
         vertical = "│",
+      },
+    },
+    symbol_folding = {
+      autofold_depth = 1,
+      auto_unfold = {
+        hovered = true,
       },
     },
   },

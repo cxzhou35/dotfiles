@@ -37,6 +37,7 @@ eval "$(atuin init zsh)"
 bindkey '^h' _atuin_search_widget
 
 # Fzf config
+eval "$(fzf --zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"

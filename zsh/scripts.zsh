@@ -32,7 +32,7 @@ function ske (){
 
 # copy neovim config file to repo
 function loadnvim() {
-  cd ~/Github/neovim && cp -r ~/.config/nvim/* .
+  cd ~/Github/neovim && cp -r ~/Github/dotfiles/nvim/* .
 }
 
 # create folder and cd into it

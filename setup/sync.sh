@@ -31,14 +31,14 @@ else
 	git commit -m "[Default] Sync Local Files"
 fi
 
-git push
+# git push
 
 # check if fail
-if [ $? -ne 0 ]; then
-	echo "Sync Failed!"
-	exit 1
-else
-	echo "Sync Success!"
-fi
+# if [ $? -ne 0 ]; then
+# 	echo "Sync Failed!"
+# 	exit 1
+# else
+# 	echo "Sync Success!"
+# fi
 
 cd $curDir

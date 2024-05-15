@@ -9,8 +9,8 @@ return {
       require("incline").setup({
         highlight = {
           groups = {
-            InclineNormal = { guifg = colors.lavender, guibg = colors.base },
-            InclineNormalNC = { guifg = colors.pink, guibg = colors.base },
+            InclineNormal = { guifg = colors.pink, guibg = colors.base },
+            InclineNormalNC = { guifg = colors.lavender, guibg = colors.base },
           },
         },
         window = {

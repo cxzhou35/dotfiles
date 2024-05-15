@@ -54,6 +54,7 @@ alias viewmd="frogmouth"
 alias g++c="g++ -std=c++17 -Wall"
 
 alias sz="source ~/.zshrc; echo '~/.zshrc sourced'"
+alias sr="\"/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel\" --reload"
 alias vz="vi ~/Github/dotfiles/zsh/.zshrc"
 alias vzp="vi ~/Github/dotfiles/zsh/.zprofile"
 alias vt="vi ~/Github/dotfiles/tmux.tmux.conf"

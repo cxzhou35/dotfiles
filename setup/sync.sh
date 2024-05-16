@@ -19,6 +19,7 @@ if [ -z "$(git status --porcelain)" ]; then
 	exit 0
 fi
 
+lazygit
 # git add -A
 
 if [ $# -gt 0 ]; then

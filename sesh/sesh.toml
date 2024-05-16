@@ -108,8 +108,13 @@ startup_command = "nvim sesh.toml"
 
 [[session]]
 name = "alacritty config"
-path = "~/Github/dotfiles//alacritty"
+path = "~/Github/dotfiles/alacritty"
 startup_command = "nvim alacritty.toml"
+
+[[session]]
+name = "kitty config"
+path = "~/Github/dotfiles/kitty"
+startup_command = "nvim kitty.conf"
 
 [[session]]
 name = "ssh config"

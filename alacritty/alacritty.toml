@@ -23,7 +23,7 @@ blur = true
 option_as_alt = "Both"
 
 [font]
-normal.family = "Hack Nerd Font"
+normal.family = "FiraCode Nerd Font"
 normal.style = "Regular"
 
 offset.x = 1

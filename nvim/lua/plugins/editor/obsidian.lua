@@ -3,6 +3,15 @@ return {
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
+  keys = {
+    { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New Obsidian note", mode = "n" },
+    { "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open Obsidian note", mode = "n" },
+    { "<leader>os", "<cmd>ObsidianSearch<cr>", desc = "Search Obsidian notes", mode = "n" },
+    { "<leader>oq", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch", mode = "n" },
+    { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Show location list of backlinks", mode = "n" },
+    { "<leader>ot", "<cmd>ObsidianTemplate<cr>", desc = "Insert Obsidian template", mode = "n" },
+    { "<leader>od", "<cmd>ObsidianToday<cr>", desc = "Create Obsidian notes today", mode = "n" },
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "hrsh7th/nvim-cmp",
@@ -15,96 +24,79 @@ return {
         name = "Notes",
         path = "~/Notes",
       },
+      {
+        name = "Dev",
+        path = "~/DevNotes",
+      },
     },
-    log_level = vim.log.levels.INFO,
-    daily_notes = {
-      folder = "Notes/Daily",
-      template = nil,
-    },
+    notes_subdir = "notes",
+    new_notes_location = "notes_subdir",
+    open_app_foreground = false,
+    disable_frontmatter = false,
     completion = {
       -- Set to false to disable completion.
       nvim_cmp = true,
       min_chars = 2,
     },
-    new_notes_location = "current_dir",
-    disable_frontmatter = true,
-    sort_by = "modified",
-    sort_reversed = true,
-    open_notes_in = "current",
-
     ui = {
-      enable = true, -- set to false to disable all additional syntax features
-      update_debounce = 200, -- update delay after a text change (in milliseconds)
-      -- Define how various check-boxes are displayed
-      checkboxes = {
-        -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-        ["x"] = { char = "", hl_group = "ObsidianDone" },
-        [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-        ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-      },
-      -- Use bullet marks for non-checkbox lists.
-      bullets = { char = "•", hl_group = "ObsidianBullet" },
-      external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-      reference_text = { hl_group = "ObsidianRefText" },
-      highlight_text = { hl_group = "ObsidianHighlightText" },
-      tags = { hl_group = "ObsidianTag" },
-      block_ids = { hl_group = "ObsidianBlockID" },
-      hl_groups = {
-        ObsidianTodo = { bold = true, fg = "#f78c6c" },
-        ObsidianDone = { bold = true, fg = "#89ddff" },
-        ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
-        ObsidianTilde = { bold = true, fg = "#ff5370" },
-        ObsidianBullet = { bold = true, fg = "#89ddff" },
-        ObsidianRefText = { underline = true, fg = "#c792ea" },
-        ObsidianExtLinkIcon = { fg = "#c792ea" },
-        ObsidianTag = { italic = true, fg = "#89ddff" },
-        ObsidianBlockID = { italic = true, fg = "#89ddff" },
-        ObsidianHighlightText = { bg = "#75662e" },
-      },
-    },
-    attachments = {
-      img_folder = "assets/images",
-      ---@param client obsidian.Client
-      ---@param path obsidian.Path the absolute path to the image file
-      ---@return string
-      img_text_func = function(client, path)
-        path = client:vault_relative_path(path) or path
-        return string.format("![%s](%s)", path.name, path)
-      end,
+      enable = true,
+      update_debounce = 200,
     },
 
-    -- useful custom function
+    daily_notes = {
+      folder = "dailies",
+      date_format = "%Y-%m-%d",
+      template = "templates/daily-note-template.md",
+    },
+    templates = {
+      folder = "templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M:%S",
+      tags = "",
+    },
+
     wiki_link_func = function(opts)
-      return require("obsidian.util").wiki_link_id_prefix(opts)
+      if opts.id == nil then
+        return string.format("[[%s]]", opts.label)
+      elseif opts.label ~= opts.id then
+        return string.format("[[%s|%s]]", opts.id, opts.label)
+      else
+        return string.format("[[%s]]", opts.id)
+      end
     end,
 
-    markdown_link_func = function(opts)
-      return require("obsidian.util").markdown_link(opts)
+    note_frontmatter_func = function(note)
+      -- This is equivalent to the default frontmatter function.
+      local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+
+      -- `note.metadata` contains any manually added fields in the frontmatter.
+      -- So here we just make sure those fields are kept in the frontmatter.
+      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+        for k, v in pairs(note.metadata) do
+          out[k] = v
+        end
+      end
+      return out
     end,
 
+    ---@param title string|?
     ---@return string
-    image_name_func = function()
-      -- Prefix image names with timestamp.
-      return string.format("%s-", os.time())
+    note_id_func = function(title)
+      -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+      -- In this case a note with the title 'My new note' will be given an ID that looks
+      -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
+      local suffix = ""
+      if title ~= nil then
+        -- If title is given, transform it into valid file name.
+        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+      else
+        -- If title is nil, just add 4 random uppercase letters to the suffix.
+        for _ = 1, 4 do
+          suffix = suffix .. string.char(math.random(65, 90))
+        end
+      end
+      return tostring(os.time()) .. "-" .. suffix
     end,
-
-    ---@param url string
-    follow_url_func = function(url)
-      -- Open the URL in the default web browser.
-      vim.fn.jobstart({ "open", url }) -- Mac OS
-    end,
-
-    preferred_link_style = "wiki",
-
-    picker = {
-      name = "telescope.nvim",
-      mappings = {
-        new = "<C-x>",
-        -- Insert a link to the selected note.
-        insert_link = "<C-l>",
-      },
-    },
 
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
@@ -113,20 +105,6 @@ return {
           return require("obsidian").util.gf_passthrough()
         end,
         opts = { noremap = false, expr = true, buffer = true },
-      },
-      -- Toggle check-boxes.
-      ["<leader>ch"] = {
-        action = function()
-          return require("obsidian").util.toggle_checkbox()
-        end,
-        opts = { buffer = true },
-      },
-      -- Smart action depending on context, either follow link or toggle checkbox.
-      ["<cr>"] = {
-        action = function()
-          return require("obsidian").util.smart_action()
-        end,
-        opts = { buffer = true, expr = true },
       },
     },
   },

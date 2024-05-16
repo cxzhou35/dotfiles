@@ -7,3 +7,5 @@ zsh/secret.zsh
 tmux/.tmux/plugins/*
 
 yazi/plugins/*
+
+nvim/lazy-lock.json

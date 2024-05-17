@@ -11,6 +11,7 @@ return {
     { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Show location list of backlinks", mode = "n" },
     { "<leader>ot", "<cmd>ObsidianTemplate<cr>", desc = "Insert Obsidian template", mode = "n" },
     { "<leader>od", "<cmd>ObsidianToday<cr>", desc = "Create Obsidian notes today", mode = "n" },
+    { "<leader>oc", "<cmd>ObsidianToggleCheckbox<cr>", desc = "Toggle Obsidian checkbox", mode = "n" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -27,6 +28,9 @@ return {
       {
         name = "Dev",
         path = "~/DevNotes",
+        overrides = {
+          notes_subdir = "notes",
+        },
       },
     },
     notes_subdir = "notes",
@@ -84,12 +88,18 @@ return {
     end,
 
     mappings = {
-      -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+      -- mapping to work on markdown/wiki links within your vault.
       ["gw"] = {
         action = function()
           return require("obsidian").util.gf_passthrough()
         end,
         opts = { noremap = false, expr = true, buffer = true },
+      },
+      ["<cr>"] = {
+        action = function()
+          return require("obsidian").util.toggle_checkbox()
+        end,
+        opts = { buffer = true },
       },
     },
   },

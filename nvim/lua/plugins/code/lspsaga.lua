@@ -48,7 +48,7 @@ return {
       },
       -- lightbulb config
       lightbulb = {
-        enable = true,
+        enable = false,
         enable_in_insert = false,
         sign = true,
         sign_priority = 40,
@@ -79,7 +79,7 @@ return {
       outline = {
         win_position = "right",
         win_with = "",
-        win_width = 30,
+        win_width = 40,
         auto_enter = true,
         detail = false,
         auto_preview = false,
@@ -100,6 +100,7 @@ return {
       -- code action config
       code_action = {
         num_shortcut = true,
+        extend_gitsigns = true,
         keys = {
           -- string | table type
           quit = "q",

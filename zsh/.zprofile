@@ -27,9 +27,6 @@ export PATH="/opt/homebrew/Cellar/ruby/3.2.1/bin:$PATH"
 # pipx
 export PATH="/Users/vercent/.local/bin:$PATH"
 
-# bob-nvim
-export PATH="/Users/vercent/.local/share/bob/nvim-bin:$PATH"
-
 # spicetify
 export PATH="/Users/vercent/.spicetify:$PATH"
 

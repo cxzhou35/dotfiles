@@ -28,7 +28,7 @@ startup_command = "yazi"
 
 [[session]]
 name = "Notes 📝"
-path = "~/Dev/notes"
+path = "~/DevNotes"
 startup_command = "yazi"
 
 [[session]]

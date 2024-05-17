@@ -16,7 +16,7 @@ return {
       },
       severity_sort = true,
     },
-    inlay_hints = { enabled = true },
+    inlay_hints = { enabled = false },
     codelens = {
       enabled = false,
     },

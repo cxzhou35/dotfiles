@@ -1,14 +1,9 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.copilot",
-    "lazyvim.plugins.extras.formatting.prettier",
-    "lazyvim.plugins.extras.ui.alpha",
-    "lazyvim.plugins.extras.ui.edgy",
-    "lazyvim.plugins.extras.util.dot",
-    "lazyvim.plugins.extras.util.mini-hipatterns"
+
   ],
   "news": {
-    "NEWS.md": "4578",
+    "NEWS.md": "4828",
     "doc/news.txt": "24447"
   },
   "version": 3

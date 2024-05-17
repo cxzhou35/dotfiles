@@ -71,7 +71,7 @@ return {
 
     note_frontmatter_func = function(note)
       -- This is equivalent to the default frontmatter function.
-      local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+      local out = { id = note.id, aliases = note.aliases, tags = note.tags, status = false }
 
       -- `note.metadata` contains any manually added fields in the frontmatter.
       -- So here we just make sure those fields are kept in the frontmatter.
@@ -86,6 +86,17 @@ return {
     note_id_func = function(title)
       return title
     end,
+
+    attachments = {
+      img_folder = "assets/images",
+      ---@param client obsidian.Client
+      ---@param path obsidian.Path the absolute path to the image file
+      ---@return string
+      img_text_func = function(client, path)
+        path = client:vault_relative_path(path) or path
+        return string.format("![%s](%s)", path.name, path)
+      end,
+    },
 
     mappings = {
       -- mapping to work on markdown/wiki links within your vault.

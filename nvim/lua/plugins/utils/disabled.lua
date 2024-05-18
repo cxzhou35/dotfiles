@@ -3,6 +3,7 @@ return {
   { "hrsh7th/cmp-cmdline", enabled = false },
   { "rmagatti/auto-session", enabled = false },
   { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
+  { "mg979/vim-visual-multi", enabled = false },
   -- ui
   { "mawkler/modicator.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },

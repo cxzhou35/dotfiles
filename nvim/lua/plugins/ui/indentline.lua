@@ -26,7 +26,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-    event = { "UIEnter" },
+    event = { "UIEnter", "CursorMoved" },
     config = function()
       require("hlchunk").setup({
         -- experimental
@@ -55,12 +55,7 @@ return {
         indent = {
           enable = true,
           use_treesitter = true,
-          chars = {
-            -- "│",
-            "¦",
-            -- "┆",
-            -- "┊",
-          },
+          chars = { "│", "¦", "┆", "┊" },
           -- style = {
           -- "#8B81C3",
           -- },

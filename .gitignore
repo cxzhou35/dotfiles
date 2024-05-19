@@ -1,11 +1,16 @@
 .DS_STORE
 
-gh/hosts.yml
-
 zsh/secret.zsh
+zsh/.zprofile
 
 tmux/.tmux/plugins/*
 
 yazi/plugins/*
 
 nvim/lazy-lock.json
+
+btop/btop.log
+
+gh/*
+
+karabiner/*

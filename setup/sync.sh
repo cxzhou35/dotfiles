@@ -34,7 +34,7 @@ fi
 
 git push
 
-check if fail
+# check if fail
 if [ $? -ne 0 ]; then
 	echo "Sync Failed!"
 	exit 1

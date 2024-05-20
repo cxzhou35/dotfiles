@@ -9,6 +9,11 @@ return {
 
       "shfmt",
 
+      "pyright",
+      "black",
+
+      "json-lsp",
+
       "yaml-language-server",
     },
   },

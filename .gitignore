@@ -8,6 +8,7 @@ tmux/.tmux/plugins/*
 yazi/plugins/*
 
 nvim/lazy-lock.json
+nvim/lazyvim.json
 
 btop/btop.log
 

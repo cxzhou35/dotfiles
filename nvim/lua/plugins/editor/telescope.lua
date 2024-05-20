@@ -143,6 +143,13 @@ return {
           height = 0.80,
           -- preview_cutoff = 120,
         },
+        file_ignore_patterns = {
+          "lazy-lock.json",
+          "node_modules",
+          "yarn.lock",
+          ".DS_Store",
+          ".git",
+        },
       },
       pickers = {
         diagnostics = {
@@ -151,6 +158,9 @@ return {
           layout_config = {
             preview_cutoff = 9999,
           },
+        },
+        find_files = {
+          hidden = true,
         },
       },
       extensions = {

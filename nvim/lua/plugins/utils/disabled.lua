@@ -14,8 +14,8 @@ return {
   -- keymaps TODO: use which-key
   { "folke/which-key.nvim", enabled = true },
   -- suround TODO: use mini.suround
-  { "echasnovski/mini.surround", enabled = true },
-  { "kylechui/nvim-surround", enabled = false },
+  { "echasnovski/mini.surround", enabled = false },
+  { "kylechui/nvim-surround", enabled = true },
   -- startpage TODO: use dashboard
   { "goolord/alpha-nvim", enabled = false },
   { "nvimdev/dashboard-nvim", enabled = true },

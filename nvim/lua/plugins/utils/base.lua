@@ -3,7 +3,7 @@ return {
   {
     "rmagatti/alternate-toggler",
     keys = {
-      { "<leader>at", "<cmd>ToggleAlternate<CR>", desc = "Toggle Alternate" },
+      { "<leader>i", "<cmd>ToggleAlternate<CR>", desc = "Toggle Alternate" },
     },
     opts = {
       alternates = {

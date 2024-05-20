@@ -19,7 +19,6 @@ return {
   { "nvimdev/dashboard-nvim", enabled = true },
   -- indentline TODO: use hlchunk
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
-  { "echasnovski/mini.indentscope", enabled = false },
   { "shellRaining/hlchunk.nvim", enabled = true },
   -- snippets TODO: use Luasnip
   { "L3MON4D3/LuaSnip", enabled = true },

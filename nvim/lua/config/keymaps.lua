@@ -10,6 +10,7 @@ local opts = { silent = true, noremap = true }
 -- Paste over currently selected text without yanking it
 map("v", "p", '"_dP', { silent = true })
 map({ "n", "v" }, "<leader>y", [["+y]], { silent = true })
+map({ "n", "x" }, "<leader>p", '"0p', { silent = true })
 
 -- Delete without yanking
 map({ "n", "v" }, "<leader>d", [["_d]])

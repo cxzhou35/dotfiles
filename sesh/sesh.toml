@@ -32,29 +32,29 @@ path = "~/DevNotes"
 startup_command = "yazi"
 
 [[session]]
-name = "Workspace 🏢"
-path = "~/Github/workspace"
-startup_command = "nvim README.md"
-
-[[session]]
 name = "Github"
 path = "~/Github"
-startup_command = "yazi"
+startup_command = "la"
 
 [[session]]
 name = "Dotfiles"
 path = "~/Github/dotfiles"
-startup_command = "l"
+startup_command = "la"
+
+[[session]]
+name = "Workspace"
+path = "~/Github/workspace"
+startup_command = "la"
 
 [[session]]
 name = "Blog"
 path = "~/Github/site/blog"
-startup_command = "l"
+startup_command = "la"
 
 [[session]]
 name = "Notebook"
 path = "~/Github/site/notebook"
-startup_command = "l"
+startup_command = "la"
 
 [[session]]
 name = "LaTex workspace"

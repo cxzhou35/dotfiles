@@ -35,6 +35,10 @@ function loadnvim() {
   cd ~/Github/neovim && cp -r ~/Github/dotfiles/nvim/* .
 }
 
+function loadvsc ()
+{
+  cd ~/Github/dotfiles/vscode && cp -r ~/Library/Application\ Support/Code/User/*.json .
+}
 # create folder and cd into it
 function mkcd() {
   mkdir -p "$@"  && cd $_

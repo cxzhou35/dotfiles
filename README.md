@@ -49,7 +49,9 @@ bash setup/install.sh
 - Multiplexer: [tmux](./tmux/)
   - Session manager: [sesh](./sesh/)
 - System info: [fastfetch](./fastfetch/)
-- Editor: [neovim](./nvim)
+- Editor:
+ - [neovim](./nvim)
+ - [vscode](./vscode/)
 - Git: [lazygit](./lazygit/)
 - Terminal file manager: [yazi](./yazi/)
 - Terminal system monitor: [btop](./btop/)

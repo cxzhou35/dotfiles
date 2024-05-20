@@ -1,0 +1,18 @@
+{
+  "Print to conaole": {
+    "prefix": "py", //在新建立的页面中输入C就会有智能提示，Tab就自动生成好了
+    "body": [
+      "#! /usr/bin/env python",
+      "# -*- coding:utf-8 -*-",
+      "",
+      "",
+      "def main():", //main()函数
+      "\tpass",
+      "",
+      "",
+      "if __name__ == '__main__':",
+      "\tmain()"
+    ],
+    "description": "A python file template." //用户输入后智能提示的内容（你可以用中文写“生成C++模板”）
+  }
+}

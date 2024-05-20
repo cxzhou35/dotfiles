@@ -1,0 +1,875 @@
+{
+    // Basic settings
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.dialogStyle": "custom",
+    "window.titleBarStyle": "custom",
+    "window.restoreWindows": "none",
+    "window.autoDetectColorScheme": true,
+    "window.nativeTabs": false, // whether use macos native tabs
+    "update.showReleaseNotes": false,
+    "update.mode": "start",
+    "security.workspace.trust.untrustedFiles": "open",
+    // File settings
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onFocusChange",
+    "files.autoGuessEncoding": true,
+    "files.watcherExclude": {
+        "**/node_modules/*/**": false,
+        "**/.git/subtree-cache/**": false
+    },
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.conda": true,
+        "**/.ipynb_checkpoints": true,
+        "**/.local": true,
+        "**/.svn": false,
+        "**/Thumbs.db": false
+    },
+    // Zenmode settings
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false,
+    // Terminal settings
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "terminal.integrated.showExitAlert": false,
+    "terminal.integrated.gpuAcceleration": "off",
+    "terminal.explorerKind": "external",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "terminal.integrated.inheritEnv": false,
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.env.osx": {
+        "FIG_NEW_SESSION": "1"
+    },
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.fontWeight": "300",
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.tabs.enabled": true,
+    // Workbench settings
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+    "workbench.editor.enablePreview": true,
+    "workbench.tree.enableStickyScroll": true,
+    "workbench.layoutControl.enabled": false, // Theme
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.productIconTheme": "icons-carbon",
+    "workbench.editorLargeFileConfirmation": 100,
+    "workbench.activityBar.iconClickBehavior": "toggle",
+    "workbench.list.smoothScrolling": true,
+    "workbench.startupEditor": "none",
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.editor.tabActionLocation": "right",
+    "workbench.editor.untitled.labelFormat": "content",
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.fontAliasing": "antialiased",
+    "workbench.sideBar.location": "left",
+    "workbench.tree.expandMode": "singleClick",
+    "workbench.tree.indent": 10,
+    "workbench.editor.closeOnFileDelete": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.limit.value": 5,
+    // Editor settings
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.accessibilitySupport": "off",
+    "editor.inlineSuggest.enabled": true,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.suggest.insertMode": "replace",
+    "editor.suggestSelection": "first",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 200,
+    "editor.fontFamily": "Hack Nerd Font",
+    "editor.fontSize": 16,
+    "editor.lineHeight": 24,
+    "editor.linkedEditing": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.inlayHints.enabled": "on",
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "on",
+        "strings": "on"
+    },
+    "editor.autoClosingBrackets": "always",
+    "editor.rulers": [
+        100
+    ],
+    "diffEditor.wordWrap": "on",
+    "editor.smoothScrolling": true,
+    "editor.find.addExtraSpaceOnTop": false,
+    "editor.guides.bracketPairs": "active",
+    "editor.lineNumbers": "on",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.renderLineHighlight": "all",
+    "editor.stickyScroll.enabled": true,
+    "editor.hover.sticky": true,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.includeStrings": false,
+    "editor.unicodeHighlight.allowedLocales": {
+        "zh-hans": true,
+        "zh-hant": true
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "never",
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+    // Tab settings: Use tab instead of spaces
+    "editor.tabSize": 4,
+    "editor.tabCompletion": "off", // prevent tab auto completion
+    "editor.detectIndentation": false, // prevent auto detect indentation according to the filetype
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "trailing",
+    "editor.renderControlCharacters": true,
+    // Cursor settings
+    "editor.cursorBlinking": "solid",
+    "editor.cursorStyle": "line-thin",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorSurroundingLines": 10,
+    "editor.cursorSurroundingLinesStyle": "default",
+    // Debug settings
+    "debug.showBreakpointsInOverviewRuler": true,
+    "debug.onTaskErrors": "debugAnyway",
+    "debug.terminal.clearBeforeReusing": true,
+    // Copilot settings
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.editor.enableCodeActions": false,
+    // Everforest theme settings
+    "everforest.darkContrast": "hard",
+    "everforest.darkCursor": "purple",
+    "everforest.darkSelection": "red",
+    "everforest.diagnosticTextBackgroundOpacity": "12.5%",
+    // Catppucin theme settings
+    "catppuccin.accentColor": "sapphire",
+    "catppuccin.workbenchMode": "default",
+    "catppuccin.boldKeywords": true,
+    "catppuccin.extraBordersEnabled": true,
+    // Extensions settings
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "extensions.autoCheckUpdates": false,
+    "extensions.ignoreRecommendations": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false,
+        "python": true,
+        "yaml": false
+    },
+    "toggleboolean.mapping": {
+        "true": false,
+        "false": true,
+        "yes": "no",
+        "no": "yes",
+        "on": "off",
+        "off": "on",
+        "1": 0,
+        "0": 1
+    },
+    // Git settings
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.untrackedChanges": "separate",
+    // Python settings
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.logLevel": "Warning",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    // lldb settings
+    "lldb.displayFormat": "binary",
+    "lldb.launch.terminal": "external",
+    "lldb.launch.expressions": "native",
+    "lldb.suppressUpdateNotifications": true,
+    // Jupyter notebook settings
+    "notebook.lineNumbers": "on",
+    "notebook.markup.fontSize": 16,
+    "jupyter.askForKernelRestart": false,
+    // Cmake settings
+    "cmake.configureOnOpen": true,
+    // Gitlens settings
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.currentLine.enabled": false,
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, AllowShortIfStatementsOnASingleLine: false }",
+    "C_Cpp.intelliSenseEngineFallback": "enabled",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.inlayHints.parameterNames.enabled": true,
+    "C_Cpp.inlayHints.referenceOperator.enabled": true,
+    "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores": true,
+    "C_Cpp.inlayHints.parameterNames.suppressWhenArgumentContainsName": true,
+    // Search settings
+    "search.exclude": {
+        "**/.git": true,
+        "**/.github": true,
+        "**/.nuxt": true,
+        "**/.output": true,
+        "**/.pnpm": true,
+        "**/.vscode": false,
+        "**/.yarn": true,
+        "**/bower_components": true,
+        "**/dist/**": true,
+        "**/logs": true,
+        "**/node_modules": true,
+        "**/out/**": true,
+        "**/package-lock.json": true,
+        "**/pnpm-lock.yaml": true,
+        "**/tmp": true,
+        "**/yarn.lock": true
+    },
+    // Vim settings
+    "vim.leader": "<space>",
+    // flash vim settings
+    "vim.flash.enable": true,
+    "vim.flash.ignorecase": true,
+    "vim.flash.marker.backgroundColor": "#ccff88",
+    "vim.sneak": false,
+    "vim.foldfix": true,
+    "vim.surround": true,
+    "vim.smartRelativeLine": false,
+    "vim.autoindent": true,
+    "vim.ignorecase": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "rgba(101, 70, 170, 0.7)",
+    "vim.highlightedyank.textColor": "white",
+    "vim.incsearch": true,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors": {
+        "normal": "#393f4c",
+        "insert": "#3a5b52",
+        "visual": "#68699b",
+        "visualline": "#745399",
+        "visualblock": "#2a4073",
+        "replace": "#2b2e4a",
+        "commandlineinprogress": "#283c63",
+        "searchinprogressmode": "#283c63"
+    },
+    "vim.whichwrap": "b,s,e,w",
+    "vim.handleKeys": {
+        "<C-t>": false,
+        "<C-c>": false,
+        "<C-e>": false,
+        "<C-h>": false,
+        "<C-l>": false,
+        "<C-\\>": false
+    },
+    "vim.visualModeKeyBindings": [
+        {
+            "after": [
+                "^"
+            ],
+            "before": [
+                "H"
+            ]
+        },
+        {
+            "after": [
+                "g",
+                "_"
+            ],
+            "before": [
+                "L"
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "z"
+            ],
+            "command": [
+                "workbench.action.toggleZenMode"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "i"
+            ],
+            "commands": [
+                "extension.toggleBool"
+            ]
+        },
+        {
+            "before": [
+                "z",
+                "a"
+            ],
+            "commands": [
+                "editor.toggleFold"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "k"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "g",
+                "p"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "g",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "g",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "g",
+                "j"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "k"
+            ],
+            "commands": [
+                "editor.action.marker.prevInFiles"
+            ]
+        },
+        // show commands
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands": "workbench.action.navigateLeft",
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "l"
+            ],
+            "commands": "workbench.action.navigateRight",
+            "silent": true
+        },
+        // create new file
+        {
+            "before": [
+                "<leader>",
+                "n"
+            ],
+            "commands": [
+                "explorer.newFile"
+            ],
+            "silent": true
+        },
+        // create new directory
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "commands": [
+                "explorer.newFolder"
+            ],
+            "silent": true
+        },
+        // bookmarks
+        {
+            "before": [
+                "b",
+                "b"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "b",
+                "l"
+            ],
+            "commands": [
+                "bookmarks.list"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "b",
+                "k"
+            ],
+            "commands": [
+                "bookmarks.jumpToPrevious"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "b",
+                "j"
+            ],
+            "commands": [
+                "bookmarks.jumpToNext"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "b",
+                "c"
+            ],
+            "commands": [
+                "bookmarks.clear"
+            ],
+            "silent": true
+        },
+        // undo
+        {
+            "before": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        // no highlight
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "h"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        // select buffer
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "commands": [
+                "workbench.action.nextEditor"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "commands": [
+                "workbench.action.previousEditor"
+            ],
+            "silent": true
+        },
+        // jump to the begin of the line
+        {
+            "after": [
+                "^"
+            ],
+            "before": [
+                "H"
+            ]
+        },
+        // jump to the end of the line
+        {
+            "after": [
+                "g",
+                "_"
+            ],
+            "before": [
+                "L"
+            ]
+        },
+        // save file
+        {
+            "before": [
+                "f",
+                "w"
+            ],
+            "commands": [
+                ":wa!"
+            ]
+        },
+        // save and quit file
+        {
+            "before": [
+                "f",
+                "w",
+                "q"
+            ],
+            "commands": [
+                ":wq!"
+            ]
+        },
+        // quit file
+        {
+            "before": [
+                "f",
+                "q"
+            ],
+            "commands": [
+                ":q!"
+            ]
+        }
+    ],
+    // Latex settings
+    "[latex]": {
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix",
+    },
+    "latex-workshop.latexindent.args": [
+        "-g",
+        "./%OUTDIR%/indent.log",
+        "%TMPFILE%",
+        "-y=defaultIndent: '%INDENT%'"
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "/Library/TeX/texbin/xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "/Library/TeX/texbin/pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "/Library/TeX/texbin/biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "command": "/Library/TeX/texbin/latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-xelatex",
+                "-outdir=%OUTDIR%",
+                "-cd",
+                "%DOC%",
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex * 2",
+            "tools": [
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "xelatex ➞ biber ➞ xelatex * 2",
+            "tools": [
+                "xelatex",
+                "biber",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav"
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.showContextMenu": true,
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.hover.preview.enabled": true,
+    "latex-workshop.message.log.show": true,
+    "latex-workshop.latex.outDir": "%DIR%/out",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.autoClean.run": "never",
+    "latex-workshop.hover.preview.mathjax.extensions": [
+        "boldsymbol"
+    ],
+    "latex-workshop.mathpreviewpanel.cursor.enabled": true,
+    // Auto Correction setup
+    "cSpell.diagnosticLevel": "Warning",
+    "C_Cpp.debugShortcut": false,
+    "clang.cxxflags": [
+        "-std=c++17"
+    ],
+    // Clangd settings
+    "clangd.path": "/usr/bin/clangd",
+    "clangd.arguments": [
+        "--background-index",
+        "--compile-commands-dir=build",
+        "-j=12",
+        "--query-driver=/usr/bin/clang++",
+        "--clang-tidy",
+        "--clang-tidy-checks=performance-*,bugprone-*",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--pch-storage=disk"
+    ],
+    // Markdown settings
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.renderWhitespace": "all",
+        "editor.wordWrap": "off",
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "on",
+            "strings": "on"
+        },
+        "editor.acceptSuggestionOnEnter": "on",
+    },
+    "markdown.preview.lineHeight": 1.2,
+    "markdown.extension.preview.autoShowPreviewToSide": false,
+    "markdown.extension.print.theme": "dark",
+    "markdown.extension.completion.enabled": true,
+    "markdown.extension.tableFormatter.normalizeIndentation": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#393f4c",
+        "statusBar.noFolderBackground": "#393f4c",
+        "statusBar.debuggingBackground": "#393f4c"
+    },
+    "markdown-preview-enhanced.codeBlockTheme": "one-dark.css",
+    "markdown-preview-enhanced.enableExtendedTableSyntax": true,
+    "markdown-preview-enhanced.enableCriticMarkupSyntax": true,
+    "markdown-preview-enhanced.chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "git.openRepositoryInParentFolders": "never",
+    "git.terminalAuthentication": false,
+    "where-am-i.color": "#c0a2c7",
+    "accessibility.signals.lineHasError": {
+        "sound": "off"
+    },
+    "accessibility.signals.lineHasFoldedArea": {
+        "sound": "off"
+    },
+    "accessibility.signals.lineHasBreakpoint": {
+        "sound": "off"
+    },
+    "accessibility.signals.lineHasInlineSuggestion": {
+        "sound": "off"
+    },
+    "accessibility.signals.terminalQuickFix": {
+        "sound": "off"
+    },
+    "accessibility.signals.onDebugBreak": {
+        "sound": "off"
+    },
+    "accessibility.signals.noInlayHints": {
+        "sound": "off"
+    },
+    "accessibility.signals.taskCompleted": {
+        "sound": "off"
+    },
+    "accessibility.signals.taskFailed": {
+        "sound": "off"
+    },
+    "accessibility.signals.terminalCommandFailed": {
+        "sound": "off"
+    },
+    "accessibility.signals.notebookCellCompleted": {
+        "sound": "off"
+    },
+    "accessibility.signals.notebookCellFailed": {
+        "sound": "off"
+    },
+    "accessibility.signals.diffLineInserted": {
+        "sound": "off"
+    },
+    "accessibility.signals.diffLineDeleted": {
+        "sound": "off"
+    },
+    "accessibility.signals.diffLineModified": {
+        "sound": "off"
+    },
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "mod",
+            "color": "#F70891",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+}

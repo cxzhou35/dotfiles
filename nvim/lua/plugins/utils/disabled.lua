@@ -9,6 +9,7 @@ return {
   { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
   -- ui
   { "mawkler/modicator.nvim", enabled = false },
+  { "gen740/SmoothCursor.nvim", enabled = false },
   -- keymaps TODO: use which-key
   { "folke/which-key.nvim", enabled = true },
   -- suround TODO: use mini.suround

@@ -42,7 +42,17 @@ return {
     { ";e", "<cmd>Telescope diagnostics bufnr=2<cr>", desc = "Document Diagnostics" },
     -- extensions
     { ";u", "<cmd>Telescope undo<cr>", desc = "Undo History" },
-    { ";a", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", desc = "Grep With Args" },
+    { ";a", "<cmd>Telescope live_grep_args<cr>", desc = "Grep With Args" },
+    {
+      ";w",
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
+      desc = "Word Grep With Args ",
+    },
+    {
+      ";v",
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
+      desc = "Visual Grep With Args",
+    },
     {
       ";;",
       function()
@@ -89,8 +99,6 @@ return {
     { "nvim-telescope/telescope-file-browser.nvim" },
     {
       "nvim-telescope/telescope-live-grep-args.nvim",
-      -- This will not install any breaking changes.
-      -- For major updates, this must be adjusted manually.
       version = "^1.0.0",
     },
     {
@@ -112,6 +120,10 @@ return {
     { "nvim-telescope/telescope-symbols.nvim" },
   },
   config = function()
+    local tla = require("telescope.actions")
+    local tua = require("telescope-undo.actions")
+    local tlgaa = require("telescope-live-grep-args.actions")
+    local tfba = require("telescope").extensions.file_browser.actions
     require("telescope").setup({
       defaults = {
         prompt_prefix = string.format("%s ", ""),
@@ -124,11 +136,11 @@ return {
         mappings = {
           i = {
             ["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
-            ["esc"] = require("telescope.actions").close,
+            ["esc"] = tla.close,
           },
           n = {
             ["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
-            ["q"] = require("telescope.actions").close,
+            ["q"] = tla.close,
           },
         },
         layout_config = {
@@ -166,10 +178,28 @@ return {
       extensions = {
         undo = {
           use_delta = true,
-          side_by_side = false,
-          layout_strategy = "vertical",
-          layout_config = { preview_height = 0.8 },
-          diff_context_lines = vim.o.scrolloff,
+          side_by_side = true,
+          layout_strategy = "flex",
+          -- layout_strategy = "horizontal",
+          use_custom_command = { "bash", "-c", "echo '$DIFF' | delta --file-style omit" },
+          diff_context_lines = 13,
+          mappings = {
+            i = {
+              ["<cr>"] = tua.restore,
+            },
+            n = {
+              ["u"] = tua.restore,
+            },
+          },
+        },
+        live_grep_args = {
+          auto_quoting = false, -- enable/disable auto-quoting
+          mappings = {
+            i = {
+              ["<C-k>"] = tlgaa.quote_prompt(),
+              ["<C-i>"] = tlgaa.quote_prompt({ postfix = " --iglob " }),
+            },
+          },
         },
         file_browser = {
           cwd_to_path = false,
@@ -197,17 +227,17 @@ return {
             },
             ["n"] = {
               -- your custom normal mode mappings
-              ["n"] = require("telescope").extensions.file_browser.actions.create,
-              ["h"] = require("telescope").extensions.file_browser.actions.goto_parent_dir,
-              ["."] = require("telescope").extensions.file_browser.actions.toggle_hidden,
-              ["o"] = require("telescope").extensions.file_browser.actions.open,
-              ["r"] = require("telescope").extensions.file_browser.actions.rename,
-              ["y"] = require("telescope").extensions.file_browser.actions.copy,
-              ["s"] = require("telescope").extensions.file_browser.actions.sort_by_size,
-              ["d"] = require("telescope").extensions.file_browser.actions.remove,
-              ["m"] = require("telescope").extensions.file_browser.actions.move,
-              ["<PageUp>"] = require("telescope.actions").preview_scrolling_up,
-              ["<PageDown>"] = require("telescope.actions").preview_scrolling_down,
+              ["n"] = tfba.create,
+              ["h"] = tfba.goto_parent_dir,
+              ["."] = tfba.toggle_hidden,
+              ["o"] = tfba.open,
+              ["r"] = tfba.rename,
+              ["y"] = tfba.copy,
+              ["s"] = tfba.sort_by_size,
+              ["d"] = tfba.remove,
+              ["m"] = tfba.move,
+              ["<PageUp>"] = tla.preview_scrolling_up,
+              ["<PageDown>"] = tla.preview_scrolling_down,
               ["/"] = function()
                 vim.cmd("startinsert")
               end,

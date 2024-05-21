@@ -4,6 +4,7 @@ return {
   { "mg979/vim-visual-multi", enabled = false },
   { "junegunn/vim-easy-align", enabled = false },
   { "windwp/nvim-ts-autotag", enabled = false },
+  { "phaazon/hop.nvim", enabled = false },
   -- cmp
   { "hrsh7th/cmp-cmdline", enabled = false },
   -- treesitter

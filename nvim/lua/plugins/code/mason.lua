@@ -11,6 +11,7 @@ return {
 
       "pyright",
       "black",
+      "mypy",
 
       "json-lsp",
 

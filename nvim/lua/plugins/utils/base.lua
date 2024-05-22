@@ -29,16 +29,15 @@ return {
   { "max397574/better-escape.nvim", event = "InsertEnter", opts = { timeout = 100, keys = "<Esc>" } },
   {
     "ellisonleao/carbon-now.nvim",
-    event = "VeryLazy",
-    keys = { { "<leader>cn", "<cmd>CarbonNow<CR>", mode = { "v", "n" }, desc = "Carbon Now" } },
+    lazy = true,
+    -- event = "VeryLazy",
+    cmd = "CarbonNow",
     opts = {
-      base_url = "https://carbon.now.sh/",
-      open_cmd = "open -a 'Min'",
       options = {
         theme = "material",
         window_theme = "none",
         background_mode = "color",
-        bg = "white",
+        bg = "gray",
         background_color = "rgba(240, 231, 231, 1.0)",
         font_family = "Hack",
         font_size = "16px",

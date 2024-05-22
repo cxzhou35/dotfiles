@@ -123,3 +123,6 @@ map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
 -- Easy Align
 map({ "n", "v", "o" }, "ge", "<Plug>(EasyAlign)", { desc = "Easy Align" })
+
+-- Carbon Now
+map("v", "<leader>cn", ":CarbonNow<CR>", { silent = true })

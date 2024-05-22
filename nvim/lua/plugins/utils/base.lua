@@ -29,11 +29,11 @@ return {
   { "max397574/better-escape.nvim", event = "InsertEnter", opts = { timeout = 100, keys = "<Esc>" } },
   {
     "ellisonleao/carbon-now.nvim",
-    event = "BufRead",
+    event = "VeryLazy",
     keys = { { "<leader>cn", "<cmd>CarbonNow<CR>", mode = { "v", "n" }, desc = "Carbon Now" } },
     opts = {
       base_url = "https://carbon.now.sh/",
-      open_cmd = "open -a 'Google Chrome'",
+      open_cmd = "open -a 'Min'",
       options = {
         theme = "material",
         window_theme = "none",

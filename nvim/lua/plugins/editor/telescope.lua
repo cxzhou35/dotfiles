@@ -18,17 +18,7 @@ return {
           additional_args = { "--hidden" },
         })
       end,
-      desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
-    },
-    {
-      ";n",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.find_files({
-          cwd = vim.fn.stdpath("config"),
-        })
-      end,
-      desc = "Search for Neovim config files",
+      desc = "Search for a string in your current working directory",
     },
     { ";R", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
     {
@@ -40,19 +30,8 @@ return {
       desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
     },
     { ";e", "<cmd>Telescope diagnostics bufnr=2<cr>", desc = "Document Diagnostics" },
-    -- extensions
-    { ";u", "<cmd>Telescope undo<cr>", desc = "Undo History" },
-    { ";a", "<cmd>Telescope live_grep_args<cr>", desc = "Grep With Args" },
-    {
-      ";w",
-      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
-      desc = "Word Grep With Args ",
-    },
-    {
-      ";v",
-      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
-      desc = "Visual Grep With Args",
-    },
+    { ";x", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
+    { ";l", "<cmd>Telescope loclist<cr>", desc = "Location List" },
     {
       ";;",
       function()
@@ -70,6 +49,20 @@ return {
         })
       end,
       desc = "Find Plugin File",
+    },
+    -- extensions
+    { ";u", "<cmd>Telescope undo<cr>", desc = "Undo History" },
+    { ";a", "<cmd>Telescope live_grep_args<cr>", desc = "Grep With Args" },
+    {
+      ";w",
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
+      desc = "Word Grep With Args ",
+    },
+    {
+      ";v",
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
+      desc = "Visual Grep With Args",
+      mode = { "n", "v", "x" },
     },
     {
       "<C-f>",

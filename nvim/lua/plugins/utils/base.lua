@@ -67,15 +67,18 @@ return {
   },
   {
     "LunarVim/bigfile.nvim",
-    opts = { filesize = 10 },
-    features = { -- features to disable
-      "illuminate",
-      "lsp",
-      "treesitter",
-      "syntax",
-      "matchparen",
-      "vimopts",
-      "filetype",
+    opts = {
+      filesize = 10,
+      pattern = { "*" },
+      features = { -- features to disable
+        "illuminate",
+        "lsp",
+        "treesitter",
+        "syntax",
+        "matchparen",
+        "vimopts",
+        "filetype",
+      },
     },
   },
   {
@@ -97,5 +100,17 @@ return {
   {
     "mg979/vim-visual-multi",
     branch = "master",
+  },
+  {
+    "axieax/urlview.nvim",
+    cmd = { "UrlView" },
+    event = "VeryLazy",
+    keys = {
+      { mode = { "n" }, "<leader>ru", "<cmd>UrlView<cr>", desc = "View buffer URLs" },
+      { mode = { "n" }, "<leader>rp", "<cmd>UrlView packer<cR>", desc = "View Packer plugin URLs" },
+    },
+    opts = {
+      default_picker = "telescope",
+    },
   },
 }

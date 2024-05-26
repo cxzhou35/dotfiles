@@ -5,7 +5,7 @@ return {
   { "junegunn/vim-easy-align", enabled = false },
   { "windwp/nvim-ts-autotag", enabled = false },
   { "phaazon/hop.nvim", enabled = false },
-  { "m4xshen/hardtime.nvim", enabled = false },
+  { "m4xshen/hardtime.nvim", enabled = true },
   { "axieax/urlview.nvim", enabled = false },
   -- cmp
   { "hrsh7th/cmp-cmdline", enabled = false },

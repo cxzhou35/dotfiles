@@ -6,10 +6,10 @@ DISABLE_UPDATE_PROMPT="true"
 
 export TERM="xterm-256color"
 
-# Bat config
+# Bat
 export BAT_THEME="Catppuccin Macchiato"
 
-# History config
+# History
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
@@ -28,7 +28,7 @@ bindkey '^[[B' history-search-forward
 # zoxide
 eval "$(zoxide init zsh)"
 
-# Alias for my os
+# thefuck
 eval $(thefuck --alias fk)
 
 # atuin
@@ -36,7 +36,7 @@ export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
 bindkey '^h' _atuin_search_widget
 
-# Fzf config
+# Fzf
 eval "$(fzf --zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -67,7 +67,7 @@ _fzf_comprun() {
   esac
 }
 
-# Conda config
+# Conda
 __conda_setup="$('/Users/vercent/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -79,4 +79,3 @@ else
     fi
 fi
 unset __conda_setup
-

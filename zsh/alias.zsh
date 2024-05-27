@@ -5,6 +5,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
+# Directories
 alias cd-="cd -"
 alias cdh="cd ~"
 alias cod="cd ~/Code/"
@@ -14,24 +15,23 @@ alias ghd="cd ~/Github/"
 alias nbd="cd ~/Github/site/notebook/"
 alias bod="cd ~/Github/site/blog/"
 
+# Eza
 alias l="eza --icons"
 alias ll="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias la="eza -la --icons"
-alias rmi="rm -i"
-alias rmf="rm -f"
 
-alias ssh="trzsz -d ssh"
-
-alias cc="clear"
-alias grep="grep --color"
-
+# Python
 alias py="python3"
 alias python="python3"
 alias pdt="python3 -m doctest -v"
 alias jp="jupyter notebook"
 alias jl="jupyter lab --log-level=40"
 
+# Misc
+alias ssh="trzsz -d ssh"
+alias cc="clear"
+alias grep="grep --color"
 alias lg="lazygit"
 alias lzd="lazydocker"
 alias f="fzf"
@@ -51,9 +51,9 @@ alias broz="npx broz"
 alias onef="onefetch"
 alias erd="erd -H -I -s rsize -L"
 alias viewmd="frogmouth"
-
 alias g++c="g++ -std=c++17 -Wall"
 
+# Config
 alias sz="source ~/.zshrc; echo '~/.zshrc sourced'"
 alias sr="\"/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel\" --reload"
 alias vz="vi ~/Github/dotfiles/zsh/.zshrc"
@@ -61,8 +61,8 @@ alias vzp="vi ~/Github/dotfiles/zsh/.zprofile"
 alias vt="vi ~/Github/dotfiles/tmux.tmux.conf"
 alias vc="vi ~/Github/dotfiles/nvim/init.lua"
 
+# Proxy
 alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
-alias lab_proxy="export https_proxy=http://10.76.7.216:9053 http_proxy=http://10.76.7.216:9053"
 
 # Applications
 alias chrome="open -a 'Google Chrome'"

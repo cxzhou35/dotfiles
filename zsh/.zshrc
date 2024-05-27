@@ -13,7 +13,7 @@ plug "zap-zsh/supercharge"
 plug "$ZSH/scripts.zsh"
 plug "$ZSH/alias.zsh"
 plug "$ZSH/options.zsh"
-# plug "$ZSH/openai_key.zsh"
+# plug "$ZSH/secret.zsh"
 
 # starship theme
 eval "$(starship init zsh)"

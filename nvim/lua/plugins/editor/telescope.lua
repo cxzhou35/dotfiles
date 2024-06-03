@@ -128,11 +128,11 @@ return {
         dynamic_preview_title = true,
         mappings = {
           i = {
-            ["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
+            ["<c-t>"] = require("trouble.providers.telescope").open(),
             ["esc"] = tla.close,
           },
           n = {
-            ["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
+            ["<c-t>"] = require("trouble.providers.telescope").open(),
             ["q"] = tla.close,
           },
         },
@@ -153,7 +153,6 @@ return {
           "node_modules",
           "yarn.lock",
           ".DS_Store",
-          ".git",
         },
       },
       pickers = {

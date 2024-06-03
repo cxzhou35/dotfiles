@@ -9,8 +9,11 @@ return {
   { "axieax/urlview.nvim", enabled = false },
   -- cmp
   { "hrsh7th/cmp-cmdline", enabled = false },
+  -- git
+  { "NeogitOrg/neogit", enabled = false },
   -- lsp
   { "zeioth/garbage-day.nvim", enabled = true },
+  { "mfussenegger/nvim-lint", enabled = false },
   -- treesitter
   { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
   -- ui

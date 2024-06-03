@@ -6,7 +6,6 @@ return {
       format = {
         timeout_ms = 3000,
       },
-      ---@type table<string, conform.FormatterUnit[]>
       formatters_by_ft = {
         lua = { "stylua" },
         css = { "prettier" },
@@ -22,7 +21,6 @@ return {
         tex = { "latexindent" },
         sh = { "shfmt" },
       },
-      ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
       formatters = {
         injected = { options = { ignore_errors = true } },
       },

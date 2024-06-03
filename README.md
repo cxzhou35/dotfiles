@@ -57,3 +57,11 @@ bash setup/install.sh
 - Terminal system monitor: [btop](./btop/)
 - Self-defined binary files: [bin](./bin/)
 
+## References
+
+- [omerxx/dotfiles](https://github.com/omerxx/dotfiles)
+- [craftzdog/dotfiles-public](https://github.com/craftzdog/dotfiles-public)
+- [joshmedeski/dotfiles](https://github.com/joshmedeski/dotfiles)
+- [JazzyGrim/dotfiles](https://github.com/JazzyGrim/dotfiles)
+- [josean-dev/dev-environment-files](https://github.com/josean-dev/dev-environment-files)
+- [jellydn/lazy-nvim-ide](https://github.com/jellydn/lazy-nvim-ide)

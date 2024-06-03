@@ -9,6 +9,7 @@ return {
     { ";F", LazyVim.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
     { ";o", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
     { ";s", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
+    { ";w", "<cmd>Telescope grep_string<cr>", desc = "Grep Words" },
     { ";O", LazyVim.telescope("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
     {
       ";r",
@@ -50,14 +51,23 @@ return {
       end,
       desc = "Find Plugin File",
     },
+    {
+      "<leader>/",
+      function()
+        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+          previewer = false,
+        }))
+      end,
+      desc = "[/] Fuzzily search in current buffer]",
+    },
     -- extensions
     { ";u", "<cmd>Telescope undo<cr>", desc = "Undo History" },
     { ";a", "<cmd>Telescope live_grep_args<cr>", desc = "Grep With Args" },
-    {
-      ";w",
-      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
-      desc = "Word Grep With Args ",
-    },
+    -- {
+    --   ";w",
+    --   "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
+    --   desc = "Word Grep With Args ",
+    -- },
     {
       ";v",
       "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
@@ -128,11 +138,9 @@ return {
         dynamic_preview_title = true,
         mappings = {
           i = {
-            ["<c-t>"] = require("trouble.providers.telescope").open(),
             ["esc"] = tla.close,
           },
           n = {
-            ["<c-t>"] = require("trouble.providers.telescope").open(),
             ["q"] = tla.close,
           },
         },
@@ -172,7 +180,6 @@ return {
           use_delta = true,
           side_by_side = true,
           layout_strategy = "flex",
-          -- layout_strategy = "horizontal",
           use_custom_command = { "bash", "-c", "echo '$DIFF' | delta --file-style omit" },
           diff_context_lines = 13,
           mappings = {

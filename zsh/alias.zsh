@@ -18,8 +18,8 @@ alias bod="cd ~/Github/site/blog/"
 # Eza
 alias l="eza --icons"
 alias ll="eza -l --icons --git -a"
-alias lt="eza --tree --level=2 --long --icons --git"
 alias la="eza -la --icons"
+alias lt="eza --tree --level=2 --long --icons --git"
 
 # Python
 alias py="python3"

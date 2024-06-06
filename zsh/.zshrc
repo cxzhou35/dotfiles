@@ -8,6 +8,7 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "MichaelAquilina/zsh-you-should-use"
 plug "zap-zsh/supercharge"
+plug "jeffreytse/zsh-vi-mode"
 
 # my config file
 plug "$ZSH/scripts.zsh"

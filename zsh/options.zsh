@@ -11,15 +11,13 @@ export BAT_THEME="Catppuccin Macchiato"
 
 # History
 HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
 setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
 
-autoload -Uz compinit
-compinit
+# autoload -Uz compinit
+# compinit
 
 # Completion using arrow keys (based on history)
 bindkey '^[[A' history-search-backward

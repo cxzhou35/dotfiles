@@ -26,7 +26,7 @@ return {
     },
   },
   { "tpope/vim-repeat", event = "VeryLazy" },
-  { "max397574/better-escape.nvim", event = "InsertEnter", opts = { timeout = 100, keys = "<Esc>" } },
+  { "max397574/better-escape.nvim", event = "InsertEnter", opts = { timeout = 100 } },
   {
     "rmagatti/auto-session",
     config = function()

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 gum style \
-	--foreground 12 --border-foreground 12 --border double \
-	--align center --width 60 --margin "1 0" --padding "1 0" \
-	'██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗
+  --foreground 12 --border-foreground 12 --border double \
+  --align center --width 60 --margin "1 0" --padding "1 0" \
+  '██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗
 ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝
 ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  
 ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  
@@ -37,15 +37,15 @@ OUTDATED=$(brew outdated)
 echo $OUTDATED >>/tmp/u-$NOW.txt
 
 if [[ -n "$OUTDATED" ]]; then
-	gum spin --spinner globe --title "🍻 brew upgrading" --show-output -- brew upgrade >>/tmp/u-$NOW.txt
-	echo "\n" >>/tmp/u-$NOW.txt
-	echo "✅ 🍻 brew upgraded"
+  gum spin --spinner globe --title "🍻 brew upgrading" --show-output -- brew upgrade >>/tmp/u-$NOW.txt
+  echo "\n" >>/tmp/u-$NOW.txt
+  echo "✅ 🍻 brew upgraded"
 
-	gum spin --spinner globe --title "🍻 brew cleaning up" --show-output -- brew cleanup --prune=all >>/tmp/u-$NOW.txt
-	echo "\n" >>/tmp/u-$NOW.txt
-	echo "✅ 🍻 brew cleaned up"
+  gum spin --spinner globe --title "🍻 brew cleaning up" --show-output -- brew cleanup --prune=all >>/tmp/u-$NOW.txt
+  echo "\n" >>/tmp/u-$NOW.txt
+  echo "✅ 🍻 brew cleaned up"
 else
-	echo "No outdated brew packages" >>/tmp/u-$NOW.txt
+  echo "No outdated brew packages" >>/tmp/u-$NOW.txt
 fi
 
 gum spin --spinner globe --title "🍎 mas upgrading" --show-output -- mas upgrade >>/tmp/u-$NOW.txt
@@ -53,4 +53,7 @@ echo "\n" >>/tmp/u-$NOW.txt
 echo "✅ 🍎 mas upgraded"
 
 echo "✅ 🧾 logged to /tmp/u-$NOW.txt"
+
+gum confirm --selected.background=2 --selected.foreground=0 "Show the update log?" && cat /tmp/u-$NOW.txt
+
 # man /tmp/u-$NOW.txt

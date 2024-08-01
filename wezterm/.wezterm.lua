@@ -21,7 +21,8 @@ config.font_size = 16
 config.enable_tab_bar = false
 
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.80
+config.window_close_confirmation = "NeverPrompt"
 config.macos_window_background_blur = 15
 
 return config

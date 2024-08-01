@@ -87,6 +87,11 @@ path = "~/Github/dotfiles/yazi"
 startup_command = "nvim init.lua"
 
 [[session]]
+name = "wezterm config"
+path = "~/Github/dotfiles/wezterm"
+startup_command = "nvim .wezterm.lua"
+
+[[session]]
 name = "rime config"
 path = "~/Library/Rime"
 startup_command = "nvim squirrel.custom.yaml"

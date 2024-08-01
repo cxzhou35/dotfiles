@@ -40,18 +40,19 @@ bash setup/install.sh
 ## Software
 
 - Terminal:
-  - [iterm2](./iterm2/)
-  - [alacritty](./alacritty/)
-  - [kitty](./kitty/)
+    - [iterm2](./iterm2/)
+    - [alacritty](./alacritty/)
+    - [wezterm](./wezterm/)
+    - [kitty](./kitty/)
 - Shell: [zsh](./zsh/)
 - Shell prompt: [starship](./starship/)
 - macOS package manager: [homebrew](./brew/)
 - Multiplexer: [tmux](./tmux/)
-  - Session manager: [sesh](./sesh/)
+    - Session manager: [sesh](./sesh/)
 - System info: [fastfetch](./fastfetch/)
 - Editor:
- - [neovim](./nvim)
- - [vscode](./vscode/)
+    - [neovim](./nvim)
+    - [vscode](./vscode/)
 - Git: [lazygit](./lazygit/)
 - Terminal file manager: [yazi](./yazi/)
 - Terminal system monitor: [btop](./btop/)

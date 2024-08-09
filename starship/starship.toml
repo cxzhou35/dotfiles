@@ -9,6 +9,7 @@ $git_metrics\
 $conda\
 $rust\
 $golang\
+$lua\
 $fill\
 $cmd_duration\
 $jobs\
@@ -82,6 +83,9 @@ style = "yellow"
 symbol = ""
 style = "fg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+
+[lua]
+symbol = ' '
 
 [golang]
 symbol = " "

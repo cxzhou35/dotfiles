@@ -72,5 +72,6 @@ bash setup/install.sh
 - [Kicamon/nvim](https://github.com/Kicamon/nvim)
 - [killua9910/dotfiles](https://github.com/killua9910/dotfiles)
 - [ayamir/nvimdots](https://github.com/ayamir/nvimdots)
+- [chrisgrieser/.config](https://github.com/chrisgrieser/.config)
 
 </details>

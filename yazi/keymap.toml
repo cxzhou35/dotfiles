@@ -2,7 +2,7 @@
 
 [manager]
 prepend_keymap = [
-	{ on = [ "w" ], run = 'shell "$SHELL" --block --confirm', desc = "Open shell here" },
+	{ on = [ "<C-s>" ], run = 'shell "$SHELL" --block --confirm', desc = "Open shell here" },
 	{ on = [ "W" ], run = "tasks_show" },
 
 	{ on = [ "H" ], run = "back" },

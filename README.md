@@ -58,6 +58,11 @@ bash setup/install.sh
 - Terminal system monitor: [btop](./btop/)
 - Self-defined binary files: [bin](./bin/)
 
+## TODO
+
+- [ ] Fix GitHub Copilot setup error in neovim.
+- [ ] Write a brief introduction of my daily workflow.
+
 ## Acknowledgement
 
 <details>

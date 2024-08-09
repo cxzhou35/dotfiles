@@ -58,7 +58,10 @@ bash setup/install.sh
 - Terminal system monitor: [btop](./btop/)
 - Self-defined binary files: [bin](./bin/)
 
-## References
+## Acknowledgement
+
+<details>
+<summary>Thanks for these great public dotfiles 💫</summary>
 
 - [omerxx/dotfiles](https://github.com/omerxx/dotfiles)
 - [craftzdog/dotfiles-public](https://github.com/craftzdog/dotfiles-public)
@@ -66,3 +69,8 @@ bash setup/install.sh
 - [JazzyGrim/dotfiles](https://github.com/JazzyGrim/dotfiles)
 - [josean-dev/dev-environment-files](https://github.com/josean-dev/dev-environment-files)
 - [jellydn/lazy-nvim-ide](https://github.com/jellydn/lazy-nvim-ide)
+- [Kicamon/nvim](https://github.com/Kicamon/nvim)
+- [killua9910/dotfiles](https://github.com/killua9910/dotfiles)
+- [ayamir/nvimdots](https://github.com/ayamir/nvimdots)
+
+</details>

@@ -6,11 +6,11 @@ $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
+$fill\
 $conda\
 $rust\
 $golang\
 $lua\
-$fill\
 $cmd_duration\
 $jobs\
 $time\

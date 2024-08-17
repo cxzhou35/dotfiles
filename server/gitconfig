@@ -1,0 +1,22 @@
+[user]
+    email = zjajzcx3566@163.com
+    name = cxzhou35
+[core]
+    pager = delta
+    ignorecase = false
+[init]
+    defaultBranch = main
+[color]
+    status = auto
+    diff = auto
+    branch = auto
+    interactive = auto
+    grep = auto
+    ui = auto
+[pull]
+    rebase = false
+[github]
+    user = cxzhou35
+[push]
+    default = current
+    autoSetupRemote = true

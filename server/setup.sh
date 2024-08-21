@@ -1,5 +1,7 @@
 #! /bin/bash
 
+#TODO: export proxy first
+
 # download config files
 mkdir ~/tmp
 wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/zshrc -O ~/tmp/zshrc
@@ -11,6 +13,8 @@ wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/gitconfig -
 # install omz
 cd ~
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#TODO: when install zsh, the script will exit
 
 # install zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -64,28 +68,20 @@ else
   exit 1
 fi
 
-# set path link
-base_path="/mnt/data/home/zhouchenxu"
+# write git config
+git_file="$HOME/.gitconfig"
+git_content_file="./gitconfig"
 
-mkdir -p ${base_path}/codes
-mkdir -p ${base_path}/datasets
-mkdir -p ${base_path}/miniconda3
+if [ -f "$git_content_file" ]; then
+  echo "Find $git_content_file file."
 
-ln -s ${base_path}/codes ~/codes
-ln -s ${base_path}/datasets ~/datasets
-ln -s ${base_path}/miniconda3 ~/miniconda3
+  cat "$git_content_file" >"$git_file"
 
-# set pip mirror(zju)
-pip install pip -U
-pip config set global.index-url https://mirrors.zju.edu.cn/pypi/web/simple
-
-# install miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm -rf ~/miniconda3/miniconda.sh
-~/miniconda3/bin/conda init zsh
-
-cd ~/tmp
+  echo "Done!"
+else
+  echo "File $git_content_file not found." >&2
+  exit 1
+fi
 
 # write conda config
 conda_file="$HOME/.condarc"
@@ -102,17 +98,28 @@ else
   exit 1
 fi
 
-# write git config
-git_file="$HOME/.gitconfig"
-git_content_file="./gitconfig"
+# set path link
+base_path="/mnt/data/home/zhouchenxu"
 
-if [ -f "$git_content_file" ]; then
-  echo "Find $git_content_file file."
+mkdir -p ${base_path}/codes
+mkdir -p ${base_path}/datasets
+mkdir -p ${base_path}/miniconda3
 
-  cat "$git_content_file" >"$git_file"
+ln -s ${base_path}/codes ~/codes
+ln -s ${base_path}/datasets ~/datasets
+ln -s ${base_path}/miniconda3 ~/miniconda3
 
-  echo "Done!"
-else
-  echo "File $git_content_file not found." >&2
-  exit 1
-fi
+#TODO: alert when create soft link
+
+# set pip mirror(zju)
+#TODO: check it pip command exist
+pip install pip -U
+pip config set global.index-url https://mirrors.zju.edu.cn/pypi/web/simple
+
+# install miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+~/miniconda3/bin/conda init zsh
+
+cd ~/tmp

@@ -19,8 +19,8 @@ set showmode
 set shortmess=atI
 set backspace=indent,start,eol
 set nolist
-# set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-# set list
+" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+" set list
 set wildmenu
 set wildmode=longest:list,full
 

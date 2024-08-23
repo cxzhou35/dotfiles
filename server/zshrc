@@ -68,4 +68,5 @@ export CUDA_VERSION="11.7"
 export CUDA_HOME="/usr/local/cuda-${CUDA_VERSION}"
 export PATH=/usr/local/cuda-${CUDA_VERSION}/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-${CUDA_VERSION}/lib64:$LD_LIBRARY_PAT
+export CPATH=/usr/local/cuda-${CUDA_VERSION}/targets/x86_64-linux/include:$CPATH
 export PATH=/home/zhouchenxu/.local/bin:$PATH

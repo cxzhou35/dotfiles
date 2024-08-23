@@ -10,6 +10,8 @@ function cleanbrew () {
       echo "The folder $folder_path is already empty."
     fi
   done
+
+  brew cleanup --prune=all
 }
 
 # cd folder with fzf

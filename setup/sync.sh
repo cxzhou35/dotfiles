@@ -35,7 +35,7 @@ fi
 git push
 
 # check if fail
-if [ $? -eq 0 ]; then
+if [ $? -ne 0 ]; then
   rich "Sync Failed!" -p -a heavy --style "on red"
   exit 1
 else

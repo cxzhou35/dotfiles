@@ -11,11 +11,11 @@ workDir=$(
 
 cd $workDir
 
-echo "[INFO]Working on $workDir"
+rich "[INFO]Working on $workDir" -p --style "on blue"
 
 # check if there is any changes
 if [ -z "$(git status --porcelain)" ]; then
-  echo "[INFO]No changes to commit"
+  rich "[INFO]No changes to commit" -p --style "on blue"
   exit 0
 fi
 
@@ -36,10 +36,10 @@ git push
 
 # check if fail
 if [ $? -ne 0 ]; then
-  echo "[INFO]Sync Failed!"
+  rich "Sync Failed!" -p -a heavy
   exit 1
 else
-  echo "[INFO]Sync Success!"
+  rich "Sync Success!" -p -a heavy
 fi
 
 cd $curDir

@@ -15,7 +15,7 @@ rich "[INFO]Working on $workDir" -p --style "on blue"
 
 # check if there is any changes
 if [ -z "$(git status --porcelain)" ]; then
-  rich "[INFO]No changes to commit" -p --style "on blue"
+  rich "[INFO]No changes to commit" -p --style "on orange3"
   exit 0
 fi
 
@@ -36,10 +36,10 @@ git push
 
 # check if fail
 if [ $? -ne 0 ]; then
-  rich "Sync Failed!" -p -a heavy
+  rich "Sync Failed!" -p -a heavy --style "on red"
   exit 1
 else
-  rich "Sync Success!" -p -a heavy
+  rich "Sync Success!" -p -a heavy -- style "on green"
 fi
 
 cd $curDir

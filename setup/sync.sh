@@ -36,10 +36,10 @@ git push
 
 # check if fail
 if [ $? -ne 0 ]; then
-  rich "Sync Failed!" -p -a heavy --style "on red"
+  rich "Sync Failed!" -p -a heavy
   exit 1
 else
-  rich "Sync Success!" -p -a heavy --style "on green"
+  rich "Sync Success!" -p -a heavy
 fi
 
 cd $curDir

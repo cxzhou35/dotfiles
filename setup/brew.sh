@@ -3,13 +3,13 @@
 STATUS=$(which brew)
 
 if [ -z "$STATUS" ]; then
-	echo "Installing Homebrew..."
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "[INFO]Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-	echo "Homebrew is already installed..."
+  echo "[INFO]Homebrew is already installed..."
 fi
 
-echo "Installing homebrew packages..."
+echo "[INFO]Installing homebrew packages..."
 
 # cli
 brew install bash

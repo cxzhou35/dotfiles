@@ -39,7 +39,7 @@ if [ $? -ne 0 ]; then
   rich "Sync Failed!" -p -a heavy --style "on red"
   exit 1
 else
-  rich "Sync Success!" -p -a heavy -- style "on green"
+  rich "Sync Success!" -p -a heavy --style "on green"
 fi
 
 cd $curDir

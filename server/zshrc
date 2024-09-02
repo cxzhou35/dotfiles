@@ -20,8 +20,7 @@ alias jp="jupyter notebook"
 alias jl="jupyter lab --log-level=40"
 alias tb="tensorboard"
 
-alias sz="source ~/.zshrc
-echo '~/.zshrc sourced'"
+alias sz="source ~/.zshrc echo '~/.zshrc sourced'"
 alias vz="vi ~/.zshrc"
 alias vc="vi ~/.vimrc"
 alias nvs="nvidia-smi"
@@ -54,19 +53,15 @@ alias tk="tmux kill-session -t"
 alias tr="tmux rename-session -t"
 alias nvitop="python3 -m nvitop"
 
-# lab proxy
-# export proxy="10.130.136.134:9053"
-# export http_proxy=http://${proxy}
-# export https_proxy=http://${proxy}
-
 function set_cuda() {
     export CUDA_VISIBLE_DEVICES=$1
     echo "CUDA_VISIBLE_DEVICES set to $1"
 }
 
-export CUDA_VERSION="11.7"
+export CUDA_VERSION="11.8"
 export CUDA_HOME="/usr/local/cuda-${CUDA_VERSION}"
 export PATH=/usr/local/cuda-${CUDA_VERSION}/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-${CUDA_VERSION}/lib64:$LD_LIBRARY_PAT
 export CPATH=/usr/local/cuda-${CUDA_VERSION}/targets/x86_64-linux/include:$CPATH
+
 export PATH=/home/zhouchenxu/.local/bin:$PATH

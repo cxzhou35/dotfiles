@@ -60,7 +60,7 @@ bash setup/install.sh
 
 ## TODO
 
-- [ ] Fix GitHub Copilot setup error in neovim.
+- [ x ] Fix GitHub Copilot setup error in neovim.
 - [ ] Write a brief introduction of my daily workflow.
 
 ## Acknowledgement
@@ -78,5 +78,6 @@ bash setup/install.sh
 - [killua9910/dotfiles](https://github.com/killua9910/dotfiles)
 - [ayamir/nvimdots](https://github.com/ayamir/nvimdots)
 - [chrisgrieser/.config](https://github.com/chrisgrieser/.config)
+- [Matt-FTW/dotfiles](https://github.com/Matt-FTW/dotfiles)
 
 </details>

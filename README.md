@@ -60,7 +60,7 @@ bash setup/install.sh
 
 ## TODO
 
-- [ x ] Fix GitHub Copilot setup error in neovim.
+- [x] Fix GitHub Copilot setup error in neovim.
 - [ ] Write a brief introduction of my daily workflow.
 
 ## Acknowledgement

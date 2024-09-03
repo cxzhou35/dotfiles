@@ -127,3 +127,15 @@ vim.api.nvim_create_autocmd({ "ExitPre" }, {
     vim.opt.guicursor = "a:ver30-blinkon0"
   end,
 })
+
+-- Create a dir when saving a file if it doesnt exist
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function(args)
+    if args.match:match("^%w%w+://") then
+      return
+    end
+    local file = vim.uv.fs_realpath(args.match) or args.match
+    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
+  group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
+})

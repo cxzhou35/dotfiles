@@ -30,6 +30,9 @@ require("lazy").setup({
     { import = "plugins.lang" },
     { import = "plugins.utils" },
   },
+  ui = {
+    backdrop = 100,
+  },
   defaults = {
     lazy = false,
     version = false, -- always use the latest git commit

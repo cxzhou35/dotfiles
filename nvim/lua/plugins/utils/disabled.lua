@@ -1,40 +1,42 @@
-return {
-  -- utils
-  { "rmagatti/auto-session", enabled = false },
-  { "mg979/vim-visual-multi", enabled = false },
-  { "junegunn/vim-easy-align", enabled = false },
-  { "windwp/nvim-ts-autotag", enabled = false },
-  { "phaazon/hop.nvim", enabled = false },
-  { "m4xshen/hardtime.nvim", enabled = true },
-  { "axieax/urlview.nvim", enabled = false },
-  { "folke/persistence.nvim", enabled = false },
+local disabled = {
+  { "rmagatti/auto-session" },
+  { "mg979/vim-visual-multi" },
+  { "junegunn/vim-easy-align" },
+  { "windwp/nvim-ts-autotag" },
+  { "phaazon/hop.nvim" },
+  -- { "m4xshen/hardtime.nvim"},
+  { "axieax/urlview.nvim" },
+  { "folke/persistence.nvim" },
   -- cmp
-  { "hrsh7th/cmp-cmdline", enabled = false },
+  { "hrsh7th/cmp-cmdline" },
   -- git
-  { "NeogitOrg/neogit", enabled = false },
+  { "NeogitOrg/neogit" },
   -- lsp
-  { "zeioth/garbage-day.nvim", enabled = true },
-  { "mfussenegger/nvim-lint", enabled = false },
+  { "mfussenegger/nvim-lint" },
   -- treesitter
-  { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
   -- ui
-  { "mawkler/modicator.nvim", enabled = false },
-  { "gen740/SmoothCursor.nvim", enabled = false },
-  -- keymaps TODO: use which-key
-  { "folke/which-key.nvim", enabled = true },
-  -- suround TODO: use mini.suround
-  { "echasnovski/mini.surround", enabled = false },
-  { "kylechui/nvim-surround", enabled = true },
-  -- startpage TODO: use dashboard
-  { "goolord/alpha-nvim", enabled = false },
-  { "nvimdev/dashboard-nvim", enabled = true },
-  -- indentline TODO: use hlchunk
-  { "lukas-reineke/indent-blankline.nvim", enabled = false },
-  { "shellRaining/hlchunk.nvim", enabled = true },
-  -- snippets TODO: use Luasnip
-  { "L3MON4D3/LuaSnip", enabled = true },
-  { "garymjr/nvim-snippets", enabled = false },
-  -- conda env TODO: use nvim-conda
-  { "linux-cultist/venv-selector.nvim", enabled = false },
-  { "kmontocam/nvim-conda", enabled = true },
+  { "mawkler/modicator.nvim" },
+  { "gen740/SmoothCursor.nvim" },
+  -- suround
+  { "echasnovski/mini.surround" }, -- INFO: use mini.suround
+  -- { "kylechui/nvim-surround"},
+  -- startpage
+  { "goolord/alpha-nvim" }, -- INFO: use dashboard
+  -- { "nvimdev/dashboard-nvim"},
+  -- indentline
+  { "lukas-reineke/indent-blankline.nvim" }, -- INFO: use hlchunk
+  -- { "shellRaining/hlchunk.nvim"},
+  -- snippets
+  -- { "L3MON4D3/LuaSnip"}, -- INFO: use Luasnip
+  { "garymjr/nvim-snippets" },
+  -- conda env
+  { "linux-cultist/venv-selector.nvim" }, -- INFO: use nvim-conda
+  -- { "kmontocam/nvim-conda"}
 }
+
+for i, plugin in ipairs(disabled) do
+  plugin.enabled = false
+end
+
+return disabled

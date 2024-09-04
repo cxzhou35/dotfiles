@@ -21,7 +21,7 @@ function fcd(){
 
 # edit file with fzf
 function fe(){
-  vi $(du -a ./ | awk '{print $2}' | fzf)
+  nvim $(du -a ./ | awk '{print $2}' | fzf)
 }
 
 function skf (){
@@ -29,7 +29,7 @@ function skf (){
 }
 
 function ske (){
-  vi $(find . | sk -m --preview="bat {} --color=always")
+  nvim $(find . | sk -m --preview="bat {} --color=always")
 }
 
 # copy neovim config file to repo

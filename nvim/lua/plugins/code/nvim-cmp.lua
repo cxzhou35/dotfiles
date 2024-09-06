@@ -26,6 +26,7 @@ return {
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
     local cmp = require("cmp")
     local luasnip = require("luasnip")
+    local defaults = require("cmp.config.default")()
     local has_words_before = function()
       unpack = unpack or table.unpack
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -111,6 +112,7 @@ return {
         --   hl_group = "LspCodeLens",
         -- },
       },
+      sorting = defaults.sorting,
     }
   end,
 }

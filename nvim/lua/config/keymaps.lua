@@ -27,8 +27,10 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsea
 -- Move cursor
 map({ "n", "v", "o" }, "H", "^", { desc = "Jump to the start of line" })
 map({ "n", "v", "o" }, "L", "g_", { desc = "Jump to the end of line" })
-map({ "n", "v", "o" }, "J", "7j", { desc = "Quick forward" })
-map({ "n", "v", "o" }, "K", "7k", { desc = "Quick backward" })
+
+-- disable quick moving between lines
+-- map({ "n", "v", "o" }, "J", "7j", { desc = "Quick forward" })
+-- map({ "n", "v", "o" }, "K", "7k", { desc = "Quick backward" })
 
 -- Disable continuations
 map("n", "<Leader>o", "o<Esc>^Da", opts)

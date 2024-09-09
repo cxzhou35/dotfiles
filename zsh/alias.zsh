@@ -102,7 +102,7 @@ alias gu="git remote -v"
 alias gb="git checkout"
 alias gr="git checkout -- ."
 alias gl="git pull"
-alias gh="git push"
+alias gp="git push"
 alias gd="git diff"
 
 # Tmux

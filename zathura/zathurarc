@@ -1,0 +1,62 @@
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+set adjust-open "best-fit"
+set selection-clipboard clipboard
+set zoom-center "true"
+
+map <Space> toggle_index
+map H zoom in
+map L zoom out
+map u scroll half-up
+map d scroll half-down
+map D toggle_page_mode
+map r reload
+map R rotate
+map i recolor
+map p print
+map g goto top
+map [fullscreen] u scroll half-up
+map [fullscreen] d scroll half-down
+map [fullscreen] D toggle_page_mode
+map [fullscreen] r reload
+map [fullscreen] R rotate
+map [fullscreen] H zoom in
+map [fullscreen] L zoom out
+map [fullscreen] i recolor
+map [fullscreen] p print
+map [fullscreen] g goto top
+
+set notification-error-bg       "#ebdbb2" # bg
+set notification-error-fg       "#9d0006" # bright:red
+set notification-warning-bg     "#ebdbb2" # bg
+set notification-warning-fg     "#b57614" # bright:yellow
+set notification-bg             "#ebdbb2" # bg
+set notification-fg             "#79740e" # bright:green
+
+set completion-bg               "#d5c4a1" # bg2
+set completion-fg               "#3c3836" # fg
+set completion-group-bg         "#ebdbb2" # bg1
+set completion-group-fg         "#928374" # gray
+set completion-highlight-bg     "#076678" # bright:blue
+set completion-highlight-fg     "#d5c4a1" # bg2
+
+set index-bg                    "#d5c4a1" # bg2
+set index-fg                    "#3c3836" # fg
+set index-active-bg             "#076678" # bright:blue
+set index-active-fg             "#d5c4a1" # bg2
+
+set inputbar-bg                 "#ebdbb2" # bg
+set inputbar-fg                 "#3c3836" # fg
+
+set statusbar-bg                "#d5c4a1" # bg2
+set statusbar-fg                "#3c3836" # fg
+
+set highlight-color             "#b57614" # bright:yellow
+set highlight-active-color      "#af3a03" # bright:orange
+
+set default-bg                  "#1d2021" # bg
+set default-fg                  "#3c3836" # fg
+set render-loading              true
+set render-loading-bg           "#ebdbb2" # bg
+set render-loading-fg           "#3c3836" # fg

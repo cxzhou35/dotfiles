@@ -5,6 +5,20 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 
+# check proxy in env
+proxy_status=$(env | grep -i proxy)
+
+# set proxy and git
+if [ -z "$proxy_status" ]; then
+  echo -e "${RED}Warning: No proxy added${NC}"
+else
+  echo -e "${GREEN}===== Set proxy and git config ====="
+  export http_proxy=http://${proxy}
+  export https_proxy=http://${proxy}
+  # git config --global http.proxy ${http_proxy}
+  # git config --global https.proxy ${https_proxy}
+fi
+
 # Paths
 HOME_DIR="$HOME"
 TMP_DIR="$HOME/tmp"
@@ -85,14 +99,14 @@ if [ ! -d "$LINK_DIR/miniconda3" ]; then
   exit 1
 else
   echo -e "${GREEN}===== Install miniconda3 ====="
-  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME_DIR/miniconda3/miniconda.sh
-  bash $HOME_DIR/miniconda3/miniconda.sh -b -u -p $HOME_DIR/miniconda3
-  rm -rf $HOME_DIR/miniconda3/miniconda.sh
-  $HOME_DIR/miniconda3/bin/conda init zsh
+  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $LINK_DIR/miniconda3/miniconda.sh
+  bash $LINK_DIR/miniconda3/miniconda.sh -b -u -p $LINK_DIR/miniconda3
+  rm -rf $LINK_DIR/miniconda3/miniconda.sh
+  $LINK_DIR/miniconda3/bin/conda init zsh
 fi
 
 rm -rf "$TMP_DIR"
 
-source ${HOME_DIR}/.zshrc
-
 echo -e "${GREEN}Setup finished!${NC}"
+
+source ${HOME_DIR}/.zshrc

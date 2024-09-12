@@ -14,9 +14,6 @@ DOTFILES=(".zshrc", ".vimrc", ".tmux.conf", ".condarc", ".gitconfig") # dotfiles
 PIP_PATH="$HOME_DIR/.pip"
 GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
 
-create_dir "$TMP_DIR"
-create_dir "$LINK_DIR"
-
 create_dir() {
   if [ ! -d "$1" ]; then
     mkdir -p "$1"
@@ -41,6 +38,9 @@ create_symlink() {
     echo -e "${GREEN}Linked: $2 -> $1${NC}"
   fi
 }
+
+create_dir "$TMP_DIR"
+create_dir "$LINK_DIR"
 
 # install omz
 echo -e "${GREEN}Install oh-my-zsh..."

@@ -75,7 +75,7 @@ if [ ! -d "$PIP_PATH" ]; then
 fi
 wget "$GITHUB_REPO_PATH/pip.conf" -O "$PIP_PATH/pip.conf"
 
-install miniconda3 according to the link dir path exists
+# install miniconda3 according to the link dir path exists
 if [ ! -d "$LINK_DIR/miniconda3" ]; then
   echo -e "${RED}Error: Please download miniconda3 and put it in $LINK_DIR${NC}"
   exit 1
@@ -85,7 +85,6 @@ else
   bash $LINK_DIR/miniconda3/miniconda.sh -b -u -p $LINK_DIR/miniconda3
   rm -rf $LINK_DIR/miniconda3/miniconda.sh
   $LINK_DIR/miniconda3/bin/conda init zsh
-  fi
 fi
 
 rm -rf "$TMP_DIR"

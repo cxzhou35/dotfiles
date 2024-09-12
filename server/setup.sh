@@ -13,7 +13,7 @@ DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig") # dotfiles we 
 PIP_PATH="$HOME_DIR/.pip"
 GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
 
-LINK_DIR="/mnt/data/home/zhouchenxu"  # default path
+LINK_DIR="/mnt/remote/D005/home/zhouchenxu"  # default path
 
 create_dir() {
   if [ ! -d "$1" ]; then

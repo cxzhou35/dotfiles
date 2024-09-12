@@ -32,6 +32,10 @@ function ske (){
   nvim $(find . | sk -m --preview="bat {} --color=always")
 }
 
+function signapp (){
+  xattr -d com.apple.quarantine $1
+}
+
 # copy neovim config file to repo
 function loadnvim() {
   cd ~/Github/neovim && cp -r ~/Github/dotfiles/nvim/* .

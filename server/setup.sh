@@ -49,8 +49,8 @@ create_dir "$LINK_DIR"
 
 # install omz
 echo -e "${GREEN}Install oh-my-zsh..."
-cd HOME_DIR
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit 0
+cd $HOME_DIR
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" & disown
 
 # install zsh plugins
 echo -e "${GREEN}Install omz plugins..."

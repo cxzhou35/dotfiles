@@ -2,7 +2,7 @@
 
 Run the following command to setup the server:
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/setup.sh)" "/mnt/data/home/username" # target directory
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/setup.sh)" "/mnt/data/home/username"
 ```
 
 ## Structure

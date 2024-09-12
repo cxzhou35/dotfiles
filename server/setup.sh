@@ -8,18 +8,23 @@ NC='\033[0m'
 # Paths
 HOME_DIR="$HOME"
 TMP_DIR="$HOME/tmp"
-LINK_DIR="/mnt/data/home/zhouchenxu"
-TARGET_DIR=("codes" "datasets" "miniconda3")
+TARGET_DIRS=("codes" "datasets" "miniconda3")
 DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig") # dotfiles we need
 PIP_PATH="$HOME_DIR/.pip"
 GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
 
+if [ $# -gt 0 ]; then
+  LINK_DIR="$1"
+else
+  LINK_DIR="/mnt/data/home/zhouchenxu"  # default path
+fi
+
 create_dir() {
   if [ ! -d "$1" ]; then
     mkdir -p "$1"
-    echo -e "${GREEN}Created directory: $1${NC}"
+    echo -e "${GREEN}Try to creat directory: $1${NC}"
     if [ ! -d "$1" ]; then
-      echo -e "${RED}Error: Failed to create directory $1${NC}"
+      echo -e "${RED}Error: Fail to create directory $1${NC}"
       exit 1
     fi
   fi
@@ -63,7 +68,7 @@ done
 
 # create target directories and soft links
 echo -e "${GREEN}Create target directories and soft links..."
-for target in "${TARGET_DIR[@]}"; do
+for target in "${TARGET_DIRS[@]}"; do
   create_dir "$LINK_DIR/$target"
   create_symlink "$LINK_DIR/$target" "$HOME_DIR/$target"
 done

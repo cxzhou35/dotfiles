@@ -1,125 +1,91 @@
 #! /bin/bash
 
-#TODO: export proxy first
+# Console color
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
 
-# download config files
-mkdir ~/tmp
-wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/zshrc -O ~/tmp/zshrc
-wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/vimrc -O ~/tmp/vimrc
-wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/tmux.conf -O ~/tmp/tmux.conf
-wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/condarc -O ~/tmp/condarc
-wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/gitconfig -O ~/tmp/gitconfig
+# Paths
+HOME_DIR="$HOME"
+TMP_DIR="$HOME/tmp"
+LINK_DIR="/mnt/data/home/zhouchenxu"
+TARGET_DIR=("codes", "datasets", "miniconda3")
+DOTFILES=(".zshrc", ".vimrc", ".tmux.conf", ".condarc", ".gitconfig") # dotfiles we need
+PIP_PATH="$HOME_DIR/.pip"
+GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
+
+create_dir "$TMP_DIR"
+create_dir "$LINK_DIR"
+
+create_dir() {
+  if [ ! -d "$1" ]; then
+    mkdir -p "$1"
+    echo -e "${GREEN}Created directory: $1${NC}"
+    if [ ! -d "$1" ]; then
+      echo -e "${RED}Error: Failed to create directory $1${NC}"
+      exit 1
+    fi
+  fi
+}
+
+create_symlink() {
+  if [ -e "$2" ]; then
+    if [ -L "$2" ]; then
+      ln -sf "$1" "$2"
+      echo -e "${GREEN}Relinked: $2 -> $1${NC}"
+    else
+      echo -e "${RED}Error: $2 already exists and is not a symlink${NC}"
+    fi
+  else
+    ln -s "$1" "$2"
+    echo -e "${GREEN}Linked: $2 -> $1${NC}"
+  fi
+}
 
 # install omz
-cd ~
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-#TODO: when install zsh, the script will exit
+echo -e "${GREEN}Install oh-my-zsh..."
+cd HOME_DIR
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit 0
 
 # install zsh plugins
+echo -e "${GREEN}Install omz plugins..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/paulirish/git-open.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-open
 
-cd ~/tmp
+# download and write dotfiles
+echo -e "${GREEN}Download and write dotfiles..."
+for dotfile in "${DOTFILES[@]}"; do
+  wget "$GITHUB_REPO_PATH/$dotfile" -O "$TMP_DIR/$dotfile"
+  # write content to dotfiles
+  cat "$TMP_DIR/$dotfile" >"$HOME_DIR/$dotfile"
+done
 
-# write zsh config
-zshrc_file="$HOME/.zshrc"
-zshrc_content_file="./zshrc"
-
-if [ -f "$zshrc_content_file" ]; then
-  echo "Find $zshrc_content_file file."
-
-  cat "$zshrc_content_file" >"$zshrc_file"
-
-  echo "Done!"
-else
-  echo "File $zshrc_content_file not found." >&2
-  exit 1
-fi
-
-# write vim config
-vimrc_file="$HOME/.vimrc"
-vimrc_content_file="./vimrc"
-
-if [ -f "$vimrc_content_file" ]; then
-  echo "Find $vimrc_content_file file."
-
-  cat "$vimrc_content_file" >"$vimrc_file"
-
-  echo "Done!"
-else
-  echo "File $vimrc_content_file not found." >&2
-  exit 1
-fi
-
-# write tmux config
-tmux_file="$HOME/.tmux.conf"
-tmux_content_file="./tmux.conf"
-
-if [ -f "$tmux_content_file" ]; then
-  echo "Find $tmux_content_file file."
-
-  cat "$tmux_content_file" >"$tmux_file"
-
-  echo "Done!"
-else
-  echo "File $tmux_content_file not found." >&2
-  exit 1
-fi
-
-# write git config
-git_file="$HOME/.gitconfig"
-git_content_file="./gitconfig"
-
-if [ -f "$git_content_file" ]; then
-  echo "Find $git_content_file file."
-
-  cat "$git_content_file" >"$git_file"
-
-  echo "Done!"
-else
-  echo "File $git_content_file not found." >&2
-  exit 1
-fi
-
-# write conda config
-conda_file="$HOME/.condarc"
-conda_content_file="./condarc"
-
-if [ -f "$conda_content_file" ]; then
-  echo "Find $conda_content_file file."
-
-  cat "$conda_content_file" >"$conda_file"
-
-  echo "Done!"
-else
-  echo "File $conda_content_file not found." >&2
-  exit 1
-fi
-
-# set path link
-base_path="/mnt/data/home/zhouchenxu"
-
-mkdir -p ${base_path}/codes
-mkdir -p ${base_path}/datasets
-mkdir -p ${base_path}/miniconda3
-
-ln -s ${base_path}/codes ~/codes
-ln -s ${base_path}/datasets ~/datasets
-ln -s ${base_path}/miniconda3 ~/miniconda3
-
-#TODO: alert when create soft link
+# create target directories and soft links
+echo -e "${GREEN}Create target directories and soft links..."
+for target in "${TARGET_DIR[@]}"; do
+  create_dir "$LINK_DIR/$target"
+  create_symlink "$LINK_DIR/$target" "$HOME_DIR/$target"
+done
 
 # set pip mirror(zju)
-#TODO: check it pip command exist
-pip install pip -U
-pip config set global.index-url https://mirrors.zju.edu.cn/pypi/web/simple
+echo -e "${GREEN}Set pip mirror..."
+if [ ! -d "$PIP_PATH" ]; then
+  create_dir "$PIP_PATH"
+fi
+wget "$GITHUB_REPO_PATH/pip.conf" -O "$PIP_PATH/pip.conf"
 
-# install miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm -rf ~/miniconda3/miniconda.sh
-~/miniconda3/bin/conda init zsh
+# install miniconda3 according to the link dir path exists
+if [ ! -d "$LINK_DIR/miniconda3" ]; then
+  echo -e "${RED}Error: Please download miniconda3 and put it in $LINK_DIR${NC}"
+  exit 1
+else
+  echo -e "${GREEN}Install miniconda3..."
+  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $LINK_DIR/miniconda3/miniconda.sh
+  bash $LINK_DIR/miniconda3/miniconda.sh -b -u -p $LINK_DIR/miniconda3
+  rm -rf $LINK_DIR/miniconda3/miniconda.sh
+  $LINK_DIR/miniconda3/bin/conda init zsh
+  fi
+fi
 
-cd ~/tmp
+rm -rf "$TMP_DIR"

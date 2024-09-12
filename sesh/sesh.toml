@@ -27,6 +27,11 @@ path = "~/Movies"
 startup_command = "yazi"
 
 [[session]]
+name = "Courses 📚"
+path = "/Users/vercent/Res/Course/ZJU/研究生/研究生课程"
+startup_command = "ls -al"
+
+[[session]]
 name = "Notes 📝"
 path = "~/DevNotes"
 startup_command = "yazi"

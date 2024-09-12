@@ -9,8 +9,8 @@ NC='\033[0m'
 HOME_DIR="$HOME"
 TMP_DIR="$HOME/tmp"
 LINK_DIR="/mnt/data/home/zhouchenxu"
-TARGET_DIR=("codes", "datasets", "miniconda3")
-DOTFILES=(".zshrc", ".vimrc", ".tmux.conf", ".condarc", ".gitconfig") # dotfiles we need
+TARGET_DIR=("codes" "datasets" "miniconda3")
+DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig") # dotfiles we need
 PIP_PATH="$HOME_DIR/.pip"
 GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
 

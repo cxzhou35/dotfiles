@@ -13,11 +13,7 @@ DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig") # dotfiles we 
 PIP_PATH="$HOME_DIR/.pip"
 GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
 
-if [ $# -gt 0 ]; then
-  LINK_DIR="$1"
-else
-  LINK_DIR="/mnt/data/home/zhouchenxu"  # default path
-fi
+LINK_DIR="/mnt/data/home/zhouchenxu"  # default path
 
 create_dir() {
   if [ ! -d "$1" ]; then
@@ -65,6 +61,8 @@ for dotfile in "${DOTFILES[@]}"; do
   # write content to dotfiles
   cat "$TMP_DIR/$dotfile" >"$HOME_DIR/$dotfile"
 done
+
+source ${HOME_DIR}/.zshrc
 
 # create target directories and soft links
 echo -e "${GREEN}Create target directories and soft links..."

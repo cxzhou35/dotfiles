@@ -8,7 +8,14 @@ sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/ins
 # 2. main setup script(make sure you have installed zsh)
 zsh -c "$(curl -fsSL https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/setup.sh)"
 
-# you need to check the `LINK_DIR` in `setup.sh` to make sure the directories are correct
+# 3. or modify the script to fit your needs
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+
+HOME_DIR="$HOME"
+TMP_DIR="$HOME/tmp"
+TARGET_DIRS=("codes" "datasets" "miniconda3")
+LINK_DIR="/mnt/data/home/username"
+DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
 ```
 
 ## Structure

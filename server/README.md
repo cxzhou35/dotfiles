@@ -41,3 +41,4 @@ DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
 
 - [ ] Use interactive mode for setup script for better config like git etc.
 - [ ] Deal with the internet proxy problem.
+- [ ] Check local status and update the dotfiles.

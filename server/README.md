@@ -36,3 +36,8 @@ DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
 - Configurations for some utilities across the server
 - Set soft link for common directories
 - Install miniconda3
+
+## TODOs
+
+- [ ] Use interactive mode for setup script for better config like git etc.
+- [ ] Deal with the internet proxy problem.

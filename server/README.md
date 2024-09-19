@@ -8,8 +8,8 @@ sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/ins
 # 2. main setup script(make sure you have installed zsh)
 zsh -c "$(curl -fsSL https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/setup.sh)"
 
-# 3. or modify the script to fit your needs
-wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+# 2.1. or modify the script to fit your needs
+wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/setup.sh
 
 HOME_DIR="$HOME"
 TMP_DIR="$HOME/tmp"

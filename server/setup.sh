@@ -50,6 +50,7 @@ check_proxy() {
     echo -e "${RED}The proxy is $proxy${NC}"
   fi
 
+  # check if the proxy format is right
   if [[ "$proxy" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$ ]]; then
     echo -e "${GREEN}Proxy format is set correctly${NC}"
     echo -e "${GREEN}===== Set env proxy ====="
@@ -105,12 +106,12 @@ create_target_dirs() {
 
 install_miniconda3() {
   # check if the link directory exists
-  if [ ! -d "$LINK_DIR/miniconda3" ]; then
+  if [ ! -e "$LINK_DIR/miniconda3" ]; then
     echo -e "${RED}Error: Please download miniconda3 and put it in $LINK_DIR${NC}"
   else
     # check if miniconda3 exists
-    if [ -s "$LINK_DIR/miniconda3" ]; then
-      echo -e "${RED}Skip: Miniconda3 already exists in $LINK_DIR$ and not empty{NC}"
+    if [ -s "$LINK_DIR/miniconda3/bin" ]; then
+      echo -e "${RED}Skip: Miniconda3 already exists in $LINK_DIR and not empty${NC}"
     else
       echo -e "${GREEN}===== Install miniconda3 =====${NC}"
       wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $LINK_DIR/miniconda3/miniconda.sh

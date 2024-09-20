@@ -41,7 +41,7 @@ create_symlink() {
 }
 
 check_proxy() {
-  local proxy=$(env | grep -i proxy)
+  local proxy=$(env | grep -i proxy | awk -F '=' '{print $2}')
 
   if [[ -z "$proxy" ]]; then
     echo -e "${RED}Warning: Proxy is not set${NC}"

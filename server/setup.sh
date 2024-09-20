@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/bash
 
 # Console color
 GREEN='\033[0;32m'
@@ -10,6 +10,7 @@ HOME_DIR="$HOME"
 TMP_DIR="$HOME/tmp"
 LINK_DIR=""
 TARGET_DIRS=("codes" "datasets" "miniconda3")
+ZSH_PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions" "git-open")
 PIP_PATH="$HOME_DIR/.pip"
 GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
 DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
@@ -71,9 +72,11 @@ read_path() {
 }
 
 install_omz_plugins(){
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/paulirish/git-open.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-open
+  for plugin in "${ZSH_PLUGINS[@]}"; do
+    if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin" ]; then
+      echo -e "${RED}Skip: $plugin already exists${NC}"
+    else
+      git clone https://github.com/zsh-users/$plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin
 }
 
 write_dotfiles() {
@@ -106,7 +109,7 @@ install_miniconda3(){
     if [ -s "$LINK_DIR/miniconda3" ]; then
       echo -e "${RED}Skip: Miniconda3 already exists in $LINK_DIR$ and not empty{NC}"
     else
-      echo -e "${GREEN}===== Install miniconda3 ====="
+      echo -e "${GREEN}===== Install miniconda3 =====${NC}"
       wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $LINK_DIR/miniconda3/miniconda.sh
       bash $LINK_DIR/miniconda3/miniconda.sh -b -u -p $LINK_DIR/miniconda3
       rm -rf $LINK_DIR/miniconda3/miniconda.sh
@@ -116,31 +119,31 @@ install_miniconda3(){
 }
 
 main() {
-  echo -e "${GREEN}===== Start setup ====="
+  echo -e "${GREEN}===== Start setup =====${NC}"
 
-  echo -e "${GREEN}===== Check proxy ====="
+  echo -e "${GREEN}===== Check proxy =====${NC}"
   check_proxy
 
-  echo -e "${GREEN}===== Read link directory ====="
+  echo -e "${GREEN}===== Read link directory =====${NC}"
   read_path 
 
   create_dir "$TMP_DIR"
   create_dir "$LINK_DIR"
 
   # install zsh plugins
-  echo -e "${GREEN}===== Install omz plugins ====="
+  echo -e "${GREEN}===== Install omz plugins =====${NC}"
   install_omz_plugins
 
   # download and write dotfiles
-  echo -e "${GREEN}===== Download and write dotfiles ====="
+  echo -e "${GREEN}===== Download and write dotfiles =====${NC}"
   write_dotfiles
 
   # create target directories and soft links
-  echo -e "${GREEN}===== Create target directories and soft links ====="
+  echo -e "${GREEN}===== Create target directories and soft links =====${NC}"
   create_target_dirs
 
   # set pip mirror(zju)
-  echo -e "${GREEN}===== Set pip mirror ====="
+  echo -e "${GREEN}===== Set pip mirror =====${NC}"
   if [ ! -d "$PIP_PATH" ]; then
     create_dir "$PIP_PATH"
   fi
@@ -151,7 +154,7 @@ main() {
 
   rm -rf "$TMP_DIR"
 
-  echo -e "${GREEN}===== Setup finished! ====="
+  echo -e "${GREEN}===== Setup finished! =====${NC}"
 
   source ${HOME_DIR}/.zshrc
 }

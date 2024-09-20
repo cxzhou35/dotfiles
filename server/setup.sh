@@ -75,7 +75,7 @@ read_path() {
 
 install_omz_plugins() {
   for plugin in "${ZSH_PLUGINS[@]}"; do
-    plugin_path="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin"
+    plugin_path="${ZSH_CUSTOM:-$HOME_DIR/.oh-my-zsh/custom}/plugins/$plugin"
     if [[ -s $plugin_path ]]; then
       echo -e "${YELLOW}Skip: $plugin already exists${NC}"
     else
@@ -100,8 +100,8 @@ write_dotfiles() {
 
 create_target_dirs() {
   for target in "${TARGET_DIRS[@]}"; do
-    if [[ -e $LINK_DIR/$target ]]; then
-      echo -e "${YELLOW}Skip: $LINK_DIR/$target already exists${NC}"
+    if [[ -e $HOME_DIR/$target ]]; then
+      echo -e "${YELLOW}Skip: $HOME_DIR/$target link already exists${NC}"
     else
       create_dir "$LINK_DIR/$target"
       create_symlink "$LINK_DIR/$target" "$HOME_DIR/$target"

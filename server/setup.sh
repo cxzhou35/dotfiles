@@ -110,7 +110,7 @@ create_target_dirs() {
   done
 }
 
-set_pip() {
+set_pip_mirror() {
   if [ ! -d "$PIP_PATH" ]; then
     create_dir "$PIP_PATH"
   fi
@@ -161,7 +161,7 @@ main() {
 
   # set pip mirror(zju)
   echo -e "${GREEN}===== Set pip mirror =====${NC}"
-  set_pip
+  set_pip_mirror
 
   # install miniconda3 according to the link dir path exists
   install_miniconda3

@@ -81,10 +81,10 @@ write_dotfiles() {
     # check if the dotfile exists and not empty
     if [ -s "$HOME_DIR/$dotfile" ]; then
       echo -e "${RED}Skip: $TMP_DIR/$dotfile already exists and is not empty${NC}"
-    else
-      wget "$GITHUB_REPO_PATH/$dotfile" -O "$TMP_DIR/$dotfile"
-      cat "$TMP_DIR/$dotfile" > "$HOME_DIR/$dotfile"
+      echo -e "${RED}Warning: Backup $dotfile now${NC}"
+      cp "$HOME_DIR/$dotfile" "$HOME_DIR/$dotfile.bak"
     fi
+    wget "$GITHUB_REPO_PATH/$dotfile" -O "$HOME_DIR/$dotfile"
   done
 
   echo -e "${RED}Warning: Don't forget to modify your gitconfig in .gitconfig${NC}"

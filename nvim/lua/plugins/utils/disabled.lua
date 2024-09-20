@@ -26,6 +26,7 @@ local disabled = {
   -- { "nvimdev/dashboard-nvim"},
   -- indentline
   { "lukas-reineke/indent-blankline.nvim" }, -- INFO: use hlchunk
+  { "echasnovski/mini.indentscope" },
   -- { "shellRaining/hlchunk.nvim"},
   -- snippets
   -- { "L3MON4D3/LuaSnip"}, -- INFO: use Luasnip

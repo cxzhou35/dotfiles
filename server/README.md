@@ -16,6 +16,12 @@ TMP_DIR="$HOME/tmp"
 TARGET_DIRS=("codes" "datasets" "miniconda3")
 LINK_DIR="/mnt/data/home/username"
 DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
+
+# 3. reload zsh config
+source ~/.zshrc
+
+# 4. initialize conda
+~/miniconda3/bin/conda init zsh
 ```
 
 ## Structure

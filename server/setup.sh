@@ -117,7 +117,7 @@ install_miniconda3() {
       wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $LINK_DIR/miniconda3/miniconda.sh
       bash $LINK_DIR/miniconda3/miniconda.sh -b -u -p $LINK_DIR/miniconda3
       rm -rf $LINK_DIR/miniconda3/miniconda.sh
-      $LINK_DIR/miniconda3/bin/conda init zsh
+      $LINK_DIR/miniconda3/bin/conda init bash
     fi
   fi
 }
@@ -159,8 +159,6 @@ main() {
   rm -rf "$TMP_DIR"
 
   echo -e "${GREEN}===== Setup finished! =====${NC}"
-
-  source ${HOME_DIR}/.zshrc
 }
 
 main

@@ -64,6 +64,7 @@ alias vc="vi ~/Github/dotfiles/nvim/init.lua"
 
 # Proxy
 alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
+alias unproxy="unset http_proxy https_proxy all_proxy"
 
 # Applications
 alias chrome="open -a 'Google Chrome'"

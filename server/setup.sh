@@ -17,10 +17,10 @@ GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/serve
 DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
 
 create_dir() {
-  if [ ! -d "$1" ]; then
+  if [[ ! -d "$1" ]]; then
     mkdir -p "$1"
     echo -e "${GREEN}Try to creat directory: $1${NC}"
-    if [ ! -d "$1" ]; then
+    if [[ ! -d "$1" ]]; then
       echo -e "${RED}Error: Fail to create directory $1${NC}"
       exit 1
     fi
@@ -28,8 +28,8 @@ create_dir() {
 }
 
 create_symlink() {
-  if [ -e "$2" ]; then
-    if [ -L "$2" ]; then
+  if [[ -e "$2" ]]; then
+    if [[ -L "$2" ]]; then
       ln -sf "$1" "$2"
       echo -e "${GREEN}Relinked: $2 -> $1${NC}"
     else
@@ -66,7 +66,7 @@ check_proxy() {
 read_path() {
   echo "Please enter the path of the link directorie(default value: /mnt/data/home/username):"
   read -r path
-  if [ -z "$path" ]; then
+  if [[ -z "$path" ]]; then
     LINK_DIR="/mnt/data/home/$(whoami)"
   else
     LINK_DIR=$path
@@ -76,7 +76,7 @@ read_path() {
 install_omz_plugins() {
   for plugin in "${ZSH_PLUGINS[@]}"; do
     plugin_path="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin"
-    if [ -e $plugin_path ]; then
+    if [[ -s $plugin_path ]]; then
       echo -e "${YELLOW}Skip: $plugin already exists${NC}"
     else
       git clone https://github.com/zsh-users/$plugin.git $plugin_path
@@ -87,7 +87,7 @@ install_omz_plugins() {
 write_dotfiles() {
   for dotfile in "${DOTFILES[@]}"; do
     # check if the dotfile exists and not empty
-    if [ -s "$HOME_DIR/$dotfile" ]; then
+    if [[ -s "$HOME_DIR/$dotfile" ]]; then
       echo -e "${YELLOW}Skip: $TMP_DIR/$dotfile already exists and is not empty${NC}"
       echo -e "${YELLOW}Warning: Backup $dotfile now${NC}"
       cp "$HOME_DIR/$dotfile" "$HOME_DIR/$dotfile.bak"
@@ -107,11 +107,11 @@ create_target_dirs() {
 
 install_miniconda3() {
   # check if the link directory exists
-  if [ ! -e "$LINK_DIR/miniconda3" ]; then
+  if [[ ! -e "$LINK_DIR/miniconda3" ]]; then
     echo -e "${RED}Error: Please download miniconda3 and put it in $LINK_DIR${NC}"
   else
     # check if miniconda3 exists
-    if [ -s "$LINK_DIR/miniconda3/bin" ]; then
+    if [[ -s "$LINK_DIR/miniconda3/bin" ]]; then
       echo -e "${YELLOW}Skip: Miniconda3 already exists in $LINK_DIR and not empty${NC}"
     else
       echo -e "${GREEN}===== Install miniconda3 =====${NC}"

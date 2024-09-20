@@ -42,6 +42,7 @@ create_symlink() {
 }
 
 check_proxy() {
+  unset http_proxy https_proxy all_proxy
   local proxy=$(env | grep -i proxy | awk -F '=' '{print $2}')
 
   if [[ -z "$proxy" ]]; then
@@ -95,7 +96,7 @@ write_dotfiles() {
     wget "$GITHUB_REPO_PATH/$dotfile" -O "$HOME_DIR/$dotfile"
   done
 
-  echo -e "${YELLOW}Warning: Don't forget to modify your gitconfig in .gitconfig${NC}"
+  echo -e "${YELLOW}Warning: Don't forget to modify your git user information in .gitconfig${NC}"
 }
 
 create_target_dirs() {

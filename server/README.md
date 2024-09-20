@@ -8,7 +8,7 @@ sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/ins
 # 2. main setup script(make sure you have installed zsh before)
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/setup.sh)"
 
-# 2.1. or modify the script to fit your needs
+# (optional) or modify the script to fit your needs
 wget https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server/setup.sh
 
 HOME_DIR="$HOME"
@@ -18,10 +18,10 @@ LINK_DIR="/mnt/data/home/username"
 DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
 
 # 3. initialize conda
-~/miniconda3/bin/conda init zsh
+$HOME/miniconda3/bin/conda init zsh
 
 # 4. reload zsh config
-source ~/.zshrc
+source $HOME/.zshrc
 ```
 
 ## Structure

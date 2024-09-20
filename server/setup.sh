@@ -100,8 +100,12 @@ write_dotfiles() {
 
 create_target_dirs() {
   for target in "${TARGET_DIRS[@]}"; do
-    create_dir "$LINK_DIR/$target"
-    create_symlink "$LINK_DIR/$target" "$HOME_DIR/$target"
+    if [[ -e $LINK_DIR/$target ]]; then
+      echo -e "${YELLOW}Skip: $LINK_DIR/$target already exists${NC}"
+    else
+      create_dir "$LINK_DIR/$target"
+      create_symlink "$LINK_DIR/$target" "$HOME_DIR/$target"
+    fi
   done
 }
 

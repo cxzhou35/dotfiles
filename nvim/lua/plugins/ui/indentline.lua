@@ -41,13 +41,6 @@ return {
           enable = true,
           notify = false,
           use_treesitter = false,
-          chars = {
-            horizontal_line = "─",
-            vertical_line = "│",
-            left_top = "╭",
-            left_bottom = "╰",
-            right_arrow = ">",
-          },
           textobject = "",
           max_file_size = 1024 * 1024,
           error_sign = true,
@@ -56,9 +49,9 @@ return {
           enable = true,
           use_treesitter = true,
           chars = { "│", "¦", "┆", "┊" },
-          -- style = {
-          -- "#8B81C3",
-          -- },
+          style = {
+            "#806d9c",
+          },
         },
         line_num = {
           enable = false,
@@ -67,10 +60,16 @@ return {
         },
         blank = {
           enable = false,
-          use_treesitter = true,
+          use_treesitter = false,
           chars = {
             "․",
           },
+          -- style = {
+          --   { bg = "#434437" },
+          --   { bg = "#2f4440" },
+          --   { bg = "#433054" },
+          --   { bg = "#284251" },
+          -- },
         },
       })
     end,

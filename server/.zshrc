@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="ys"
 
-plugins=(git z sudo extract zsh-syntax-highlighting zsh-autosuggestions git-open web-search)
+plugins=(git z sudo extract zsh-syntax-highlighting zsh-autosuggestions web-search)
 
 source $ZSH/oh-my-zsh.sh
 

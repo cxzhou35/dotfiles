@@ -3,6 +3,7 @@
 # Console color
 GREEN='\033[0;32m'
 RED='\033[0;31m'
+YELLOW='\033[1;33m'
 NC='\033[0m'
 
 # Paths
@@ -44,10 +45,10 @@ check_proxy() {
   local proxy=$(env | grep -i proxy | awk -F '=' '{print $2}')
 
   if [[ -z "$proxy" ]]; then
-    echo -e "${RED}Warning: Proxy is not set${NC}"
+    echo -e "${YELLOW}Warning: Proxy is not set${NC}"
     return 1
   else
-    echo -e "${RED}The proxy is $proxy${NC}"
+    echo -e "${YELLOW}The proxy is $proxy${NC}"
   fi
 
   # check if the proxy format is right
@@ -57,7 +58,7 @@ check_proxy() {
     export http_proxy=http://${proxy}
     export https_proxy=http://${proxy}
   else
-    echo -e "${RED}Proxy format is incorrect. It should be {IP:PORT}${NC}"
+    echo -e "${RED}Error: Proxy format is incorrect. It should be {IP:PORT}${NC}"
     return 1
   fi
 }
@@ -76,7 +77,7 @@ install_omz_plugins() {
   for plugin in "${ZSH_PLUGINS[@]}"; do
     plugin_path="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin"
     if [ -e $plugin_path ]; then
-      echo -e "${RED}Skip: $plugin already exists${NC}"
+      echo -e "${YELLOW}Skip: $plugin already exists${NC}"
     else
       git clone https://github.com/zsh-users/$plugin.git $plugin_path
     fi
@@ -87,14 +88,14 @@ write_dotfiles() {
   for dotfile in "${DOTFILES[@]}"; do
     # check if the dotfile exists and not empty
     if [ -s "$HOME_DIR/$dotfile" ]; then
-      echo -e "${RED}Skip: $TMP_DIR/$dotfile already exists and is not empty${NC}"
-      echo -e "${RED}Warning: Backup $dotfile now${NC}"
+      echo -e "${YELLOW}Skip: $TMP_DIR/$dotfile already exists and is not empty${NC}"
+      echo -e "${YELLOW}Warning: Backup $dotfile now${NC}"
       cp "$HOME_DIR/$dotfile" "$HOME_DIR/$dotfile.bak"
     fi
     wget "$GITHUB_REPO_PATH/$dotfile" -O "$HOME_DIR/$dotfile"
   done
 
-  echo -e "${RED}Warning: Don't forget to modify your gitconfig in .gitconfig${NC}"
+  echo -e "${YELLOW}Warning: Don't forget to modify your gitconfig in .gitconfig${NC}"
 }
 
 create_target_dirs() {
@@ -111,7 +112,7 @@ install_miniconda3() {
   else
     # check if miniconda3 exists
     if [ -s "$LINK_DIR/miniconda3/bin" ]; then
-      echo -e "${RED}Skip: Miniconda3 already exists in $LINK_DIR and not empty${NC}"
+      echo -e "${YELLOW}Skip: Miniconda3 already exists in $LINK_DIR and not empty${NC}"
     else
       echo -e "${GREEN}===== Install miniconda3 =====${NC}"
       wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $LINK_DIR/miniconda3/miniconda.sh
@@ -159,6 +160,7 @@ main() {
   rm -rf "$TMP_DIR"
 
   echo -e "${GREEN}===== Setup finished! =====${NC}"
+  return 0
 }
 
 main

@@ -17,11 +17,11 @@ TARGET_DIRS=("codes" "datasets" "miniconda3")
 LINK_DIR="/mnt/data/home/username"
 DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
 
-# 3. reload zsh config
-source ~/.zshrc
-
-# 4. initialize conda
+# 3. initialize conda
 ~/miniconda3/bin/conda init zsh
+
+# 4. reload zsh config
+source ~/.zshrc
 ```
 
 ## Structure

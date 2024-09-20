@@ -110,6 +110,13 @@ create_target_dirs() {
   done
 }
 
+set_pip() {
+  if [ ! -d "$PIP_PATH" ]; then
+    create_dir "$PIP_PATH"
+  fi
+  wget "$GITHUB_REPO_PATH/pip.conf" -O "$PIP_PATH/pip.conf"
+}
+
 install_miniconda3() {
   # check if the link directory exists
   if [[ ! -e "$LINK_DIR/miniconda3" ]]; then
@@ -154,10 +161,7 @@ main() {
 
   # set pip mirror(zju)
   echo -e "${GREEN}===== Set pip mirror =====${NC}"
-  if [ ! -d "$PIP_PATH" ]; then
-    create_dir "$PIP_PATH"
-  fi
-  wget "$GITHUB_REPO_PATH/pip.conf" -O "$PIP_PATH/pip.conf"
+  set_pip
 
   # install miniconda3 according to the link dir path exists
   install_miniconda3

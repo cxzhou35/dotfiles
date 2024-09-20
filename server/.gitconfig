@@ -1,6 +1,6 @@
 [user]
-    email = zjajzcx3566@163.com
-    name = cxzhou35
+    email = xxx@xxx
+    name = username
 [core]
     pager = delta
     ignorecase = false
@@ -16,7 +16,7 @@
 [pull]
     rebase = false
 [github]
-    user = cxzhou35
+    user = username
 [push]
     default = current
     autoSetupRemote = true

@@ -10,7 +10,7 @@ HOME_DIR="$HOME"
 TMP_DIR="$HOME/tmp"
 LINK_DIR=""
 TARGET_DIRS=("codes" "datasets" "miniconda3")
-ZSH_PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions" "git-open")
+ZSH_PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions")
 PIP_PATH="$HOME_DIR/.pip"
 GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
 DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
@@ -46,7 +46,7 @@ check_proxy() {
   if [[ -z "$proxy" ]]; then
     echo -e "${RED}Warning: Proxy is not set${NC}"
     return 1
-  else 
+  else
     echo -e "${RED}The proxy is $proxy${NC}"
   fi
 
@@ -66,17 +66,20 @@ read_path() {
   read -r path
   if [ -z "$path" ]; then
     LINK_DIR="/mnt/data/home/$(whoami)"
-  else 
+  else
     LINK_DIR=$path
   fi
 }
 
-install_omz_plugins(){
+install_omz_plugins() {
   for plugin in "${ZSH_PLUGINS[@]}"; do
-    if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin" ]; then
+    plugin_path="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin"
+    if [ -e $plugin_path ]; then
       echo -e "${RED}Skip: $plugin already exists${NC}"
     else
-      git clone https://github.com/zsh-users/$plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin
+      git clone https://github.com/zsh-users/$plugin.git $plugin_path
+    fi
+  done
 }
 
 write_dotfiles() {
@@ -100,7 +103,7 @@ create_target_dirs() {
   done
 }
 
-install_miniconda3(){
+install_miniconda3() {
   # check if the link directory exists
   if [ ! -d "$LINK_DIR/miniconda3" ]; then
     echo -e "${RED}Error: Please download miniconda3 and put it in $LINK_DIR${NC}"
@@ -125,7 +128,7 @@ main() {
   check_proxy
 
   echo -e "${GREEN}===== Read link directory =====${NC}"
-  read_path 
+  read_path
 
   create_dir "$TMP_DIR"
   create_dir "$LINK_DIR"

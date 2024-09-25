@@ -199,7 +199,6 @@
     "cmake.configureOnOpen": true,
     // Gitlens settings
     "gitlens.hovers.currentLine.over": "line",
-    "gitlens.currentLine.enabled": false,
     "C_Cpp.formatting": "clangFormat",
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, AllowShortIfStatementsOnASingleLine: false }",
     "C_Cpp.intelliSenseEngineFallback": "enabled",
@@ -462,6 +461,7 @@
         // bookmarks
         {
             "before": [
+                "<leader>",
                 "b",
                 "b"
             ],
@@ -472,6 +472,7 @@
         },
         {
             "before": [
+                "<leader>",
                 "b",
                 "l"
             ],
@@ -482,6 +483,7 @@
         },
         {
             "before": [
+                "<leader>",
                 "b",
                 "k"
             ],
@@ -492,6 +494,7 @@
         },
         {
             "before": [
+                "<leader>",
                 "b",
                 "j"
             ],
@@ -502,6 +505,7 @@
         },
         {
             "before": [
+                "<leader>",
                 "b",
                 "c"
             ],
@@ -566,6 +570,24 @@
             ],
             "before": [
                 "L"
+            ]
+        },
+        {
+            "after": [
+                "5",
+                "j"
+            ],
+            "before": [
+                "J"
+            ]
+        },
+        {
+            "after": [
+                "5",
+                "k"
+            ],
+            "before": [
+                "K"
             ]
         },
         // save file
@@ -716,7 +738,7 @@
     "latex-workshop.message.log.show": true,
     "latex-workshop.latex.outDir": "%DIR%/out",
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.autoClean.run": "never",
     "latex-workshop.hover.preview.mathjax.extensions": [
         "boldsymbol"
@@ -872,4 +894,5 @@
             "italic": false
         }
     ],
+    "explorer.confirmPasteNative": false,
 }

@@ -27,7 +27,6 @@ return {
         tmux = { enabled = true },
         gitsigns = { enabled = false },
         kitty = { enabled = false, font = "+20%" },
-        alacritty = { enabled = false },
       },
     },
     keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },

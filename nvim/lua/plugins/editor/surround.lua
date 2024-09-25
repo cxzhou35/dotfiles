@@ -3,14 +3,18 @@ return {
     "echasnovski/mini.surround",
     opts = {
       mappings = {
-        add = "gsa",
-        delete = "gsd",
-        find = "gsf",
-        find_left = "gsF",
-        highlight = "gsh",
-        replace = "gsc",
-        update_n_lines = "gsn",
+        add = "ma",
+        delete = "md",
+        find = "mf",
+        find_left = "mF",
+        highlight = "mh",
+        replace = "mr",
+        update_n_lines = "mn", -- Update `n_lines`
+
+        suffix_last = "l", -- Suffix to search with "prev" method
+        suffix_next = "n", -- Suffix to search with "next" method
       },
+
       silent = true,
     },
   },

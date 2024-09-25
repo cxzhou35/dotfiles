@@ -37,8 +37,8 @@ return {
     keys = {
       {
         "<F5>",
-        ft = "markdown",
         "<cmd>MarkdownPreviewToggle<cr>",
+        ft = "markdown",
         desc = "Markdown Preview",
       },
     },
@@ -108,5 +108,13 @@ return {
         require("headlines").refresh()
       end)
     end,
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {},
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    keys = {
+      { "<leader>rm", "<cmd>RenderMarkdown toggle<cr>", ft = "markdown", desc = "Render markdown" },
+    },
   },
 }

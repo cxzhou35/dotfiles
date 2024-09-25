@@ -1,6 +1,6 @@
 local discipline = require("zicx.discipline")
 
-discipline.cowboy()
+-- discipline.cowboy()
 
 local Util = require("lazyvim.util")
 local map = Util.safe_keymap_set
@@ -62,7 +62,8 @@ map("n", "s", "<Nop>")
 map("n", "ss", "<cmd>split<Return><C-w>w", { silent = true, desc = "split" })
 map("n", "sv", "<cmd>vsplit<Return><C-w>w", { silent = true, desc = "vsplit" })
 map("n", "se", "<C-w>=", { desc = "Make splits equal size" })
-map("n", "sq", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+map("n", "so", "<C-w>o", { desc = "Close all other windows" })
+map("n", "sq", "<cmd>close<CR>", { desc = "Close current split" })
 
 -- Navigate window
 map({ "n", "v", "o" }, "sh", "<C-w>h", { desc = "Go to left window", remap = true })
@@ -109,6 +110,9 @@ map("n", "vb", "vab")
 -- Yank
 map("n", "yp", "yyp")
 map("n", "yw", "yaw")
+
+-- Mark
+map({ "n", "x" }, "m", "<Nop>")
 
 ------------- Plugins -------------
 

@@ -162,6 +162,9 @@ return {
         },
       },
       pickers = {
+        colorscheme = {
+          enable_preview = true,
+        },
         diagnostics = {
           theme = "ivy",
           initial_mode = "normal",
@@ -185,7 +188,7 @@ return {
               ["<cr>"] = tua.restore,
             },
             n = {
-              ["u"] = tua.restore,
+              ["<cr>"] = tua.restore,
             },
           },
         },

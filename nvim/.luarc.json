@@ -6,6 +6,6 @@
     "param-type-mismatch",
     "inject-field",
     "duplicate-set-field",
-        "unused-local"
+    "unused-local"
   ]
 }

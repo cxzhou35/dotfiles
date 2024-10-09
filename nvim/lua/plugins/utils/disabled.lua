@@ -13,6 +13,9 @@ local disabled = {
   -- git
   { "NeogitOrg/neogit" },
   { "sindrets/diffview.nvim" },
+  -- copilot
+  { "zbirenbaum/copilot.lua" },
+  { "CopilotC-Nvim/CopilotChat.nvim" },
   -- lsp
   { "mfussenegger/nvim-lint" },
   -- treesitter

@@ -81,8 +81,10 @@ return {
             "--background-index",
             "--clang-tidy",
             "--header-insertion=iwyu",
+            "--enable-config",
             "--completion-style=detailed",
             "--function-arg-placeholders",
+            "--log=verbose",
             "--fallback-style=llvm",
           },
           init_options = {

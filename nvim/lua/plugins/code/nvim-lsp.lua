@@ -22,6 +22,9 @@ return {
     codelens = {
       enabled = false,
     },
+    document_highlight = {
+      enabled = true,
+    },
     -- LSP Server Settings
     servers = {
       lua_ls = {

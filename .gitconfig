@@ -13,7 +13,7 @@
     branch = auto
     interactive = auto
     grep = auto
-    ui = auto
+    ui = true
 [pull]
     rebase = false
 [merge]
@@ -53,3 +53,10 @@
   edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
   # add conflicted file on merge
   add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+[color "status"]
+  changed = blue normal
+  untracked = red normal
+  added = magenta normal
+  updated = green normal
+  branch = yellow normal bold
+  header = white normal bold

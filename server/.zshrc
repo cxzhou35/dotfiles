@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="ys"
 
-plugins=(git z sudo extract zsh-syntax-highlighting zsh-autosuggestions web-search)
+plugins=(git z sudo extract zsh-syntax-highlighting zsh-autosuggestions web-search git-open)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -13,17 +13,20 @@ DISABLE_UPDATE_PROMPT="true"
 
 export TERM="xterm-256color"
 
+alias sz="source ~/.zshrc echo '~/.zshrc sourced'"
+alias vz="vi ~/.zshrc"
+alias vc="vi ~/.vimrc"
+
+# CLI alias
+alias nvs="nvidia-smi"
+alias nv="nvitop"
+alias lg="lazygit"
+alias tb="tensorboard"
 alias py="python3"
 alias python="python3"
 alias pip="pip3"
 alias jp="jupyter notebook"
 alias jl="jupyter lab --log-level=40"
-alias tb="tensorboard"
-
-alias sz="source ~/.zshrc echo '~/.zshrc sourced'"
-alias vz="vi ~/.zshrc"
-alias vc="vi ~/.vimrc"
-alias nvs="nvidia-smi"
 
 # Alias for conda
 alias condaa="conda activate"
@@ -51,14 +54,13 @@ alias ta="tmux attach -t"
 alias ts="tmux switch -t"
 alias tk="tmux kill-session -t"
 alias tr="tmux rename-session -t"
-alias nvitop="python3 -m nvitop"
 
 function set_cuda() {
     export CUDA_VISIBLE_DEVICES=$1
     echo "CUDA_VISIBLE_DEVICES set to $1"
 }
 
-export CUDA_VERSION="11.8"
+export CUDA_VERSION="12.1"
 export CUDA_HOME="/usr/local/cuda-${CUDA_VERSION}"
 export PATH=/usr/local/cuda-${CUDA_VERSION}/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-${CUDA_VERSION}/lib64:$LD_LIBRARY_PAT

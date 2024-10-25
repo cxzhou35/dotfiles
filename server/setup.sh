@@ -11,7 +11,7 @@ HOME_DIR="$HOME"
 TMP_DIR="$HOME/tmp"
 LINK_DIR=""
 TARGET_DIRS=("codes" "datasets" "miniconda3")
-ZSH_PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions")
+ZSH_PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions" "git-open")
 PIP_PATH="$HOME_DIR/.pip"
 GITHUB_REPO_PATH="https://raw.githubusercontent.com/cxzhou35/dotfiles/main/server"
 DOTFILES=(".zshrc" ".vimrc" ".tmux.conf" ".condarc" ".gitconfig")
@@ -119,18 +119,18 @@ set_pip_mirror() {
 
 install_miniconda3() {
   # check if the link directory exists
-  if [[ ! -e "$LINK_DIR/miniconda3" ]]; then
-    echo -e "${RED}Error: Please download miniconda3 and put it in $LINK_DIR${NC}"
+  if [[ ! -e "$HOME_DIR/miniconda3" ]]; then
+    echo -e "${RED}Error: Please download miniconda3 and put it in $HOME_DIR${NC}"
   else
     # check if miniconda3 exists
-    if [[ -s "$LINK_DIR/miniconda3/bin" ]]; then
-      echo -e "${YELLOW}Skip: Miniconda3 already exists in $LINK_DIR and not empty${NC}"
+    if [[ -s "$HOME_DIR/miniconda3/bin" ]]; then
+      echo -e "${YELLOW}Skip: Miniconda3 already exists in $HOME_DIR and not empty${NC}"
     else
       echo -e "${GREEN}===== Install miniconda3 =====${NC}"
-      wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $LINK_DIR/miniconda3/miniconda.sh
-      bash $LINK_DIR/miniconda3/miniconda.sh -b -u -p $LINK_DIR/miniconda3
-      rm -rf $LINK_DIR/miniconda3/miniconda.sh
-      $LINK_DIR/miniconda3/bin/conda init bash
+      wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME_DIR/miniconda3/miniconda.sh
+      bash $HOME_DIR/miniconda3/miniconda.sh -b -u -p $HOME_DIR/miniconda3
+      rm -rf $HOME_DIR/miniconda3/miniconda.sh
+      $HOME_DIR/miniconda3/bin/conda init bash
     fi
   fi
 }

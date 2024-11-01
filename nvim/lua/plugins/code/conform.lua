@@ -8,7 +8,7 @@ return {
         css = { "prettier", stop_after_first = true },
         html = { "prettier", stop_after_first = true },
         json = { "prettier", stop_after_first = true },
-        yaml = { "prettier", stop_after_first = true },
+        -- yaml = { "prettier", stop_after_first = true },
         python = { "isort", "autopep8" },
         c = { "clang_format" },
         cpp = { "clang_format" },

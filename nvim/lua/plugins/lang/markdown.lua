@@ -66,7 +66,7 @@ return {
         -- Missing options from `markdown` field will be replaced by options from `default` field
         markdown = {
           img_dir = { "assets", "img" },
-          img_dir_txt = "./assets/img",
+          img_dir_txt = "assets/img",
           img_handler = function(img)
             vim.cmd("normal! f[") -- go to [
             vim.cmd("normal! a" .. img.name) -- append text with image name

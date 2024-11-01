@@ -2,7 +2,7 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   keys = {
     {
-      "<F2>",
+      "<C-e>",
       function()
         require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
       end,

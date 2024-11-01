@@ -47,11 +47,6 @@ path = "~/Github/dotfiles"
 startup_command = "la"
 
 [[session]]
-name = "Workspace 🔭"
-path = "~/Github/workspace"
-startup_command = "la"
-
-[[session]]
 name = "Blog"
 path = "~/Github/site/blog"
 startup_command = "la"
@@ -59,6 +54,11 @@ startup_command = "la"
 [[session]]
 name = "Notebook"
 path = "~/Github/site/notebook"
+startup_command = "la"
+
+[[session]]
+name = "Workspace 🔭"
+path = "~/Github/workspace"
 startup_command = "la"
 
 [[session]]
@@ -82,51 +82,51 @@ path = "~/Code/cpp"
 startup_command = "code cpp.code-workspace"
 
 [[session]]
-name = "nvim config ⚙️ "
+name = "nvim config"
 path = "~/Github/dotfiles/nvim"
 startup_command = "nvim init.lua"
 
 [[session]]
-name = "yazi config ⚙️ "
+name = "yazi config"
 path = "~/Github/dotfiles/yazi"
 startup_command = "nvim init.lua"
 
 [[session]]
-name = "wezterm config ⚙️ "
+name = "wezterm config"
 path = "~/Github/dotfiles/wezterm"
 startup_command = "nvim .wezterm.lua"
 
 [[session]]
-name = "rime config ⚙️ "
+name = "rime config"
 path = "~/Library/Rime"
 startup_command = "nvim squirrel.custom.yaml"
 
 [[session]]
-name = "zsh config ⚙️ "
+name = "zsh config"
 path = "~/Github/dotfiles/zsh"
 startup_command = "nvim .zshrc"
 
 [[session]]
-name = "tmux config ⚙️ "
+name = "tmux config"
 path = "~/Github/dotfiles/tmux"
 startup_command = "nvim .tmux.conf"
 
 [[session]]
-name = "sesh config ⚙️ "
+name = "sesh config"
 path = "~/Github/dotfiles/sesh"
 startup_command = "nvim sesh.toml"
 
 [[session]]
-name = "alacritty config ⚙️ "
+name = "alacritty config"
 path = "~/Github/dotfiles/alacritty"
 startup_command = "nvim alacritty.toml"
 
 [[session]]
-name = "kitty config ⚙️ "
+name = "kitty config"
 path = "~/Github/dotfiles/kitty"
 startup_command = "nvim kitty.conf"
 
 [[session]]
-name = "ssh config ⚙️ "
+name = "ssh config"
 path = "~/.ssh"
 startup_command = "nvim config"

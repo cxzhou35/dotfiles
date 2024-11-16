@@ -32,7 +32,10 @@ eval $(thefuck --alias fk)
 # atuin
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
-bindkey '^h' _atuin_search_widget
+# bindkey '^a' _atuin_search_widget
+bindkey '^a' atuin-search
+# bindkey '^[[A' atuin-up-search
+# bindkey '^[OA' atuin-up-search
 
 # Fzf
 eval "$(fzf --zsh)"

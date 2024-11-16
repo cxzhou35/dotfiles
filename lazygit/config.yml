@@ -1,34 +1,59 @@
 gui:
   scrollHeight: 2
-  nerdFontsVersion: "3"
+  border: "rounded"
+  mouseEvents: false
   scrollPastBottom: true
+  nerdFontsVersion: "3"
+  showBottomLine: false
   sidePanelWidth: 0.3333
   expandFocusedSidePanel: false
   mainPanelSplitMode: "flexible"
   language: "auto" # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
   theme:
     activeBorderColor:
-      - "#89b4fa"
+      - '#f5e0dc'
       - bold
     inactiveBorderColor:
-      - "#a6adc8"
+      - '#a6adc8'
     optionsTextColor:
-      - "#89b4fa"
+      - '#89b4fa'
     selectedLineBgColor:
-      - "#313244"
+      - '#313244'
     cherryPickedCommitBgColor:
-      - "#45475a"
+      - '#45475a'
     cherryPickedCommitFgColor:
-      - "#89b4fa"
+      - '#f5e0dc'
     unstagedChangesColor:
-      - "#f38ba8"
+      - '#f38ba8'
     defaultFgColor:
-      - "#cdd6f4"
+      - '#cdd6f4'
     searchingActiveBorderColor:
-      - "#f9e2af"
+      - '#f9e2af'
+
+  authorColors:
+    '*': '#b4befe'
+  # theme:
+  #   activeBorderColor:
+  #     - "#89b4fa"
+  #     - bold
+  #   inactiveBorderColor:
+  #     - "#a6adc8"
+  #   optionsTextColor:
+  #     - "#89b4fa"
+  #   selectedLineBgColor:
+  #     - "#313244"
+  #   cherryPickedCommitBgColor:
+  #     - "#45475a"
+  #   cherryPickedCommitFgColor:
+  #     - "#89b4fa"
+  #   unstagedChangesColor:
+  #     - "#f38ba8"
+  #   defaultFgColor:
+  #     - "#cdd6f4"
+  #   searchingActiveBorderColor:
+  #     - "#f9e2af"
   commitLength:
     show: true
-  mouseEvents: true
   skipDiscardChangeWarning: false
   skipStashWarning: true
   showFileTree: true
@@ -37,8 +62,6 @@ gui:
   showRandomTip: true
   showCommandLog: true
   commandLogSize: 8
-  authorColors:
-    "John Smith": "#ff0000"
 git:
   paging:
     colorArg: always
@@ -57,8 +80,8 @@ git:
   disableForcePushing: false
   parseEmoji: true
 os:
-  editCommand: "vim" # see 'Configuring File Editing' section
-  editCommandTemplate: "{{editor}} {{filename}}"
+  edit: "vim" # see 'Configuring File Editing' section
+  # editCommandTemplate: "{{editor}} {{filename}}"
   openCommand: ""
 refresher:
   refreshInterval: 10 # file/submodule refresh interval in seconds
@@ -111,7 +134,6 @@ keybinding:
     scrollDownMain-alt1: "J" # main panel scroll down
     scrollUpMain-alt2: "<c-u>" # main panel scroll up
     scrollDownMain-alt2: "<c-d>" # main panel scroll down
-    executeCustomCommand: ":"
     createRebaseOptionsMenu: "m"
     pushFiles: "P"
     pullFiles: "p"

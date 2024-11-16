@@ -9,6 +9,8 @@ return {
       alternates = {
         ["true"] = "false",
         ["True"] = "False",
+        ["false"] = "true",
+        ["False"] = "True",
         ["TRUE"] = "FALSE",
         ["yes"] = "no",
         ["Yes"] = "No",

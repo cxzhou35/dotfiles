@@ -16,5 +16,11 @@ plug "$ZSH/alias.zsh"
 plug "$ZSH/options.zsh"
 plug "$ZSH/secret.zsh"
 
-# starship theme
+# starship prompt theme
 eval "$(starship init zsh)"
+
+# atuin
+export ATUIN_NOBIND="true"
+eval "$(atuin init zsh)"
+bindkey '^h' atuin-search
+

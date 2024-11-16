@@ -86,3 +86,4 @@ show_preview = true
 # my custom configs
 keymap_mode = "vim-normal"
 enter_accept = false
+

@@ -13,6 +13,7 @@ alias cdn="cd /Users/vercent/Library/CloudStorage/OneDrive-zju.edu.cn/Notes"
 alias cdd="cd ~/Downloads/"
 alias cdg="cd ~/Github/"
 alias cdv="cd ~/Github/dotfiles/nvim/"
+alias cdz="cd ~/Github/dotfiles/zsh/"
 alias cdnb="cd ~/Github/site/notebook/"
 alias cdb="cd ~/Github/site/blog/"
 

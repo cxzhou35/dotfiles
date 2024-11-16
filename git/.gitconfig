@@ -1,19 +1,22 @@
+[user]
+  email = zjajzcx3566@163.com
+  name = cxzhou35
 [core]
-    pager = delta
-    editor = nvim
-    ignorecase = false
-    excludesfile = ~/.gitignore
+  pager = delta
+  editor = nvim
+  ignorecase = false
+  excludesfile = ~/.gitignore
 [init]
-    defaultBranch = main
+  defaultBranch = main
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [color]
-    status = auto
-    diff = auto
-    branch = auto
-    interactive = auto
-    grep = auto
-    ui = true
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+  ui = true
 [pull]
     rebase = false
 [merge]
@@ -60,3 +63,8 @@
   updated = green normal
   branch = yellow normal bold
   header = white normal bold
+[column]
+  ui = auto
+[http]
+  proxy = localhost:7890
+

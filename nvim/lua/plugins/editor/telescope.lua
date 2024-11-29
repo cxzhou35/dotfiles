@@ -7,9 +7,9 @@ return {
     { ";k", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
     { ";f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
     { ";F", LazyVim.pick("files", { cwd = false }), desc = "Find Files (cwd)" },
-    { ";o", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
     { ";s", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
     { ";w", "<cmd>Telescope grep_string<cr>", desc = "Grep Words" },
+    { ";o", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
     { ";O", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
     {
       ";r",
@@ -20,17 +20,17 @@ return {
       desc = "Search for a string in your current working directory",
     },
     { ";R", LazyVim.pick("live_grep", { cwd = false }), desc = "Grep (cwd)" },
-    {
-      ";t",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.help_tags()
-      end,
-      desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
-    },
     { ";e", "<cmd>Telescope diagnostics bufnr=2<cr>", desc = "Document Diagnostics" },
     { ";x", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
-    { ";l", "<cmd>Telescope loclist<cr>", desc = "Location List" },
+    -- {
+    --   ";t",
+    --   function()
+    --     local builtin = require("telescope.builtin")
+    --     builtin.help_tags()
+    --   end,
+    --   desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
+    -- },
+    -- { ";l", "<cmd>Telescope loclist<cr>", desc = "Location List" },
     {
       ";;",
       function()
@@ -48,15 +48,6 @@ return {
         })
       end,
       desc = "Find Plugin File",
-    },
-    {
-      "<leader>/",
-      function()
-        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-          previewer = false,
-        }))
-      end,
-      desc = "[/] Fuzzily search in current buffer]",
     },
     -- extensions
     { ";u", "<cmd>Telescope undo<cr>", desc = "Undo History" },
@@ -101,22 +92,6 @@ return {
     {
       "nvim-telescope/telescope-live-grep-args.nvim",
       version = "^1.0.0",
-    },
-    {
-      "gbprod/yanky.nvim",
-      enabled = false,
-      event = { "VeryLazy" },
-      opts = {
-        ring = {
-          history_length = 100,
-          storage = "shada",
-          sync_with_numbered_registers = true,
-          cancel_event = "update",
-        },
-        system_clipboard = { sync_with_ring = true },
-        highlight = { on_put = true, on_yank = true, timer = 300 },
-        preserve_cursor_position = { enabled = true },
-      },
     },
     { "nvim-telescope/telescope-symbols.nvim" },
   },
@@ -249,6 +224,5 @@ return {
     require("telescope").load_extension("undo")
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("live_grep_args")
-    -- require("telescope").load_extension("yank_history")
   end,
 }

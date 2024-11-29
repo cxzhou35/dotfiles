@@ -8,15 +8,6 @@ return {
   opts = {
     notify = false,
     plugins = { spelling = true },
-    defaults = {
-      {
-        mode = { "n", "v" },
-        { "<leader>a", group = "terminal" },
-        { "<leader>h", group = "hop" },
-        { "<leader>r", group = "conda env" },
-        { "<leader>t", group = "misc" },
-      },
-    },
   },
   config = function(_, opts)
     local wk = require("which-key")

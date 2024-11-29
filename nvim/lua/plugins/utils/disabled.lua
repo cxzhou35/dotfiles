@@ -11,15 +11,21 @@ local disabled = {
   -- cmp
   { "hrsh7th/cmp-cmdline" },
   -- git
-  { "NeogitOrg/neogit" },
-  { "sindrets/diffview.nvim" },
+  -- { "NeogitOrg/neogit" },
+  {
+    "sindrets/diffview.nvim",
+  },
   -- copilot
   -- { "zbirenbaum/copilot.lua" },
   -- { "CopilotC-Nvim/CopilotChat.nvim" },
   -- lsp
   { "mfussenegger/nvim-lint" },
+  -- notify
+  -- { "folke/noice.nvim" },
   -- treesitter
   { "nvim-treesitter/nvim-treesitter-textobjects" },
+  -- terminal
+  -- { "akinsho/toggleterm.nvim" },
   -- ui
   { "mawkler/modicator.nvim" },
   { "gen740/SmoothCursor.nvim" },
@@ -27,8 +33,8 @@ local disabled = {
   -- { "echasnovski/mini.surround" }, -- INFO: use mini.suround
   -- { "kylechui/nvim-surround" },
   -- startpage
-  { "goolord/alpha-nvim" }, -- INFO: use dashboard
-  -- { "nvimdev/dashboard-nvim"},
+  { "goolord/alpha-nvim" },
+  -- { "nvimdev/dashboard-nvim" },
   -- indentline
   { "lukas-reineke/indent-blankline.nvim" }, -- INFO: use hlchunk
   { "echasnovski/mini.indentscope" },
@@ -39,6 +45,7 @@ local disabled = {
   -- conda env
   { "linux-cultist/venv-selector.nvim" }, -- INFO: use nvim-conda
   -- { "kmontocam/nvim-conda"}
+  -- dev
 }
 
 for i, plugin in ipairs(disabled) do

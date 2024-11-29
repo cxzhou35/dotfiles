@@ -76,6 +76,7 @@ map("n", "s<left>", ":vertical resize +20<cr>")
 map("n", "s<right>", ":vertical resize -20<cr>")
 map("n", "s<up>", ":resize +10<cr>")
 map("n", "s<down>", ":resize -10<cr>")
+LazyVim.ui.maximize():map("sm")
 
 -- Better indenting
 map("v", "<", "<gv")
@@ -125,7 +126,7 @@ end)
 -- Lsp
 -- map("n", "<leader>gh", "vim.lsp.buf.hover", opts)
 map("n", "<leader>rs", ":LspRestart<CR>", opts)
-map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+-- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
 -- Easy Align
 map({ "n", "v", "o" }, "ge", "<Plug>(EasyAlign)", { desc = "Easy Align" })

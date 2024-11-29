@@ -68,3 +68,27 @@ function ys() {
   fi
   rm -f -- "$tmp"
 }
+
+# pomodoro timer
+function work() {
+  # ms/s/m/h
+  timer 45m --format 24h && say 'Mola verme zamanı dostum! Kalk ve biraz yürüyüşe çık! Biraz su iç!' \
+                  && terminal-notifier -message 'Pomodoro'\
+          -title 'Work Timer is up! Take a Break 😊'\
+          -appIcon 'http://vjeantet.fr/images/logo.png' \
+          -sound Crystal
+}
+
+function rest() {
+  # ms/s/m/h
+  timer 10m --format 24h && say 'Mola bitti, hadi ders çalışma zamanı' \
+                  && terminal-notifier -message 'Pomodoro'\
+          -title 'Break is over! Get back to work 😬'\
+          -appIcon 'http://vjeantet.fr/images/logo.png' \
+          -sound Crystal
+}
+
+function appsec() {
+  # @1: application path
+  sudo xattr -r -d com.apple.quarantine $1
+}

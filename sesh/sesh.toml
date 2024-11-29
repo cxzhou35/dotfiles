@@ -64,22 +64,22 @@ startup_command = "la"
 [[session]]
 name = "LaTex workspace 🔭"
 path = "~/Code/tex"
-startup_command = "code tex.code-workspace"
+startup_command = "nvim tex.code-workspace"
 
 [[session]]
 name = "Python workspace 🔭"
 path = "~/Code/python"
-startup_command = "code python.code-workspace"
+startup_command = "nvim python.code-workspace"
 
 [[session]]
 name = "C workspace 🔭"
 path = "~/Code/c"
-startup_command = "code c.code-workspace"
+startup_command = "nvim c.code-workspace"
 
 [[session]]
 name = "Cpp workspace 🔭"
 path = "~/Code/cpp"
-startup_command = "code cpp.code-workspace"
+startup_command = "nvim cpp.code-workspace"
 
 [[session]]
 name = "nvim config"

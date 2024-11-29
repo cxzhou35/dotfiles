@@ -34,7 +34,7 @@ local disabled = {
   -- { "kylechui/nvim-surround" },
   -- startpage
   { "goolord/alpha-nvim" },
-  -- { "nvimdev/dashboard-nvim" },
+  { "nvimdev/dashboard-nvim" },
   -- indentline
   { "lukas-reineke/indent-blankline.nvim" }, -- INFO: use hlchunk
   { "echasnovski/mini.indentscope" },

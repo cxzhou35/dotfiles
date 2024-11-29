@@ -1,7 +1,8 @@
 {
   "completion.autoRequire": false,
   "workspace.checkThirdParty": false,
-  "diagnostics.globals": ["dasda", "transparent"],
+  "diagnostics.globals": ["dasda", "transparent",
+        "Snacks"],
   "diagnostics.disable": [
     "param-type-mismatch",
     "inject-field",

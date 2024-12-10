@@ -102,8 +102,19 @@ return {
       },
     },
     notifier = {
-      enabled = false,
+      enabled = true,
       border = "rounded",
+      timeout = 2000,
+    },
+    terminal = {
+      win = {
+        width = 0.85,
+        height = 0.85,
+        position = "float",
+        border = "rounded",
+        title = "Terminal",
+        title_pos = "center",
+      },
     },
     lazygit = { enabled = true, configure = true },
     words = { enabled = false, debounce = 10, notify_end = false },
@@ -117,11 +128,11 @@ return {
       desc = "Lazygit",
     },
     {
-      ";t",
+      ";n",
       function()
-        Snacks.terminal()
+        Snacks.notifier.show_history()
       end,
-      desc = "Toggle Terminal",
+      desc = "Notification History",
     },
     {
       "<leader>go",
@@ -129,6 +140,22 @@ return {
         Snacks.gitbrowse()
       end,
       desc = "Git Browse",
+    },
+    {
+      "]]",
+      function()
+        Snacks.words.jump(vim.v.count1)
+      end,
+      desc = "Next Reference",
+      mode = { "n", "t" },
+    },
+    {
+      "[[",
+      function()
+        Snacks.words.jump(-vim.v.count1)
+      end,
+      desc = "Prev Reference",
+      mode = { "n", "t" },
     },
   },
   config = function(_, opts)

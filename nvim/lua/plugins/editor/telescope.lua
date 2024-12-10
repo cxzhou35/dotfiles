@@ -1,7 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
   keys = {
-    { ";b", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+    { ";b", "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<cr>", desc = "Buffers" },
     { ";c", LazyVim.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with Preview" },
     { ";h", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     { ";k", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },

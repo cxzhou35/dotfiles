@@ -22,10 +22,11 @@ local disabled = {
   { "mfussenegger/nvim-lint" },
   -- notify
   -- { "folke/noice.nvim" },
+  { "rcarriga/nvim-notify" },
   -- treesitter
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   -- terminal
-  -- { "akinsho/toggleterm.nvim" },
+  { "akinsho/toggleterm.nvim" },
   -- ui
   { "mawkler/modicator.nvim" },
   { "gen740/SmoothCursor.nvim" },

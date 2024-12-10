@@ -31,6 +31,7 @@ alias jp="jupyter notebook"
 alias jl="jupyter lab --log-level=40"
 
 # Misc
+alias c="clear"
 alias t="tmux"
 alias m="h-m-m"
 alias f="fzf"

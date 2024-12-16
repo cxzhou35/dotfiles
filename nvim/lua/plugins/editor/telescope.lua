@@ -1,16 +1,14 @@
 return {
   "nvim-telescope/telescope.nvim",
   keys = {
+    -- telescope pickers
     { ";b", "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<cr>", desc = "Buffers" },
-    { ";c", LazyVim.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with Preview" },
     { ";h", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     { ";k", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-    { ";f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-    { ";F", LazyVim.pick("files", { cwd = false }), desc = "Find Files (cwd)" },
+    { ";f", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
     { ";s", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
     { ";w", "<cmd>Telescope grep_string<cr>", desc = "Grep Words" },
     { ";o", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { ";O", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
     {
       ";r",
       function()
@@ -19,7 +17,6 @@ return {
       end,
       desc = "Search for a string in your current working directory",
     },
-    { ";R", LazyVim.pick("live_grep", { cwd = false }), desc = "Grep (cwd)" },
     { ";e", "<cmd>Telescope diagnostics bufnr=2<cr>", desc = "Document Diagnostics" },
     { ";x", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
     -- {
@@ -63,6 +60,13 @@ return {
       desc = "Visual Grep With Args",
       mode = { "n", "v", "x" },
     },
+
+    -- lazyvim pickers
+    -- { ";c", LazyVim.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with Preview" },
+    -- { ";f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+    -- { ";F", LazyVim.pick("files", { cwd = false }), desc = "Find Files (cwd)" },
+    -- { ";O", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
+    -- { ";R", LazyVim.pick("live_grep", { cwd = false }), desc = "Grep (cwd)" },
     {
       "<C-f>",
       function()

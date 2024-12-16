@@ -4,19 +4,32 @@ return {
     cmd = "Copilot",
     build = ":Copilot auth",
     event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-        filetypes = {
-          markdown = true,
-          help = true,
-          python = true,
-          lua = true,
-          c = true,
-          cpp = true,
-        },
-      })
+    opts = {
+      suggestion = {
+        enabled = false,
+      },
+      panel = { enabled = false },
+      filetypes = {
+        markdown = true,
+        help = true,
+        python = true,
+        lua = true,
+        c = true,
+        cpp = true,
+      },
+    },
+  },
+  -- add ai_accept action
+  {
+    "zbirenbaum/copilot.lua",
+    opts = function()
+      LazyVim.cmp.actions.ai_accept = function()
+        if require("copilot.suggestion").is_visible() then
+          LazyVim.create_undo()
+          require("copilot.suggestion").accept()
+          return true
+        end
+      end
     end,
   },
   {
@@ -43,6 +56,28 @@ return {
           },
         })
       end,
+    },
+  },
+  -- lualine integrations
+  {
+    "AndreM222/copilot-lualine",
+  },
+  -- blink.cmp integrations
+  {
+    "saghen/blink.cmp",
+    optional = true,
+    dependencies = { "giuxtaposition/blink-cmp-copilot" },
+    opts = {
+      sources = {
+        default = { "copilot" },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-cmp-copilot",
+            kind = "Copilot",
+          },
+        },
+      },
     },
   },
 }

@@ -111,5 +111,8 @@ g.wildfire_objects = { "i'", 'i"', "i)", "i]", "i}", "ip", "it", "i`", "i*" }
 opt.wildignore:append({ ".aux", ".out", ".toc" })
 opt.wildignorecase = true
 
+-- Blink
+g.lazyvim_blink_main = false
+
 -- Disable nvim intro
 opt.shortmess:append("sI")

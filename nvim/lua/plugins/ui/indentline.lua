@@ -1,6 +1,7 @@
 return {
   {
     "lukas-reineke/indent-blankline.nvim",
+    enabled = false,
     event = "LazyFile",
     opts = {
       scope = { enabled = false },
@@ -26,6 +27,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
+    enabled = true,
     event = { "UIEnter", "CursorMoved" },
     config = function()
       require("hlchunk").setup({
@@ -76,6 +78,7 @@ return {
   },
   {
     "echasnovski/mini.indentscope",
+    enabled = false,
     version = false, -- wait till new 0.7.0 release to put it back on semver
     event = "LazyFile",
     opts = {

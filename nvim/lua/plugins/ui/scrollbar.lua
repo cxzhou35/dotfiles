@@ -1,5 +1,6 @@
 return {
   "petertriho/nvim-scrollbar",
+  enabled = true,
   opts = {
     show = true,
     show_in_active_only = false,

@@ -1,7 +1,3 @@
-local discipline = require("zicx.discipline")
-
--- discipline.cowboy()
-
 local Util = require("lazyvim.util")
 local map = Util.safe_keymap_set
 local unmap = vim.keymap.del
@@ -19,7 +15,7 @@ map({ "n", "v" }, "<leader>d", [["_d]])
 map("n", "<C-m>", "<C-i>", opts)
 
 -- Select all
-map("n", "<C-a>", "gg<S-v>G", { desc = "use 'C-a' to select all" })
+map("n", "<leader><C-a>", "gg<S-v>G", { desc = "use 'C-a' to select all" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
@@ -36,7 +32,7 @@ map({ "n", "v", "o" }, "K", "5k", { desc = "Quick backward" })
 map("n", "<Leader>o", "o<Esc>^Da", opts)
 map("n", "<Leader>O", "O<Esc>^Da", opts)
 
--- Buffers
+-- Switch buffers
 if Util.has("bufferline.nvim") then
   map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
   map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
@@ -45,9 +41,8 @@ else
   map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
--- Tabs
+-- Switch tabs
 map("n", "t", "<Nop>")
 map("n", "T", "<Nop>")
 map("n", "tl", "<cmd>tablast<cr>", { desc = "Last Tab", silent = true })
@@ -57,7 +52,7 @@ map("n", "tk", "<cmd>tabprevious<cr>", { desc = "Previous Tab", silent = true })
 map("n", "tn", "<cmd>tabnew<cr>", { desc = "New Tab", silent = true })
 map("n", "tq", "<cmd>tabclose<cr>", { desc = "Close Tab", silent = true })
 
--- Split window
+-- Split windows
 map("n", "s", "<Nop>")
 map("n", "ss", "<cmd>split<Return><C-w>w", { silent = true, desc = "split" })
 map("n", "sv", "<cmd>vsplit<Return><C-w>w", { silent = true, desc = "vsplit" })
@@ -76,7 +71,6 @@ map("n", "s<left>", ":vertical resize +20<cr>")
 map("n", "s<right>", ":vertical resize -20<cr>")
 map("n", "s<up>", ":resize +10<cr>")
 map("n", "s<down>", ":resize -10<cr>")
-LazyVim.ui.maximize():map("sm")
 
 -- Better indenting
 map("v", "<", "<gv")
@@ -119,17 +113,13 @@ map({ "n", "x" }, "m", "<Nop>")
 
 -- Lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy Menu" })
+map("n", "<leader>ra", "<cmd>LazyExtras<cr>", { desc = "LazyVim Extras" })
 map("n", "<leader>`", function()
   require("lazy").profile()
 end)
 
 -- Lsp
--- map("n", "<leader>gh", "vim.lsp.buf.hover", opts)
 map("n", "<leader>rs", ":LspRestart<CR>", opts)
--- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-
--- Easy Align
-map({ "n", "v", "o" }, "ge", "<Plug>(EasyAlign)", { desc = "Easy Align" })
 
 -- Carbon Now
 map("v", "<leader>cn", ":CarbonNow<CR>", { silent = true })

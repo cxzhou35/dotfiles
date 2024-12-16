@@ -50,6 +50,7 @@ return {
       },
       alpha = true,
       cmp = true,
+      blink_cmp = true,
       gitsigns = true,
       hop = true,
       lsp_saga = true,

@@ -1,15 +1,12 @@
 local disabled = {
   { "rmagatti/auto-session" },
   { "mg979/vim-visual-multi" },
-  { "junegunn/vim-easy-align" },
   { "windwp/nvim-ts-autotag" },
   { "abecodes/tabout.nvim" },
   { "phaazon/hop.nvim" },
   { "m4xshen/hardtime.nvim" },
   -- { "axieax/urlview.nvim" },
   { "folke/persistence.nvim" },
-  -- cmp
-  { "hrsh7th/cmp-cmdline" },
   -- git
   -- { "NeogitOrg/neogit" },
   {
@@ -18,8 +15,13 @@ local disabled = {
   -- copilot
   -- { "zbirenbaum/copilot.lua" },
   -- { "CopilotC-Nvim/CopilotChat.nvim" },
+  -- fzf picker
+  { "ibhagwan/fzf-lua" },
   -- lsp
   { "mfussenegger/nvim-lint" },
+  -- completion
+  { "hrsh7th/nvim-cmp" },
+  -- { "saghen/blink.cmp" },
   -- notify
   -- { "folke/noice.nvim" },
   { "rcarriga/nvim-notify" },
@@ -33,16 +35,6 @@ local disabled = {
   -- suround
   -- { "echasnovski/mini.surround" }, -- INFO: use mini.suround
   -- { "kylechui/nvim-surround" },
-  -- startpage
-  { "goolord/alpha-nvim" },
-  { "nvimdev/dashboard-nvim" },
-  -- indentline
-  { "lukas-reineke/indent-blankline.nvim" }, -- INFO: use hlchunk
-  { "echasnovski/mini.indentscope" },
-  -- { "shellRaining/hlchunk.nvim"},
-  -- snippets
-  -- { "L3MON4D3/LuaSnip"}, -- INFO: use Luasnip
-  { "garymjr/nvim-snippets" },
   -- conda env
   { "linux-cultist/venv-selector.nvim" }, -- INFO: use nvim-conda
   -- { "kmontocam/nvim-conda"}

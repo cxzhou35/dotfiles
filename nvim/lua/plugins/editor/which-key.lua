@@ -1,17 +1,10 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-  end,
+  opts_extend = { "spec" },
   opts = {
-    notify = false,
-    plugins = { spelling = true },
+    preset = "modern", -- classic | modern | helix
+    notify = true,
+    plugins = { marks = false, spelling = true, registers = true },
   },
-  config = function(_, opts)
-    local wk = require("which-key")
-    wk.setup(opts)
-    wk.register(opts.defaults)
-  end,
 }

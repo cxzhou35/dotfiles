@@ -112,14 +112,33 @@ return {
         height = 0.85,
         position = "float",
         border = "rounded",
-        title = "Terminal",
-        title_pos = "center",
+        -- title = "Terminal",
+        -- title_pos = "center",
       },
     },
-    lazygit = { enabled = true, configure = true },
+    scroll = { enabled = true },
+    statuscolumn = { enabled = true },
+    indent = { enabled = true },
+    input = { enabled = true },
+
+    -- disabled modules
     words = { enabled = false, debounce = 10, notify_end = false },
   },
   keys = {
+    {
+      ";z",
+      function()
+        Snacks.zen()
+      end,
+      desc = "Toggle Zen Mode",
+    },
+    {
+      ";m",
+      function()
+        Snacks.zen.zoom()
+      end,
+      desc = "Toggle Zoom",
+    },
     {
       ";l",
       function()

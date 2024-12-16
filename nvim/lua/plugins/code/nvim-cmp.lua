@@ -1,6 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
   version = false, -- last release is way too old
+  enabled = true,
   event = "InsertEnter",
   dependencies = {
     { "rafamadriz/friendly-snippets" },
@@ -19,6 +20,30 @@ return {
             copilot_cmp._on_insert_enter({})
           end
         end)
+      end,
+    },
+    {
+      "hrsh7th/cmp-cmdline",
+      enabled = false,
+      config = function()
+        local cmp = require("cmp")
+        cmp.setup.cmdline(":", {
+          mapping = cmp.mapping.preset.cmdline({
+            ["<CR>"] = {
+              c = cmp.mapping.confirm({ select = false }),
+            },
+          }),
+          sources = cmp.config.sources({
+            { name = "path" },
+          }, {
+            {
+              name = "cmdline",
+              option = {
+                ignore_cmds = { "Man", "!" },
+              },
+            },
+          }),
+        })
       end,
     },
   },

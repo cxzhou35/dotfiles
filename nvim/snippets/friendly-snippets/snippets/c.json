@@ -39,13 +39,7 @@
   },
   "main(void) template": {
     "prefix": "mainn",
-    "body": [
-      "int main(void)",
-      "{\n",
-      "\t$0\n",
-      "\treturn EXIT_SUCCESS;",
-      "}"
-    ],
+    "body": ["int main(void)", "{\n", "\t$0\n", "\treturn EXIT_SUCCESS;", "}"],
     "description": "Void main function variant"
   },
   "#include <...>": {
@@ -70,29 +64,17 @@
   },
   "#if": {
     "prefix": "#if",
-    "body": [
-      "#if ${1:0}",
-      "$0",
-      "#endif /* if $1 */"
-    ],
+    "body": ["#if ${1:0}", "$0", "#endif /* if $1 */"],
     "description": "Code snippet for #if"
   },
   "#ifdef": {
     "prefix": "#ifdef",
-    "body": [
-      "#ifdef ${1:DEBUG}",
-      "$0",
-      "#endif /* ifdef $1 */"
-    ],
+    "body": ["#ifdef ${1:DEBUG}", "$0", "#endif /* ifdef $1 */"],
     "description": "Code snippet for #ifdef"
   },
   "#ifndef": {
     "prefix": "#ifndef",
-    "body": [
-      "#ifndef ${1:DEBUG}",
-      "$0",
-      "#endif /* ifndef $1 */"
-    ],
+    "body": ["#ifndef ${1:DEBUG}", "$0", "#endif /* ifndef $1 */"],
     "description": "Code snippet for #ifndef"
   },
   "include once": {
@@ -130,40 +112,22 @@
   },
   "if": {
     "prefix": "if",
-    "body": [
-      "if (${1:true}) {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["if (${1:true}) {", "\t$0", "}"],
     "description": "Code snippet for if statement"
   },
   "if else": {
     "prefix": "ife",
-    "body": [
-      "if (${1:true}) {",
-      "\t$2",
-      "} else {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["if (${1:true}) {", "\t$2", "} else {", "\t$0", "}"],
     "description": "Code snippet for if with else"
   },
   "else": {
     "prefix": "el",
-    "body": [
-      "else {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["else {", "\t$0", "}"],
     "description": "Code snippet for else statement"
   },
   "else if": {
     "prefix": "elif",
-    "body": [
-      "else if (${1:true}) {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["else if (${1:true}) {", "\t$0", "}"],
     "description": "Code snippet for else-if statement"
   },
   "if 1L": {
@@ -183,31 +147,17 @@
   },
   "switch": {
     "prefix": "switch",
-    "body": [
-      "switch (${1:switch_on}) {",
-      "$0",
-      "default:",
-      "\t$2",
-      "}"
-    ],
+    "body": ["switch (${1:switch_on}) {", "$0", "default:", "\t$2", "}"],
     "description": "Code snippet for switch statement"
   },
   "switch no default": {
     "prefix": "switchndef",
-    "body": [
-      "switch (${1:switch_on}) {",
-      "$0",
-      "}"
-    ],
+    "body": ["switch (${1:switch_on}) {", "$0", "}"],
     "description": "Code snippet for switch without default"
   },
   "case": {
     "prefix": "case",
-    "body": [
-      "case ${1:0}:",
-      "\t$2",
-      "\t${3:break;}"
-    ],
+    "body": ["case ${1:0}:", "\t$2", "\t${3:break;}"],
     "description": "Code snippet for case branch"
   },
   "case 1L": {
@@ -217,20 +167,12 @@
   },
   "while": {
     "prefix": "while",
-    "body": [
-      "while (${1:true}) {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["while (${1:true}) {", "\t$0", "}"],
     "description": "Code snippet for while loop"
   },
   "do...while loop": {
     "prefix": "do",
-    "body": [
-      "do {",
-      "\t$0",
-      "} while(${1:false});"
-    ],
+    "body": ["do {", "\t$0", "} while(${1:false});"],
     "description": "Code snippet for do...while loop"
   },
   "return": {
@@ -245,20 +187,12 @@
   },
   "for": {
     "prefix": "for",
-    "body": [
-      "for (size_t ${2:i} = 0; $2 < ${1:count}; ++$2) {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["for (size_t ${2:i} = 0; $2 < ${1:count}; ++$2) {", "\t$0", "}"],
     "description": "Mostly used 'for' loop variant"
   },
   "for custom type": {
     "prefix": "fort",
-    "body": [
-      "for (${1:int} ${2:i} = 0; $2 < ${4:count}; ++$2) {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["for (${1:int} ${2:i} = 0; $2 < ${4:count}; ++$2) {", "\t$0", "}"],
     "description": "Mostly used 'for' loop variant with custom type"
   },
   "for non-zero start": {
@@ -272,11 +206,7 @@
   },
   "for main() args": {
     "prefix": "forp",
-    "body": [
-      "for (int ${2:i} = ${1:1}; $2 < argc; ++$2) {",
-      "\t$0",
-      "}"
-    ],
+    "body": ["for (int ${2:i} = ${1:1}; $2 < argc; ++$2) {", "\t$0", "}"],
     "description": "'for' loop variant with non-zero start"
   },
   "for reverse": {
@@ -313,12 +243,7 @@
   },
   "Define a function": {
     "prefix": "fun",
-    "body": [
-      "${2:void} ${1:fun}(${3:void})",
-      "{",
-      "\t$4",
-      "}"
-    ],
+    "body": ["${2:void} ${1:fun}(${3:void})", "{", "\t$4", "}"],
     "description": "Code snippet for a function definition"
   },
   "Function with return var": {
@@ -335,12 +260,7 @@
   },
   "Function with 1 parameter": {
     "prefix": "fun1",
-    "body": [
-      "${2:void} ${1:fun}(${3:Type1} ${4:Parm1})",
-      "{",
-      "\t$4",
-      "}"
-    ],
+    "body": ["${2:void} ${1:fun}(${3:Type1} ${4:Parm1})", "{", "\t$4", "}"],
     "description": "Define a function with 1 parameter"
   },
   "Function with 2 parameters": {
@@ -390,40 +310,22 @@
   },
   "struct": {
     "prefix": "st",
-    "body": [
-      "struct ${1:MyStruct} {",
-      "\t$2",
-      "}$0;"
-    ],
+    "body": ["struct ${1:MyStruct} {", "\t$2", "}$0;"],
     "description": "Code snippet for struct"
   },
   "struct type": {
     "prefix": "stt",
-    "body": [
-      "typedef struct $1 ${1:Box};",
-      "struct $1 {",
-      "\t$0",
-      "};"
-    ],
+    "body": ["typedef struct $1 ${1:Box};", "struct $1 {", "\t$0", "};"],
     "description": "Define a type with struct"
   },
   "union": {
     "prefix": "uo",
-    "body": [
-      "union ${1:MyUnion} {",
-      "\t$0",
-      "};"
-    ],
+    "body": ["union ${1:MyUnion} {", "\t$0", "};"],
     "description": "Code snippet for union"
   },
   "union type": {
     "prefix": "uot",
-    "body": [
-      "typedef union $1 ${1:Cell};",
-      "union $1 {",
-      "\t$0",
-      "};"
-    ],
+    "body": ["typedef union $1 ${1:Cell};", "union $1 {", "\t$0", "};"],
     "description": "Define a type with union"
   },
   "enum constant": {
@@ -433,21 +335,12 @@
   },
   "enum": {
     "prefix": "enum",
-    "body": [
-      "enum ${1:MyEnum} {",
-      "\t$0",
-      "};"
-    ],
+    "body": ["enum ${1:MyEnum} {", "\t$0", "};"],
     "description": "Code snippet for enum"
   },
   "enum type": {
     "prefix": "enumt",
-    "body": [
-      "typedef enum $1 ${1:Numbers};",
-      "enum $1 {",
-      "\t$0",
-      "};"
-    ],
+    "body": ["typedef enum $1 ${1:Numbers};", "enum $1 {", "\t$0", "};"],
     "description": "Define a type with enum"
   },
   "Print variable of type float (2 decimal places)": {

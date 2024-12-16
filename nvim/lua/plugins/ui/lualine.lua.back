@@ -1,6 +1,5 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
   dependencies = {
     "justinhj/battery.nvim",
     opts = {
@@ -9,9 +8,18 @@ return {
       show_percent = true,
     },
   },
+  event = "VeryLazy",
   opts = function()
-    local icons = LazyVim.config.icons
-    vim.o.laststatus = vim.g.lualine_laststatus
+    local icons = require("lazyvim.config").icons
+    local util = LazyVim.ui
+
+    local colors = {
+      [""] = util.fg("Special"),
+      ["Normal"] = util.fg("Special"),
+      ["Warning"] = util.fg("DiagnosticError"),
+      ["InProgress"] = util.fg("DiagnosticWarn"),
+    }
+
     local function nvim_battery()
       return require("battery").get_status_line()
     end
@@ -32,37 +40,25 @@ return {
       return "  " .. msg
     end
 
-    local colors = {
-      [""] = Snacks.util.color("Special"),
-      ["Normal"] = Snacks.util.color("Special"),
-      ["Warning"] = Snacks.util.color("DiagnosticError"),
-      ["InProgress"] = Snacks.util.color("DiagnosticWarn"),
-    }
+    -- local function getWords()
+    --   if vim.fn.getfsize(vim.fn.expand("%")) > 200000 then
+    --     return ""
+    --   end
+    --
+    --   if vim.fn.wordcount().visual_words == 1 then
+    --     return "1 word"
+    --   elseif not (vim.fn.wordcount().visual_words == nil) then
+    --     return tostring(vim.fn.wordcount().visual_words) .. " words"
+    --   else
+    --     if vim.fn.wordcount().words == 1 then
+    --       return "1 word"
+    --     else
+    --       return tostring(vim.fn.wordcount().words) .. " words"
+    --     end
+    --   end
+    -- end
 
-    local function getWords()
-      if vim.fn.getfsize(vim.fn.expand("%")) > 200000 then
-        return ""
-      end
-
-      if vim.fn.wordcount().visual_words == 1 then
-        return "1 word"
-      elseif not (vim.fn.wordcount().visual_words == nil) then
-        return tostring(vim.fn.wordcount().visual_words) .. " words"
-      else
-        if vim.fn.wordcount().words == 1 then
-          return "1 word"
-        else
-          return tostring(vim.fn.wordcount().words) .. " words"
-        end
-      end
-    end
-
-    local opts = {
-      options = {
-        theme = "auto",
-        globalstatus = vim.o.laststatus == 3,
-        disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
-      },
+    return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
@@ -76,6 +72,7 @@ return {
               TelescopePrompt = "Telescope",
               lazy = "Lazy",
               packer = "Packer",
+              fzf = "FZF",
             },
           },
           {
@@ -107,55 +104,41 @@ return {
           },
         },
         lualine_x = {
-          -- Snacks.profiler.status(),
           -- stylua: ignore
           {
             function() return require("noice").api.status.command.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = function() return { fg = Snacks.util.color("Statement") } end,
+            color = util.fg("Statement")
           },
           -- stylua: ignore
           {
             function() return require("noice").api.status.mode.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = function() return { fg = Snacks.util.color("Constant") } end,
+            color = util.fg("Constant"),
           },
-          -- stylua: ignore
+          -- copilot status module
           {
-            function() return "  " .. require("dap").status() end,
-            cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = function() return { fg = Snacks.util.color("Debug") } end,
-          },
-          {
-            "copilot",
-            -- Default values
-            symbols = {
-              status = {
-                icons = {
-                  enabled = " ",
-                  sleep = " ", -- auto-trigger disabled
-                  disabled = " ",
-                  warning = " ",
-                  unknown = " ",
-                },
-                hl = {
-                  enabled = "#9EDFA6",
-                  sleep = "#AEB7D0",
-                  disabled = "#6272A4",
-                  warning = "#DA9F7E",
-                  unknown = "#bb1c33",
-                },
-              },
-            },
-            show_colors = true,
-            show_loading = true,
+            function()
+              local icon = require("lazyvim.config").icons.kinds.Copilot
+              local status = require("copilot.api").status.data
+              return icon .. (status.message or "")
+            end,
+            cond = function()
+              local ok, clients = pcall(LazyVim.lsp.get_clients, { name = "copilot", bufnr = 0 })
+              return ok and #clients > 0
+            end,
+            color = function()
+              if not package.loaded["copilot"] then
+                return
+              end
+              local status = require("copilot.api").status.data
+              return colors[status.status] or colors[""]
+            end,
           },
           {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
-            color = function()
-              return { fg = Snacks.util.color("Special") }
-            end,
+            color = util.fg("Special"),
           },
           {
             "diff",
@@ -164,16 +147,6 @@ return {
               modified = icons.git.modified,
               removed = icons.git.removed,
             },
-            source = function()
-              local gitsigns = vim.b.gitsigns_status_dict
-              if gitsigns then
-                return {
-                  added = gitsigns.added,
-                  modified = gitsigns.changed,
-                  removed = gitsigns.removed,
-                }
-              end
-            end,
           },
         },
         lualine_y = {
@@ -181,17 +154,17 @@ return {
           { "location", padding = { left = 0, right = 1 } },
         },
         lualine_z = {
-          -- { getWords() },
+          -- { getWords },
           {
             function()
               return " " .. os.date("%R")
             end,
           },
+          -- battery status
           { nvim_battery },
         },
       },
       extensions = { "neo-tree", "lazy" },
     }
-    return opts
   end,
 }

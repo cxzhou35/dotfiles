@@ -49,13 +49,6 @@ return {
     end,
   },
   {
-    "junegunn/vim-easy-align",
-    lazy = true,
-    -- event = "VeryLazy",
-    ft = { "markdown", "tex" },
-    cmd = { "EasyAlign" },
-  },
-  {
     {
       "dfendr/clipboard-image.nvim",
       lazy = true,
@@ -82,39 +75,67 @@ return {
       },
     },
   },
-  {
-    "lukas-reineke/headlines.nvim",
-    lazy = true,
-    -- event = "VeryLazy",
-    ft = { "markdown" },
-    opts = {
-      markdown = {
-        headline_highlights = { "Height" },
-        bullets = {},
-        codeblock_highlight = "CodeBlock",
-        dash_highlight = "Dash",
-        dash_string = "-",
-        quote_highlight = "Quote",
-        quote_string = "┃",
-        fat_headlines = false,
-        fat_headline_upper_string = "▃ ",
-        fat_headline_lower_string = "🬂 ",
-      },
-    },
-    config = function(_, opts)
-      -- PERF: schedule to prevent headlines slowing down opening a file
-      vim.schedule(function()
-        require("headlines").setup(opts)
-        require("headlines").refresh()
-      end)
-    end,
-  },
+  -- {
+  --   "lukas-reineke/headlines.nvim",
+  --   lazy = true,
+  --   -- event = "VeryLazy",
+  --   ft = { "markdown" },
+  --   opts = {
+  --     markdown = {
+  --       headline_highlights = { "Height" },
+  --       bullets = {},
+  --       codeblock_highlight = "CodeBlock",
+  --       dash_highlight = "Dash",
+  --       dash_string = "-",
+  --       quote_highlight = "Quote",
+  --       quote_string = "┃",
+  --       fat_headlines = false,
+  --       fat_headline_upper_string = "▃ ",
+  --       fat_headline_lower_string = "🬂 ",
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     -- PERF: schedule to prevent headlines slowing down opening a file
+  --     vim.schedule(function()
+  --       require("headlines").setup(opts)
+  --       require("headlines").refresh()
+  --     end)
+  --   end,
+  -- },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    opts = {},
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     keys = {
       { "<leader>rm", "<cmd>RenderMarkdown toggle<cr>", ft = "markdown", desc = "Render markdown" },
     },
+    opts = {
+      code = {
+        sign = false,
+        width = "block",
+        right_pad = 1,
+      },
+      heading = {
+        sign = false,
+        icons = {},
+      },
+    },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    ft = { "markdown", "norg", "rmd", "org" },
+    config = function(_, opts)
+      require("render-markdown").setup(opts)
+      Snacks.toggle({
+        name = "Render Markdown",
+        get = function()
+          return require("render-markdown.state").enabled
+        end,
+        set = function(enabled)
+          local m = require("render-markdown")
+          if enabled then
+            m.enable()
+          else
+            m.disable()
+          end
+        end,
+      }):map("<leader>um")
+    end,
   },
 }

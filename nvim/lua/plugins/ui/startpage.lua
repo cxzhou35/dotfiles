@@ -1,6 +1,8 @@
 return {
+  -- NOTE: use Snacks.dashboard now
   {
     "goolord/alpha-nvim",
+    enabled = false,
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
       local logo = [[
@@ -95,6 +97,7 @@ return {
   },
   {
     "nvimdev/dashboard-nvim",
+    enabled = false,
     lazy = false,
     event = "VimEnter",
     opts = function()

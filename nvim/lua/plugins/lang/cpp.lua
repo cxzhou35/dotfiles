@@ -1,19 +1,4 @@
 return {
-  recommended = function()
-    return LazyVim.extras.wants({
-      ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-      root = {
-        ".clangd",
-        ".clang-tidy",
-        ".clang-format",
-        "compile_commands.json",
-        "compile_flags.txt",
-        "configure.ac", -- AutoTools
-      },
-    })
-  end,
-
-  -- Add C/C++ to treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = { ensure_installed = { "cpp" } },
@@ -102,12 +87,5 @@ return {
         end,
       },
     },
-  },
-
-  {
-    "nvim-cmp",
-    opts = function(_, opts)
-      table.insert(opts.sorting.comparators, 1, require("clangd_extensions.cmp_scores"))
-    end,
   },
 }

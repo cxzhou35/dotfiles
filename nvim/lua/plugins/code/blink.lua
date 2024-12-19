@@ -3,13 +3,6 @@ return {
   lazy = false,
   dependencies = {
     { "rafamadriz/friendly-snippets" },
-    -- add blink.compat to dependencies
-    {
-      "saghen/blink.compat",
-      optional = true, -- make optional so it's only enabled if any extras need it
-      opts = {},
-      version = not vim.g.lazyvim_blink_main and "*",
-    },
   },
   event = "InsertEnter",
   opts = {
@@ -64,13 +57,12 @@ return {
         enabled = vim.g.ai_cmp,
       },
       -- Experimental signature help support
-      signature = { enabled = false },
+      signature = { enabled = true },
     },
     sources = {
       -- adding any nvim-cmp sources here will enable them
       -- with blink.compat
       default = { "lsp", "path", "snippets", "buffer" },
-      compat = {},
       cmdline = {},
       providers = {
         lsp = { async = true },

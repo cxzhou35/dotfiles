@@ -66,6 +66,9 @@ keymap = [
 
   # Tasks
 	{ on = [";", "w"], run = "tasks_show", desc = "Show task manager" },
+
+  # Open
+	{ on = [";", "o"], run = "open --interactive", desc = "Open selected files interactively" },
   
   # Operation: D
 	{ on = ["d", "c"], run = "remove", desc = "Trash selected files" },
@@ -112,10 +115,13 @@ keymap = [
   # Goto
 	{ on = ["g", "r"], run = "cd /", desc = "Go to the root directory" },
 	{ on = ["g", "h"], run = "cd ~", desc = "Go to the home directory" },
-	{ on = ["g", "c"], run = "cd ~/.config", desc = "Go to the config directory" },
+	{ on = ["g", "p"], run = "cd ~/Pictures", desc = "Go to the pictures directory" },
+	{ on = ["g", "m"], run = "cd ~/Movies", desc = "Go to the movies directory" },
 	{ on = ["g", "d"], run = "cd ~/Downloads", desc = "Go to the downloads directory" },
 	{ on = ["g", "i"], run = "cd ~/Github", desc = "Go to the Github directory" },
-	{ on = ["g", "f", "f"], run = "cd ~/.config" },
+	{ on = ["g", "n"], run = "cd ~/Github/site/notebook", desc = "Go to the notebook directory" },
+	{ on = ["g", "c"], run = "cd ~/.config", desc = "Go to the config directory" },
+	{ on = ["g", "f", "c"], run = "cd ~/.config" },
 	{ on = ["g", "f", "v"], run = "cd ~/Github/dotfiles/nvim" },
 	{ on = ["g", "f", "y"], run = "cd ~/Github/dotfiles/yazi" },
 	{ on = ["g", "f", "t"], run = "cd ~/Github/dotfiles/tmux" },

@@ -13,13 +13,17 @@ gum style \
 export NOW=$(date "+%Y-%m-%d_%H:%M:%S")
 echo -e "$NOW\n" >>/tmp/u-$NOW.txt
 
-gum spin --spinner globe --title "🪟  tpm plugins updating..." --show-output -- ~/.config/tmux/.tmux/plugins/tpm/bin/update_plugins all >>/tmp/u-$NOW.txt
+gum spin --spinner globe --title "🪟 tpm plugins updating..." --show-output -- ~/.config/tmux/.tmux/plugins/tpm/bin/update_plugins all >>/tmp/u-$NOW.txt
 echo "\n" >>/tmp/u-$NOW.txt
-echo "✅ 🪟  tpm plugins updated"
+echo "✅ 🪟 tpm plugins updated"
 
 gum spin --spinner globe --title "💡 zap updating..." --show-output -- zap update all >>/tmp/u-$NOW.txt
 echo "\n" >>/tmp/u-$NOW.txt
 echo "✅ 💡 zap plugins updated"
+
+gum spin --spinner globe --title "🦆 yazi plugins updating..." --show-output -- ya pack -u >>/tmp/u-$NOW.txt
+echo "\n" >>/tmp/u-$NOW.txt
+echo "✅ 🦆 yazi plugins updated"
 
 gum spin --spinner globe --title "💤 lazy.nvim syncing..." -- nvim --headless "+Lazy! sync" +qa
 echo "\n" >>/tmp/u-$NOW.txt

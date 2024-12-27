@@ -62,3 +62,23 @@ prepend_previewers = [
     { name = "*.ipynb", run = "rich-preview"}, # for jupyter notebooks (.ipynb)
     { name = "*.json", run = "rich-preview"}, # for json (.json) files
 ]
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "mactag"
+name = "*"
+run  = "mactag"
+
+[[plugin.prepend_fetchers]]
+id   = "mactag"
+name = "*/"
+run  = "mactag"

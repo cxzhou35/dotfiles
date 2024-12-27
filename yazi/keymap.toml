@@ -3,18 +3,18 @@
 [manager]
 prepend_keymap = [
   # Plugins
-  { on = [ "l" ], run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+  { on = ["l"], run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
   { on = "<Enter>", run = 'plugin smart-enter' },
-  { on = [ "p" ], run = "plugin smart-paste", desc = "Paste into the hovered directory or CWD" },
+  { on = ["p"], run = "plugin smart-paste", desc = "Paste into the hovered directory or CWD" },
   # { on = [ "H" ], run = "plugin hide-preview", desc = "Hide preview pane" },
-  { on = [ "T" ], run = "plugin max-preview", desc = "Maximize or restore preview pane" },
-  { on = [ "z" ], run = "plugin zoxide", desc = "Jump to a directory using zoxide" },
-	{ on = [ "Z" ], run = "plugin fzf", desc = "Jump to a directory, or reveal a file using fzf" },
+  { on = ["T"], run = "plugin max-preview", desc = "Maximize or restore preview pane" },
+  { on = ["z"], run = "plugin zoxide", desc = "Jump to a directory using zoxide" },
+	{ on = ["<C-f>"], run = "plugin fzf", desc = "Jump to a directory, or reveal a file using fzf" },
+  { on = ["f"], run = "plugin jump-to-char", desc = "Jump to char" },
+  { on = ["c", "a",], run = "plugin compress", desc = "Archive selected files" },
   { on = [ "f" ], run = "plugin jump-to-char", desc = "Jump to char" },
-  { on = [
-		"c",
-		"a",
-	], run = "plugin compress", desc = "Archive selected files" },
+  { on = [ "b", "a" ], run = "plugin mactag --args='add'", desc = "Tag selected files" },
+  { on = [ "b", "r" ], run = "plugin mactag --args='remove'", desc = "Untag selected files" },
 ]
 
 keymap = [

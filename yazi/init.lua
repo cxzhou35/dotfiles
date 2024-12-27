@@ -36,25 +36,6 @@ require("zoxide"):setup({
 	update_db = true,
 })
 
-require("session"):setup({
-	sync_yanked = true,
-})
-
-require("searchjump"):setup({
-	unmatch_fg = catppuccin_palette.overlay0,
-	match_str_fg = catppuccin_palette.peach,
-	match_str_bg = catppuccin_palette.base,
-	first_match_str_fg = catppuccin_palette.lavender,
-	first_match_str_bg = catppuccin_palette.base,
-	lable_fg = catppuccin_palette.green,
-	lable_bg = catppuccin_palette.base,
-	only_current = false, -- only search the current window
-	show_search_in_statusbar = false,
-	auto_exit_when_unmatch = false,
-	enable_capital_lable = false,
-	search_patterns = {}, -- demo:{"%.e%d+","s%d+e%d+"}
-})
-
 require("yatline"):setup({
 	section_separator = { open = "", close = "" },
 	inverse_separator = { open = "", close = "" },

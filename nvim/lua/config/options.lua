@@ -16,6 +16,7 @@ opt.wildmenu = true
 opt.wildmode = "longest:list,full"
 opt.laststatus = 3
 opt.conceallevel = 2
+opt.syntax = "off"
 o.ttyfast = true
 o.scrolloff = 10
 
@@ -64,6 +65,8 @@ opt.listchars = {
   -- space = "·",
   -- eol = "↴",
 }
+
+o.foldenable = false
 opt.fillchars = {
   foldopen = "",
   foldclose = "",
@@ -73,10 +76,15 @@ opt.fillchars = {
   eob = " ",
 }
 
+-- Match
+-- https://vi.stackexchange.com/a/5318/12823
+g.matchparen_timeout = 2
+g.matchparen_insert_timeout = 2
+
 -- Spell
 -- Loading slowly
--- opt.spell = true
--- opt.spelllang = { "en_us" }
+opt.spell = false
+opt.spelllang = { "en_us" }
 
 -- Tab & Indent
 opt.tabstop = 2
@@ -108,8 +116,32 @@ opt.formatoptions:append({ "r" })
 
 -- Wildfire
 g.wildfire_objects = { "i'", 'i"', "i)", "i]", "i}", "ip", "it", "i`", "i*" }
-opt.wildignore:append({ ".aux", ".out", ".toc" })
 opt.wildignorecase = true
+opt.wildignore = {
+  "*~",
+  "*.o",
+  "*.obj",
+  "*.so",
+  "*vim/backups*",
+  "*.git/**",
+  "**/.git/**",
+  "*sass-cache*",
+  "*DS_Store*",
+  "vendor/rails/**",
+  "vendor/cache/**",
+  "*.gem",
+  "*.pyc",
+  "*.zip",
+  "*.bg2",
+  "*.gz",
+  "*.db",
+  "**/node_modules/**",
+  "**/bin/**",
+  "**/thesaurus/**",
+  "*.aux",
+  "*.out",
+  "*.toc",
+}
 
 -- Blink
 g.lazyvim_blink_main = false

@@ -3,8 +3,8 @@ return {
   "folke/flash.nvim",
   event = "VeryLazy",
   keys = {
-    { "s", false },
-    { "S", false },
+    { "s", false, mode = { "n", "v" } },
+    { "S", false, mode = { "n", "v" } },
     {
       "fa",
       mode = { "n", "x", "o" },

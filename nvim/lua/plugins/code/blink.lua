@@ -1,6 +1,7 @@
 return {
   "saghen/blink.cmp",
   lazy = false,
+  version = "*",
   dependencies = {
     { "rafamadriz/friendly-snippets" },
   },
@@ -57,7 +58,7 @@ return {
         enabled = vim.g.ai_cmp,
       },
       -- Experimental signature help support
-      signature = { enabled = true },
+      -- signature = { enabled = true },
     },
     sources = {
       -- adding any nvim-cmp sources here will enable them

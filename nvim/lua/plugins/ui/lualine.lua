@@ -39,29 +39,17 @@ return {
       ["InProgress"] = Snacks.util.color("DiagnosticWarn"),
     }
 
-    local function getWords()
-      if vim.fn.getfsize(vim.fn.expand("%")) > 200000 then
-        return ""
-      end
-
-      if vim.fn.wordcount().visual_words == 1 then
-        return "1 word"
-      elseif not (vim.fn.wordcount().visual_words == nil) then
-        return tostring(vim.fn.wordcount().visual_words) .. " words"
-      else
-        if vim.fn.wordcount().words == 1 then
-          return "1 word"
-        else
-          return tostring(vim.fn.wordcount().words) .. " words"
-        end
-      end
-    end
-
     local opts = {
       options = {
         theme = "auto",
         globalstatus = vim.o.laststatus == 3,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+        -- increase the default update time
+        refresh = {
+          statusline = 1000,
+          tabline = 1000,
+          winbar = 1000,
+        },
       },
       sections = {
         lualine_a = { "mode" },

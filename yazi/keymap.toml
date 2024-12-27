@@ -2,32 +2,124 @@
 
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-s>" ], run = 'shell "$SHELL" --block --confirm', desc = "Open shell here" },
-	{ on = [ "W" ], run = "tasks_show" },
+  # Plugins
+  { on = [ "l" ], run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+  { on = "<Enter>", run = 'plugin smart-enter' },
+  { on = [ "p" ], run = "plugin smart-paste", desc = "Paste into the hovered directory or CWD" },
+  # { on = [ "H" ], run = "plugin hide-preview", desc = "Hide preview pane" },
+  { on = [ "T" ], run = "plugin max-preview", desc = "Maximize or restore preview pane" },
+  { on = [ "z" ], run = "plugin zoxide", desc = "Jump to a directory using zoxide" },
+	{ on = [ "Z" ], run = "plugin fzf", desc = "Jump to a directory, or reveal a file using fzf" },
+  { on = [ "f" ], run = "plugin jump-to-char", desc = "Jump to char" },
+  { on = [
+		"c",
+		"a",
+	], run = "plugin compress", desc = "Archive selected files" },
+]
 
+keymap = [
+  # Navigation
+  { on = "h", run = "leave", desc = "Go back to the parent directory" },
+	{ on = "l", run = "enter", desc = "Enter the child directory" },
+  { on = "<Left>",  run = "leave", desc = "Go back to the parent directory" },
+	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
 	{ on = [ "H" ], run = "back" },
 	{ on = [ "L" ], run = "forward" },
 
+  { on = "k", run = "arrow -1", desc = "Move cursor up" },
+	{ on = "j", run = "arrow 1", desc = "Move cursor down" },
 	{ on = [ "<C-k>" ], run = "seek -5" },
 	{ on = [ "<C-j>" ], run = "seek 5" },
 
-  { on = [ "l" ], run = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
-  { on = [ "p" ], run = "plugin --sync smart-paste", desc = "Paste into the hovered directory or CWD" },
-  { on = [ "T" ], run = "plugin --sync hide-preview", desc = "Hide preview pane" },
-  { on = [ "s" ], run = "search fd", desc = "Search files by name using fd" },
-	{ on = [ "S" ], run = "search rg", desc = "Search files by content using ripgrep" },
-  { on = [ "z" ], run = "plugin zoxide", desc = "Jump to a directory using zoxide" },
-	{ on = [ "Z" ], run = "plugin fzf", desc = "Jump to a directory, or reveal a file using fzf" },
+  { on = ["g", "g"], run = "arrow -99999999", desc = "Move cursor to the top" },
+	{ on = "G", run = "arrow 99999999", desc = "Move cursor to the bottom" },
+  { on = "q", run = "close", desc = "Close the current tab, or quit if it is last tab" },
+  { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
 
-  # Filter
-  { on = [ "f" ], run = "filter --smart", desc = "Filter the files" },
+  # Create
+  { on = "a", run = "create", desc = "Create a file (ends with / for directories)" },
+	{ on = "A", run = "create --dir", desc = "Create a directory" },
+
+  # Selection
+	{ on = "<Space>", run = ["toggle", "arrow 1"], desc = "Toggle the current selection state" },
+	{ on = "v", run = "toggle_all", desc = "Enter visual mode (selection mode)" },
+	{ on = "V", run = "visual_mode --unset", desc = "Enter visual mode (unset mode)" },
+
+  # rename
+  { on = ["c", "w"], run = "rename --empty=all", desc = "Rename selected file(s)" },
+	{ on = "r", run = "rename --cursor=start", desc = "Rename selected file(s)" },
 
   # Find
-	{ on = [ "/" ], run = "find --smart", desc = "Find next file" },
-	{ on = [ ";" ], run = "find --previous --smart", desc = "Find previous file" },
+	{ on = "/", run = "find --smart", desc = "Find next file" },
+	{ on = ";", run = "find --previous --smart", desc = "Find previous file" },
+	{ on = "n", run = "find_arrow", desc = "Go to the next found" },
+	{ on = "N", run = "find_arrow --previous", desc = "Go to the previous found" },
+
+  # Filter
+  { on = [ "F" ], run = "filter --smart", desc = "Filter the files" },
 
   # Help
   { on = [ "?" ], run = "help", desc = "Open help" },
+
+  # Shell
+  { on = [ "<C-s>" ], run = 'shell "$SHELL" --block --confirm', desc = "Open shell here" },
+
+  # Tasks
+	{ on = [ "W" ], run = "tasks_show", desc = "Show task manager" },
+  
+  # Operation: D
+	{ on = ["d", "c"], run = "remove", desc = "Trash selected files" },
+	{ on = ["d", "d"], run = "remove --permanently", desc = "Permanently delete selected files" },
+	{ on = ["d", "y"], run = "yank --cut", desc = "Yank selected files (cut)" },
+
+  # Operation: Y
+	{ on = ["y", "y"], run = "yank", desc = "Yank selected files (copy)" },
+	{ on = ["y", "p"], run = "copy path", desc = "Copy the file path" },
+	{ on = ["y", "d"], run = "copy dirname", desc = "Copy the directory path" },
+	{ on = ["y", "f"], run = "copy filename", desc = "Copy the filename" },
+	{ on = ["y", "n"], run = "copy name_without_ext", desc = "Copy the filename without extension" },
+	{ on = ["y", "c"], run = "unyank", desc = "Cancel the yank status" },
+
+	# Operation: P
+	{ on = ["p", "p"], run = "paste", desc = "Paste yanked files" },
+	{ on = ["p", "P"], run = "paste --force", desc = "Paste yanked files (overwrite if the destination exists)" },
+	{ on = ["p", "l"], run = "link", desc = "Symlink the absolute path of yanked files" },
+	{ on = ["p", "L"], run = "link --relative", desc = "Symlink the relative path of yanked files" },
+	{ on = ["p", "h"], run = "hardlink", desc = "Hardlink yanked files" },
+
+  # Linemode
+	{ on = ["m", "s"], run = "linemode size", desc = "Set linemode to size" },
+	{ on = ["m", "p"], run = "linemode perm", desc = "Set linemode to permissions" },
+	{ on = ["m", "c"], run = "linemode btime", desc = "Set linemode to btime" },
+	{ on = ["m", "m"], run = "linemode mtime", desc = "Set linemode to mtime" },
+	{ on = ["m", "o"], run = "linemode owner", desc = "Set linemode to owner" },
+	{ on = ["m", "n"], run = "linemode none", desc = "Set linemode to none" },
+
+  # Sorting
+	{ on = ["o", "M"], run = ["sort mtime --reverse=no", "linemode mtime"], desc = "Sort by modified time" },
+	{ on = ["o", "m"], run = ["sort mtime --reverse", "linemode mtime"], desc = "Sort by modified time (reverse)" },
+	{ on = ["o", "C"], run = ["sort btime --reverse=no", "linemode btime"], desc = "Sort by created time" },
+	{ on = ["o", "c"], run = ["sort btime --reverse", "linemode btime"], desc = "Sort by created time (reverse)" },
+	{ on = ["o", "E"], run = "sort extension --reverse=no", desc = "Sort by extension" },
+	{ on = ["o", "e"], run = "sort extension --reverse", desc = "Sort by extension (reverse)" },
+	{ on = ["o", "a"], run = "sort alphabetical --reverse=no", desc = "Sort alphabetically" },
+	{ on = ["o", "A"], run = "sort alphabetical --reverse", desc = "Sort alphabetically (reverse)" },
+	{ on = ["o", "n"], run = "sort natural --reverse=no", desc = "Sort naturally" },
+	{ on = ["o", "N"], run = "sort natural --reverse", desc = "Sort naturally (reverse)" },
+	{ on = ["o", "s"], run = ["sort size --reverse=no", "linemode size"], desc = "Sort by size" },
+	{ on = ["o", "S"], run = ["sort size --reverse", "linemode size"], desc = "Sort by size (reverse)" },
+
+  # Goto
+	{ on = ["g", "r"], run = "cd /", desc = "Go to the root directory" },
+	{ on = ["g", "h"], run = "cd ~", desc = "Go to the home directory" },
+	{ on = ["g", "c"], run = "cd ~/.config", desc = "Go to the config directory" },
+	{ on = ["g", "d"], run = "cd ~/Downloads", desc = "Go to the downloads directory" },
+	{ on = ["g", "i"], run = "cd ~/Github", desc = "Go to the Github directory" },
+	{ on = ["g", "f", "f"], run = "cd ~/.config" },
+	{ on = ["g", "f", "v"], run = "cd ~/Github/dotfiles/nvim" },
+	{ on = ["g", "f", "y"], run = "cd ~/Github/dotfiles/yazi" },
+	{ on = ["g", "f", "t"], run = "cd ~/Github/dotfiles/tmux" },
+	{ on = ["g", "<Space>"], run = "cd --interactive", desc = "Go to a directory interactively" },
 ]
 
 [input]

@@ -121,5 +121,11 @@ end)
 -- Lsp
 map("n", "<leader>rs", ":LspRestart<CR>", opts)
 
--- Carbon Now
+-- CarbonNow
 map("v", "<leader>cn", ":CarbonNow<CR>", { silent = true })
+
+-- FlyBuf
+map("n", "<leader>b", ":FlyBuf<CR>", opts)
+
+-- NerdIcons
+map("n", "<leader>ni", ":NerdIcons<CR>", opts)

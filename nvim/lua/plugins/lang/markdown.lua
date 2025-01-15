@@ -31,9 +31,10 @@ return {
     -- event = "VeryLazy",
     ft = { "markdown" },
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
+    -- build = function()
+    --   vim.fn["mkdp#util#install"]()
+    -- end,
+    build = "npm install",
     keys = {
       {
         "<F5>",

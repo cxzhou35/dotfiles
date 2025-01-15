@@ -66,8 +66,9 @@ return {
       default = { "lsp", "path", "snippets", "buffer" },
       cmdline = {},
       providers = {
-        lsp = { async = true },
+        lsp = { async = true, score_offset = 0 },
         snippets = {
+          score_offset = 0,
           opts = {
             friendly_snippets = true,
             search_paths = { vim.fn.stdpath("config") .. "/snippets" },
@@ -76,6 +77,7 @@ return {
             ignored_filetypes = {},
           },
         },
+        copilot = { score_offset = 10 },
       },
     },
   },

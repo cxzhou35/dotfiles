@@ -31,8 +31,8 @@ keymap = [
 	{ on = [ "<C-k>" ], run = "seek -5" },
 	{ on = [ "<C-j>" ], run = "seek 5" },
 
-  { on = ["g", "g"], run = "arrow -99999999", desc = "Move cursor to the top" },
-	{ on = "G", run = "arrow 99999999", desc = "Move cursor to the bottom" },
+  { on = ["g", "g"], run = "arrow top", desc = "Move cursor to the top" },
+	{ on = "G", run = "arrow bot", desc = "Move cursor to the bottom" },
   { on = "q", run = "close", desc = "Close the current tab, or quit if it is last tab" },
   { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
   { on = ".", run = "hidden toggle", desc = "Toggle the visibility of hidden files" },

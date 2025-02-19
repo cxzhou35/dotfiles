@@ -64,7 +64,6 @@ return {
       -- adding any nvim-cmp sources here will enable them
       -- with blink.compat
       default = { "lsp", "path", "snippets", "buffer" },
-      cmdline = {},
       providers = {
         lsp = { async = true, score_offset = 0 },
         snippets = {

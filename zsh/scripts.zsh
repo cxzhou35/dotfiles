@@ -88,3 +88,7 @@ function appsec() {
   # @1: application path
   sudo xattr -r -d com.apple.quarantine $1
 }
+
+function sshaws() {
+  ssh -i ~/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1
+}

@@ -42,8 +42,8 @@ keymap = [
 	{ on = "A", run = "create --dir", desc = "Create a directory" },
 
   # Selection
-	# { on = "<Space>", run = ["toggle", "arrow 1"], desc = "Toggle the current selection state" },
-	{ on = "<Space>", run = "toggle", desc = "Toggle the current selection state" },
+	{ on = "<Space>", run = ["toggle", "arrow 1"], desc = "Toggle the current selection state" },
+	# { on = "<Space>", run = "toggle", desc = "Toggle the current selection state" },
 	{ on = "v", run = "toggle_all", desc = "Enter visual mode (selection mode)" },
 	{ on = "V", run = "visual_mode --unset", desc = "Enter visual mode (unset mode)" },
 

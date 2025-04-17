@@ -27,8 +27,8 @@ require("lazy").setup({
     { import = "plugins.code" },
     { import = "plugins.ui" },
     { import = "plugins.editor" },
-    { import = "plugins.lang" },
     { import = "plugins.utils" },
+    { import = "plugins.lang" },
   },
   ui = {
     backdrop = 100,

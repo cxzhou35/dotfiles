@@ -6,6 +6,7 @@ return {
       "lua-language-server",
       "stylua",
       "luacheck",
+      "basedpyright",
 
       "shfmt",
     },

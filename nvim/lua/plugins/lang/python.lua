@@ -1,4 +1,4 @@
-local lsp = vim.g.lazyvim_python_lsp or "basedpyright"
+local lsp = "basedpyright"
 
 return {
   {
@@ -21,53 +21,62 @@ return {
     opts = {
       servers = {
         basedpyright = {
-          enabled = lsp == "basedpyright",
-          analysis = {
-            autoSearchPaths = true,
-            autoImportCompletions = true,
-            diagnosticMode = "openFilesOnly",
-            useLibraryCodeForTypes = true,
-            reportMissingTypeStubs = false,
-            reportMissingImports = true,
-            typeCheckingMode = "basic",
+          settings = {
+            basedpyright = {
+              analysis = {
+                autoSearchPaths = true,
+                autoImportCompletions = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "openFilesOnly",
+                typeCheckingMode = "all",
+                diagnosticSeverityOverrides = {
+                  reportMissingTypeArgument = false,
+                  reportMissingTypeStubs = false,
+                  reportUnknownMemberType = false,
+                  reportUnknownVariableType = false,
+                  reportUnusedCallResult = false,
+                  reportUnusedImport = false,
+                  reportUnknownArgumentType = false,
+                  reportUnknownParameterType = false,
+                  reportMissingImports = "error",
+                  reportMissingParameterType = false,
+                },
+              },
+            },
           },
         },
-        -- pyright = {
-        --   settings = {
-        --     python = {
-        --       -- enabled = lsp == "pyright",
-        --       enabled = false,
-        --       analysis = {
-        --         logLevel = "Warning",
-        --         typeCheckingMode = "basic", -- off, basic, strict
-        --         autoSearchPaths = true,
-        --         useLibraryCodeForTypes = true,
-        --         autoImportCompletions = true,
-        --         diagnosticMode = "workspace",
-        --         diagnosticSeverityOverrides = {
-        --           strictListInference = true,
-        --           strictDictionaryInference = true,
-        --           strictSetInference = true,
-        --           reportUnusedImport = "warning",
-        --           reportUnusedClass = "warning",
-        --           reportUnusedFunction = "warning",
-        --           reportUnusedVariable = "warning",
-        --           reportUnusedCoroutine = "warning",
-        --           reportDuplicateImport = "warning",
-        --           reportPrivateUsage = "warning",
-        --           reportUnusedExpression = "warning",
-        --           reportConstantRedefinition = "error",
-        --           reportIncompatibleMethodOverride = "error",
-        --           reportMissingImports = "error",
-        --           reportUndefinedVariable = "error",
-        --           reportAssertAlwaysTrue = "error",
-        --         },
-        --       },
-        --     },
-        --   },
-        -- },
-        [lsp] = {
-          enabled = true,
+        pyright = {
+          settings = {
+            python = {
+              enabled = lsp == "pyright",
+              analysis = {
+                logLevel = "Warning",
+                typeCheckingMode = "basic", -- off, basic, strict
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                autoImportCompletions = true,
+                diagnosticMode = "workspace",
+                diagnosticSeverityOverrides = {
+                  strictListInference = true,
+                  strictDictionaryInference = true,
+                  strictSetInference = true,
+                  reportUnusedImport = "warning",
+                  reportUnusedClass = "warning",
+                  reportUnusedFunction = "warning",
+                  reportUnusedVariable = "warning",
+                  reportUnusedCoroutine = "warning",
+                  reportDuplicateImport = "warning",
+                  reportPrivateUsage = "warning",
+                  reportUnusedExpression = "warning",
+                  reportConstantRedefinition = "error",
+                  reportIncompatibleMethodOverride = "error",
+                  reportMissingImports = "error",
+                  reportUndefinedVariable = "error",
+                  reportAssertAlwaysTrue = "error",
+                },
+              },
+            },
+          },
         },
       },
     },

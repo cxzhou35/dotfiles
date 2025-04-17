@@ -12,6 +12,7 @@ return {
         python = { "isort", "autopep8" },
         c = { "clang_format" },
         cpp = { "clang_format" },
+        toml = { "taplo" },
         markdown = { "prettier", stop_after_first = true },
         tex = { "latexindent" },
         sh = { "shfmt" },

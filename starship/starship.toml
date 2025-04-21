@@ -8,9 +8,13 @@ $git_status\
 $git_metrics\
 $fill\
 $conda\
+$python\
+$nodejs\
+$c\
 $rust\
 $golang\
 $lua\
+$docker_context\
 $cmd_duration\
 $jobs\
 $time\
@@ -52,6 +56,10 @@ truncation_symbol = "…/"
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
+vimcmd_replace_one_symbol = '[](bold fg:purple)'
+vimcmd_replace_symbol = '[](bold fg:purple)'
+vimcmd_visual_symbol = '[](bold fg:lavender)'
+# command_timeout = 2000                            # Timeout in milliseconds (default is 500)
 
 [jobs]
 symbol = ""
@@ -97,15 +105,32 @@ symbol = " "
 style = "fg:#f9e2af"
 format = '[$symbol$environment]($style) '
 
+[python]
+symbol = " "
+style = "fg:#f9e2af"
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\) )]($style)'
+
 [rust]
 symbol = ""
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
+[c]
+symbol = " "
+style = "bg:teal"
+format = '[[ $symbol( $version) ](fg:base bg:teal)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:mantle"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+
 [time]
 disabled = false
+time_format = "%H:%M"
+# style = "bg:peach"
 style = "fg:#a0a9cb"
-format = '[[  $time ]()]($style)'
+format = '[[  $time ](fg:lavender)]($style)'
 
 [custom.stunnel]
 when = "ps aux | grep stunnel | grep -v grep"

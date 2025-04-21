@@ -9,7 +9,7 @@ return {
         html = { "prettier", stop_after_first = true },
         json = { "prettier", stop_after_first = true },
         -- yaml = { "prettier", stop_after_first = true },
-        python = { "isort", "autopep8" },
+        python = { "isort", "black" },
         c = { "clang_format" },
         cpp = { "clang_format" },
         toml = { "taplo" },
@@ -20,6 +20,9 @@ return {
       formatters = {
         lsp_format = "fallback",
         injected = { options = { ignore_errors = true } },
+        isort = {
+          prepend_args = { "--length-sort", "--lines-after-imports", "1" },
+        },
       },
     }
     return opts

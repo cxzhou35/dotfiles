@@ -25,7 +25,6 @@ alias lt="eza --tree --level=2 --long --icons --git"
 
 # Python
 alias py="python3"
-alias python="python3"
 alias pdt="python3 -m doctest -v"
 alias jp="jupyter notebook"
 alias jl="jupyter lab --log-level=40"

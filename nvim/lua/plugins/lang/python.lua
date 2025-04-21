@@ -21,6 +21,7 @@ return {
     opts = {
       servers = {
         basedpyright = {
+          enabled = lsp == "basedpyright",
           settings = {
             basedpyright = {
               analysis = {
@@ -30,6 +31,7 @@ return {
                 diagnosticMode = "openFilesOnly",
                 typeCheckingMode = "all",
                 diagnosticSeverityOverrides = {
+                  reportAny = false,
                   reportMissingTypeArgument = false,
                   reportMissingTypeStubs = false,
                   reportUnknownMemberType = false,
@@ -46,9 +48,9 @@ return {
           },
         },
         pyright = {
+          enabled = lsp == "pyright",
           settings = {
             python = {
-              enabled = lsp == "pyright",
               analysis = {
                 logLevel = "Warning",
                 typeCheckingMode = "basic", -- off, basic, strict

@@ -106,7 +106,7 @@ style = "fg:#f9e2af"
 format = '[$symbol$environment]($style) '
 
 [python]
-symbol = " "
+symbol = "Py"
 style = "fg:#f9e2af"
 format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\) )]($style)'
 

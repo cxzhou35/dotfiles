@@ -89,6 +89,15 @@ function appsec() {
   sudo xattr -r -d com.apple.quarantine $1
 }
 
+function getip() {
+  # ipconfig getifaddr en0
+  ipaddress=($(ifconfig en0 | grep "inet " 2>&1))
+  echo $ipaddress
+  # copy to clipboard
+  echo $(awk '{print $2}' <<< $ipaddress) | pbcopy
+  echo "copy the local ip address to clipboard"
+}
+
 function sshaws() {
   ssh -i ~/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1
 }

@@ -101,3 +101,18 @@ function getip() {
 function sshaws() {
   ssh -i ~/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1
 }
+
+function vsc(){
+  # first goto a directory with zoxide
+  target=$(zoxide query "$1")
+  # then check whether the target directory has *.code-workspace
+  if [ -d "$target" ]; then
+    if [ -n "$(find "$target" -name '*.code-workspace' -print -quit)" ]; then
+      code "$target"/*.code-workspace
+    else
+      code "$target"
+    fi
+  else
+    echo "Directory not found"
+  fi
+}

@@ -140,7 +140,7 @@
     "debug.onTaskErrors": "debugAnyway",
     "debug.terminal.clearBeforeReusing": true,
     // Copilot settings
-    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.chat.codesearch.enabled": true,
     "github.copilot.editor.enableCodeActions": false,
     // Everforest theme settings
     "everforest.darkContrast": "hard",
@@ -183,9 +183,22 @@
     "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
     "python.analysis.autoImportCompletions": true,
     "python.analysis.logLevel": "Warning",
+    "python.languageServer": "Pylance",
+    "pyright.disableLanguageServices": false,
+    "pyright.disableOrganizeImports": false,
     "[python]": {
-        "editor.formatOnType": true
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+        },
     },
+    "isort.importStrategy": "fromEnvironment",
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
     // lldb settings
     "lldb.displayFormat": "binary",
     "lldb.launch.terminal": "external",
@@ -267,6 +280,7 @@
         "<C-l>": false,
         "<C-\\>": false
     },
+    // visual mode
     "vim.visualModeKeyBindings": [
         {
             "after": [
@@ -286,6 +300,24 @@
             ]
         },
         {
+            "after": [
+                "5",
+                "j"
+            ],
+            "before": [
+                "J"
+            ]
+        },
+        {
+            "after": [
+                "5",
+                "k"
+            ],
+            "before": [
+                "K"
+            ]
+        },
+        {
             "before": [
                 ">"
             ],
@@ -302,6 +334,7 @@
             ]
         }
     ],
+    // normal mode
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -330,6 +363,7 @@
                 "editor.toggleFold"
             ]
         },
+        // lsp code action
         {
             "before": [
                 "<leader>",
@@ -408,6 +442,69 @@
                 "editor.action.marker.prevInFiles"
             ]
         },
+        {
+            "before": [
+                "g",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.navigateBack"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "workbench.action.navigateForward"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.navigateLeft"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.navigateRight"
+            ],
+            "silent": true
+        },
+        // python interpreter
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "c"
+            ],
+            "commands": [
+                "python.clearWorkspaceInterpreter"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "i"
+            ],
+            "commands": [
+                "python.setInterpreter"
+            ],
+            "silent": true
+        },
         // show commands
         {
             "before": [
@@ -418,22 +515,6 @@
             "commands": [
                 "workbench.action.showCommands"
             ],
-            "silent": true
-        },
-        {
-            "before": [
-                "<leader>",
-                "h"
-            ],
-            "commands": "workbench.action.navigateLeft",
-            "silent": true
-        },
-        {
-            "before": [
-                "<leader>",
-                "l"
-            ],
-            "commands": "workbench.action.navigateRight",
             "silent": true
         },
         // create new file
@@ -590,6 +671,51 @@
                 "K"
             ]
         },
+        // gitlens commands
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "l"
+            ],
+            "commands": [
+                "gitlens.toggleLineBlame"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "c"
+            ],
+            "commands": [
+                "gitlens.diffLineWithWorking"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "j"
+            ],
+            "commands": [
+                "gitlens.annotations.nextChange"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "k"
+            ],
+            "commands": [
+                "gitlens.annotations.previousChange,"
+            ],
+            "silent": true
+        },
         // save file
         {
             "before": [
@@ -696,6 +822,15 @@
             ]
         },
         {
+            "name": "pdflatex ➞ biber ➞ pdflatex * 2",
+            "tools": [
+                "pdflatex",
+                "biber",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
             "name": "pdflatex",
             "tools": [
                 "pdflatex"
@@ -708,38 +843,41 @@
             ]
         }
     ],
-    "latex-workshop.latex.clean.fileTypes": [
-        "*.aux",
-        "*.bbl",
-        "*.blg",
-        "*.idx",
-        "*.ind",
-        "*.lof",
-        "*.lot",
-        "*.out",
-        "*.toc",
-        "*.acn",
-        "*.acr",
-        "*.alg",
-        "*.glg",
-        "*.glo",
-        "*.gls",
-        "*.fdb_latexmk",
-        "*.snm",
-        "*.nav"
-    ],
-    "latex-workshop.view.pdf.viewer": "tab",
+    // "latex-workshop.latex.clean.fileTypes": [
+    //     "*.aux",
+    //     "*.bbl",
+    //     "*.blg",
+    //     "*.idx",
+    //     "*.ind",
+    //     "*.lof",
+    //     "*.lot",
+    //     "*.out",
+    //     "*.toc",
+    //     "*.acn",
+    //     "*.acr",
+    //     "*.alg",
+    //     "*.glg",
+    //     "*.glo",
+    //     "*.gls",
+    //     "*.fdb_latexmk",
+    //     "*.snm",
+    //     "*.nav"
+    // ],
     "latex-workshop.intellisense.citation.backend": "biblatex",
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.showContextMenu": true,
-    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.error.show": true,
     "latex-workshop.message.warning.show": false,
-    "latex-workshop.hover.preview.enabled": true,
+    "latex-workshop.message.badbox.show": false,
     "latex-workshop.message.log.show": true,
     "latex-workshop.latex.outDir": "%DIR%/out",
-    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
     "latex-workshop.latex.autoBuild.run": "never",
-    "latex-workshop.latex.autoClean.run": "never",
+    "latex-workshop.latex.autoClean.run": "onSucceeded",
+    "latex-workshop.latex.build.forceRecipeUsage": true,
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.hover.preview.enabled": true,
     "latex-workshop.hover.preview.mathjax.extensions": [
         "boldsymbol"
     ],
@@ -786,7 +924,7 @@
         "statusBar.noFolderBackground": "#393f4c",
         "statusBar.debuggingBackground": "#393f4c"
     },
-    "markdown-preview-enhanced.codeBlockTheme": "one-dark.css",
+    "markdown-preview-enhanced.codeBlockTheme": "github.css",
     "markdown-preview-enhanced.enableExtendedTableSyntax": true,
     "markdown-preview-enhanced.enableCriticMarkupSyntax": true,
     "markdown-preview-enhanced.chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -876,7 +1014,7 @@
             "italic": false
         },
         {
-            "tag": "mod",
+            "tag": "tomo",
             "color": "#F70891",
             "strikethrough": false,
             "underline": false,
@@ -895,4 +1033,8 @@
         }
     ],
     "explorer.confirmPasteNative": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "notebook.output.scrolling": true,
+    "path-intellisense.showHiddenFiles": true,
 }

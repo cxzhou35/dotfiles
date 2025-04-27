@@ -5,9 +5,9 @@ return {
     local opts = {
       formatters_by_ft = {
         lua = { "stylua" },
-        python = { "isort", "black" },
-        c = { "clang_format" },
-        cpp = { "clang_format" },
+        python = { "black", "isort" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
         toml = { "taplo" },
         tex = { "latexindent" },
         sh = { "shfmt" },
@@ -18,6 +18,10 @@ return {
         -- json = { "prettier", stop_after_first = true },
         -- markdown = { "prettier", stop_after_first = true },
         -- yaml = { "prettier", stop_after_first = true },
+      },
+      format_on_save = {
+        lsp_format = "fallback",
+        timeout_ms = 500,
       },
       formatters = {
         lsp_format = "fallback",

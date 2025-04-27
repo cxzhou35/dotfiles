@@ -22,10 +22,6 @@ return {
         "fallback",
       },
     },
-    appearance = {
-      use_nvim_cmp_as_default = false,
-      nerd_font_variant = "mono",
-    },
     completion = {
       list = {
         cycle = { from_top = false },
@@ -39,6 +35,7 @@ return {
       menu = {
         enabled = true,
         border = "rounded",
+        winblend = vim.o.pumblend,
         draw = {
           columns = {
             { "label", "label_description", gap = 1 },
@@ -60,6 +57,11 @@ return {
       -- Experimental signature help support
       -- signature = { enabled = true },
     },
+    signature = {
+      window = {
+        winblend = vim.o.pumblend,
+      },
+    },
     sources = {
       -- adding any nvim-cmp sources here will enable them
       -- with blink.compat
@@ -79,12 +81,5 @@ return {
         copilot = { score_offset = 10 },
       },
     },
-  },
-  -- allows extending the providers array elsewhere in your config
-  -- without having to redefine it
-  opts_extend = {
-    "sources.compat",
-    "sources.default",
-    "sources.completion.enabled_providers",
   },
 }

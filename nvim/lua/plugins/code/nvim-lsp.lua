@@ -29,6 +29,7 @@ return {
     servers = {
       lua_ls = {
         single_file_support = true,
+        filetypes = { "lua" },
         settings = {
           Lua = {
             runtime = { version = "LuaJIT" },

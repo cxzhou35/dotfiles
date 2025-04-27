@@ -173,7 +173,7 @@
           "plaintex",
           "tex"
         ],
-        "path": "./snippets/latex.json"
+        "path": "./user/tex.json"
       },
       {
         "language": "plantuml",

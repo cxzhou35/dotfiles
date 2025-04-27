@@ -3,14 +3,15 @@ return {
   dependencies = { "mason.nvim" },
   opts = function()
     local opts = {
+      notify_on_error = true,
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "black", "isort" },
         c = { "clang-format" },
         cpp = { "clang-format" },
         toml = { "taplo" },
-        tex = { "latexindent" },
         sh = { "shfmt" },
+        tex = { "tex-fmt" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
         css = { "prettierd", "prettier", stop_after_first = true },
@@ -18,10 +19,6 @@ return {
         -- json = { "prettier", stop_after_first = true },
         -- markdown = { "prettier", stop_after_first = true },
         -- yaml = { "prettier", stop_after_first = true },
-      },
-      format_on_save = {
-        lsp_format = "fallback",
-        timeout_ms = 500,
       },
       formatters = {
         lsp_format = "fallback",

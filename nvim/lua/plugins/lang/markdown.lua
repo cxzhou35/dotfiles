@@ -19,7 +19,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        marksman = { settings = { markdown = {} } },
+        marksman = { filetypes = { "markdown" }, settings = { markdown = {} } },
       },
     },
   },

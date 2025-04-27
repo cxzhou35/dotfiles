@@ -64,6 +64,7 @@ return {
         },
         html = {},
         yamlls = {
+          filetypes = { "yaml", "yaml.dockerfile" },
           settings = {
             yaml = {
               keyOrdering = false,

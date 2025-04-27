@@ -27,7 +27,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-    enabled = true,
+    enabled = false,
     event = { "UIEnter", "CursorMoved" },
     config = function()
       require("hlchunk").setup({

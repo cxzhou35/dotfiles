@@ -13,6 +13,8 @@ return {
       ["<S-Tab>"] = { "select_prev", "fallback" },
       ["<C-n>"] = { "snippet_forward", "fallback" },
       ["<C-p>"] = { "snippet_backward", "fallback" },
+      ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-d>"] = { "scroll_documentation_down", "fallback" },
       ["<CR>"] = {
         function(cmp)
           if vim.fn.getcmdtype() == "" then
@@ -47,6 +49,7 @@ return {
       },
       documentation = {
         auto_show = true,
+        auto_show_delay_ms = 200,
         window = {
           border = "rounded",
         },
@@ -54,13 +57,19 @@ return {
       ghost_text = {
         enabled = vim.g.ai_cmp,
       },
-      -- Experimental signature help support
-      -- signature = { enabled = true },
     },
     signature = {
       enabled = true,
       window = {
         winblend = vim.o.pumblend,
+        border = "single",
+      },
+    },
+    cmdline = {
+      completion = {
+        menu = {
+          auto_show = true,
+        },
       },
     },
     sources = {
@@ -69,6 +78,7 @@ return {
       default = { "lsp", "path", "snippets", "buffer" },
       providers = {
         -- lsp = { async = true, score_offset = 0 },
+        copilot = { score_offset = 100 },
         snippets = {
           score_offset = 0,
           opts = {
@@ -79,7 +89,6 @@ return {
             ignored_filetypes = {},
           },
         },
-        copilot = { score_offset = 10 },
       },
     },
   },

@@ -1,5 +1,6 @@
 return {
   "mawkler/modicator.nvim",
+  dependencies = "catppuccin/nvim",
   init = function()
     -- These are required for Modicator to work
     vim.o.cursorline = true
@@ -13,10 +14,11 @@ return {
         bold = true,
         italic = true,
       },
+      use_cursorline_background = false,
     },
     integration = {
       lualine = {
-        enabled = true,
+        enabled = false,
         mode_section = nil,
         highlight = "bg",
       },

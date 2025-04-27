@@ -58,6 +58,7 @@ return {
       -- signature = { enabled = true },
     },
     signature = {
+      enabled = true,
       window = {
         winblend = vim.o.pumblend,
       },
@@ -67,7 +68,7 @@ return {
       -- with blink.compat
       default = { "lsp", "path", "snippets", "buffer" },
       providers = {
-        lsp = { async = true, score_offset = 0 },
+        -- lsp = { async = true, score_offset = 0 },
         snippets = {
           score_offset = 0,
           opts = {

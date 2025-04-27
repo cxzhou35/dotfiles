@@ -42,7 +42,7 @@ opt.showmode = false
 opt.cursorline = true
 opt.ruler = true
 opt.number = true
-opt.relativenumber = false
+opt.relativenumber = true
 
 -- Clipboard
 -- opt.clipboard = { "unnamed", "unnamedplus" }

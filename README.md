@@ -61,8 +61,9 @@ bash setup/install.sh
 ## TODO
 
 - [x] #neovim Fix GitHub Copilot setup error.
-- [ ] #neovim Fix blink.cmp delay and copilot icon offset.
+- [ ] !#neovim Fix blink.cmp delay and copilot icon offset.
 - [ ] #neovim Refactor the lsp configurations, each language has an individual setup.
+- [ ] #neovim Add exclude files for Todo plugins.
 - [ ] #misc Write a brief introduction of my daily workflow.
 
 ## Acknowledgement

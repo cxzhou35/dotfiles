@@ -15,7 +15,7 @@ map({ "n", "v" }, "<leader>d", [["_d]])
 map("n", "<C-m>", "<C-i>", opts)
 
 -- Select all
-map("n", "<leader>aa", "gg<S-v>G", { desc = "Select all" })
+map("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })

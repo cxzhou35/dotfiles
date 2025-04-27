@@ -8,7 +8,7 @@ gui:
   sidePanelWidth: 0.3333
   expandFocusedSidePanel: false
   mainPanelSplitMode: "flexible"
-  language: "auto" # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
+  language: "en" # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
   theme:
     activeBorderColor:
       - '#f5e0dc'
@@ -212,3 +212,10 @@ keybinding:
     init: "i"
     update: "u"
     bulkMenu: "b"
+customCommands:
+  - key: "C"
+    command: "git cz"
+    description: "commit with commitizen"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true

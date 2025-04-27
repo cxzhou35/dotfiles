@@ -1,13 +1,13 @@
 # clean homebrew cache files
 function cleanbrew () {
-  folder_paths=(~/Library/Caches/Homebrew/downloads ~/Library/Caches/Homebrew/Cask)
+  folder_paths=($HOME/Library/Caches/Homebrew/downloads $HOME/Library/Caches/Homebrew/Cask)
 
   for folder_path in "${folder_paths[@]}"; do
     if [ -d "$folder_path" ] && [ "$(ls $folder_path)" ]; then
       rm -rf $folder_path/*
-      echo "The folder $folder_path has been emptied."
+      rich "[bold blue][Info][/]The folder [bold magenta]$(echo $folder_path)[/] has been emptied." -p
     else
-      echo "The folder $folder_path is already empty."
+      rich "[bold blue][Info][/]The folder [bold magenta]$(echo $folder_path)[/] does not exist." -p
     fi
   done
 
@@ -32,14 +32,14 @@ function ske (){
   nvim $(find . | sk -m --preview="bat {} --color=always")
 }
 
-# copy neovim config file to repo
+# copy neovim config file to github repo
 function loadnvim() {
-  cd ~/Github/neovim && cp -r ~/Github/dotfiles/nvim/* .
+  cd $HOME/Github/neovim && cp -r $HOME/Github/dotfiles/nvim/* .
 }
 
 function loadvsc ()
 {
-  cd ~/Github/dotfiles/vscode && cp -r ~/Library/Application\ Support/Code/User/*.json .
+  cp $HOME/Library/Application\ Support/Code/User/*.json $HOME/Github/dotfiles/vscode/
 }
 # create folder and cd into it
 function mkcd() {
@@ -49,7 +49,7 @@ function mkcd() {
 # hugo reload
 # receive one paramater with commit
 function hp(){
-  cd ~/Github/site/blog && hugo && cd ./public && git add . && git commit -m "$1" && git push && cd ~/Github/site/blog
+  cd $HOME/Github/site/blog && hugo && cd ./public && git add . && git commit -m "$1" && git push && cd $HOME/Github/site/blog
 }
 
 function sc(){
@@ -84,27 +84,32 @@ function rest() {
           -sound Crystal
 }
 
+# add apple quarantine for application
 function appsec() {
-  # @1: application path
+  # param1: application path
   sudo xattr -r -d com.apple.quarantine $1
 }
 
+# get local ip address and copy to clipboard
 function getip() {
   # ipconfig getifaddr en0
-  ipaddress=($(ifconfig en0 | grep "inet " 2>&1))
-  echo $ipaddress
+  ipinfo=($(ifconfig en0 | grep "inet " 2>&1))
+  rich "[bold blue][Info][/]Local ip address is: [bold magenta]$(awk '{print $2}' <<< $ipinfo)[/]" -p
   # copy to clipboard
-  echo $(awk '{print $2}' <<< $ipaddress) | pbcopy
-  echo "copy the local ip address to clipboard"
+  ipaddress=$(awk '{print $2}' <<< $ipinfo)
+  echo $ipaddress | pbcopy
+  rich "[bold blue][Info][/]Copy to clipboard" -p
 }
 
 function sshaws() {
-  ssh -i ~/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1
+  ssh -i $HOME/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1
 }
 
-function vsc(){
-  # first goto a directory with zoxide
+# open target directory with vscode
+function vscw(){
+  # param1: target directory
   target=$(zoxide query "$1")
+  rich "[bold blue][Info][/]Opening [bold magenta]$(echo $target)[/] with VSCode" -p
   # then check whether the target directory has *.code-workspace
   if [ -d "$target" ]; then
     if [ -n "$(find "$target" -name '*.code-workspace' -print -quit)" ]; then
@@ -113,6 +118,22 @@ function vsc(){
       code "$target"
     fi
   else
-    echo "Directory not found"
+    rich "[bold red3][Error][/]Directory not found" -p
   fi
+}
+
+# easy warpper for zju-connect
+function zjucc(){
+    CONFIG_PATH="$HOME/share/zju_connect_config.toml"
+    # check if config file exists
+    if [ ! -f "$CONFIG_PATH" ]; then
+        rich "[bold red3][Error][/]Config file not found at [bold magenta]$(echo $CONFIG_PATH)[/]" -p
+        rich "[bold blue][Info][/]Create a new config file" -p
+        wget -O "$CONFIG_PATH" https://raw.githubusercontent.com/Mythologyli/zju-connect/refs/heads/main/config.toml.example
+        # open with editor
+        vim "$CONFIG_PATH"
+    else
+        rich "[bold blue][Info][/]Load zju-connect config from [bold magenta]$(echo $CONFIG_PATH)[/]" -p
+        zju-connect -config "$CONFIG_PATH"
+    fi
 }

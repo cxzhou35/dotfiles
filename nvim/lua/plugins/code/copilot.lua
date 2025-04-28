@@ -6,7 +6,16 @@ return {
     event = "InsertEnter",
     opts = {
       suggestion = {
-        enabled = false,
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-l>",
+          accept_word = "<M-l>",
+          accept_line = "<M-S-l>",
+          next = "<M-]>",
+          prev = "<M-[>",
+          dismiss = "<C-]>",
+        },
       },
       panel = { enabled = false },
       filetypes = {
@@ -18,19 +27,6 @@ return {
         cpp = true,
       },
     },
-  },
-  -- add ai_accept action
-  {
-    "zbirenbaum/copilot.lua",
-    opts = function()
-      LazyVim.cmp.actions.ai_accept = function()
-        if require("copilot.suggestion").is_visible() then
-          LazyVim.create_undo()
-          require("copilot.suggestion").accept()
-          return true
-        end
-      end
-    end,
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
@@ -61,23 +57,5 @@ return {
   -- lualine integrations
   {
     "AndreM222/copilot-lualine",
-  },
-  -- blink.cmp integrations
-  {
-    "saghen/blink.cmp",
-    optional = true,
-    dependencies = { "giuxtaposition/blink-cmp-copilot" },
-    opts = {
-      sources = {
-        default = { "copilot" },
-        providers = {
-          copilot = {
-            name = "copilot",
-            module = "blink-cmp-copilot",
-            kind = "Copilot",
-          },
-        },
-      },
-    },
   },
 }

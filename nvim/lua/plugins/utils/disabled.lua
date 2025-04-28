@@ -1,7 +1,6 @@
 local disabled = {
   { "rmagatti/auto-session" },
   { "mg979/vim-visual-multi" },
-  -- { "windwp/nvim-ts-autotag" },
   { "abecodes/tabout.nvim" },
   { "phaazon/hop.nvim" },
   { "m4xshen/hardtime.nvim" },

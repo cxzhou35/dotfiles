@@ -13,8 +13,6 @@ return {
       ["<S-Tab>"] = { "select_prev", "fallback" },
       ["<C-n>"] = { "snippet_forward", "fallback" },
       ["<C-p>"] = { "snippet_backward", "fallback" },
-      ["<C-u>"] = { "scroll_documentation_up", "fallback" },
-      ["<C-d>"] = { "scroll_documentation_down", "fallback" },
       ["<CR>"] = {
         function(cmp)
           if vim.fn.getcmdtype() == "" then
@@ -26,13 +24,7 @@ return {
     },
     completion = {
       list = {
-        cycle = { from_top = false },
-      },
-      accept = {
-        -- experimental auto-brackets support
-        auto_brackets = {
-          enabled = true,
-        },
+        cycle = { from_top = true },
       },
       menu = {
         enabled = true,
@@ -49,20 +41,15 @@ return {
       },
       documentation = {
         auto_show = true,
-        auto_show_delay_ms = 200,
+        auto_show_delay_ms = 100,
         window = {
           border = "rounded",
         },
       },
-      ghost_text = {
-        enabled = vim.g.ai_cmp,
-      },
     },
     signature = {
-      enabled = true,
       window = {
         winblend = vim.o.pumblend,
-        border = "single",
       },
     },
     cmdline = {
@@ -73,12 +60,10 @@ return {
       },
     },
     sources = {
-      -- adding any nvim-cmp sources here will enable them
       -- with blink.compat
       default = { "lsp", "path", "snippets", "buffer" },
       providers = {
         -- lsp = { async = true, score_offset = 0 },
-        copilot = { score_offset = 100 },
         snippets = {
           score_offset = 0,
           opts = {

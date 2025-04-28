@@ -143,8 +143,9 @@ opt.wildignore = {
   "*.toc",
 }
 
--- Blink
-g.lazyvim_blink_main = false
+-- Lazyvim
+g.lazyvim_cmp = "blink.cmp"
+g.lazyvim_blink_main = true
 
 -- Disable nvim intro
 opt.shortmess:append("sI")

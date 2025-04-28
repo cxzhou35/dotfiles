@@ -1,7 +1,8 @@
+local indent = "snacks" -- ibl | hlc | mini | snacks
 return {
   {
     "lukas-reineke/indent-blankline.nvim",
-    enabled = false,
+    enabled = indent == "ibl",
     event = "LazyFile",
     opts = {
       scope = { enabled = false },
@@ -27,7 +28,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-    enabled = false,
+    enabled = indent == "hlc",
     event = { "UIEnter", "CursorMoved" },
     config = function()
       require("hlchunk").setup({
@@ -78,7 +79,7 @@ return {
   },
   {
     "echasnovski/mini.indentscope",
-    enabled = false,
+    enabled = indent == "mini",
     version = false, -- wait till new 0.7.0 release to put it back on semver
     event = "LazyFile",
     opts = {
@@ -107,5 +108,48 @@ return {
         end,
       })
     end,
+  },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      indent = {
+        enabled = indent == "snacks",
+        indent = {
+          char = "┆",
+          only_scope = false,
+          only_current = true,
+          hl = "SnacksIndent",
+        },
+        animate = {
+          duration = {
+            step = 10,
+            duration = 100,
+          },
+        },
+        scope = {
+          enabled = true,
+          priority = 200,
+          char = "┊",
+          underline = false,
+          only_current = true,
+          hl = {
+            "SnacksIndent1",
+            "SnacksIndent2",
+            "SnacksIndent3",
+            "SnacksIndent4",
+            "SnacksIndent5",
+            "SnacksIndent6",
+            "SnacksIndent7",
+            "SnacksIndent8",
+          },
+        },
+        chunk = {
+          enabled = false,
+          priority = 200,
+          only_current = true,
+          hl = "SnacksIndentChunk",
+        },
+      },
+    },
   },
 }

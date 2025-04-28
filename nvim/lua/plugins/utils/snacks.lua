@@ -136,9 +136,23 @@ return {
       desc = "Toggle Zoom",
     },
     {
-      ";l",
+      ";ll",
       function()
         Snacks.lazygit()
+      end,
+      desc = "Lazygit",
+    },
+    {
+      ";lg",
+      function()
+        Snacks.lazygit.log_file()
+      end,
+      desc = "Lazygit",
+    },
+    {
+      ";la",
+      function()
+        Snacks.lazygit.log()
       end,
       desc = "Lazygit",
     },

@@ -27,7 +27,7 @@ local disabled = {
   -- treesitter
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   -- terminal
-  { "akinsho/toggleterm.nvim" },
+  -- { "akinsho/toggleterm.nvim" },
   -- ui
   -- { "mawkler/modicator.nvim" },
   { "gen740/SmoothCursor.nvim" },

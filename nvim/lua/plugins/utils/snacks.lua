@@ -113,16 +113,6 @@ return {
       border = "rounded",
       timeout = 2000,
     },
-    terminal = {
-      win = {
-        width = 0.85,
-        height = 0.85,
-        position = "float",
-        border = "rounded",
-        -- title = "Terminal",
-        -- title_pos = "center",
-      },
-    },
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     input = { enabled = true },

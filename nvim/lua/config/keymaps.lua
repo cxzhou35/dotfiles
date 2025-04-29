@@ -92,7 +92,6 @@ map("n", "<leader>-", "<C-x>")
 
 -- File
 map("n", "<C-n>", "<cmd>enew<cr>", { desc = "New File" })
-map("n", "<C-q>", "<cmd>bdelete<CR>", { desc = "Delete Buffer" })
 map("n", "<leader>fq", "<cmd>q!<CR>")
 map("n", "<leader>fw", "<cmd>wa<CR>")
 map("n", "<leader>fa", "<cmd>wqa<CR>")

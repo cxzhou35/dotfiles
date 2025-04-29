@@ -1,6 +1,8 @@
+local scroll = "snacks" -- snacks | scrollbar
+
 return {
   "petertriho/nvim-scrollbar",
-  enabled = true,
+  enabled = scroll == "scrollbar",
   opts = {
     show = true,
     show_in_active_only = false,

@@ -144,7 +144,6 @@ opt.wildignore = {
 }
 
 -- Lazyvim
-g.snacks_animate = true
 vim.g.lazyvim_picker = "telescope"
 g.lazyvim_cmp = "blink.cmp"
 g.lazyvim_blink_main = true

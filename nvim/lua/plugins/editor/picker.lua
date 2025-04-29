@@ -60,13 +60,6 @@ return {
       desc = "Visual Grep With Args",
       mode = { "n", "v", "x" },
     },
-
-    -- lazyvim pickers
-    -- { ";c", LazyVim.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with Preview" },
-    -- { ";f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-    -- { ";F", LazyVim.pick("files", { cwd = false }), desc = "Find Files (cwd)" },
-    -- { ";O", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
-    -- { ";R", LazyVim.pick("live_grep", { cwd = false }), desc = "Grep (cwd)" },
     {
       "<C-f>",
       function()

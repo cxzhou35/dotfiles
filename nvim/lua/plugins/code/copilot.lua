@@ -40,7 +40,6 @@ return {
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
       config = function()
-        require("CopilotChat.integrations.cmp").setup()
         require("CopilotChat").setup({
           debug = false,
           show_folds = true,

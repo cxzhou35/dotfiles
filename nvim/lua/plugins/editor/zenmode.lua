@@ -33,6 +33,12 @@ return {
         gitsigns = { enabled = false },
         kitty = { enabled = false, font = "+20%" },
       },
+      on_open = function()
+        require("incline").disable()
+      end,
+      on_close = function()
+        require("incline").enable()
+      end,
     },
   },
   {
@@ -60,6 +66,12 @@ return {
             relativenumber = true,
           },
         },
+        on_open = function()
+          require("incline").disable()
+        end,
+        on_close = function()
+          require("incline").enable()
+        end,
         zoom = {
           toggles = {},
           show = { statusline = true, tabline = true },

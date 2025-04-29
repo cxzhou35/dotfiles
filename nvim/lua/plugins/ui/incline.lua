@@ -4,6 +4,9 @@ return {
     dependencies = {},
     event = "BufReadPre",
     priority = 1200,
+    keys = {
+      { "<leader>I", "<CMD>lua require('incline').toggle()<CR>", desc = "Toggle Incline" },
+    },
     config = function()
       local colors = require("catppuccin.palettes.macchiato")
       require("incline").setup({
@@ -17,8 +20,8 @@ return {
           padding = 0,
           margin = { vertical = 0, horizontal = 1 },
           placement = {
-            horizontal = "right",
             vertical = "top",
+            horizontal = "right",
           },
         },
         hide = {
@@ -28,6 +31,13 @@ return {
           buftypes = {},
           filetypes = { "neo-tree" },
           unlisted_buffers = false,
+          wintypes = function(winid, wintype)
+            local zen_view = package.loaded["zen-mode.view"]
+            if zen_view and zen_view.is_open() then
+              return winid ~= zen_view.win
+            end
+            return wintype ~= ""
+          end,
         },
         render = function(props)
           local function get_filename()

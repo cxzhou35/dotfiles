@@ -64,6 +64,8 @@ bash setup/install.sh
 - [ ] !#neovim Fix blink.cmp delay and copilot icon offset.
 - [ ] #neovim Refactor the lsp configurations, each language has an individual setup.
 - [ ] #neovim Add exclude files for Todo plugins.
+- [ ] #neovim Fix gitsigns error.
+- [ ] #neovim Don't load incline plugin when in zen mode.
 - [ ] #misc Write a brief introduction of my daily workflow.
 
 ## Acknowledgement

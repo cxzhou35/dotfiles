@@ -4,6 +4,9 @@ local disabled = {
   { "abecodes/tabout.nvim" },
   { "phaazon/hop.nvim" },
   { "m4xshen/hardtime.nvim" },
+  -- animate
+  -- { "gen740/SmoothCursor.nvim" },
+  -- { "sphamba/smear-cursor.nvim" },
   -- { "axieax/urlview.nvim" },
   { "folke/persistence.nvim" },
   -- git
@@ -27,7 +30,6 @@ local disabled = {
   -- { "akinsho/toggleterm.nvim" },
   -- ui
   -- { "mawkler/modicator.nvim" },
-  { "gen740/SmoothCursor.nvim" },
   -- suround
   -- { "echasnovski/mini.surround" }, -- INFO: use mini.suround
   -- { "kylechui/nvim-surround" },

@@ -3,130 +3,135 @@ startup_command = "pwd"
 
 [[session]]
 name = "Home 🏡"
-path = "$HOME"
+path = "~"
 startup_command = "yazi"
 
 [[session]]
 name = "Code 💻"
-path = "$HOME/Code"
+path = "~/Code"
 startup_command = "yazi"
 
 [[session]]
 name = "Downloads 📥"
-path = "$HOME/Downloads"
+path = "~/Downloads"
 startup_command = "yazi"
 
 [[session]]
 name = "Pictures 📸"
-path = "$HOME/Pictures"
+path = "~/Pictures"
 startup_command = "yazi"
 
 [[session]]
 name = "Videos 🎥"
-path = "$HOME/Movies"
+path = "~/Movies"
 startup_command = "yazi"
 
 [[session]]
 name = "Courses 📚"
 path = "/Users/vercent/Res/Course/ZJU/研究生/研究生课程"
-startup_command = "ls -al"
+startup_command = "l"
 
 [[session]]
 name = "Notes 📝"
-path = "$HOME/DevNotes"
+path = "~/DevNotes"
 startup_command = "yazi"
 
 [[session]]
 name = "Github"
-path = "$HOME/Github"
-startup_command = "ls -al"
+path = "~/Github"
+startup_command = "l"
 
 [[session]]
 name = "Dotfiles"
-path = "$HOME/Github/dotfiles"
-startup_command = "ls -al"
+path = "~/Github/dotfiles"
+startup_command = "l"
 
 [[session]]
 name = "Blog"
-path = "$HOME/Github/site/blog"
-startup_command = "ls -al"
+path = "~/Github/site/blog"
+startup_command = "l"
 
 [[session]]
 name = "Notebook"
-path = "$HOME/Github/site/notebook"
-startup_command = "ls -al"
+path = "~/Github/site/notebook"
+startup_command = "l"
+
+[[session]]
+name = "Homepage"
+path = "~/Github/site/homepage"
+startup_command = "l"
 
 [[session]]
 name = "Workspace 🔭"
-path = "$HOME/Github/workspace"
-startup_command = "ls -al"
+path = "~/Github/workspace"
+startup_command = "l"
 
 [[session]]
 name = "LaTex workspace 🔭"
-path = "$HOME/Code/tex"
+path = "~/Code/tex"
 startup_command = "code tex.code-workspace"
 
 [[session]]
 name = "Python workspace 🔭"
-path = "$HOME/Code/python"
+path = "~/Code/python"
 startup_command = "code python.code-workspace"
 
 [[session]]
 name = "C workspace 🔭"
-path = "$HOME/Code/c"
+path = "~/Code/c"
 startup_command = "code  c.code-workspace"
 
 [[session]]
 name = "Cpp workspace 🔭"
-path = "$HOME/Code/cpp"
+path = "~/Code/cpp"
 startup_command = "code cpp.code-workspace"
 
 [[session]]
 name = "Nvim-config"
-path = "$HOME/Github/dotfiles/nvim"
-startup_command = "ls -al"
+path = "~/Github/dotfiles/nvim"
+startup_command = "l"
 
 [[session]]
 name = "Yazi-config"
-path = "$HOME/Github/dotfiles/yazi"
-startup_command = "ls -al"
+path = "~/Github/dotfiles/yazi"
+startup_command = "l"
 
 [[session]]
 name = "Wezterm-config"
-path = "$HOME/Github/dotfiles/wezterm"
-startup_command = "ls -al"
+path = "~/Github/dotfiles/wezterm"
+startup_command = "l"
 
 [[session]]
 name = "Rime-config"
-path = "$HOME/Library/Rime"
-startup_command = "ls -al"
+path = "~/Library/Rime"
+startup_command = "l"
 
 [[session]]
 name = "Zsh-config"
-path = "$HOME/Github/dotfiles/zsh"
-startup_command = "ls -al"
+path = "~/Github/dotfiles/zsh"
+startup_command = "l"
 
 [[session]]
 name = "Tmux-config"
-path = "$HOME/Github/dotfiles/tmux"
-startup_command = "ls -al"
+path = "~/Github/dotfiles/tmux"
+startup_command = "l"
 
 [[session]]
 name = "Sesh-config"
-path = "$HOME/Github/dotfiles/sesh"
-startup_command = "ls -al"
+path = "~/Github/dotfiles/sesh"
+startup_command = "nvim sesh.toml"
 
 [[session]]
 name = "Alacritty-config"
-path = "$HOME/Github/dotfiles/alacritty"
-startup_command = "ls -al"
+path = "~/Github/dotfiles/alacritty"
+startup_command = "l"
 
 [[session]]
 name = "Kitty-config"
-path = "$HOME/Github/dotfiles/kitty"
-startup_command = "ls -al"
+path = "~/Github/dotfiles/kitty"
+startup_command = "l"
 
 [[session]]
 name = "SSH-config"
-path = "$HOME/.ssh"
+path = "~/.ssh"
 startup_command = "nvim config"

@@ -7,10 +7,7 @@ local disabled = {
   -- { "axieax/urlview.nvim" },
   { "folke/persistence.nvim" },
   -- git
-  -- { "NeogitOrg/neogit" },
-  {
-    "sindrets/diffview.nvim",
-  },
+  { "NeogitOrg/neogit" },
   -- copilot
   -- { "zbirenbaum/copilot.lua" },
   -- { "CopilotC-Nvim/CopilotChat.nvim" },

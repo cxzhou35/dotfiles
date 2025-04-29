@@ -128,7 +128,8 @@ return {
                 },
                 hl = {
                   enabled = "#9EDFA6",
-                  sleep = "#AEB7D0",
+                  sleep = "#9EDFA6",
+                  -- sleep = "#AEB7D0",
                   disabled = "#6272A4",
                   warning = "#DA9F7E",
                   unknown = "#bb1c33",

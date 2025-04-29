@@ -163,12 +163,6 @@ return {
     "folke/snacks.nvim",
     opts = {
       explorer = { enabled = explorer == "snacks", replace_netrw = true },
-      picker = {
-        enabled = explorer == "snacks",
-        sources = {
-          explorer = {},
-        },
-      },
     },
     keys = {
       {

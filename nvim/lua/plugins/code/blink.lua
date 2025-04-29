@@ -46,6 +46,7 @@ return {
           border = "rounded",
         },
       },
+      ghost_text = { enabled = true, show_with_menu = false },
     },
     signature = {
       window = {
@@ -72,6 +73,16 @@ return {
             global_snippets = { "all" },
             extended_filetypes = {},
             ignored_filetypes = {},
+            should_show_items = function(ctx)
+              return ctx.trigger.initial_kind ~= "trigger_character"
+            end,
+          },
+        },
+        path = {
+          opts = {
+            get_cwd = function(_)
+              return vim.fn.getcwd()
+            end,
           },
         },
       },

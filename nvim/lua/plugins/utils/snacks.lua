@@ -15,6 +15,16 @@ return {
       border = "rounded",
       timeout = 2000,
     },
+    toggle = {
+      enabled = true,
+      map = vim.keymap.set, -- keymap.set function to use
+      which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
+      notify = true, -- show a notification when toggling
+      icon = {
+        enabled = " ",
+        disabled = " ",
+      },
+    },
 
     -- utils
     scroll = { enabled = true },
@@ -26,6 +36,7 @@ return {
     -- disabled modules
     words = { enabled = false, debounce = 10, notify_end = false },
     animate = { enabled = false },
+    picker = { enabled = false },
   },
   keys = {
     {

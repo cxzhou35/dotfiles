@@ -52,7 +52,7 @@ map("n", "tk", "<cmd>tabprevious<cr>", { desc = "Previous Tab", silent = true })
 map("n", "tn", "<cmd>tabnew<cr>", { desc = "New Tab", silent = true })
 map("n", "tq", "<cmd>tabclose<cr>", { desc = "Close Tab", silent = true })
 
--- Split windows
+-- Split window
 map("n", "s", "<Nop>")
 map("n", "ss", "<cmd>split<Return><C-w>w", { silent = true, desc = "split" })
 map("n", "sv", "<cmd>vsplit<Return><C-w>w", { silent = true, desc = "vsplit" })
@@ -122,9 +122,6 @@ map("n", "<leader>rs", ":LspRestart<CR>", opts)
 
 -- CarbonNow
 map("v", "<leader>cn", ":CarbonNow<CR>", { silent = true })
-
--- FlyBuf
-map("n", "<leader>b", ":FlyBuf<CR>", opts)
 
 -- NerdIcons
 map("n", "<leader>ni", ":NerdIcons<CR>", opts)

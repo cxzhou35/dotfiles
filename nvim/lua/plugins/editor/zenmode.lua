@@ -2,7 +2,6 @@ local zen = "snacks"
 
 return {
   {
-
     -- NOTE: use Snacks.zen now
     "folke/zen-mode.nvim",
     enabled = zen == "zen-mode",
@@ -49,10 +48,42 @@ return {
           inlay_hints = false,
         },
         show = {
-          statusline = true,
+          statusline = false,
           tabline = false,
         },
-        win = { style = "zen" },
+        win = {
+          styles = "zen",
+          width = 120,
+          minimal = true,
+          wo = {
+            number = true,
+            relativenumber = true,
+          },
+        },
+        zoom = {
+          toggles = {},
+          show = { statusline = true, tabline = true },
+          win = {
+            backdrop = false,
+            width = 0, -- full width
+          },
+        },
+      },
+    },
+    keys = {
+      {
+        ";z",
+        function()
+          Snacks.zen()
+        end,
+        desc = "Toggle Zen Mode",
+      },
+      {
+        ";m",
+        function()
+          Snacks.zen.zoom()
+        end,
+        desc = "Toggle Zoom",
       },
     },
   },

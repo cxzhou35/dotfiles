@@ -16,11 +16,10 @@ return {
     },
     buffers = {
       follow_current_file = {
-        enabled = true, -- This will find and focus the file in the active buffer every time
-        --              -- the current file is changed while the tree is open.
-        leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        enabled = true,
+        leave_dirs_open = false,
       },
-      group_empty_dirs = true, -- when true, empty folders will be grouped together
+      group_empty_dirs = true,
       show_unloaded = true,
     },
     filesystem = {
@@ -29,6 +28,7 @@ return {
         "node_modules",
         "__pycache__",
         ".git",
+        ".next",
       },
       never_show = {
         ".DS_Store",
@@ -43,8 +43,6 @@ return {
         ["t"] = "open_tabnew",
         ["a"] = {
           "add",
-          -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
-          -- some commands may take optional config options, see `:h neo-tree-mappings` for details
           config = {
             show_path = "relative", -- "none", "relative", "absolute"
           },
@@ -101,10 +99,10 @@ return {
       git_status = {
         symbols = {
           -- Change type
-          added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-          modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted = "✖ ", -- this can only be used in the git_status source
-          renamed = "󰁕 ", -- this can only be used in the git_status source
+          added = "✚",
+          modified = "",
+          deleted = "✖ ",
+          renamed = "󰁕 ",
           -- Status type
           untracked = " ",
           ignored = " ",
@@ -114,7 +112,7 @@ return {
         },
       },
       indent = {
-        padding = 1, -- extra padding on left hand side
+        padding = 1,
         indent_size = 2,
       },
       event_handlers = {
@@ -143,5 +141,17 @@ return {
         },
       },
     },
+    -- Snacks rename
+    opts = function(_, opts)
+      local function on_move(data)
+        Snacks.rename.on_rename_file(data.source, data.destination)
+      end
+      local events = require("neo-tree.events")
+      opts.event_handlers = opts.event_handlers or {}
+      vim.list_extend(opts.event_handlers, {
+        { event = events.FILE_MOVED, handler = on_move },
+        { event = events.FILE_RENAMED, handler = on_move },
+      })
+    end,
   },
 }

@@ -12,7 +12,6 @@ return {
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, { "marksman" })
-      -- vim.list_extend(opts.ensure_installed, { "markdownlint", "marksman" })
     end,
   },
   {
@@ -31,9 +30,6 @@ return {
     -- event = "VeryLazy",
     ft = { "markdown" },
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    -- build = function()
-    --   vim.fn["mkdp#util#install"]()
-    -- end,
     build = "npm install",
     keys = {
       {
@@ -76,33 +72,6 @@ return {
       },
     },
   },
-  -- {
-  --   "lukas-reineke/headlines.nvim",
-  --   lazy = true,
-  --   -- event = "VeryLazy",
-  --   ft = { "markdown" },
-  --   opts = {
-  --     markdown = {
-  --       headline_highlights = { "Height" },
-  --       bullets = {},
-  --       codeblock_highlight = "CodeBlock",
-  --       dash_highlight = "Dash",
-  --       dash_string = "-",
-  --       quote_highlight = "Quote",
-  --       quote_string = "┃",
-  --       fat_headlines = false,
-  --       fat_headline_upper_string = "▃ ",
-  --       fat_headline_lower_string = "🬂 ",
-  --     },
-  --   },
-  --   config = function(_, opts)
-  --     -- PERF: schedule to prevent headlines slowing down opening a file
-  --     vim.schedule(function()
-  --       require("headlines").setup(opts)
-  --       require("headlines").refresh()
-  --     end)
-  --   end,
-  -- },
   {
     "MeanderingProgrammer/render-markdown.nvim",
     keys = {

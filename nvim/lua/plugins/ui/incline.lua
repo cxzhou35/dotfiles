@@ -31,13 +31,6 @@ return {
           buftypes = {},
           filetypes = { "neo-tree" },
           unlisted_buffers = false,
-          wintypes = function(winid, wintype)
-            local zen_view = package.loaded["zen-mode.view"]
-            if zen_view and zen_view.is_open() then
-              return winid ~= zen_view.win
-            end
-            return wintype ~= ""
-          end,
         },
         render = function(props)
           local function get_filename()
@@ -56,19 +49,6 @@ return {
             }
           end
 
-          local function get_grapple_status()
-            local status, grapple = pcall(require, "grapple")
-            if not status then
-              return ""
-            else
-              grapple = require("grapple").name_or_index({ buffer = props.buf }) or ""
-              if grapple ~= "" then
-                grapple = { { " 󰛢 ", group = "Function" }, { grapple, group = "Constant" } }
-              end
-            end
-            return grapple
-          end
-
           local function get_window_number()
             return {
               " ┊  " .. vim.api.nvim_win_get_number(props.win),
@@ -78,9 +58,9 @@ return {
           end
 
           return {
-            { get_grapple_status() },
             { get_filename() },
             { get_window_number() },
+            group = props.focused and "ColorColumn" or "SignColumn",
           }
         end,
       })

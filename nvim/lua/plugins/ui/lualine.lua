@@ -32,6 +32,11 @@ return {
       return "  " .. msg
     end
 
+    local function getCondaEnv()
+      local env_name = require("nvim-conda").utils.get_conda_environments()
+      return "🅒 " .. env_name
+    end
+
     local colors = {
       [""] = Snacks.util.color("Special"),
       ["Normal"] = Snacks.util.color("Special"),
@@ -83,6 +88,7 @@ return {
             },
           },
           { getLspName },
+          -- { getCondaEnv },
           {
             "diagnostics",
             symbols = {
@@ -95,7 +101,7 @@ return {
           },
         },
         lualine_x = {
-          -- Snacks.profiler.status(),
+          Snacks.profiler.status(),
           -- stylua: ignore
           {
             function() return require("noice").api.status.command.get() end,
@@ -107,12 +113,6 @@ return {
             function() return require("noice").api.status.mode.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
             color = function() return { fg = Snacks.util.color("Constant") } end,
-          },
-          -- stylua: ignore
-          {
-            function() return "  " .. require("dap").status() end,
-            cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = function() return { fg = Snacks.util.color("Debug") } end,
           },
           {
             "copilot",

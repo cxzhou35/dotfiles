@@ -53,7 +53,7 @@ return {
     },
     keys = {
       {
-        "<C-/>",
+        ";t",
         function()
           Snacks.terminal()
         end,

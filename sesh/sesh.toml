@@ -114,7 +114,7 @@ startup_command = "l"
 [[session]]
 name = "Tmux-config"
 path = "~/Github/dotfiles/tmux"
-startup_command = "l"
+startup_command = "la"
 
 [[session]]
 name = "Sesh-config"

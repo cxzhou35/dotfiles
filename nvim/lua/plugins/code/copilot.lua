@@ -32,13 +32,88 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
     event = "VeryLazy",
-    -- cmd = { "CopilotChat", "CopilotChatModels", "CopilotChatAgents" },
-    keys = { { "<leader>cu", "<cmd>CopilotChatToggle<cr>", desc = "Toggle chat window" } },
+    keys = {
+      {
+        "<leader>ap",
+        function()
+          require("CopilotChat").select_prompt({
+            context = {
+              "buffers",
+            },
+          })
+        end,
+        desc = "CopilotChat - Prompt actions",
+      },
+      {
+        "<leader>ap",
+        function()
+          require("CopilotChat").select_prompt()
+        end,
+        mode = "x",
+        desc = "CopilotChat - Prompt actions",
+      },
+      -- Code related commands
+      { "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+      { "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+      { "<leader>ar", "<cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
+      { "<leader>aR", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
+      { "<leader>an", "<cmd>CopilotChatBetterNamings<cr>", desc = "CopilotChat - Better Naming" },
+      -- Chat with Copilot in visual mode
+      {
+        "<leader>av",
+        "<cmd>CopilotChatVisual<cr>",
+        mode = "x",
+        desc = "CopilotChat - Open in vertical split",
+      },
+      {
+        "<leader>ax",
+        "<cmd>CopilotChatInline<cr>",
+        mode = "x",
+        desc = "CopilotChat - Inline chat",
+      },
+      -- Custom input for CopilotChat
+      {
+        "<leader>ai",
+        function()
+          local input = vim.fn.input("Ask Copilot: ")
+          if input ~= "" then
+            vim.cmd("CopilotChat " .. input)
+          end
+        end,
+        desc = "CopilotChat - Ask input",
+      },
+      -- Generate commit message based on the git diff
+      {
+        "<leader>ac",
+        "<cmd>CopilotChatCommit<cr>",
+        desc = "CopilotChat - Generate commit message for all changes",
+      },
+      -- Quick chat with Copilot
+      {
+        "<leader>aq",
+        function()
+          local input = vim.fn.input("Quick Chat: ")
+          if input ~= "" then
+            vim.cmd("CopilotChatBuffer " .. input)
+          end
+        end,
+        desc = "CopilotChat - Quick chat",
+      },
+      -- Fix the issue with diagnostic
+      { "<leader>af", "<cmd>CopilotChatFixError<cr>", desc = "CopilotChat - Fix Diagnostic" },
+      -- Clear buffer and chat history
+      { "<leader>al", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
+      -- Toggle Copilot Chat Vsplit
+      { "<leader>au", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
+      -- Copilot Chat Models
+      { "<leader>am", "<cmd>CopilotChatModels<cr>", desc = "CopilotChat - Select Models" },
+      -- Copilot Chat Agents
+      { "<leader>aa", "<cmd>CopilotChatAgents<cr>", desc = "CopilotChat - Select Agents" },
+    },
     dependencies = {
       { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim" },
     },
-    -- build = "make tiktoken", -- Only on MacOS or Linux
     opts = function()
       local user = vim.env.USER or "User"
       user = user:sub(1, 1):upper() .. user:sub(2)
@@ -78,6 +153,10 @@ return {
 
       local select = require("CopilotChat.select")
 
+      vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
+        chat.ask(args.args, { selection = select.visual })
+      end, { nargs = "*", range = true })
+
       -- Inline chat with Copilot
       vim.api.nvim_create_user_command("CopilotChatInline", function(args)
         chat.ask(args.args, {
@@ -92,11 +171,18 @@ return {
         })
       end, { nargs = "*", range = true })
 
+      -- Custom buffer for CopilotChat
       vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = "copilot-chat",
+        pattern = "copilot-*",
         callback = function()
-          vim.opt_local.relativenumber = false
-          vim.opt_local.number = false
+          vim.opt_local.relativenumber = true
+          vim.opt_local.number = true
+
+          -- Get current filetype and set it to markdown if the current filetype is copilot-chat
+          local ft = vim.bo.filetype
+          if ft == "copilot-chat" then
+            vim.bo.filetype = "markdown"
+          end
         end,
       })
 

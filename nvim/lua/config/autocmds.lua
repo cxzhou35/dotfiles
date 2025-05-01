@@ -9,10 +9,53 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = augroup("highlight_yank"),
+  callback = function()
+    (vim.hl or vim.highlight).on_yank()
+  end,
+})
+
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
   pattern = "*",
   command = "set nopaste",
+})
+
+-- close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("close_with_q"),
+  pattern = {
+    "PlenaryTestPopup",
+    "checkhealth",
+    "dbout",
+    "gitsigns-blame",
+    "grug-far",
+    "help",
+    "lspinfo",
+    "neotest-output",
+    "neotest-output-panel",
+    "neotest-summary",
+    "notify",
+    "qf",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.schedule(function()
+      vim.keymap.set("n", "q", function()
+        vim.cmd("close")
+        pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+      end, {
+        buffer = event.buf,
+        silent = true,
+        desc = "Quit buffer",
+      })
+    end)
+  end,
 })
 
 -- Disable the concealing in some file formats
@@ -54,20 +97,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Wrap and check for spell in text filetypes
+-- Wrap and check for spell and adjust tab width in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
   pattern = { "tex", "gitcommit", "markdown", "pandoc" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = false
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  -- group = augroup("wrap_spell"),
-  pattern = { "gitcommit", "markdown", "pandoc" },
-  callback = function()
     vim.opt.tabstop = 4
     vim.opt.shiftwidth = 4
     vim.opt.softtabstop = 4
@@ -122,20 +158,14 @@ vim.api.nvim_create_autocmd("FileType", {
   group = _ft,
 })
 
-vim.api.nvim_create_autocmd({ "ExitPre" }, {
-  callback = function()
-    vim.opt.guicursor = "a:ver30-blinkon0"
-  end,
-})
-
 -- Create a dir when saving a file if it doesnt exist
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function(args)
-    if args.match:match("^%w%w+://") then
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = augroup("auto_create_dir"),
+  callback = function(event)
+    if event.match:match("^%w%w+:[\\/][\\/]") then
       return
     end
-    local file = vim.uv.fs_realpath(args.match) or args.match
+    local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
-  group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
 })

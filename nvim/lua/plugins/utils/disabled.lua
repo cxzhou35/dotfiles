@@ -11,6 +11,7 @@ local disabled = {
   { "folke/persistence.nvim" },
   -- git
   { "NeogitOrg/neogit" },
+  { "lewis6991/gitsigns.nvim" },
   -- copilot
   -- { "zbirenbaum/copilot.lua" },
   -- { "CopilotC-Nvim/CopilotChat.nvim" },

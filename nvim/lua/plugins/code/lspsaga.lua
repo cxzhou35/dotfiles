@@ -3,15 +3,16 @@ return {
     "nvimdev/lspsaga.nvim",
     event = "LspAttach",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter", -- optional
-      "nvim-tree/nvim-web-devicons", -- optional
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
     },
     keys = {
       { "ga", "<cmd>Lspsaga code_action<CR>", desc = "Lspsaga Code Action" },
       { "gf", "<cmd>Lspsaga finder<CR>", desc = "Lspsaga Finder" },
       { "go", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga Outline" },
       { "gh", "<cmd>Lspsaga hover_doc<CR>", desc = "Lspsaga Hover" },
-      { "gt", "<cmd>Lspsaga term_toggle<CR>", desc = "Lspsaga Float Terminal" },
+      -- { "gt", "<cmd>Lspsaga term_toggle<CR>", desc = "Lspsaga Float Terminal" },
+      { "gR", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga Rename" },
       { "gp", "<cmd>Lspsaga peek_definition<CR>", desc = "Lspsaga Peek Definition" },
       { "gd", "<cmd>Lspsaga goto_definition<CR>", desc = "Lspsaga Goto Definition" },
       { "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Lspsaga Show Line Diagnostics" },
@@ -36,24 +37,28 @@ return {
         hover = " ",
         colors = require("catppuccin.groups.integrations.lsp_saga").custom_colors(),
       },
-      -- winbar config
+      -- hover
+      hover = {
+        open_link = "gx",
+      },
+      -- winbar
       symbol_in_winbar = {
         enable = true,
         show_file = true,
-        separator = "  ",
+        separator = " › ",
         hide_keyword = false,
         folder_level = 2,
         respect_root = false,
         color_mode = true,
       },
-      -- lightbulb config
+      -- lightbulb
       lightbulb = {
         enable_in_insert = false,
         sign = false,
         sign_priority = 40,
         virtual_text = false,
       },
-      -- diagnostic config
+      -- diagnostic
       diagnostic = {
         show_code_action = true,
         show_source = true,
@@ -67,7 +72,7 @@ return {
       },
       -- finder icons
       finder_icons = { def = "  ", ref = "󰵚 ", link = "󰴜 " },
-      -- finder config
+      -- finder
       finder = {
         jump_to = "p",
         edit = { "o", "<CR>" },
@@ -87,7 +92,7 @@ return {
         -- auto refresh when change buffer
         auto_refresh = true,
       },
-      -- difinition config
+      -- difinition
       definition = {
         edit = "<S-c>o",
         vsplit = "<S-c>v",
@@ -96,7 +101,7 @@ return {
         quit = "q",
         close = "<Esc>",
       },
-      -- code action config
+      -- code action
       code_action = {
         num_shortcut = true,
         extend_gitsigns = true,
@@ -104,6 +109,16 @@ return {
           -- string | table type
           quit = "q",
           exec = "<CR>",
+        },
+      },
+      -- rename
+      rename = {
+        in_select = true,
+        auto_save = true,
+        keys = {
+          quit = "q",
+          exec = "<CR>",
+          select = "x",
         },
       },
       request_timeout = 3000,

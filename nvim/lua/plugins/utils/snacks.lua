@@ -14,6 +14,8 @@ return {
       enabled = true,
       border = "rounded",
       timeout = 2000,
+      width = { min = 40, max = 0.6 },
+      height = { min = 1, max = 0.8 },
     },
     toggle = {
       enabled = true,

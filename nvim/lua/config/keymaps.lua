@@ -14,6 +14,9 @@ map({ "n", "v" }, "<leader>d", [["_d]])
 -- Jumplist
 map("n", "<C-m>", "<C-i>", opts)
 
+-- save file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
 -- Select all
 map("n", "<leader><C-a>", "gg<S-v>G", { desc = "Select all" })
 

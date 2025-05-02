@@ -2,6 +2,39 @@ return {
 
   "folke/flash.nvim",
   event = "VeryLazy",
+  opts = {
+    continue = true,
+    jump = { nohlsearch = true },
+    modes = {
+      search = {
+        enabled = false,
+        jump = { history = true, register = true, nohlsearch = true },
+      },
+      char = { jump_labels = true, keys = { "f", "F", "t", "T" } },
+      treesitter_search = {
+        label = {
+          rainbow = { enabled = true },
+        },
+      },
+    },
+    exclude = {
+      "notify",
+      "cmp_menu",
+      "noice",
+      "flash_prompt",
+      function(win)
+        -- exclude non-focusable windows
+        return not vim.api.nvim_win_get_config(win).focusable
+      end,
+    },
+    label = {
+      rainbow = {
+        enabled = true,
+        -- number between 1 and 9
+        shade = 2,
+      },
+    },
+  },
   keys = {
     { "s", false, mode = { "n", "v" } },
     { "S", false, mode = { "n", "v" } },
@@ -29,22 +62,6 @@ return {
         })
       end,
       desc = "Flash with the word under the cursor",
-    },
-  },
-  opts = {
-    continue = true,
-    jump = { nohlsearch = true },
-    modes = {
-      search = {
-        enabled = false,
-        jump = { history = true, register = true, nohlsearch = true },
-      },
-      char = { jump_labels = true, keys = { "f", "F", "t", "T" } },
-      treesitter_search = {
-        label = {
-          rainbow = { enabled = true },
-        },
-      },
     },
   },
 }

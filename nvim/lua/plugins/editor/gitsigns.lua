@@ -1,7 +1,5 @@
 return {
   "lewis6991/gitsigns.nvim",
-  enabled = false,
-  event = "LazyFile",
   opts = {
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
     numhl = false, -- Toggle with `:Gitsigns toggle_numhl`

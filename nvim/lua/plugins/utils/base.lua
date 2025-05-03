@@ -27,12 +27,11 @@ return {
       },
     },
   },
-  { "tpope/vim-repeat", event = "VeryLazy" },
+  { "tpope/vim-repeat", lazy = true },
   { "max397574/better-escape.nvim", event = "InsertEnter", opts = { timeout = 100 } },
   {
     "sontungexpt/url-open",
     branch = "mini",
-    event = "VeryLazy",
     cmd = "URLOpenUnderCursor",
     keys = {
       { "gx", "<esc>:URLOpenUnderCursor<cr>", desc = "Open URL under cursor" },

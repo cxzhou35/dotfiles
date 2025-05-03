@@ -1,6 +1,5 @@
 return {
   "rolv-apneseth/tfm.nvim",
-  event = "VeryLazy",
   opts = {
     file_manager = "yazi",
     enable_cmds = false,

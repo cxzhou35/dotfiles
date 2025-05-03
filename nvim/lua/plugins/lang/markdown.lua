@@ -27,7 +27,6 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     lazy = true,
-    -- event = "VeryLazy",
     ft = { "markdown" },
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "npm install",
@@ -49,11 +48,8 @@ return {
     {
       "dfendr/clipboard-image.nvim",
       lazy = true,
-      -- event = "VeryLazy",
+      ft = { "tex", "markdown" },
       opts = {
-        -- You can create configuration for ceartain filetype by creating another field (markdown, in this case)
-        -- If you're uncertain what to name your field to, you can run `lua print(vim.bo.filetype)`
-        -- Missing options from `markdown` field will be replaced by options from `default` field
         markdown = {
           img_dir = { "assets", "img" },
           img_dir_txt = "assets/img",
@@ -66,7 +62,6 @@ return {
           affix = "\\begin{figure}[htbp]\n\\centering\n\\includegraphics[width=0.5\\textwidth]{%s}\n\\caption{}\n\\label{fig:}\n\\end{figure}",
         },
       },
-      ft = { "tex", "markdown" },
       keys = {
         { "<leader>ri", "<cmd>PasteImg<cr>", desc = "Paste image" },
       },
@@ -74,9 +69,7 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    keys = {
-      { "<leader>rm", "<cmd>RenderMarkdown toggle<cr>", ft = "markdown", desc = "Render markdown" },
-    },
+    ft = { "markdown", "norg", "rmd", "org" },
     opts = {
       code = {
         sign = false,
@@ -89,7 +82,6 @@ return {
       },
     },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-    ft = { "markdown", "norg", "rmd", "org" },
     config = function(_, opts)
       require("render-markdown").setup(opts)
       Snacks.toggle({
@@ -107,5 +99,8 @@ return {
         end,
       }):map("<leader>um")
     end,
+    keys = {
+      { "<leader>rm", "<cmd>RenderMarkdown toggle<cr>", ft = "markdown", desc = "Render markdown" },
+    },
   },
 }

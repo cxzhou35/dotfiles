@@ -1,33 +1,44 @@
 local Util = require("lazyvim.util")
-local map = Util.safe_keymap_set
+-- local map = Util.safe_keymap_set
+local map = vim.keymap.set
 local unmap = vim.keymap.del
 local opts = { silent = true, noremap = true }
 
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
 -- Paste over currently selected text without yanking it
 map("v", "p", '"_dP', { silent = true })
-map({ "n", "v" }, "<leader>y", [["+y]], { silent = true })
-map({ "n", "x" }, "<leader>p", '"0p', { silent = true })
+map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy with register", silent = true })
+map({ "n", "x" }, "<leader>p", '"0p', { desc = "Paste with register", silent = true })
 
 -- Delete without yanking
 map({ "n", "v" }, "<leader>d", [["_d]])
 
 -- Jumplist
-map("n", "<C-m>", "<C-i>", opts)
+map({ "n", "x", "s" }, "<C-m>", "%", opts)
 
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
 -- Select all
-map("n", "<leader><C-a>", "gg<S-v>G", { desc = "Select all" })
+map("n", "<leader>A", "gg<S-v>G", { desc = "Select all" })
 
--- Clear search with <esc>
-map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
+-- Clear search and stop snippet on escape
+map({ "i", "n", "s" }, "<esc>", function()
+  vim.cmd("noh")
+  LazyVim.cmp.actions.snippet_stop()
+  return "<esc>"
+end, { expr = true, desc = "Escape and Clear hlsearch" })
 
 -- Move cursor
 map({ "n", "v", "o" }, "H", "^", { desc = "Jump to the start of line" })
 map({ "n", "v", "o" }, "L", "g_", { desc = "Jump to the end of line" })
 
--- disable quick moving between lines
+-- Quick moving between lines
 map({ "n", "v", "o" }, "J", "5j", { desc = "Quick forward" })
 map({ "n", "v", "o" }, "K", "5k", { desc = "Quick backward" })
 
@@ -46,14 +57,13 @@ end
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Switch tabs
-map("n", "t", "<Nop>")
-map("n", "T", "<Nop>")
-map("n", "tl", "<cmd>tablast<cr>", { desc = "Last Tab", silent = true })
-map("n", "th", "<cmd>tabfirst<cr>", { desc = "First Tab", silent = true })
-map("n", "tj", "<cmd>tabnext<cr>", { desc = "Next Tab", silent = true })
-map("n", "tk", "<cmd>tabprevious<cr>", { desc = "Previous Tab", silent = true })
-map("n", "tn", "<cmd>tabnew<cr>", { desc = "New Tab", silent = true })
-map("n", "tq", "<cmd>tabclose<cr>", { desc = "Close Tab", silent = true })
+map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map("n", "<leader><tab>h", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader><tab>j", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>k", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader><tab>q", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
 -- Split window
 map("n", "s", "<Nop>")
@@ -100,15 +110,15 @@ map("n", "<leader>fw", "<cmd>wa<CR>")
 map("n", "<leader>fa", "<cmd>wqa<CR>")
 
 -- Surround
-map("n", "vw", "vaw")
-map("n", "vp", "vap")
-map("n", "vb", "vab")
+map("n", "vw", "viw")
+map("n", "vp", "vip")
+map("n", "vb", "vib")
 
 -- Yank
-map("n", "yp", "yyp")
-map("n", "yw", "yaw")
+-- map("n", "yp", "yyp")
+-- map("n", "yw", "yaw")
 
--- Mark
+-- Disable Mark
 map({ "n", "x" }, "m", "<Nop>")
 
 ------------- Plugins -------------
@@ -118,13 +128,7 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy Menu" })
 map("n", "<leader>ra", "<cmd>LazyExtras<cr>", { desc = "LazyVim Extras" })
 map("n", "<leader>`", function()
   require("lazy").profile()
-end)
-
--- Lsp
-map("n", "<leader>rs", ":LspRestart<CR>", opts)
-
--- CarbonNow
-map("v", "<leader>cn", ":CarbonNow<CR>", { silent = true })
+end, { desc = "Lazy Profile" })
 
 -- NerdIcons
 map("n", "<leader>ni", ":NerdIcons<CR>", opts)

@@ -9,6 +9,7 @@ g.maplocalleader = " "
 -- General
 opt.confirm = true
 opt.autowrite = true
+opt.autoread = true
 opt.iskeyword:append("-")
 opt.backspace = { "start", "eol", "indent" }
 opt.completeopt = "menu,menuone,noselect"
@@ -17,8 +18,10 @@ opt.wildmode = "longest:list,full"
 opt.laststatus = 3
 opt.conceallevel = 2
 opt.syntax = "off"
+opt.confirm = true
 o.ttyfast = true
 o.scrolloff = 10
+g.deprecation_warnings = false
 
 -- Window
 opt.title = true
@@ -40,8 +43,9 @@ opt.wrap = false
 opt.showcmd = false
 opt.showmode = false
 opt.cursorline = true
-opt.ruler = true
+opt.ruler = false
 opt.number = true
+opt.linebreak = true
 opt.relativenumber = true
 
 -- Clipboard
@@ -144,9 +148,12 @@ opt.wildignore = {
 }
 
 -- Lazyvim
-vim.g.lazyvim_picker = "telescope"
-g.lazyvim_cmp = "blink.cmp"
+g.lazyvim_picker = "auto"
+g.lazyvim_cmp = "auto"
 g.lazyvim_blink_main = true
 
 -- Disable nvim intro
 opt.shortmess:append("sI")
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0

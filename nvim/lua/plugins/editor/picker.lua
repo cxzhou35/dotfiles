@@ -1,88 +1,5 @@
 return {
   "nvim-telescope/telescope.nvim",
-  keys = {
-    -- telescope pickers
-    { ";b", "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<cr>", desc = "Buffers" },
-    { ";h", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-    { ";k", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-    { ";f", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
-    { ";s", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
-    { ";w", "<cmd>Telescope grep_string<cr>", desc = "Grep Words" },
-    { ";o", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    {
-      ";r",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.live_grep()
-      end,
-      desc = "Search for a string in your current working directory",
-    },
-    { ";e", "<cmd>Telescope diagnostics bufnr=2<cr>", desc = "Document Diagnostics" },
-    { ";x", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
-    -- {
-    --   ";t",
-    --   function()
-    --     local builtin = require("telescope.builtin")
-    --     builtin.help_tags()
-    --   end,
-    --   desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
-    -- },
-    -- { ";l", "<cmd>Telescope loclist<cr>", desc = "Location List" },
-    {
-      ";;",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.resume()
-      end,
-      desc = "Resume the previous telescope picker",
-    },
-    -- { ";y", "<cmd>Telescope yank_history<cr>", desc = "Yank History" },
-    {
-      "<leader>fp",
-      function()
-        require("telescope.builtin").find_files({
-          cwd = require("lazy.core.config").options.root,
-        })
-      end,
-      desc = "Find Plugin File",
-    },
-    -- extensions
-    { ";u", "<cmd>Telescope undo<cr>", desc = "Undo History" },
-    { ";a", "<cmd>Telescope live_grep_args<cr>", desc = "Grep With Args" },
-    -- {
-    --   ";w",
-    --   "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
-    --   desc = "Word Grep With Args ",
-    -- },
-    {
-      ";v",
-      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
-      desc = "Visual Grep With Args",
-      mode = { "n", "v", "x" },
-    },
-    {
-      "<C-f>",
-      function()
-        local telescope = require("telescope")
-
-        local function telescope_buffer_dir()
-          return vim.fn.expand("%:p:h")
-        end
-
-        telescope.extensions.file_browser.file_browser({
-          path = "%:p:h",
-          cwd = telescope_buffer_dir(),
-          respect_gitignore = false,
-          hidden = true,
-          grouped = true,
-          previewer = false,
-          initial_mode = "normal",
-          layout_config = { height = 40 },
-        })
-      end,
-      desc = "Open File Browser with the path of the current buffer",
-    },
-  },
   dependencies = {
     { "debugloop/telescope-undo.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
@@ -222,4 +139,77 @@ return {
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("live_grep_args")
   end,
+  keys = {
+    -- telescope pickers
+    { ";b", "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<cr>", desc = "Buffers" },
+    { ";h", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+    { ";k", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+    { ";f", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
+    { ";s", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
+    { ";w", "<cmd>Telescope grep_string<cr>", desc = "Grep Words" },
+    { ";o", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+    {
+      ";r",
+      function()
+        local builtin = require("telescope.builtin")
+        builtin.live_grep()
+      end,
+      desc = "Search for a string in your current working directory",
+    },
+    { ";e", "<cmd>Telescope diagnostics bufnr=2<cr>", desc = "Document Diagnostics" },
+    { ";x", "<cmd>Telescope quickfix initial_mode=normal<cr>", desc = "Quickfix List" },
+    {
+      ";;",
+      function()
+        local builtin = require("telescope.builtin")
+        builtin.resume()
+      end,
+      desc = "Resume the previous telescope picker",
+    },
+    {
+      ";c",
+      "<cmd>Telescope colorscheme initial_mode=normal<cr>",
+      desc = "Colorschemes",
+    },
+    {
+      "<leader>fp",
+      function()
+        require("telescope.builtin").find_files({
+          cwd = require("lazy.core.config").options.root,
+        })
+      end,
+      desc = "Find Plugin File",
+    },
+    -- extensions
+    { ";u", "<cmd>Telescope undo initial_mode=normal<cr>", desc = "Undo History" },
+    { ";a", "<cmd>Telescope live_grep_args<cr>", desc = "Grep With Args" },
+    {
+      ";v",
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
+      desc = "Visual Grep With Args",
+      mode = { "n", "v", "x" },
+    },
+    {
+      "<C-f>",
+      function()
+        local telescope = require("telescope")
+
+        local function telescope_buffer_dir()
+          return vim.fn.expand("%:p:h")
+        end
+
+        telescope.extensions.file_browser.file_browser({
+          path = "%:p:h",
+          cwd = telescope_buffer_dir(),
+          respect_gitignore = false,
+          hidden = true,
+          grouped = true,
+          previewer = false,
+          initial_mode = "normal",
+          layout_config = { height = 40 },
+        })
+      end,
+      desc = "Open File Browser with the path of the current buffer",
+    },
+  },
 }

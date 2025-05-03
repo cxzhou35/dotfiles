@@ -78,6 +78,9 @@ return {
         },
       },
     },
+    keys = {
+      { "<leader>rs", "<cmd>LspRestart<cr>", desc = "Restart LSP Server" },
+    },
   },
   {
     "zeioth/garbage-day.nvim",

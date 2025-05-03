@@ -10,14 +10,32 @@ return {
       { "ga", "<cmd>Lspsaga code_action<CR>", desc = "Lspsaga Code Action" },
       { "gf", "<cmd>Lspsaga finder<CR>", desc = "Lspsaga Finder" },
       { "go", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga Outline" },
-      { "gh", "<cmd>Lspsaga hover_doc<CR>", desc = "Lspsaga Hover" },
-      -- { "gt", "<cmd>Lspsaga term_toggle<CR>", desc = "Lspsaga Float Terminal" },
       { "gR", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga Rename" },
       { "gp", "<cmd>Lspsaga peek_definition<CR>", desc = "Lspsaga Peek Definition" },
       { "gd", "<cmd>Lspsaga goto_definition<CR>", desc = "Lspsaga Goto Definition" },
       { "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Lspsaga Show Line Diagnostics" },
       { "gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Lspsaga Diagnsotic Jump Next" },
       { "gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Lspsaga Diagnsotic Jump Previous" },
+      { "gh", "<cmd>Lspsaga hover_doc<CR>", desc = "Lspsaga Hover" },
+      {
+        "<leader>gh",
+        function()
+          local win = require("lspsaga.window")
+          local old_new_float = win.new_float
+          win.new_float = function(self, float_opt, enter, force)
+            local window = old_new_float(self, float_opt, enter, force)
+            local _, winid = window:wininfo()
+            vim.api.nvim_set_current_win(winid)
+
+            win.new_float = old_new_float
+            return window
+          end
+
+          vim.cmd("Lspsaga hover_doc")
+        end,
+        desc = "hover doc",
+        silent = true,
+      },
     },
     opts = {
       ui = {

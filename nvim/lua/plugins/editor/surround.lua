@@ -1,6 +1,7 @@
 return {
   {
     "echasnovski/mini.surround",
+    enabled = true,
     opts = {
       mappings = {
         add = "ma",
@@ -25,5 +26,15 @@ return {
     config = function()
       require("nvim-surround").setup({})
     end,
+  },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        {
+          { "m", group = "surround", icon = { icon = "󱖫 ", color = "blue", mode = { "n", "x", "s", "v" } } },
+        },
+      },
+    },
   },
 }

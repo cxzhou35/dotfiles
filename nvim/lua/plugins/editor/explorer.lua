@@ -162,13 +162,16 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
-      explorer = { enabled = explorer == "snacks", replace_netrw = true },
+      explorer = {
+        enabled = explorer == "snacks",
+        replace_netrw = true,
+      },
     },
     keys = {
       {
-        "<C-e>",
-        function(opts)
-          Snacks.explorer.open(opts)
+        "<S-e>",
+        function()
+          Snacks.explorer()
         end,
         desc = "Explorer Snacks",
       },

@@ -31,7 +31,6 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
-    event = "VeryLazy",
     keys = {
       {
         "<leader>ap",
@@ -52,6 +51,8 @@ return {
         mode = "x",
         desc = "CopilotChat - Prompt actions",
       },
+      -- Copilot Chat Agents
+      { "<leader>aa", "<cmd>CopilotChatAgents<cr>", desc = "CopilotChat - Select Agents" },
       -- Code related commands
       { "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
       { "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
@@ -88,6 +89,11 @@ return {
         "<cmd>CopilotChatCommit<cr>",
         desc = "CopilotChat - Generate commit message for all changes",
       },
+      {
+        "<leader>ad",
+        "<cmd>CopilotChatDocs<cr>",
+        desc = "CopilotChat - Generate docs for current file",
+      },
       -- Quick chat with Copilot
       {
         "<leader>aq",
@@ -100,15 +106,14 @@ return {
         desc = "CopilotChat - Quick chat",
       },
       -- Fix the issue with diagnostic
-      { "<leader>af", "<cmd>CopilotChatFixError<cr>", desc = "CopilotChat - Fix Diagnostic" },
+      { "<leader>af", "<cmd>CopilotChatFix<cr>", desc = "CopilotChat - Fix Diagnostic" },
       -- Clear buffer and chat history
       { "<leader>al", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
       -- Toggle Copilot Chat Vsplit
       { "<leader>au", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
       -- Copilot Chat Models
       { "<leader>am", "<cmd>CopilotChatModels<cr>", desc = "CopilotChat - Select Models" },
-      -- Copilot Chat Agents
-      { "<leader>aa", "<cmd>CopilotChatAgents<cr>", desc = "CopilotChat - Select Agents" },
+      { "<leader>ao", "<cmd>CopilotChatAgents<cr>", desc = "CopilotChat - Select Agents" },
     },
     dependencies = {
       { "zbirenbaum/copilot.lua" },
@@ -195,5 +200,16 @@ return {
   -- lualine integrations
   {
     "AndreM222/copilot-lualine",
+  },
+  -- which-key integration
+  {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        {
+          { "<leader>a", group = "copilot", icon = { icon = " ", color = "cyan" }, mode = { "n", "v", "x" } },
+        },
+      },
+    },
   },
 }

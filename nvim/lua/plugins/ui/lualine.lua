@@ -2,11 +2,14 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   dependencies = {
-    "justinhj/battery.nvim",
-    opts = {
-      show_plugged_icon = true,
-      show_unplugged_icon = true,
-      show_percent = true,
+    {
+      "justinhj/battery.nvim",
+      lazy = true,
+      opts = {
+        show_plugged_icon = true,
+        show_unplugged_icon = true,
+        show_percent = true,
+      },
     },
   },
   opts = function()

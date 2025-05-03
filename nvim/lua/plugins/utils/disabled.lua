@@ -30,7 +30,8 @@ local disabled = {
   -- terminal
   -- { "akinsho/toggleterm.nvim" },
   -- ui
-  -- { "mawkler/modicator.nvim" },
+  { "mawkler/modicator.nvim" },
+  -- { "nvim-zh/colorful-winsep.nvim" },
   -- suround
   -- { "echasnovski/mini.surround" }, -- INFO: use mini.suround
   -- { "kylechui/nvim-surround" },

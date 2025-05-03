@@ -94,28 +94,18 @@ return {
       },
     },
   },
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   opts = function(_, opts)
-  --     opts.auto_brackets = opts.auto_brackets or {}
-  --     table.insert(opts.auto_brackets, "python")
-  --   end,
-  -- },
   {
     "kmontocam/nvim-conda",
-    event = "VeryLazy",
     ft = { "python" },
-    -- event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<leader>ac", "<cmd>CondaActivate<cr>", desc = "Activate Conda Env" },
-      { "<leader>ad", "<cmd>CondaDeactivate<cr>", desc = "Deactivate Conda Env" },
+      -- { "<leader>ac", "<cmd>CondaActivate<cr>", desc = "Activate Conda Env" },
+      -- { "<leader>ad", "<cmd>CondaDeactivate<cr>", desc = "Deactivate Conda Env" },
     },
   },
   {
     "linux-cultist/venv-selector.nvim",
     cmd = "VenvSelect",
-    event = "VeryLazy",
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
     ft = { "python" },
     opts = {

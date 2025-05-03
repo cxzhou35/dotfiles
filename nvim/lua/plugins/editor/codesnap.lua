@@ -19,7 +19,6 @@ return {
   {
     "ellisonleao/carbon-now.nvim",
     lazy = true,
-    -- event = "VeryLazy",
     cmd = "CarbonNow",
     opts = {
       options = {
@@ -42,6 +41,14 @@ return {
         width_adjustment = "true",
         first_line_number = "1",
         watermark = false,
+      },
+    },
+    keys = {
+      {
+        "<leader>cn",
+        "<cmd>CarbonNow<cr>",
+        mode = { "v", "n", "x" },
+        desc = "Generate a code snippet from the current buffer",
       },
     },
   },

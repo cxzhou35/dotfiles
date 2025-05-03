@@ -23,7 +23,7 @@ return {
   {
     "lervag/vimtex",
     lazy = false, -- lazy-loading will disable inverse search
-    ft = { "tex" },
+    ft = { "tex", "bib" },
     keys = { { "<leader>v", ":VimtexView<CR>", desc = "Vimtex Preview" } },
     init = function()
       -- maapings

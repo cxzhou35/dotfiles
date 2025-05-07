@@ -1,23 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
-  dependencies = {
-    {
-      "justinhj/battery.nvim",
-      lazy = true,
-      opts = {
-        show_plugged_icon = true,
-        show_unplugged_icon = true,
-        show_percent = true,
-      },
-    },
-  },
   opts = function()
     local icons = LazyVim.config.icons
     vim.o.laststatus = vim.g.lualine_laststatus
-    local function nvim_battery()
-      return require("battery").get_status_line()
-    end
 
     local function getLspName()
       local msg = "No Active Lsp"
@@ -173,13 +159,11 @@ return {
           { "location", padding = { left = 0, right = 1 } },
         },
         lualine_z = {
-          -- { getWords() },
           {
             function()
               return " " .. os.date("%R")
             end,
           },
-          { nvim_battery },
         },
       },
       extensions = { "neo-tree", "lazy" },

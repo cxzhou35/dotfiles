@@ -10,6 +10,7 @@ local disabled = {
   -- copilot
   -- { "zbirenbaum/copilot.lua" },
   -- { "CopilotC-Nvim/CopilotChat.nvim" },
+  { "ibhagwan/fzf-lua" },
   -- lsp
   { "mfussenegger/nvim-lint" },
   -- completion

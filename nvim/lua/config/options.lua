@@ -88,7 +88,7 @@ g.matchparen_insert_timeout = 2
 -- Spell
 -- Loading slowly
 opt.spell = false
-opt.spelllang = { "en_us" }
+opt.spelllang = { "en" }
 
 -- Tab & Indent
 opt.tabstop = 2

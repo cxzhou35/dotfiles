@@ -85,6 +85,7 @@ bash setup/install.sh
 - [ayamir/nvimdots](https://github.com/ayamir/nvimdots)
 - [chrisgrieser/.config](https://github.com/chrisgrieser/.config)
 - [Matt-FTW/dotfiles](https://github.com/Matt-FTW/dotfiles)
+- [linkarzu/dotfiles-latest](https://github.com/linkarzu/dotfiles-latest)
 
 </details>
 

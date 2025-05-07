@@ -81,7 +81,7 @@ return {
         icons = {},
       },
     },
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function(_, opts)
       require("render-markdown").setup(opts)
       Snacks.toggle({

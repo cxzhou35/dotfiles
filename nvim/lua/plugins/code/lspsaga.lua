@@ -4,7 +4,6 @@ return {
     event = "LspAttach",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
     },
     keys = {
       { "ga", "<cmd>Lspsaga code_action<CR>", desc = "Lspsaga Code Action" },

@@ -32,4 +32,5 @@ return {
     event = "LazyFile",
     opts = { mode = "cursor", max_lines = 3 },
   },
+  { "windwp/nvim-ts-autotag", event = "LazyFile", ft = { "javascript", "html", "css" } },
 }

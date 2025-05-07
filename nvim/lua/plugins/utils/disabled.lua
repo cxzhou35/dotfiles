@@ -1,8 +1,4 @@
 local disabled = {
-  { "rmagatti/auto-session" },
-  { "mg979/vim-visual-multi" },
-  { "abecodes/tabout.nvim" },
-  { "phaazon/hop.nvim" },
   { "m4xshen/hardtime.nvim" },
   -- animate
   -- { "gen740/SmoothCursor.nvim" },
@@ -11,12 +7,9 @@ local disabled = {
   { "folke/persistence.nvim" },
   -- git
   { "NeogitOrg/neogit" },
-  { "lewis6991/gitsigns.nvim" },
   -- copilot
   -- { "zbirenbaum/copilot.lua" },
   -- { "CopilotC-Nvim/CopilotChat.nvim" },
-  -- fzf picker
-  { "ibhagwan/fzf-lua" },
   -- lsp
   { "mfussenegger/nvim-lint" },
   -- completion
@@ -41,7 +34,7 @@ local disabled = {
   -- dev
 }
 
-for i, plugin in ipairs(disabled) do
+for idx, plugin in ipairs(disabled) do
   plugin.enabled = false
 end
 

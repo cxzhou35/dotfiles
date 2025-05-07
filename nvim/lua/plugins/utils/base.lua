@@ -44,8 +44,4 @@ return {
       url_open.setup({})
     end,
   },
-  {
-    "mg979/vim-visual-multi",
-    branch = "master",
-  },
 }

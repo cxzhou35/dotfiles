@@ -1,7 +1,7 @@
 {
   "completion.autoRequire": false,
   "workspace.checkThirdParty": false,
-  "diagnostics.globals": ["LazyVim", "Snacks"],
+  "diagnostics.globals": ["LazyVim", "Snacks", "vim"],
   "diagnostics.disable": [
     "param-type-mismatch",
     "inject-field",

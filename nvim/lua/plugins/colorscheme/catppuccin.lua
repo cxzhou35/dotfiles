@@ -3,7 +3,6 @@ return {
   lazy = true,
   name = "catppuccin",
   priority = 1000,
-  build = ":CatppuccinCompile",
   opts = {
     flavour = "mocha", -- Can be one of: latte, frappe, macchiato, mocha
     background = { light = "latte", dark = "mocha" },

@@ -1,27 +1,27 @@
 general.import = ["~/.config/alacritty/themes/themes/catppuccin_mocha.toml"]
-
 general.live_config_reload = true
 
 [env]
 TERM = "xterm-256color"
 
 [window]
-padding.x = 10
-padding.y = 10
+padding.x = 8
+padding.y = 4
+dynamic_padding = false
 
 dimensions.columns = 120
 dimensions.lines = 32
 
-decorations = "Buttonless"
-dynamic_padding = false
+decorations = "Buttonless" # macos only
 
-opacity = 0.80
+opacity = 0.35
 blur = true
 
 option_as_alt = "Both"
 
 [font]
-normal.family = "FiraCode Nerd Font"
+# normal.family = "FiraCode Nerd Font"
+normal.family = "Maple Mono NF"
 normal.style = "Regular"
 
 offset.x = 1
@@ -34,7 +34,10 @@ history = 10000
 multiplier = 3
 
 [cursor]
-style = "Block"
+style.shape = "Beam"
+style.blinking = "Never"
+vi_mode_style.shape = "Block"
+vi_mode_style.blinking = "Never"
 
 [mouse]
 hide_when_typing = true

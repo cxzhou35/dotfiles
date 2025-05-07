@@ -2,6 +2,7 @@
     // Basic settings
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "explorer.confirmPasteNative": false,
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
     "window.restoreWindows": "none",
@@ -50,6 +51,7 @@
     "terminal.integrated.fontWeight": "300",
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "terminal.integrated.tabs.enabled": true,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
     // Workbench settings
     "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
@@ -102,6 +104,7 @@
         100
     ],
     "diffEditor.wordWrap": "on",
+    "diffEditor.ignoreTrimWhitespace": false,
     "editor.smoothScrolling": true,
     "editor.find.addExtraSpaceOnTop": false,
     "editor.guides.bracketPairs": "active",
@@ -130,8 +133,8 @@
     "editor.renderWhitespace": "trailing",
     "editor.renderControlCharacters": true,
     // Cursor settings
-    "editor.cursorBlinking": "solid",
-    "editor.cursorStyle": "line-thin",
+    "editor.cursorBlinking": "phase",
+    "editor.cursorStyle": "line",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorSurroundingLines": 10,
     "editor.cursorSurroundingLinesStyle": "default",
@@ -181,13 +184,21 @@
     "git.untrackedChanges": "separate",
     // Python settings
     "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "python.languageServer": "Pylance", // Default | Pylance | Jedi
     "python.analysis.autoImportCompletions": true,
     "python.analysis.logLevel": "Warning",
-    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportGeneralTypeIssues": "none",
+        "reportAttributeAccessIssue": "none",
+        "reportOptionalSubscript": "warning"
+    },
+    // pyright
     "pyright.disableLanguageServices": false,
     "pyright.disableOrganizeImports": false,
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
+        // formatter
+        // "editor.defaultFormatter": "black",
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
         "editor.codeActionsOnSave": {
@@ -207,6 +218,7 @@
     // Jupyter notebook settings
     "notebook.lineNumbers": "on",
     "notebook.markup.fontSize": 16,
+    "notebook.output.scrolling": true,
     "jupyter.askForKernelRestart": false,
     // Cmake settings
     "cmake.configureOnOpen": true,
@@ -931,6 +943,7 @@
     "git.openRepositoryInParentFolders": "never",
     "git.terminalAuthentication": false,
     "where-am-i.color": "#c0a2c7",
+    "path-intellisense.showHiddenFiles": true,
     "accessibility.signals.lineHasError": {
         "sound": "off"
     },
@@ -1032,9 +1045,4 @@
             "italic": false
         }
     ],
-    "explorer.confirmPasteNative": false,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "terminal.integrated.enableMultiLinePasteWarning": "never",
-    "notebook.output.scrolling": true,
-    "path-intellisense.showHiddenFiles": true,
 }

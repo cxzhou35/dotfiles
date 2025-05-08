@@ -29,9 +29,6 @@
         "**/.svn": false,
         "**/Thumbs.db": false
     },
-    // Zenmode settings
-    "zenMode.fullScreen": false,
-    "zenMode.hideLineNumbers": false,
     // Terminal settings
     "terminal.integrated.smoothScrolling": true,
     "terminal.integrated.sendKeybindingsToShell": true,
@@ -77,12 +74,15 @@
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.limit.value": 5,
     // Editor settings
+    "editor.mouseWheelZoom": true,
+    "editor.formatOnType": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.scrollbar.horizontal": "hidden",
     "editor.accessibilitySupport": "off",
     "editor.inlineSuggest.enabled": true,
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.suggest.insertMode": "replace",
-    "editor.suggestSelection": "first",
+    "editor.suggestSelection": "recentlyUsed",
     "editor.fontLigatures": true,
     "editor.minimap.enabled": false,
     "editor.wordWrap": "on",
@@ -91,6 +91,7 @@
     "editor.fontSize": 16,
     "editor.lineHeight": 24,
     "editor.linkedEditing": true,
+    "editor.suggest.showInlineDetails": true,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.inlayHints.enabled": "on",
@@ -108,7 +109,7 @@
     "editor.smoothScrolling": true,
     "editor.find.addExtraSpaceOnTop": false,
     "editor.guides.bracketPairs": "active",
-    "editor.lineNumbers": "on",
+    "editor.lineNumbers": "relative",
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.renderLineHighlight": "all",
     "editor.stickyScroll.enabled": true,
@@ -125,6 +126,10 @@
         "source.organizeImports": "explicit"
     },
     "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+    // Zenmode settings
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.centerLayout": true,
     // Tab settings: Use tab instead of spaces
     "editor.tabSize": 4,
     "editor.tabCompletion": "off", // prevent tab auto completion
@@ -139,34 +144,48 @@
     "editor.cursorSurroundingLines": 10,
     "editor.cursorSurroundingLinesStyle": "default",
     // Debug settings
-    "debug.showBreakpointsInOverviewRuler": true,
     "debug.onTaskErrors": "debugAnyway",
     "debug.terminal.clearBeforeReusing": true,
+    "debug.showBreakpointsInOverviewRuler": true,
+    // Search settings
+    "search.exclude": {
+        "**/.git": true,
+        "**/.github": true,
+        "**/.nuxt": true,
+        "**/.output": true,
+        "**/.pnpm": true,
+        "**/.vscode": false,
+        "**/.yarn": true,
+        "**/bower_components": true,
+        "**/dist/**": true,
+        "**/logs": true,
+        "**/node_modules": true,
+        "**/out/**": true,
+        "**/package-lock.json": true,
+        "**/pnpm-lock.yaml": true,
+        "**/tmp": true,
+        "**/yarn.lock": true
+    },
     // Copilot settings
     "github.copilot.chat.codesearch.enabled": true,
     "github.copilot.editor.enableCodeActions": false,
-    // Everforest theme settings
-    "everforest.darkContrast": "hard",
-    "everforest.darkCursor": "purple",
-    "everforest.darkSelection": "red",
-    "everforest.diagnosticTextBackgroundOpacity": "12.5%",
-    // Catppucin theme settings
-    "catppuccin.accentColor": "sapphire",
-    "catppuccin.workbenchMode": "default",
-    "catppuccin.boldKeywords": true,
-    "catppuccin.extraBordersEnabled": true,
+    "github.copilot.chat.agent.thinkingTool": true,
+    "github.copilot.enable": {
+        "*": true,
+        "scminput": false,
+        "yaml": false
+    },
+    // Git settings
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.untrackedChanges": "separate",
+    "git.openRepositoryInParentFolders": "never",
+    "git.terminalAuthentication": false,
     // Extensions settings
     "extensions.autoUpdate": "onlyEnabledExtensions",
     "extensions.autoCheckUpdates": false,
     "extensions.ignoreRecommendations": true,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": true,
-        "markdown": true,
-        "scminput": false,
-        "python": true,
-        "yaml": false
-    },
     "toggleboolean.mapping": {
         "true": false,
         "false": true,
@@ -177,11 +196,20 @@
         "1": 0,
         "0": 1
     },
-    // Git settings
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "git.untrackedChanges": "separate",
+    // Everforest theme settings
+    "everforest.darkContrast": "hard",
+    "everforest.darkCursor": "purple",
+    "everforest.darkSelection": "red",
+    "everforest.diagnosticTextBackgroundOpacity": "12.5%",
+    // Catppucin theme settings
+    "catppuccin.accentColor": "lavender",
+    "catppuccin.workbenchMode": "minimal",
+    "catppuccin.bracketMode": "neovim",
+    "catppuccin.italicComments": true,
+    "catppuccin.syncWithIconPack": true,
+    "catppuccin.boldKeywords": true,
+    "catppuccin.extraBordersEnabled": true,
+    "gitlens.hovers.currentLine.over": "line",
     // Python settings
     "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
     "python.languageServer": "Pylance", // Default | Pylance | Jedi
@@ -205,25 +233,25 @@
             "source.organizeImports": "always"
         },
     },
+    // isort
     "isort.importStrategy": "fromEnvironment",
     "isort.args": [
         "--profile",
         "black"
     ],
+    // jupyter notebook
+    "notebook.lineNumbers": "on",
+    "notebook.markup.fontSize": 16,
+    "notebook.output.scrolling": true,
+    "jupyter.askForKernelRestart": false,
     // lldb settings
     "lldb.displayFormat": "binary",
     "lldb.launch.terminal": "external",
     "lldb.launch.expressions": "native",
     "lldb.suppressUpdateNotifications": true,
-    // Jupyter notebook settings
-    "notebook.lineNumbers": "on",
-    "notebook.markup.fontSize": 16,
-    "notebook.output.scrolling": true,
-    "jupyter.askForKernelRestart": false,
     // Cmake settings
     "cmake.configureOnOpen": true,
-    // Gitlens settings
-    "gitlens.hovers.currentLine.over": "line",
+    // Cpp settings
     "C_Cpp.formatting": "clangFormat",
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, AllowShortIfStatementsOnASingleLine: false }",
     "C_Cpp.intelliSenseEngineFallback": "enabled",
@@ -234,35 +262,17 @@
     "C_Cpp.inlayHints.referenceOperator.enabled": true,
     "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores": true,
     "C_Cpp.inlayHints.parameterNames.suppressWhenArgumentContainsName": true,
-    // Search settings
-    "search.exclude": {
-        "**/.git": true,
-        "**/.github": true,
-        "**/.nuxt": true,
-        "**/.output": true,
-        "**/.pnpm": true,
-        "**/.vscode": false,
-        "**/.yarn": true,
-        "**/bower_components": true,
-        "**/dist/**": true,
-        "**/logs": true,
-        "**/node_modules": true,
-        "**/out/**": true,
-        "**/package-lock.json": true,
-        "**/pnpm-lock.yaml": true,
-        "**/tmp": true,
-        "**/yarn.lock": true
-    },
     // Vim settings
     "vim.leader": "<space>",
-    // flash vim settings
+    // motion use flash
+    "vim.sneak": false,
+    "vim.easymotion": false,
     "vim.flash.enable": true,
     "vim.flash.ignorecase": true,
     "vim.flash.marker.backgroundColor": "#ccff88",
-    "vim.sneak": false,
+    // other settings
     "vim.foldfix": true,
     "vim.surround": true,
-    "vim.smartRelativeLine": false,
     "vim.autoindent": true,
     "vim.ignorecase": true,
     "vim.useSystemClipboard": true,
@@ -273,6 +283,7 @@
     "vim.highlightedyank.textColor": "white",
     "vim.incsearch": true,
     "vim.statusBarColorControl": true,
+    "vim.changeWordIncludesWhitespace": true,
     "vim.statusBarColors": {
         "normal": "#393f4c",
         "insert": "#3a5b52",
@@ -855,26 +866,26 @@
             ]
         }
     ],
-    // "latex-workshop.latex.clean.fileTypes": [
-    //     "*.aux",
-    //     "*.bbl",
-    //     "*.blg",
-    //     "*.idx",
-    //     "*.ind",
-    //     "*.lof",
-    //     "*.lot",
-    //     "*.out",
-    //     "*.toc",
-    //     "*.acn",
-    //     "*.acr",
-    //     "*.alg",
-    //     "*.glg",
-    //     "*.glo",
-    //     "*.gls",
-    //     "*.fdb_latexmk",
-    //     "*.snm",
-    //     "*.nav"
-    // ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav"
+    ],
     "latex-workshop.intellisense.citation.backend": "biblatex",
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.showContextMenu": true,
@@ -940,8 +951,6 @@
     "markdown-preview-enhanced.enableExtendedTableSyntax": true,
     "markdown-preview-enhanced.enableCriticMarkupSyntax": true,
     "markdown-preview-enhanced.chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-    "git.openRepositoryInParentFolders": "never",
-    "git.terminalAuthentication": false,
     "where-am-i.color": "#c0a2c7",
     "path-intellisense.showHiddenFiles": true,
     "accessibility.signals.lineHasError": {

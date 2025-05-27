@@ -1,0 +1,19 @@
+{
+  "theme": "obsidian",
+  "translucency": false,
+  "monospaceFontFamily": "Hack Nerd Font",
+  "cssTheme": "Catppuccin",
+  "baseFontSize": 18,
+  "accentColor": "#8ab2d0",
+  "textFontFamily": "LXGW Bright GB",
+  "interfaceFontFamily": "LXGW Neo XiHei",
+  "enabledCssSnippets": [
+    "heading-center",
+    "license",
+    "image-center",
+    "Pretty Highlights",
+    "pretty-highlights",
+    "rainbow-tags",
+    "ZeroSnippets"
+  ]
+}

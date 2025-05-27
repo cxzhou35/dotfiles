@@ -1,0 +1,119 @@
+" general 
+unmap ,
+nmap + *
+
+" yank to system clipboard
+set clipboard=unnamed
+
+" cursor move
+nmap j gj
+nmap J 5gj
+vmap J 5gj
+nmap k gk
+nmap K 5gk
+vmap K 5gk
+nmap H ^
+vmap H ^
+nmap L $
+vmap L $
+
+" moving to next/prev paragraph
+nmap [ {
+nmap ] }
+
+exmap back obcommand app:go-back
+nmap <C-o> :back<CR>
+exmap forward obcommand app:go-forward
+nmap <C-i> :forward<CR>
+
+" not highlight
+nmap <Esc> :nohl<CR>
+
+" open link
+exmap openLink obcommand editor:follow-link
+map <C-l> :openLink<CR>
+
+" reload
+exmap reload obcommand app:reload
+map <F5> :reload<CR>
+
+" tab
+exmap nextTab obcommand workspace:next-tab
+exmap prevTab obcommand workspace:previous-tab
+map <C-k> :nextTab<CR>
+map <C-j> :prevTab<CR>
+
+" split
+nunmap s
+vunmap s
+exmap vsp obcommand workspace:split-vertical
+nmap sv :vsp<CR>
+exmap ssp obcommand workspace:split-horizontal
+nmap ss :ssp<CR>
+
+" surround
+exmap surround_wiki surround [[ ]]
+exmap surround_double_quotes surround " "
+exmap surround_single_quotes surround ' '
+exmap surround_code_symbols surround ` `
+exmap surround_bold surround ** **
+exmap surround_italic surround * *
+exmap surround_brackets surround ( )
+exmap surround_equals surround == ==
+exmap surround_square_brackets surround [ ]
+exmap surround_curly_brackets surround { }
+
+map s" :surround_double_quotes<CR>
+map s' :surround_single_quote<CR>
+map s( :surround_bracket<CR>
+map s) :surround_bracket<CR>
+map s[ :surround_square_brackets<CR>
+map s] :surround_square_brackets<CR>
+map s{ :surround_curly_brackets<CR>
+map s} :surround_curly_brackets<CR>
+map s= :surround_equals<CR>
+map sc :surround_code_symbols<CR>
+map sw :surround_wiki<CR>
+map sb :surround_bold<CR>
+map si :surround_italic<CR>
+
+" window focus
+exmap focusLeft obcommand editor:focus-left
+exmap focusRight obcommand editor:focus-right
+exmap focusBottom obcommand editor:focus-bottom
+exmap focusTop obcommand editor:focus-top
+exmap closeWorkspace obcommand workspace:close
+nmap sh :focusLeft<CR>
+nmap sl :focusRight<CR>
+nmap sj :focusBottom<CR>
+nmap sk :focusTop<CR>
+nmap sq :closeWorkspace<CR>
+
+exmap togglepin obcommand workspace:toggle-pin
+nmap <C-p> :togglepin<CR>
+
+" emulate folding https://vimhelp.org/fold.txt.html#fold-commands
+exmap togglefold obcommand editor:toggle-fold
+nmap za :togglefold<CR>
+exmap unfoldall obcommand editor:unfold-all
+nmap zo :unfoldall<CR>
+exmap foldall obcommand editor:fold-all
+nmap zf :foldall<CR>
+
+" rename file
+exmap renameFile obcommand Obsidian-VimEx:file-rename-modal
+nmap gr :renameFile<CR>
+
+" callout
+exmap insertCallout obcommand editor:insert-callout
+nmap <C-a> :insertCallout<CR>
+
+" easymotion
+exmap easymotion obcommand mrj-jump-to-link:activate-jump-to-anywhere
+nmap gw :easymotion<CR>
+
+" fix o/O behavior bug
+nunmap o
+map o A<CR>
+nunmap O
+map O I<CR><Esc>ki

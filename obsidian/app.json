@@ -1,0 +1,22 @@
+{
+  "vimMode": true,
+  "livePreview": true,
+  "promptDelete": false,
+  "defaultViewMode": "source",
+  "showFrontmatter": false,
+  "showLineNumber": false,
+  "newFileLocation": "current",
+  "alwaysUpdateLinks": true,
+  "pdfExportSettings": {
+    "includeName": false,
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "2",
+    "downscalePercent": 100
+  },
+  "smartIndentList": false,
+  "strictLineBreaks": false,
+  "showInlineTitle": false,
+  "attachmentFolderPath": "./",
+  "spellcheck": false
+}

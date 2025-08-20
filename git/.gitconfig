@@ -5,7 +5,7 @@
   pager = delta
   editor = nvim
   ignorecase = false
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/vercent/.gitignore
 [init]
   defaultBranch = main
 [interactive]

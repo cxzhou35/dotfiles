@@ -105,6 +105,10 @@ function sshaws() {
   ssh -i $HOME/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1
 }
 
+function cpaws() {
+  echo "ssh -i $HOME/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1" | pbcopy
+}
+
 # open target directory with vscode
 function vscw(){
   # param1: target directory

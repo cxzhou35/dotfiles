@@ -1,10 +1,14 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "display": {
-    "separator": " ➜ ",
-    "color": "white"
+    "separator": " : ",
+    "color": "white",
   },
   "modules": [
+    {
+      "type": "custom",
+      "format": "\u001b[36m           󱔐 That's Why We're Here"
+    },
     {
       "type": "custom",
       "format": "┌──────────── Hardware Information ────────────┐"
@@ -79,11 +83,10 @@
       "type": "custom",
       "format": "└──────────────────────────────────────────────┘"
     },
-    "break",
     {
       "type": "colors",
-      "symbol": "block",
-      "paddingLeft": 12
+      "symbol": "circle",
+      "paddingLeft": 2
     }
   ]
 }

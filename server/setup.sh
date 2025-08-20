@@ -9,7 +9,7 @@ NC='\033[0m'
 # Paths
 HOME_DIR="$HOME"
 TMP_DIR="$HOME/tmp"
-LINK_DIR=""
+LINK_DIR="/mnt/data"
 TARGET_DIRS=("codes" "datasets" "miniconda3")
 ZSH_PLUGINS=("zsh-syntax-highlighting" "zsh-autosuggestions" "git-open")
 PIP_PATH="$HOME_DIR/.pip"
@@ -42,26 +42,26 @@ create_symlink() {
 }
 
 check_proxy() {
-  unset http_proxy https_proxy all_proxy
-  local proxy=$(env | grep -i proxy | awk -F '=' '{print $2}')
+    unset http_proxy https_proxy socks_proxy
+    local proxy=$(env | grep -i proxy | awk -F '=' '{print $2}' | sed 's/^"//' | sed 's/"$//')
+    # proxy format: ip:port
 
-  if [[ -z "$proxy" ]]; then
-    echo -e "${YELLOW}Warning: Proxy is not set${NC}"
-    return 1
-  else
-    echo -e "${YELLOW}The proxy is $proxy${NC}"
-  fi
+    if [[ -z "$proxy" ]]; then
+        echo -e "${YELLOW}Warning: proxy is not set${NC}"
+        return 1
+    else
+        echo -e "${YELLOW}The proxy is $proxy${NC}"
+    fi
 
-  # check if the proxy format is right
-  if [[ "$proxy" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$ ]]; then
-    echo -e "${GREEN}Proxy format is set correctly${NC}"
-    echo -e "${GREEN}===== Set env proxy ====="
-    export http_proxy=http://${proxy}
-    export https_proxy=http://${proxy}
-  else
-    echo -e "${RED}Error: Proxy format is incorrect. It should be {IP:PORT}${NC}"
-    return 1
-  fi
+    if [[ "$proxy" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$ ]]; then
+        echo -e "${GREEN}===== Set env proxy ====="
+        export http_proxy=http://${proxy}
+        export https_proxy=https://${proxy}
+        echo -e "${GREEN}The proxy is $http_proxy and $https_proxy${NC}"
+    else
+        echo -e "${RED}Error: Proxy format is incorrect. It should be {IP:PORT}${NC}"
+        return 1
+    fi
 }
 
 read_path() {
@@ -102,7 +102,7 @@ write_dotfiles() {
 create_target_dirs() {
   for target in "${TARGET_DIRS[@]}"; do
     if [[ -e $HOME_DIR/$target ]]; then
-      echo -e "${YELLOW}Skip: $HOME_DIR/$target link already exists${NC}"
+      echo -e "${YELLOW}Skip: $HOME_DIR/$target link already exists, skip it${NC}"
     else
       create_dir "$LINK_DIR/$target"
       create_symlink "$LINK_DIR/$target" "$HOME_DIR/$target"
@@ -126,13 +126,30 @@ install_miniconda3() {
     if [[ -s "$HOME_DIR/miniconda3/bin" ]]; then
       echo -e "${YELLOW}Skip: Miniconda3 already exists in $HOME_DIR and not empty${NC}"
     else
-      echo -e "${GREEN}===== Install miniconda3 =====${NC}"
       wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME_DIR/miniconda3/miniconda.sh
       bash $HOME_DIR/miniconda3/miniconda.sh -b -u -p $HOME_DIR/miniconda3
       rm -rf $HOME_DIR/miniconda3/miniconda.sh
       $HOME_DIR/miniconda3/bin/conda init bash
     fi
   fi
+}
+
+install_lazygit() {
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+    # try to download the binary file
+    curl -Lo $TMP_DIR/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    # check whether the binary file exists
+    if [[ ! -f "$TMP_DIR/lazygit.tar.gz" ]]; then
+      echo -e "${RED}Error: Fail to download lazygit${NC}"
+      exit 1
+    else
+      tar xf $TMP_DIR/lazygit.tar.gz $TMP_DIR/lazygit
+    fi
+    # check whether the .local/bin exists
+    INSTALL_DIR="$HOME_DIR/.local/bin"
+    create_dir "$INSTALL_DIR"
+    cp $TMP_DIR/lazygit $INSTALL_DIR/lazygit
+    echo -e "${GREEN}Lazygit installed in $INSTALL_DIR/lazygit${NC}"
 }
 
 main() {
@@ -164,7 +181,12 @@ main() {
   set_pip_mirror
 
   # install miniconda3 according to the link dir path exists
+  echo -e "${GREEN}===== Install miniconda3 =====${NC}"
   install_miniconda3
+
+  # install lazygit
+  echo -e "${GREEN}===== Install lazygit =====${NC}"
+  install_lazygit
 
   rm -rf "$TMP_DIR"
 

@@ -42,26 +42,26 @@ create_symlink() {
 }
 
 check_proxy() {
-    unset http_proxy https_proxy socks_proxy
-    local proxy=$(env | grep -i proxy | awk -F '=' '{print $2}' | sed 's/^"//' | sed 's/"$//')
-    # proxy format: ip:port
+  unset http_proxy https_proxy socks_proxy
+  local proxy=$(env | grep -i proxy | awk -F '=' '{print $2}' | sed 's/^"//' | sed 's/"$//')
+  # proxy format: ip:port
 
-    if [[ -z "$proxy" ]]; then
-        echo -e "${YELLOW}Warning: proxy is not set${NC}"
-        return 1
-    else
-        echo -e "${YELLOW}The proxy is $proxy${NC}"
-    fi
+  if [[ -z "$proxy" ]]; then
+    echo -e "${YELLOW}Warning: proxy is not set${NC}"
+    return 1
+  else
+    echo -e "${YELLOW}The proxy is $proxy${NC}"
+  fi
 
-    if [[ "$proxy" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$ ]]; then
-        echo -e "${GREEN}===== Set env proxy ====="
-        export http_proxy=http://${proxy}
-        export https_proxy=https://${proxy}
-        echo -e "${GREEN}The proxy is $http_proxy and $https_proxy${NC}"
-    else
-        echo -e "${RED}Error: Proxy format is incorrect. It should be {IP:PORT}${NC}"
-        return 1
-    fi
+  if [[ "$proxy" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$ ]]; then
+    echo -e "${GREEN}===== Set env proxy ====="
+    export http_proxy=http://${proxy}
+    export https_proxy=https://${proxy}
+    echo -e "${GREEN}The proxy is $http_proxy and $https_proxy${NC}"
+  else
+    echo -e "${RED}Error: Proxy format is incorrect. It should be {IP:PORT}${NC}"
+    return 1
+  fi
 }
 
 read_path() {
@@ -135,21 +135,21 @@ install_miniconda3() {
 }
 
 install_lazygit() {
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
-    # try to download the binary file
-    curl -Lo $TMP_DIR/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    # check whether the binary file exists
-    if [[ ! -f "$TMP_DIR/lazygit.tar.gz" ]]; then
-      echo -e "${RED}Error: Fail to download lazygit${NC}"
-      exit 1
-    else
-      tar xf $TMP_DIR/lazygit.tar.gz $TMP_DIR/lazygit
-    fi
-    # check whether the .local/bin exists
-    INSTALL_DIR="$HOME_DIR/.local/bin"
-    create_dir "$INSTALL_DIR"
-    cp $TMP_DIR/lazygit $INSTALL_DIR/lazygit
-    echo -e "${GREEN}Lazygit installed in $INSTALL_DIR/lazygit${NC}"
+  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+  # try to download the binary file
+  curl -Lo $TMP_DIR/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+  # check whether the binary file exists
+  if [[ ! -f "$TMP_DIR/lazygit.tar.gz" ]]; then
+    echo -e "${RED}Error: Fail to download lazygit${NC}"
+    exit 1
+  else
+    tar xf $TMP_DIR/lazygit.tar.gz $TMP_DIR/lazygit
+  fi
+  # check whether the .local/bin exists
+  INSTALL_DIR="$HOME_DIR/.local/bin"
+  create_dir "$INSTALL_DIR"
+  cp $TMP_DIR/lazygit $INSTALL_DIR/lazygit
+  echo -e "${GREEN}Lazygit installed in $INSTALL_DIR/lazygit${NC}"
 }
 
 main() {

@@ -99,5 +99,10 @@
     "prefix": "lv",
     "body": ["Lua Neovim"],
     "description": "Lua Neovim"
+  },
+  "better-comments": {
+    "prefix": "bc",
+    "body": ["-- INFO: * ${1:comment} * --"],
+    "description": "Better Comments for Lua"
   }
 }

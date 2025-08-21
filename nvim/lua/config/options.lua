@@ -148,11 +148,16 @@ opt.wildignore = {
 }
 
 -- Lazyvim
-g.lazyvim_picker = "auto"
+g.lazyvim_picker = "telescope"
 g.lazyvim_cmp = "auto"
 
 -- Disable nvim intro
 opt.shortmess:append("sI")
 
 -- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
+g.markdown_recommended_style = 0
+
+-- Remove Redundant Virtual Text
+-- vim.diagnostic.config({
+--   virtual_text = false,
+-- })

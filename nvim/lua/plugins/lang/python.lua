@@ -103,23 +103,4 @@ return {
       -- { "<leader>ad", "<cmd>CondaDeactivate<cr>", desc = "Deactivate Conda Env" },
     },
   },
-  {
-    "linux-cultist/venv-selector.nvim",
-    cmd = "VenvSelect",
-    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
-    ft = { "python" },
-    opts = {
-      search = false,
-      name = {
-        "venv",
-        ".venv",
-        "env",
-        "envs",
-        ".env",
-      },
-      anaconda_base_path = "/Users/vercent/miniconda3",
-      anaconda_envs_path = "/Users/vercent/miniconda3/envs",
-    },
-    keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
-  },
 }

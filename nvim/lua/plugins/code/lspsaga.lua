@@ -9,13 +9,14 @@ return {
       { "ga", "<cmd>Lspsaga code_action<CR>", desc = "Lspsaga Code Action" },
       { "gf", "<cmd>Lspsaga finder<CR>", desc = "Lspsaga Finder" },
       { "go", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga Outline" },
-      { "gR", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga Rename" },
       { "gp", "<cmd>Lspsaga peek_definition<CR>", desc = "Lspsaga Peek Definition" },
       { "gd", "<cmd>Lspsaga goto_definition<CR>", desc = "Lspsaga Goto Definition" },
       { "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Lspsaga Show Line Diagnostics" },
       { "gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Lspsaga Diagnsotic Jump Next" },
       { "gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Lspsaga Diagnsotic Jump Previous" },
       { "gh", "<cmd>Lspsaga hover_doc<CR>", desc = "Lspsaga Hover" },
+      -- FIXME: resolve the keymap conflicts with `gr` in telescope configuration introduced by LazyVim Extras
+      { "gR", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga Rename" },
       {
         "<leader>gh",
         function()
@@ -77,6 +78,7 @@ return {
       },
       -- diagnostic
       diagnostic = {
+        -- diagnostic_only_current = true,
         show_code_action = true,
         show_source = true,
         jump_num_shortcut = true,
@@ -91,9 +93,10 @@ return {
       finder_icons = { def = "  ", ref = "󰵚 ", link = "󰴜 " },
       -- finder
       finder = {
-        jump_to = "p",
         edit = { "o", "<CR>" },
         tabe = "t",
+        split = "i",
+        vsplit = "s",
         quit = { "q", "<ESC>" },
       },
       -- show outline

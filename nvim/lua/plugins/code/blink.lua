@@ -8,6 +8,7 @@ return {
   opts = {
     keymap = {
       preset = "enter",
+      ["<C-y>"] = { "show", "show_documentation", "hide_documentation" },
       ["<Tab>"] = { "select_next", "fallback" },
       ["<S-Tab>"] = { "select_prev", "fallback" },
       ["<C-n>"] = { "snippet_forward", "fallback" },
@@ -48,16 +49,24 @@ return {
       ghost_text = { enabled = true, show_with_menu = false },
     },
     signature = {
-      window = {
-        winblend = vim.o.pumblend,
-      },
+      enabled = true,
+      window = { border = "single" },
     },
     cmdline = {
+      -- disable cmdline for speed and performance
       enabled = false,
       completion = {
         menu = {
           auto_show = true,
         },
+      },
+    },
+    fuzzy = {
+      sorts = {
+        "exact",
+        -- defaults
+        "score",
+        "sort_text",
       },
     },
     sources = {
@@ -82,6 +91,16 @@ return {
           opts = {
             get_cwd = function(_)
               return vim.fn.getcwd()
+            end,
+          },
+        },
+        buffer = {
+          opts = {
+            -- or (recommended) filter to only "normal" buffers
+            get_bufnrs = function()
+              return vim.tbl_filter(function(bufnr)
+                return vim.bo[bufnr].buftype == ""
+              end, vim.api.nvim_list_bufs())
             end,
           },
         },

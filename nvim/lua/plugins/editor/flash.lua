@@ -36,8 +36,9 @@ return {
     },
   },
   keys = {
-    { "s", false, mode = { "n", "v" } },
-    { "S", false, mode = { "n", "v" } },
+    -- INFO: * disable default keymaps * --
+    { "s", mode = { "n", "x", "o" }, false },
+    { "S", mode = { "n", "x", "o" }, false },
     {
       "fa",
       mode = { "n", "x", "o" },

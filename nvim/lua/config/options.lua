@@ -150,7 +150,6 @@ opt.wildignore = {
 -- Lazyvim
 g.lazyvim_picker = "auto"
 g.lazyvim_cmp = "auto"
-g.lazyvim_blink_main = true
 
 -- Disable nvim intro
 opt.shortmess:append("sI")

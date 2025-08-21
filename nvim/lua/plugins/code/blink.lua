@@ -1,10 +1,9 @@
 return {
   "saghen/blink.cmp",
-  lazy = false,
-  version = "*",
   dependencies = {
     { "rafamadriz/friendly-snippets" },
   },
+  version = "1.*",
   event = "InsertEnter",
   opts = {
     keymap = {
@@ -54,6 +53,7 @@ return {
       },
     },
     cmdline = {
+      enabled = false,
       completion = {
         menu = {
           auto_show = true,

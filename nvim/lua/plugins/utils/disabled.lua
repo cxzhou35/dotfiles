@@ -2,7 +2,7 @@ local disabled = {
   { "m4xshen/hardtime.nvim" },
   -- animate
   -- { "gen740/SmoothCursor.nvim" },
-  -- { "sphamba/smear-cursor.nvim" },
+  { "sphamba/smear-cursor.nvim" },
   -- { "axieax/urlview.nvim" },
   { "folke/persistence.nvim" },
   -- git

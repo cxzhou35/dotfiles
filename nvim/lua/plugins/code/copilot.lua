@@ -5,6 +5,11 @@ return {
     build = ":Copilot auth",
     event = "BufReadPost",
     opts = {
+      filetypes = {
+        txt = false,
+        markdown = false,
+        help = false,
+      },
       suggestion = {
         enabled = true,
         auto_trigger = true,
@@ -18,14 +23,6 @@ return {
         },
       },
       panel = { enabled = false },
-      filetypes = {
-        markdown = true,
-        help = true,
-        python = true,
-        lua = true,
-        c = true,
-        cpp = true,
-      },
     },
   },
   {

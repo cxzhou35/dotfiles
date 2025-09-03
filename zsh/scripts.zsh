@@ -97,7 +97,7 @@ function getip() {
   rich "[bold blue][Info][/]Local ip address is: [bold magenta]$(awk '{print $2}' <<< $ipinfo)[/]" -p
   # copy to clipboard
   ipaddress=$(awk '{print $2}' <<< $ipinfo)
-  echo $ipaddress | pbcopy
+  echo $ipaddress | cb
   rich "[bold blue][Info][/]Copy to clipboard" -p
 }
 
@@ -106,7 +106,7 @@ function sshaws() {
 }
 
 function cpaws() {
-  echo "ssh -i $HOME/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1" | pbcopy
+	cb copy "ssh -i $HOME/.config/aws/aws-gpu-4dv-key.pem ubuntu@$1"
 }
 
 # open target directory with vscode
@@ -186,4 +186,9 @@ function notify() {
 
   # Return the original exit code
   return $exit_code
+}
+
+# Sync local configs to github repo
+function syncc() {
+	bash /Users/vercent/Github/dotfiles/setup/sync.sh "$@"
 }

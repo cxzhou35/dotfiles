@@ -6,9 +6,11 @@ export ZSH=$HOME/.config/zsh
 # load plugins
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-history-substring-search"
+plug "hlissner/zsh-autopair"
+plug "jeffreytse/zsh-vi-mode"
 plug "MichaelAquilina/zsh-you-should-use"
 plug "zap-zsh/supercharge"
-plug "jeffreytse/zsh-vi-mode"
 
 # my config file
 plug "$ZSH/scripts.zsh"
@@ -23,9 +25,3 @@ if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
 fi
 
 eval "$(starship init zsh)"
-
-# atuin
-export ATUIN_NOBIND="true"
-eval "$(atuin init zsh)"
-bindkey '^h' atuin-search
-

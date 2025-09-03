@@ -16,15 +16,18 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
 
-# autoload -Uz compinit
-# compinit
-
-# Completion using arrow keys (based on history)
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-
+# Key bindings
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 bindkey '^b' backward-word
 bindkey '^f' forward-word
+
+# Atuin
+export ATUIN_NOBIND="true"
+eval "$(atuin init zsh)"
+bindkey '^h' atuin-search
 
 # Conda
 __conda_setup="$('/Users/vercent/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

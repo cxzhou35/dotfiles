@@ -141,3 +141,49 @@ function zjucc(){
         zju-connect -config "$CONFIG_PATH"
     fi
 }
+
+
+# terminal-notifier wrapper for job completion
+function tn() {
+  terminal-notifier -message "$1" -title "$2" -appIcon "$3" -sound "$4"
+}
+
+# Run a command and notify when it's done
+function notify() {
+  # Save start time
+  local start_time=$(date +%s)
+
+  # Run the command
+  "$@"
+  local exit_code=$?
+
+  # Calculate duration
+  local end_time=$(date +%s)
+  local duration=$((end_time - start_time))
+  local duration_str
+  if [ $duration -lt 60 ]; then
+    duration_str="${duration}s"
+  else
+    duration_str="$((duration/60))m$((duration%60))s"
+  fi
+
+    # Prepare notification
+    local cmd_name="$@"
+    local cmd_status="Success ✅"
+    local sound="Crystal"
+
+    if [ $exit_code -ne 0 ]; then
+      cmd_status="Failed ❌ (exit code: $exit_code)"
+      sound="Basso"
+    fi
+
+    # Send notification
+    terminal-notifier -message "Duration: $(echo ${duration_str})" \
+          -title "Job '${cmd_name}'" \
+		      -subtitle "Command ${cmd_status}" \
+          -sound "${sound}" \
+          -activate "com.googlecode.iterm2"
+
+  # Return the original exit code
+  return $exit_code
+}

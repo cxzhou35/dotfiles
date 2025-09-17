@@ -55,6 +55,25 @@ alias ts="tmux switch -t"
 alias tk="tmux kill-session -t"
 alias tr="tmux rename-session -t"
 
+# proxy
+function proxy_on() {
+    export proxy_ip="127.0.0.1"
+    export proxy_port="11890"
+    export socks_port="7891"
+    export http_proxy="http://${proxy_ip}:${proxy_port}"
+    export https_proxy="http://${proxy_ip}:${proxy_port}"
+    export all_proxy="socks5://${proxy_ip}:${socks_port}"
+    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+    echo -e "Proxy opened"
+}
+
+function proxy_off(){
+    unset http_proxy
+    unset https_proxy
+    unset all_proxy
+    echo -e "Proxy closed"
+}
+
 function set_cuda() {
     export CUDA_VISIBLE_DEVICES=$1
     echo "CUDA_VISIBLE_DEVICES set to $1"

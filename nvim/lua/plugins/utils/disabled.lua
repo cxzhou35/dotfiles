@@ -12,7 +12,7 @@ local disabled = {
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "mawkler/modicator.nvim" },
   -- { "nvim-zh/colorful-winsep.nvim" },
-  -- { "echasnovski/mini.surround" },
+  -- { "nvim-mini/mini.surround" },
   -- { "kylechui/nvim-surround" },
   -- { "kmontocam/nvim-conda"}
 }

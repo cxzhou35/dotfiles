@@ -1,7 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
-    version = "^1.0.0",
+    "mason-org/mason.nvim",
     keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
@@ -14,5 +13,5 @@ return {
       },
     },
   },
-  { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
+  { "mason-org/mason-lspconfig.nvim" },
 }

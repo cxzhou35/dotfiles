@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     event = "LazyFile",
     opts = function()
       local hi = require("mini.hipatterns")
@@ -81,7 +81,7 @@ return {
       require("mini.hipatterns").setup(opts)
     end,
     {
-      "echasnovski/mini.pairs",
+      "nvim-mini/mini.pairs",
       event = "VeryLazy",
       opts = {
         mappings = {

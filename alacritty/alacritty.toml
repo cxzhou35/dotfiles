@@ -20,8 +20,8 @@ blur = true
 option_as_alt = "Both"
 
 [font]
-# normal.family = "FiraCode Nerd Font"
-normal.family = "Maple Mono NF"
+normal.family = "FiraCode Nerd Font"
+# normal.family = "Maple Mono NF"
 normal.style = "Regular"
 
 offset.x = 1

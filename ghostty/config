@@ -37,6 +37,7 @@ auto-update = check
 auto-update-channel = stable
 title-report = false
 clipboard-write = allow
+copy-on-select = clipboard
 
 # keybinds
 # splits

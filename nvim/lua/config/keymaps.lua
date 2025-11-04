@@ -39,8 +39,8 @@ map({ "n", "v", "o" }, "H", "^", { desc = "Jump to the start of line" })
 map({ "n", "v", "o" }, "L", "g_", { desc = "Jump to the end of line" })
 
 -- Quick moving between lines
-map({ "n", "v", "o" }, "J", "5j", { desc = "Quick forward" })
-map({ "n", "v", "o" }, "K", "5k", { desc = "Quick backward" })
+-- map({ "n", "v", "o" }, "J", "5j", { desc = "Quick forward" })
+-- map({ "n", "v", "o" }, "K", "5k", { desc = "Quick backward" })
 
 -- Disable continuations
 map("n", "<Leader>o", "o<Esc>^Da", opts)

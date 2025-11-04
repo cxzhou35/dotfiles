@@ -1,0 +1,61 @@
+# fonts
+font-family = "Maple Mono NF"
+font-size = 15
+font-feature = +liga
+
+# appearance
+theme = "catppuccin-mocha.conf"
+background-opacity = 0.85
+background-blur = 20
+window-padding-x = 8
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = background
+window-decoration = auto
+window-height = 32
+window-width = 100
+
+# macOS specific
+macos-titlebar-style = transparent
+macos-window-buttons = hidden
+macos-window-shadow = true
+
+# cursor
+cursor-style = block
+mouse-hide-while-typing = true
+
+# quick terminal
+quick-terminal-position = top
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.2
+quick-terminal-autohide = true
+
+# general
+link-url = true
+desktop-notifications
+auto-update = check
+auto-update-channel = stable
+title-report = false
+clipboard-write = allow
+
+# keybinds
+# splits
+keybind = cmd+d=new_split:right
+keybind = cmd+s=new_split:down
+keybind = cmd+shift+h=goto_split:left
+keybind = cmd+shift+j=goto_split:bottom
+keybind = cmd+shift+k=goto_split:top
+keybind = cmd+shift+l=goto_split:right
+keybind = cmd+shift+m=toggle_split_zoom
+keybind = cmd+shift+s=equalize_splits
+# tabs
+keybind = cmd+t=new_tab
+keybind = cmd+j=next_tab
+keybind = cmd+k=previous_tab
+# adjust fonts
+keybind = cmd+plus=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
+keybind = cmd+0=reset_font_size
+
+# quick terminal
+keybind = ctrl+backspace=toggle_quick_terminal

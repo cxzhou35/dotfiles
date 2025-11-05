@@ -19,6 +19,7 @@ window-width = 100
 macos-titlebar-style = transparent
 macos-window-buttons = hidden
 macos-window-shadow = true
+quit-after-last-window-closed = true
 
 # cursor
 cursor-style = block

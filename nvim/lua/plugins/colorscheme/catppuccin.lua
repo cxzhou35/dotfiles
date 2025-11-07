@@ -7,6 +7,9 @@ return {
     flavour = "mocha", -- Can be one of: latte, frappe, macchiato, mocha
     background = { light = "latte", dark = "mocha" },
     transparent_background = true,
+    float = {
+      transparent = true,
+    },
     show_end_of_buffer = false,
     term_colors = true,
     -- compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
@@ -61,7 +64,10 @@ return {
       neotree = { enabled = true, show_root = true, transparent_panel = true },
       noice = true,
       notify = true,
-      telescope = true,
+      telescope = {
+        enabled = true,
+        border = true,
+      },
       treesitter_context = true,
       ts_rainbow = true,
       which_key = true,
@@ -97,7 +103,8 @@ return {
     },
     custom_highlights = function(C)
       return {
-        TreesitterContext = { bg = C.mantle, fg = C.text },
+        TreesitterContext = { bg = C.pink, fg = C.text },
+        -- NormalFloat = { bg = "none" },
       }
     end,
   },

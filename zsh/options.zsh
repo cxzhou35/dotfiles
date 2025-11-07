@@ -4,6 +4,8 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="false"
 DISABLE_UPDATE_PROMPT="true"
 
+export EDITOR="nvim"
+export VISUAL="nvim"
 export TERM="xterm-256color"
 
 # Bat

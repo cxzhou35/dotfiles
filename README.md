@@ -10,10 +10,11 @@ This is the home of all my dotfiles. These are files that add custom configurati
   </summary>
 
 <!--toc:start-->
+
 - [Table of Contents](#table-of-contents)
 - [Setup](#setup)
 - [Software](#software)
-<!--toc:end-->
+    <!--toc:end-->
 
 </details>
 
@@ -89,4 +90,6 @@ bash setup/install.sh
 
 </details>
 
+## License
 
+This project is licensed under the [MIT License](./LICENSE).

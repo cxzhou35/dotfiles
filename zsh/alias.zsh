@@ -128,3 +128,53 @@ alias tr="tmux rename-session -t"
 # Asciinema
 alias asr="asciinema rec"
 alias asu="asciinema upload"
+
+# >>> overleaf push helper >>>
+overleaf_push_realme() {
+  local repo="/Users/vercent/Projects/3dv/ToG_2026_RealMe/overleaf"
+  local project_id="69ce54f33f8522a7221cdefe"
+  local proxy="http://10.130.136.134:9053"
+  local branch="${1:-master}"
+  local remote_url
+  local ahead_count=0
+
+  if [[ -z "${OVERLEAF_TOKEN:-}" ]]; then
+    echo "OVERLEAF_TOKEN is not set."
+    echo "Run: export OVERLEAF_TOKEN=\"olp_xxx\""
+    return 1
+  fi
+
+  if [[ ! -d "$repo/.git" ]]; then
+    echo "Git repo not found: $repo"
+    return 1
+  fi
+
+  remote_url="https://git:${OVERLEAF_TOKEN}@git.overleaf.com/${project_id}"
+
+  # Friendly no-op: no uncommitted changes and no local commits ahead of origin.
+  if git -C "$repo" diff --quiet && git -C "$repo" diff --cached --quiet; then
+    if git -C "$repo" rev-parse --verify "origin/${branch}" >/dev/null 2>&1; then
+      ahead_count=$(git -C "$repo" rev-list --count "origin/${branch}..${branch}")
+    fi
+    if [[ "$ahead_count" -eq 0 ]]; then
+      echo "No local changes or commits to push on ${branch}."
+      git -C "$repo" status -sb
+      return 0
+    fi
+  fi
+
+  GIT_TERMINAL_PROMPT=0 git -C "$repo" \
+    -c http.proxy="$proxy" \
+    -c https.proxy="$proxy" \
+    push "$remote_url" "$branch:$branch" || return 1
+
+  GIT_TERMINAL_PROMPT=0 git -C "$repo" \
+    -c http.proxy="$proxy" \
+    -c https.proxy="$proxy" \
+    fetch "$remote_url" "${branch}:refs/remotes/origin/${branch}" || return 1
+
+  git -C "$repo" status -sb
+}
+
+alias olpush="overleaf_push_realme"
+# <<< overleaf push helper <<<

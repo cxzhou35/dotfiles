@@ -26,5 +26,3 @@ fi
 
 eval "$(starship init zsh)"
 
-# OpenClaw Completion
-# source "/Users/vercent/.openclaw/completions/openclaw.zsh"

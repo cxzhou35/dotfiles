@@ -397,6 +397,12 @@ show_change_summary() {
 }
 
 refresh_staged_changes() {
+  local check_output=""
+  local -a check_lines=()
+  local -a warning_lines=()
+  local -a error_lines=()
+  local line
+
   git add -A
 
   if git diff --cached --quiet; then
@@ -404,9 +410,30 @@ refresh_staged_changes() {
     return 1
   fi
 
-  if ! git diff --cached --check; then
-    error "Whitespace or merge-marker issues detected in staged changes"
-    exit 1
+  if ! check_output="$(git diff --cached --check 2>&1)"; then
+    mapfile -t check_lines <<<"$check_output"
+
+    for line in "${check_lines[@]}"; do
+      [[ -z "$line" ]] && continue
+
+      if [[ "$line" == *"new blank line at EOF."* ]]; then
+        warning_lines+=("$line")
+      else
+        error_lines+=("$line")
+      fi
+    done
+
+    for line in "${warning_lines[@]}"; do
+      warn "$line"
+    done
+
+    if [[ ${#error_lines[@]} -gt 0 ]]; then
+      for line in "${error_lines[@]}"; do
+        error "$line"
+      done
+      error "Whitespace or merge-marker issues detected in staged changes"
+      exit 1
+    fi
   fi
 }
 

@@ -301,6 +301,20 @@ show_change_summary() {
   fi
 }
 
+refresh_staged_changes() {
+  git add -A
+
+  if git diff --cached --quiet; then
+    warn "No staged changes to commit after refresh"
+    return 1
+  fi
+
+  if ! git diff --cached --check; then
+    error "Whitespace or merge-marker issues detected in staged changes"
+    exit 1
+  fi
+}
+
 ahead_count() {
   if git rev-parse --abbrev-ref --symbolic-full-name '@{u}' >/dev/null 2>&1; then
     git rev-list --count '@{u}..HEAD'
@@ -309,10 +323,58 @@ ahead_count() {
   fi
 }
 
+confirm_commit_message() {
+  local manual_tag_input="${1:-}"
+  local manual_summary="${2:-}"
+  local commit_message=""
+  local response=""
+
+  while true; do
+    if ! refresh_staged_changes; then
+      exit 0
+    fi
+
+    show_change_summary
+    commit_message="$(build_commit_message "$manual_tag_input" "$manual_summary")"
+    printf 'Commit message: %s\n' "$commit_message"
+
+    if [[ ! -t 0 || "${SYNC_AUTO_CONFIRM:-0}" == "1" ]]; then
+      CONFIRMED_COMMIT_MESSAGE="$commit_message"
+      return 0
+    fi
+
+    printf 'Press Enter to commit, type l to open lazygit, or q to abort: '
+    IFS= read -r response
+
+    case "$response" in
+      "")
+        CONFIRMED_COMMIT_MESSAGE="$commit_message"
+        return 0
+        ;;
+      l|L|lg|LG|lazygit)
+        if ! command -v lazygit >/dev/null 2>&1; then
+          warn "lazygit is not installed"
+          continue
+        fi
+
+        info "Opening lazygit for review"
+        lazygit
+        info "Returned from lazygit"
+        ;;
+      q|Q|quit|QUIT)
+        warn "Commit aborted"
+        exit 0
+        ;;
+      *)
+        warn "Unknown input: ${response}"
+        ;;
+    esac
+  done
+}
+
 commit_and_push() {
   local commit_message="$1"
 
-  printf 'Commit message: %s\n' "$commit_message"
   git commit -m "$commit_message"
   git push
 }
@@ -358,27 +420,8 @@ if [[ -z "$(git status --porcelain)" ]]; then
   exit 0
 fi
 
-if [[ -t 1 ]] && command -v lazygit >/dev/null 2>&1 && [[ "${SYNC_SKIP_LAZYGIT:-0}" != "1" ]]; then
-  info "Opening lazygit for review"
-  lazygit
-  info "Returned from lazygit"
-fi
-
-git add -A
-
-if git diff --cached --quiet; then
-  warn "No staged changes to commit after refresh"
-  exit 0
-fi
-
-if ! git diff --cached --check; then
-  error "Whitespace or merge-marker issues detected in staged changes"
-  exit 1
-fi
-
-show_change_summary
-
-commit_message="$(build_commit_message "$manual_tag" "$manual_summary")"
+confirm_commit_message "$manual_tag" "$manual_summary"
+commit_message="$CONFIRMED_COMMIT_MESSAGE"
 commit_and_push "$commit_message"
 
 info "Sync Success!"

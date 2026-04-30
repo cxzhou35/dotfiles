@@ -262,6 +262,244 @@ collect_changed_files() {
   git diff --cached --name-only --diff-filter=ACDMR
 }
 
+describe_path_semantics() {
+  local path="$1"
+  local tag
+  local module
+
+  case "$path" in
+    zsh/alias.zsh)
+      printf 'shell aliases'
+      ;;
+    zsh/scripts.zsh)
+      printf 'shell helpers'
+      ;;
+    zsh/options.zsh)
+      printf 'shell options'
+      ;;
+    zsh/.zshrc|zsh/.zprofile)
+      printf 'shell startup'
+      ;;
+    zsh/secret.zsh)
+      printf 'shell secrets'
+      ;;
+    nvim/init.lua)
+      printf 'neovim startup'
+      ;;
+    nvim/lua/*)
+      module="${path#nvim/lua/}"
+      module="${module%.lua}"
+      module="${module//\// }"
+      module="${module//_/ }"
+      printf 'neovim %s' "$module"
+      ;;
+    setup/sync.sh)
+      printf 'sync workflow'
+      ;;
+    setup/*)
+      printf 'setup workflow'
+      ;;
+    *)
+      tag="$(top_level_to_tag "$path")"
+      case "$tag" in
+        neovim)
+          printf 'neovim config'
+          ;;
+        misc)
+          printf 'local configs'
+          ;;
+        *)
+          printf '%s settings' "$tag"
+          ;;
+      esac
+      ;;
+  esac
+}
+
+extract_named_subjects() {
+  local path="$1"
+  local limit="${2:-2}"
+  local -a subjects=()
+  local line
+  local content
+  local phrase
+  local name
+  local plugin
+  local module
+
+  while IFS= read -r line; do
+    [[ "$line" =~ ^(\+\+\+|---|@@) ]] && continue
+    [[ ! "$line" =~ ^[+-] ]] && continue
+
+    content="${line:1}"
+    phrase=""
+
+    if [[ "$content" =~ ^[[:space:]]*alias[[:space:]]+([A-Za-z0-9_-]+)= ]]; then
+      phrase="${BASH_REMATCH[1]} alias"
+    elif [[ "$content" =~ ^[[:space:]]*function[[:space:]]+([A-Za-z_][A-Za-z0-9_-]*) ]]; then
+      phrase="${BASH_REMATCH[1]} helper"
+    elif [[ "$content" =~ ^[[:space:]]*([A-Za-z_][A-Za-z0-9_-]*)[[:space:]]*\(\)[[:space:]]*\{?[[:space:]]*$ ]]; then
+      name="${BASH_REMATCH[1]}"
+      case "$name" in
+        if|then|else|elif|for|while|case)
+          ;;
+        *)
+          phrase="${name} helper"
+          ;;
+      esac
+    elif [[ "$content" =~ plug[[:space:]]+\"([^\"]+)\" ]]; then
+      plugin="${BASH_REMATCH[1]}"
+      plugin="${plugin##*/}"
+      phrase="${plugin} plugin"
+    elif [[ "$content" =~ require\([\"\']([^\"\']+)[\"\']\) ]]; then
+      module="${BASH_REMATCH[1]}"
+      module="${module##*.}"
+      module="${module//_/ }"
+      phrase="${module} integration"
+    fi
+
+    if append_unique "$phrase" "${subjects[@]}"; then
+      subjects+=("$phrase")
+    fi
+
+    if [[ ${#subjects[@]} -ge "$limit" ]]; then
+      break
+    fi
+  done < <(git diff --cached --no-color --unified=0 -- "$path")
+
+  if [[ ${#subjects[@]} -gt 0 ]]; then
+    join_with ', ' "${subjects[@]}"
+  fi
+}
+
+extract_diff_themes() {
+  local path="$1"
+  local limit="${2:-2}"
+  local diff_text
+  local -a themes=()
+
+  diff_text="$(git diff --cached --no-color --unified=0 -- "$path" | tr '[:upper:]' '[:lower:]')"
+  [[ -z "$diff_text" ]] && return 0
+
+  if [[ "$diff_text" == *"summary"* ]]; then
+    themes+=("commit summaries")
+  fi
+  if [[ "$diff_text" == *"tag"* ]]; then
+    if append_unique "tag handling" "${themes[@]}"; then
+      themes+=("tag handling")
+    fi
+  fi
+  if [[ "$diff_text" == *"lazygit"* ]]; then
+    if append_unique "lazygit review flow" "${themes[@]}"; then
+      themes+=("lazygit review flow")
+    fi
+  fi
+  if [[ "$diff_text" == *"proxy"* ]]; then
+    if append_unique "proxy handling" "${themes[@]}"; then
+      themes+=("proxy handling")
+    fi
+  fi
+  if [[ "$diff_text" == *"ssh"* ]]; then
+    if append_unique "ssh connectivity" "${themes[@]}"; then
+      themes+=("ssh connectivity")
+    fi
+  fi
+  if [[ "$diff_text" == *"alias"* ]]; then
+    if append_unique "alias helpers" "${themes[@]}"; then
+      themes+=("alias helpers")
+    fi
+  fi
+  if [[ "$diff_text" == *"plugin"* ]]; then
+    if append_unique "plugin configuration" "${themes[@]}"; then
+      themes+=("plugin configuration")
+    fi
+  fi
+  if [[ "$diff_text" == *"keymap"* || "$diff_text" == *"mapping"* ]]; then
+    if append_unique "keymaps" "${themes[@]}"; then
+      themes+=("keymaps")
+    fi
+  fi
+  if [[ "$diff_text" == *"theme"* || "$diff_text" == *"color"* || "$diff_text" == *"transparent"* || "$diff_text" == *"opacity"* ]]; then
+    if append_unique "theme styling" "${themes[@]}"; then
+      themes+=("theme styling")
+    fi
+  fi
+  if [[ "$diff_text" == *"notify"* || "$diff_text" == *"notification"* || "$diff_text" == *"notifier"* ]]; then
+    if append_unique "notifications" "${themes[@]}"; then
+      themes+=("notifications")
+    fi
+  fi
+  if [[ "$diff_text" == *"commit"* ]]; then
+    if append_unique "commit workflow" "${themes[@]}"; then
+      themes+=("commit workflow")
+    fi
+  fi
+
+  if [[ ${#themes[@]} -gt 0 ]]; then
+    join_with ', ' "${themes[@]:0:$limit}"
+  fi
+}
+
+describe_changed_path() {
+  local path="$1"
+  local named_subjects=""
+  local diff_themes=""
+
+  diff_themes="$(extract_diff_themes "$path")"
+  named_subjects="$(extract_named_subjects "$path")"
+
+  case "$path" in
+    setup/*)
+      if [[ -n "$diff_themes" ]]; then
+        printf '%s' "$diff_themes"
+        return
+      fi
+      ;;
+  esac
+
+  if [[ -n "$named_subjects" ]]; then
+    printf '%s' "$named_subjects"
+    return
+  fi
+
+  if [[ -n "$diff_themes" ]]; then
+    printf '%s' "$diff_themes"
+    return
+  fi
+
+  describe_path_semantics "$path"
+}
+
+build_changed_targets_summary() {
+  local limit="${1:-3}"
+  local -a targets=()
+  local path
+  local count=0
+  local target
+
+  while IFS= read -r path; do
+    [[ -z "$path" ]] && continue
+    target="$(describe_changed_path "$path")"
+    if append_unique "$target" "${targets[@]}"; then
+      targets+=("$target")
+    fi
+  done < <(collect_changed_files)
+
+  count="${#targets[@]}"
+  if [[ "$count" -eq 0 ]]; then
+    printf 'local configs'
+    return
+  fi
+
+  if [[ "$count" -le "$limit" ]]; then
+    join_with ', ' "${targets[@]}"
+    return
+  fi
+
+  local -a preview=("${targets[@]:0:$limit}")
+  printf '%s, and %s more update(s)' "$(join_with ', ' "${preview[@]}")" "$(( count - limit ))"
+}
+
 infer_tags() {
   local -a tags=()
   local path
@@ -304,20 +542,12 @@ format_tags() {
 build_auto_summary() {
   local -a tags=("$@")
   local verb
+  local targets
 
   verb="$(detect_summary_verb)"
+  targets="$(build_changed_targets_summary)"
 
-  if [[ ${#tags[@]} -eq 0 ]]; then
-    printf '%s local configs' "$verb"
-    return
-  fi
-
-  if [[ ${#tags[@]} -eq 1 ]]; then
-    printf '%s %s' "$verb" "$(scope_label "${tags[0]}")"
-    return
-  fi
-
-  printf '%s %s configs' "$verb" "$(join_with ', ' "${tags[@]}")"
+  printf '%s %s' "$verb" "$targets"
 }
 
 parse_tag_override() {

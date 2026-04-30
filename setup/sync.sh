@@ -38,6 +38,98 @@ error() {
   rich_print "[ERROR]$1" -p --style "bold white on red"
 }
 
+supports_color() {
+  [[ -t 1 ]] && [[ -z "${NO_COLOR:-}" ]]
+}
+
+print_line() {
+  local text="$1"
+  printf '%s\n' "$text"
+}
+
+color_text() {
+  local color_code="$1"
+  shift
+  local text="$*"
+
+  if supports_color; then
+    printf '\033[%sm%s\033[0m' "$color_code" "$text"
+  else
+    printf '%s' "$text"
+  fi
+}
+
+colorize_tag() {
+  local tag="$1"
+  local color_code
+
+  case "$tag" in
+    zsh)
+      color_code="1;38;5;39"
+      ;;
+    neovim)
+      color_code="1;38;5;42"
+      ;;
+    setup)
+      color_code="1;38;5;208"
+      ;;
+    git)
+      color_code="1;38;5;141"
+      ;;
+    misc)
+      color_code="1;38;5;250"
+      ;;
+    ghostty)
+      color_code="1;38;5;45"
+      ;;
+    kitty)
+      color_code="1;38;5;171"
+      ;;
+    tmux)
+      color_code="1;38;5;220"
+      ;;
+    *)
+      color_code="1;38;5;81"
+      ;;
+  esac
+
+  color_text "$color_code" "[#${tag}]"
+}
+
+print_commit_message() {
+  local commit_message="$1"
+  local remaining="$commit_message"
+  local summary=""
+  local colored_message="Commit message: "
+
+  while [[ "$remaining" =~ ^(\[#([^]]+)\])(.*)$ ]]; do
+    colored_message+="$(colorize_tag "${BASH_REMATCH[2]}")"
+    remaining="${BASH_REMATCH[3]}"
+  done
+
+  summary="${remaining# }"
+  if [[ -n "$summary" ]]; then
+    colored_message+=" $(color_text '1;38;5;120' "$summary")"
+  fi
+
+  printf '%b\n' "$colored_message"
+}
+
+print_confirmation_prompt() {
+  if ! supports_color; then
+    printf 'Press Enter to commit, type l to open lazygit, or q to abort: '
+    return
+  fi
+
+  printf 'Press '
+  color_text '1;38;5;220' 'Enter'
+  printf ' to commit, type '
+  color_text '1;38;5;45' 'l'
+  printf ' to open lazygit, or '
+  color_text '1;38;5;196' 'q'
+  printf ' to abort: '
+}
+
 contains_item() {
   local needle="$1"
   shift
@@ -280,7 +372,7 @@ build_commit_message() {
 show_change_summary() {
   local -a files=()
   local path
-  local preview
+  local preview_line
 
   while IFS= read -r path; do
     [[ -z "$path" ]] && continue
@@ -293,11 +385,14 @@ show_change_summary() {
   fi
 
   info "Staged ${#files[@]} file(s)"
-  preview="$(printf '%s\n' "${files[@]}" | head -n 10)"
-  printf '%s\n' "$preview"
+
+  while IFS= read -r preview_line; do
+    [[ -z "$preview_line" ]] && continue
+    print_line "$preview_line"
+  done < <(printf '%s\n' "${files[@]}" | head -n 10)
 
   if [[ ${#files[@]} -gt 10 ]]; then
-    printf '... and %s more\n' "$(( ${#files[@]} - 10 ))"
+    print_line "... and $(( ${#files[@]} - 10 )) more"
   fi
 }
 
@@ -336,14 +431,14 @@ confirm_commit_message() {
 
     show_change_summary
     commit_message="$(build_commit_message "$manual_tag_input" "$manual_summary")"
-    printf 'Commit message: %s\n' "$commit_message"
+    print_commit_message "$commit_message"
 
     if [[ ! -t 0 || "${SYNC_AUTO_CONFIRM:-0}" == "1" ]]; then
       CONFIRMED_COMMIT_MESSAGE="$commit_message"
       return 0
     fi
 
-    printf 'Press Enter to commit, type l to open lazygit, or q to abort: '
+    print_confirmation_prompt
     IFS= read -r response
 
     case "$response" in

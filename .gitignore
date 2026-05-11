@@ -8,6 +8,10 @@ zsh/.zprofile
 tmux/.tmux/plugins/*
 
 yazi/plugins/*
+!yazi/plugins/fzf.yazi/
+!yazi/plugins/fzf.yazi/**
+!yazi/plugins/zoxide.yazi/
+!yazi/plugins/zoxide.yazi/**
 
 nvim/lazy-lock.json
 nvim/lazyvim.json

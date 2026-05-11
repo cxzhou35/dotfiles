@@ -1,5 +1,3 @@
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
-
 [mgr]
 ratio = [1, 4, 3]
 sort_by = "natural"
@@ -32,7 +30,7 @@ archive = [
 
 [open]
 rules = [
-  { name = "*/", use = [
+  { url = "*/", use = [
     "open",
     "edit",
     "reveal",
@@ -104,7 +102,7 @@ rules = [
     "reveal",
   ] },
 
-  { name = "*.mp4", use = [
+  { url = "*.mp4", use = [
     "open",
     "play",
     "reveal",
@@ -113,20 +111,20 @@ rules = [
 
 [plugin]
 prepend_previewers = [
-  { name = "*.csv", run = "rich-preview" },                                                                             # for csv files
-  { name = "*.rst", run = "rich-preview" },                                                                             # for restructured text (.rst) files
-  { name = "*.ipynb", run = "rich-preview" },                                                                           # for jupyter notebooks (.ipynb)
-  { name = "*.json", run = "rich-preview" },                                                                            # for json (.json) files
-  { name = "*.md", run = "glow" },                                                                                      # for markdown (.md) files
+  { url = "*.csv", run = "rich-preview" },                                                                             # for csv files
+  { url = "*.rst", run = "rich-preview" },                                                                             # for restructured text (.rst) files
+  { url = "*.ipynb", run = "rich-preview" },                                                                           # for jupyter notebooks (.ipynb)
+  { url = "*.json", run = "rich-preview" },                                                                            # for json (.json) files
+  { url = "*.md", run = "glow" },                                                                                      # for markdown (.md) files
   { mime = "application/{,g}zip", run = "lsar" },                                                                       # for zip files
   { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", run = "lsar" },                                            # for zip files
-  { name = "*.tar*", run = 'piper --format=url -- tar tf "$1"' },                                                       # for tar files
-  { name = "*/", run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"' }, # for directory
+  { url = "*.tar*", run = 'piper --format=url -- tar tf "$1"' },                                                       # for tar files
+  { url = "*/", run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"' }, # for directory
 ]
 
 prepend_fetchers = [
-  { id = "git", name = "*", run = "git" },
-  { id = "git", name = "*/", run = "git" },
-  { id = "mactag", name = "*", run = "mactag" },
-  { id = "mactag", name = "*/", run = "mactag" },
+  { id = "git", url = "*", run = "git", group = "git" },
+  { id = "git", url = "*/", run = "git", group = "git" },
+  { id = "mactag", url = "*", run = "mactag", group = "mactag" },
+  { id = "mactag", url = "*/", run = "mactag", group = "mactag" },
 ]

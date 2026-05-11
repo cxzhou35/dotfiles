@@ -29,7 +29,12 @@ return {
     lazy = true,
     ft = { "markdown" },
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "npm install",
+    -- Use the plugin's prebuilt binary installer instead of a root npm install,
+    -- so Lazy updates do not leave package-lock/yarn changes in the checkout.
+    build = function(plugin)
+      vim.opt.runtimepath:append(plugin.dir)
+      vim.fn["mkdp#util#install_sync"](1)
+    end,
     keys = {
       {
         "<F5>",

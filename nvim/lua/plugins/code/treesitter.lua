@@ -8,6 +8,7 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
+      install_dir = vim.fn.stdpath("data") .. "/treesitter",
       highlight = { enable = true },
       indent = { enable = true },
       autotag = { enable = true },

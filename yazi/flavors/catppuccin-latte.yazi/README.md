@@ -12,19 +12,22 @@
 
 ## 🎨 Installation
 
-Download and copy this folder as:
-
-- `~/.config/yazi/flavors/catppuccin-latte.yazi` on Linux/macOS
-- `%AppData%\yazi\config\flavors\catppuccin-latte.yazi` on Windows
+```sh
+ya pkg add yazi-rs/flavors:catppuccin-latte
+```
 
 ## ⚙️ Usage
 
-Add these lines to your `theme.toml` configuration file to use it:
+Set the content of your `theme.toml` to enable it as your _light_ flavor:
 
 ```toml
 [flavor]
-use = "catppuccin-latte"
+light = "catppuccin-latte"
 ```
+
+Make sure your `theme.toml` doesn't contain anything other than `[flavor]`, unless you want to override certain styles of this flavor.
+
+See the [Yazi flavor documentation](https://yazi-rs.github.io/docs/flavors/overview) for more details.
 
 ## 📜 License
 

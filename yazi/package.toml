@@ -1,5 +1,3 @@
-# Managed by `ya pkg`; fzf/zoxide are vendored in yazi/plugins because `ya pkg add` records them but does not deploy plugin dirs.
-
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
 rev = "1962818"
@@ -85,5 +83,12 @@ use = "yazi-rs/plugins:smart-paste"
 rev = "1db18bb"
 hash = "3f8d49413bc8691b4c652eb417a20178"
 
-[flavor]
-deps = []
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "0670801"
+hash = "7dfe41c9c3d9be76da8a844263d0bbed"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "0670801"
+hash = "b8f46853c27707115f25f3423a47bd38"

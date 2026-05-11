@@ -65,6 +65,6 @@
   header = white normal bold
 [column]
   ui = auto
-[http]
-  proxy = localhost:7890
-
+[credential]
+	helper = cache --timeout 21600
+	helper = oauth

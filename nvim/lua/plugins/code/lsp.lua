@@ -1,12 +1,6 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    -- init = function()
-    --   local keys = require("lazyvim.plugins.lsp.keymaps").get()
-    --   keys[#keys + 1] = { "K", false }
-    --   keys[#keys + 1] = { "gr", false }
-    --   keys[#keys + 1] = { "gy", false }
-    -- end,
     opts = {
       diagnostics = {
         underline = true,
@@ -30,6 +24,12 @@ return {
       },
       -- LSP Server Settings
       servers = {
+        ["*"] = {
+          keys = {
+            { "K", false },
+            { "<leader>k", function() return vim.lsp.buf.hover() end, desc = "Hover" },
+          },
+        },
         lua_ls = {
           single_file_support = true,
           filetypes = { "lua" },

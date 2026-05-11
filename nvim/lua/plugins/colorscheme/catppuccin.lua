@@ -1,6 +1,6 @@
 return {
   "catppuccin/nvim",
-  lazy = true,
+  lazy = false,
   name = "catppuccin",
   priority = 1000,
   opts = {
@@ -103,9 +103,12 @@ return {
     },
     custom_highlights = function(C)
       return {
-        TreesitterContext = { bg = C.pink, fg = C.text },
-        -- NormalFloat = { bg = "none" },
+        TreesitterContext = { bg = C.none, fg = C.text },
       }
     end,
   },
+  config = function(_, opts)
+    require("catppuccin").setup(opts)
+    vim.cmd.colorscheme("catppuccin")
+  end,
 }

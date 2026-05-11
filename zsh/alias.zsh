@@ -64,12 +64,9 @@ alias sz="source $ZSHRC; echo '$ZSHRC reloaded'"
 alias sr="\"/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel\" --reload"
 alias vz="vi $HOME/Github/dotfiles/zsh/.zshrc"
 alias vzp="vi $HOME/Github/dotfiles/zsh/.zprofile"
+alias vpx="vi $HOME/Github/dotfiles/zsh/.proxyenv"
 alias vt="vi $HOME/Github/dotfiles/tmux.tmux.conf"
 alias vc="vi $HOME/Github/dotfiles/nvim/init.lua"
-
-# Proxy
-alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
-alias unproxy="unset http_proxy https_proxy all_proxy"
 
 # Weather
 alias cwt="curl wttr.in"
@@ -133,7 +130,15 @@ alias asu="asciinema upload"
 overleaf_push_realme() {
   local repo="/Users/vercent/Projects/3dv/ToG_2026_RealMe/overleaf"
   local project_id="69ce54f33f8522a7221cdefe"
-  local proxy="http://10.130.136.134:9053"
+  if (( $+functions[_load_proxy_config] )); then
+    _load_proxy_config
+  elif [[ -r "$HOME/Github/dotfiles/zsh/.proxyenv" ]]; then
+    source "$HOME/Github/dotfiles/zsh/.proxyenv"
+  fi
+
+  local proxy_host="${OVERLEAF_PROXY_IP:-10.130.136.134}"
+  local proxy_port="${OVERLEAF_PROXY_PORT:-9053}"
+  local proxy="${OVERLEAF_PROXY_URL:-http://${proxy_host}:${proxy_port}}"
   local branch="${1:-master}"
   local remote_url
   local ahead_count=0

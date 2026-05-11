@@ -1,6 +1,8 @@
 .DS_STORE
 
 zsh/secret.zsh
+zsh/.proxyenv
+zsh/proxy.env
 zsh/.zprofile
 
 tmux/.tmux/plugins/*

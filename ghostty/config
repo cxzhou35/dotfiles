@@ -23,6 +23,7 @@ adjust-cell-height = 0%
 macos-titlebar-style = transparent
 macos-window-buttons = hidden
 macos-window-shadow = true
+macos-option-as-alt = true
 quit-after-last-window-closed = true
 
 # cursor

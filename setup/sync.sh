@@ -178,6 +178,28 @@ join_with() {
   printf '%s' "$output"
 }
 
+join_natural_list() {
+  if [[ $# -eq 0 ]]; then
+    return 0
+  fi
+
+  if [[ $# -eq 1 ]]; then
+    printf '%s' "$1"
+    return
+  fi
+
+  if [[ $# -eq 2 ]]; then
+    printf '%s and %s' "$1" "$2"
+    return
+  fi
+
+  local last_index=$#
+  local last_item="${!last_index}"
+  local -a leading=("${@:1:$#-1}")
+
+  printf '%s, and %s' "$(join_with ', ' "${leading[@]}")" "$last_item"
+}
+
 top_level_to_tag() {
   local path="$1"
   local top_level="${path%%/*}"
@@ -262,10 +284,6 @@ collect_changed_files() {
   git diff --cached --name-only --diff-filter=ACDMR
 }
 
-changed_file_count() {
-  collect_changed_files | awk 'NF { count++ } END { print count + 0 }'
-}
-
 count_matching_changed_files() {
   local glob="$1"
   local count=0
@@ -287,6 +305,9 @@ describe_path_semantics() {
   local module
 
   case "$path" in
+    .gitignore)
+      printf 'ignore rules'
+      ;;
     zsh/alias.zsh)
       printf 'shell aliases'
       ;;
@@ -482,15 +503,17 @@ describe_changed_path() {
   local path="$1"
   local named_subjects=""
   local diff_themes=""
-  local file_count=0
   local zsh_app_count=0
 
   diff_themes="$(extract_diff_themes "$path")"
   named_subjects="$(extract_named_subjects "$path")"
-  file_count="$(changed_file_count)"
   zsh_app_count="$(count_matching_changed_files 'zsh/apps/*.zsh')"
 
   case "$path" in
+    .gitignore)
+      describe_path_semantics "$path"
+      return
+      ;;
     setup/*)
       describe_path_semantics "$path"
       return
@@ -544,12 +567,12 @@ build_changed_targets_summary() {
   fi
 
   if [[ "$count" -le "$limit" ]]; then
-    join_with ', ' "${targets[@]}"
+    join_natural_list "${targets[@]}"
     return
   fi
 
   local -a preview=("${targets[@]:0:$limit}")
-  printf '%s, and %s more update(s)' "$(join_with ', ' "${preview[@]}")" "$(( count - limit ))"
+  printf '%s, and %s more update(s)' "$(join_natural_list "${preview[@]}")" "$(( count - limit ))"
 }
 
 infer_tags() {

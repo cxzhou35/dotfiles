@@ -17,6 +17,7 @@ cleanup() {
 }
 
 trap cleanup EXIT
+USED_CZ_COMMIT=0
 
 rich_print() {
   if command -v rich >/dev/null 2>&1; then
@@ -117,13 +118,15 @@ print_commit_message() {
 
 print_confirmation_prompt() {
   if ! supports_color; then
-    printf 'Press Enter to commit, type l to open lazygit, or q to abort: '
+    printf 'Press Enter to commit, type c for cz commit, l to open lazygit, or q to abort: '
     return
   fi
 
   printf 'Press '
   color_text '1;38;5;220' 'Enter'
   printf ' to commit, type '
+  color_text '1;38;5;81' 'c'
+  printf ' for cz commit, '
   color_text '1;38;5;45' 'l'
   printf ' to open lazygit, or '
   color_text '1;38;5;196' 'q'
@@ -307,6 +310,25 @@ describe_path_semantics() {
   case "$path" in
     .gitignore)
       printf 'ignore rules'
+      ;;
+    tmux/.tmux.conf)
+      printf 'tmux keymaps'
+      ;;
+    tmux/scripts/agent-approval-watcher.sh)
+      printf 'agent approval widget'
+      ;;
+    tmux/scripts/agent-status-widget.sh)
+      printf 'agent widget reload'
+      ;;
+    tmux/scripts/open-git-remote.sh)
+      printf 'git remote browser helper'
+      ;;
+    tmux/scripts/*.sh)
+      module="${path#tmux/scripts/}"
+      module="${module%.sh}"
+      module="${module//-/ }"
+      module="${module//_/ }"
+      printf 'tmux script %s' "$module"
       ;;
     zsh/alias.zsh)
       printf 'shell aliases'
@@ -511,6 +533,10 @@ describe_changed_path() {
 
   case "$path" in
     .gitignore)
+      describe_path_semantics "$path"
+      return
+      ;;
+    tmux/.tmux.conf|tmux/scripts/*.sh)
       describe_path_semantics "$path"
       return
       ;;
@@ -750,6 +776,27 @@ ahead_count() {
   fi
 }
 
+push_commits() {
+  git push
+}
+
+run_commitizen_commit() {
+  if ! command -v cz >/dev/null 2>&1; then
+    warn "cz is not installed"
+    return 1
+  fi
+
+  info "Opening cz commit"
+  if ! cz commit; then
+    warn "cz commit did not complete"
+    return 1
+  fi
+
+  push_commits
+  USED_CZ_COMMIT=1
+  return 0
+}
+
 confirm_commit_message() {
   local manual_tag_input="${1:-}"
   local manual_summary="${2:-}"
@@ -778,6 +825,11 @@ confirm_commit_message() {
         CONFIRMED_COMMIT_MESSAGE="$commit_message"
         return 0
         ;;
+      c|C|cz|CZ|commitizen|COMMITIZEN)
+        if run_commitizen_commit; then
+          return 0
+        fi
+        ;;
       l|L|lg|LG|lazygit)
         if ! command -v lazygit >/dev/null 2>&1; then
           warn "lazygit is not installed"
@@ -803,7 +855,7 @@ commit_and_push() {
   local commit_message="$1"
 
   git commit -m "$commit_message"
-  git push
+  push_commits
 }
 
 cd "${repo_dir}"
@@ -848,6 +900,10 @@ if [[ -z "$(git status --porcelain)" ]]; then
 fi
 
 confirm_commit_message "$manual_tag" "$manual_summary"
+if [[ "$USED_CZ_COMMIT" == "1" ]]; then
+  info "Sync Success!"
+  exit 0
+fi
 commit_message="$CONFIRMED_COMMIT_MESSAGE"
 commit_and_push "$commit_message"
 

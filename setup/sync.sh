@@ -266,6 +266,21 @@ changed_file_count() {
   collect_changed_files | awk 'NF { count++ } END { print count + 0 }'
 }
 
+count_matching_changed_files() {
+  local glob="$1"
+  local count=0
+  local path
+
+  while IFS= read -r path; do
+    [[ -z "$path" ]] && continue
+    if [[ "$path" == $glob ]]; then
+      count=$((count + 1))
+    fi
+  done < <(collect_changed_files)
+
+  printf '%s' "$count"
+}
+
 describe_path_semantics() {
   local path="$1"
   local tag
@@ -468,22 +483,29 @@ describe_changed_path() {
   local named_subjects=""
   local diff_themes=""
   local file_count=0
+  local zsh_app_count=0
 
   diff_themes="$(extract_diff_themes "$path")"
   named_subjects="$(extract_named_subjects "$path")"
   file_count="$(changed_file_count)"
+  zsh_app_count="$(count_matching_changed_files 'zsh/apps/*.zsh')"
 
   case "$path" in
     setup/*)
-      if [[ "$file_count" -gt 3 ]]; then
+      describe_path_semantics "$path"
+      return
+      ;;
+    zsh/apps/*.zsh)
+      if [[ "$zsh_app_count" -gt 1 ]]; then
+        printf 'shell app layout'
+      else
         describe_path_semantics "$path"
-        return
       fi
-
-      if [[ "$file_count" -le 3 && -n "$diff_themes" ]]; then
-        printf '%s' "$diff_themes"
-        return
-      fi
+      return
+      ;;
+    zsh/.zshrc|zsh/.zprofile|zsh/options.zsh)
+      describe_path_semantics "$path"
+      return
       ;;
   esac
 

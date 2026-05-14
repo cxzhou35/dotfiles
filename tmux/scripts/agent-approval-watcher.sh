@@ -23,6 +23,21 @@ is_agent_pane() {
   [[ "$command" =~ $agent_pattern || "$window_name" =~ $agent_pattern ]]
 }
 
+detect_agent_kind() {
+  local command="${1,,}"
+  local window_name="${2,,}"
+  local haystack="${command} ${window_name}"
+
+  if [[ "$haystack" == *claude* ]]; then
+    printf 'claude'
+    return
+  fi
+
+  if [[ "$haystack" == *codex* ]]; then
+    printf 'codex'
+  fi
+}
+
 has_approval_prompt() {
   local pane="$1"
   local content
@@ -35,14 +50,28 @@ has_approval_prompt() {
 
 update_status_widget() {
   local has_any="$1"
-  shift
+  local has_codex="$2"
+  local has_claude="$3"
+  shift 3
   local approval_windows=("$@")
   local widget=""
+  local codex_icon="${AGENT_TMUX_CODEX_ICON:-}"
+  local claude_icon="${AGENT_TMUX_CLAUDE_ICON:-}"
+  local mixed_icon="${AGENT_TMUX_MIXED_ICON:-}"
+  local icon=""
+
+  if [[ "$has_codex" == "1" && "$has_claude" == "1" ]]; then
+    icon="$mixed_icon"
+  elif [[ "$has_claude" == "1" ]]; then
+    icon="$claude_icon"
+  else
+    icon="$codex_icon"
+  fi
 
   if (( ${#approval_windows[@]} > 0 )); then
-    widget="#[fg=#f7768e,bold]󱚢 ${#approval_windows[@]}:${approval_windows[*]}#[default] "
+    widget="#[fg=#f7768e,bold]${icon} ${#approval_windows[@]}:${approval_windows[*]}#[default] "
   elif [[ "$has_any" == "1" ]]; then
-    widget="#[fg=#7dcfff,bold]󱙺#[default] "
+    widget="#[fg=#7dcfff,bold]${icon}#[default] "
   fi
 
   tmux set-option -gq @agent_status_widget "$widget" 2>/dev/null || true
@@ -51,6 +80,8 @@ update_status_widget() {
 
 while tmux list-sessions >/dev/null 2>&1; do
   has_any=0
+  has_codex=0
+  has_claude=0
   window_ids=()
   agent_windows=()
   approval_windows=()
@@ -60,10 +91,16 @@ while tmux list-sessions >/dev/null 2>&1; do
   done < <(tmux list-windows -a -F '#{window_id}' 2>/dev/null || true)
 
   while IFS='|' read -r pane window_id window_index window_name command; do
+    local_agent_kind=""
     [[ -n "$pane" && -n "$window_id" ]] || continue
     is_agent_pane "$command" "$window_name" || continue
 
     has_any=1
+    local_agent_kind="$(detect_agent_kind "$command" "$window_name")"
+    case "$local_agent_kind" in
+      codex) has_codex=1 ;;
+      claude) has_claude=1 ;;
+    esac
     case " ${agent_windows[*]} " in
       *" $window_id "*) ;;
       *) agent_windows+=("$window_id") ;;
@@ -106,7 +143,7 @@ while tmux list-sessions >/dev/null 2>&1; do
     fi
   done
 
-  update_status_widget "$has_any" "${approval_windows[@]}"
+  update_status_widget "$has_any" "$has_codex" "$has_claude" "${approval_windows[@]}"
   tmux refresh-client -S 2>/dev/null || true
   sleep "$interval"
 done

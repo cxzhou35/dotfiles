@@ -13,16 +13,6 @@ plug "MichaelAquilina/zsh-you-should-use"
 plug "zap-zsh/supercharge"
 
 # my config file
-plug "$ZSH/scripts.zsh"
-plug "$ZSH/alias.zsh"
-plug "$ZSH/options.zsh"
-plug "$ZSH/secret.zsh"
-
-# starship prompt theme
-if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
-      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
-    zle -N zle-keymap-select "";
-fi
-
-eval "$(starship init zsh)"
-
+source "$ZSH/options.zsh"
+source "$ZSH/apps/init.zsh"
+source "$ZSH/secret.zsh"

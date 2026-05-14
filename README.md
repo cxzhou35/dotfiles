@@ -38,6 +38,18 @@ git clone https://github.com/cxzhou35/dotfiles.git ~/Github/dotfiles
 bash setup/install.sh
 ```
 
+When you update existing config files or add new files that need to be linked, re-run Stow with:
+
+```sh
+bash setup/restow.sh
+```
+
+You can also restow only specific packages:
+
+```sh
+bash setup/restow.sh zsh tmux nvim
+```
+
 ## Software
 
 - Terminal:

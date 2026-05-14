@@ -149,7 +149,7 @@ append_unique() {
   shift
 
   if [[ -z "$value" ]]; then
-    return 0
+    return 1
   fi
 
   if contains_item "$value" "$@"; then
@@ -262,6 +262,10 @@ collect_changed_files() {
   git diff --cached --name-only --diff-filter=ACDMR
 }
 
+changed_file_count() {
+  collect_changed_files | awk 'NF { count++ } END { print count + 0 }'
+}
+
 describe_path_semantics() {
   local path="$1"
   local tag
@@ -273,6 +277,25 @@ describe_path_semantics() {
       ;;
     zsh/scripts.zsh)
       printf 'shell helpers'
+      ;;
+    zsh/my-magic.zsh-theme)
+      printf 'shell theme'
+      ;;
+    zsh/apps/init.zsh)
+      printf 'shell app loader'
+      ;;
+    zsh/apps/navigation.zsh)
+      printf 'shell navigation'
+      ;;
+    zsh/apps/workflow.zsh)
+      printf 'shell workflow'
+      ;;
+    zsh/apps/*.zsh)
+      module="${path#zsh/apps/}"
+      module="${module%.zsh}"
+      module="${module//-/ }"
+      module="${module//_/ }"
+      printf 'shell app %s' "$module"
       ;;
     zsh/options.zsh)
       printf 'shell options'
@@ -444,13 +467,20 @@ describe_changed_path() {
   local path="$1"
   local named_subjects=""
   local diff_themes=""
+  local file_count=0
 
   diff_themes="$(extract_diff_themes "$path")"
   named_subjects="$(extract_named_subjects "$path")"
+  file_count="$(changed_file_count)"
 
   case "$path" in
     setup/*)
-      if [[ -n "$diff_themes" ]]; then
+      if [[ "$file_count" -gt 3 ]]; then
+        describe_path_semantics "$path"
+        return
+      fi
+
+      if [[ "$file_count" -le 3 && -n "$diff_themes" ]]; then
         printf '%s' "$diff_themes"
         return
       fi
@@ -480,7 +510,7 @@ build_changed_targets_summary() {
   while IFS= read -r path; do
     [[ -z "$path" ]] && continue
     target="$(describe_changed_path "$path")"
-    if append_unique "$target" "${targets[@]}"; then
+    if [[ -n "$target" ]] && append_unique "$target" "${targets[@]}"; then
       targets+=("$target")
     fi
   done < <(collect_changed_files)

@@ -1,0 +1,78 @@
+#!/bin/sh
+
+LS_BIN=$(command -v ls 2>/dev/null || printf '%s' /bin/ls)
+FILE_BIN=$(command -v file 2>/dev/null || printf '%s' /usr/bin/file)
+BAT_BIN=$(command -v bat 2>/dev/null || true)
+W3M_BIN=$(command -v w3m 2>/dev/null || true)
+UNZIP_BIN=$(command -v unzip 2>/dev/null || printf '%s' /usr/bin/unzip)
+UNRAR_BIN=$(command -v unrar 2>/dev/null || true)
+TRANSMISSION_SHOW_BIN=$(command -v transmission-show 2>/dev/null || true)
+
+input=${1-}
+if [ -z "$input" ]; then
+    IFS= read -r input || exit 0
+fi
+
+path=$input
+line=""
+
+case "$input" in
+    *:*)
+        path=${input%%:*}
+        line_part=${input#*:}
+        case "$line_part" in
+            ''|*[!0-9]*)
+                ;;
+            *)
+                line=$line_part
+                ;;
+        esac
+        ;;
+esac
+
+if [ -d "$path" ]; then
+    "$LS_BIN" -la -- "$path"
+    exit 0
+fi
+
+lower_path=$(printf '%s' "$path" | tr '[:upper:]' '[:lower:]')
+
+case "$lower_path" in
+    *.zip)
+        "$UNZIP_BIN" -l -- "$path"
+        ;;
+    *.rar)
+        if [ -n "$UNRAR_BIN" ]; then
+            "$UNRAR_BIN" l -- "$path"
+        else
+            "$FILE_BIN" -- "$path"
+        fi
+        ;;
+    *.torrent)
+        if [ -n "$TRANSMISSION_SHOW_BIN" ]; then
+            "$TRANSMISSION_SHOW_BIN" -- "$path"
+        else
+            "$FILE_BIN" -- "$path"
+        fi
+        ;;
+    *.html|*.htm|*.xhtml)
+        if [ -n "$W3M_BIN" ]; then
+            "$W3M_BIN" -dump -- "$path"
+        elif [ -n "$BAT_BIN" ]; then
+            "$BAT_BIN" -n --color=always --line-range :500 -- "$path" 2>/dev/null || "$FILE_BIN" -- "$path"
+        else
+            "$FILE_BIN" -- "$path"
+        fi
+        ;;
+    *)
+        if [ -n "$BAT_BIN" ]; then
+            if [ -n "$line" ]; then
+                "$BAT_BIN" --style=numbers --color=always --line-range "${line}:" -- "$path"
+            else
+                "$BAT_BIN" --style=numbers --color=always --line-range :500 -- "$path"
+            fi
+        else
+            "$FILE_BIN" -- "$path"
+        fi
+        ;;
+esac

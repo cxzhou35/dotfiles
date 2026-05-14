@@ -11,6 +11,13 @@ export TERM="xterm-256color"
 # Bat
 export BAT_THEME="Catppuccin Macchiato"
 
+# Completion matching
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' matcher-list \
+    '' \
+    'm:{a-zA-Z}={A-Za-z}' \
+    'm:{a-zA-Z}={A-Za-z} l:|=* r:|=*'
+
 # History
 HISTFILE=$HOME/.zhistory
 setopt share_history
@@ -25,21 +32,3 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 bindkey '^b' backward-word
 bindkey '^f' forward-word
-
-# Atuin
-export ATUIN_NOBIND="true"
-eval "$(atuin init zsh)"
-bindkey '^h' atuin-search
-
-# Conda
-__conda_setup="$('/Users/vercent/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/vercent/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/vercent/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/vercent/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup

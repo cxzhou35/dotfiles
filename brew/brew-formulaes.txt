@@ -118,7 +118,6 @@ owenthereal/upterm/upterm
 pandoc-plot
 pass
 pastel
-peco
 php
 pipx
 pngpaste
@@ -154,7 +153,6 @@ starship
 stow
 textualize/homebrew/frogmouth
 the_silver_searcher
-thefuck
 tinc
 tldr
 tmate

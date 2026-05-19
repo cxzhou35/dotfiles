@@ -1,0 +1,43 @@
+model_provider = "OpenAI"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+model = "gpt-5.5"
+review_model = "gpt-5.5"
+model_reasoning_effort = "high"
+disable_response_storage = true
+network_access = "enabled"
+windows_wsl_setup_acknowledged = true
+model_context_window = 1000000
+model_auto_compact_token_limit = 900000
+suppress_unstable_features_warning = true
+approvals_reviewer = "auto_review"
+
+[model_providers.OpenAI]
+name = "OpenAI"
+base_url = "http://10.130.136.133:28888"
+wire_api = "responses"
+requires_openai_auth = true
+
+[projects."/Users/vercent/workspace"]
+trust_level = "trusted"
+
+[projects."/Users/vercent/Projects"]
+trust_level = "trusted"
+
+[projects."/Users/vercent/Downloads"]
+trust_level = "trusted"
+
+[projects."/Users/vercent/Github"]
+trust_level = "trusted"
+
+[features]
+memories = true
+goals = true
+computer_use = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[memories]
+use_memories = true
+generate_memories = true

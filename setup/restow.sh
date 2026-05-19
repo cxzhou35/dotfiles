@@ -32,6 +32,9 @@ target_for_package() {
   local package="$1"
 
   case "$package" in
+    codex)
+      printf '%s/.codex' "$HOME_DIR"
+      ;;
     zsh)
       printf '%s/.config/zsh' "$HOME_DIR"
       ;;
@@ -132,6 +135,7 @@ main() {
       bin
       bottom
       btop
+      codex
       fastfetch
       gh
       ghostty

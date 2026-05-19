@@ -1,0 +1,729 @@
+# macOS Software Inventory
+
+Generated on 2026-05-19 13:43:26.
+
+Evidence sources: Homebrew package lists, /Applications and related app bundle directories, Mac App Store receipts, shell history, and file metadata when available.
+
+## Homebrew Formulae / CLI
+
+- abseil: abseil command-line tool installed via Homebrew, unknown, unknown
+- ada-url: ada-url command-line tool installed via Homebrew, unknown, unknown
+- adwaita-icon-theme: adwaita-icon-theme command-line tool installed via Homebrew, unknown, unknown
+- alembic: alembic command-line tool installed via Homebrew, unknown, unknown
+- aliyunpan: aliyunpan command-line tool installed via Homebrew, unknown, unknown
+- aom: aom command-line tool installed via Homebrew, unknown, unknown
+- apr: apr command-line tool installed via Homebrew, unknown, unknown
+- apr-util: apr-util command-line tool installed via Homebrew, unknown, unknown
+- argon2: argon2 command-line tool installed via Homebrew, unknown, unknown
+- aribb24: aribb24 command-line tool installed via Homebrew, unknown, unknown
+- arxiv_latex_cleaner: arxiv_latex_cleaner command-line tool installed via Homebrew, low, 2024-12-17 13:45:32
+- ascii-image-converter: ascii-image-converter command-line tool installed via Homebrew, unknown, unknown
+- asciinema: asciinema command-line tool installed via Homebrew, unknown, unknown
+- assimp: assimp command-line tool installed via Homebrew, unknown, unknown
+- astyle: astyle command-line tool installed via Homebrew, unknown, unknown
+- at-spi2-core: at-spi2-core command-line tool installed via Homebrew, unknown, unknown
+- atool: atool command-line tool installed via Homebrew, unknown, unknown
+- atuin: atuin command-line tool installed via Homebrew, medium, 2026-05-14 14:00:57
+- autoconf: autoconf command-line tool installed via Homebrew, unknown, unknown
+- autoconf-archive: autoconf-archive command-line tool installed via Homebrew, unknown, unknown
+- automake: automake command-line tool installed via Homebrew, unknown, unknown
+- autopep8: autopep8 command-line tool installed via Homebrew, unknown, unknown
+- awk: awk command-line tool installed via Homebrew, unknown, unknown
+- bash: bash command-line tool installed via Homebrew, medium, 2025-08-20 21:41:31
+- bat: cat replacement with syntax highlighting, rare, 2026-05-14 19:42:40
+- bc: bc command-line tool installed via Homebrew, unknown, unknown
+- bdw-gc: bdw-gc command-line tool installed via Homebrew, unknown, unknown
+- boost: boost command-line tool installed via Homebrew, unknown, unknown
+- bottom: bottom command-line tool installed via Homebrew, rare, 2024-11-29 13:37:24
+- brotli: brotli command-line tool installed via Homebrew, unknown, unknown
+- btop: btop command-line tool installed via Homebrew, rare, 2024-11-01 15:41:50
+- c-ares: c-ares command-line tool installed via Homebrew, unknown, unknown
+- ca-certificates: ca-certificates command-line tool installed via Homebrew, unknown, unknown
+- cairo: cairo command-line tool installed via Homebrew, unknown, unknown
+- ccls: ccls command-line tool installed via Homebrew, unknown, unknown
+- ceres-solver: ceres-solver command-line tool installed via Homebrew, unknown, unknown
+- certifi: certifi command-line tool installed via Homebrew, unknown, unknown
+- cfitsio: cfitsio command-line tool installed via Homebrew, unknown, unknown
+- cgal: cgal command-line tool installed via Homebrew, unknown, unknown
+- cgif: cgif command-line tool installed via Homebrew, unknown, unknown
+- cgns: cgns command-line tool installed via Homebrew, unknown, unknown
+- chafa: chafa command-line tool installed via Homebrew, low, 2025-04-29 11:42:15
+- cheat: cheat command-line tool installed via Homebrew, unknown, unknown
+- choose-gui: choose-gui command-line tool installed via Homebrew, unknown, unknown
+- cjson: cjson command-line tool installed via Homebrew, unknown, unknown
+- clang-format: clang-format command-line tool installed via Homebrew, unknown, unknown
+- cli11: cli11 command-line tool installed via Homebrew, unknown, unknown
+- clipboard: clipboard command-line tool installed via Homebrew, unknown, unknown
+- cloc: cloc command-line tool installed via Homebrew, unknown, unknown
+- cmake: cross-platform build configuration tool, unknown, unknown
+- cmake-docs: cmake-docs command-line tool installed via Homebrew, unknown, unknown
+- cmatrix: cmatrix command-line tool installed via Homebrew, rare, 2025-11-05 20:26:09
+- cmus: cmus command-line tool installed via Homebrew, rare, 2024-09-09 22:19:28
+- code-minimap: code-minimap command-line tool installed via Homebrew, unknown, unknown
+- codec2: codec2 command-line tool installed via Homebrew, unknown, unknown
+- colmap: colmap command-line tool installed via Homebrew, low, 2025-11-10 19:24:39
+- commitizen: commitizen command-line tool installed via Homebrew, unknown, unknown
+- coreutils: coreutils command-line tool installed via Homebrew, unknown, unknown
+- cowsay: cowsay command-line tool installed via Homebrew, low, 2024-09-20 00:11:10
+- cppcheck: cppcheck command-line tool installed via Homebrew, unknown, unknown
+- curl: data transfer tool for URLs, medium, 2026-05-11 10:45:02
+- dav1d: dav1d command-line tool installed via Homebrew, unknown, unknown
+- dbus: dbus command-line tool installed via Homebrew, unknown, unknown
+- deno: deno command-line tool installed via Homebrew, unknown, unknown
+- desktop-file-utils: desktop-file-utils command-line tool installed via Homebrew, unknown, unknown
+- direnv: direnv command-line tool installed via Homebrew, unknown, unknown
+- dotnet@9: dotnet@9 command-line tool installed via Homebrew, unknown, unknown
+- double-conversion: double-conversion command-line tool installed via Homebrew, unknown, unknown
+- doxygen: doxygen command-line tool installed via Homebrew, unknown, unknown
+- duf: duf command-line tool installed via Homebrew, low, 2024-09-18 18:07:34
+- dust: dust command-line tool installed via Homebrew, rare, 2024-08-24 13:00:53
+- duti: duti command-line tool installed via Homebrew, unknown, unknown
+- eigen: eigen command-line tool installed via Homebrew, unknown, unknown
+- entr: entr command-line tool installed via Homebrew, unknown, unknown
+- erdtree: erdtree command-line tool installed via Homebrew, unknown, unknown
+- exiftool: exiftool command-line tool installed via Homebrew, unknown, unknown
+- expat: expat command-line tool installed via Homebrew, unknown, unknown
+- eza: modern ls replacement with better defaults, low, 2026-05-11 19:53:37
+- f3d: f3d command-line tool installed via Homebrew, unknown, unknown
+- faad2: faad2 command-line tool installed via Homebrew, unknown, unknown
+- faiss: faiss command-line tool installed via Homebrew, unknown, unknown
+- fanyi: fanyi command-line tool installed via Homebrew, rare, 2024-10-18 12:07:25
+- fastfetch: fastfetch command-line tool installed via Homebrew, low, 2024-05-13 23:21:13
+- fd: simple fast file finder, unknown, unknown
+- ffmpeg: audio and video conversion toolkit, medium, 2025-04-27 16:57:05
+- ffmpeg@7: ffmpeg@7 command-line tool installed via Homebrew, unknown, unknown
+- ffmpegthumbnailer: ffmpegthumbnailer command-line tool installed via Homebrew, unknown, unknown
+- fftw: fftw command-line tool installed via Homebrew, unknown, unknown
+- figlet: figlet command-line tool installed via Homebrew, unknown, unknown
+- flac: flac command-line tool installed via Homebrew, unknown, unknown
+- flann: flann command-line tool installed via Homebrew, unknown, unknown
+- fmt: fmt command-line tool installed via Homebrew, unknown, unknown
+- fontconfig: fontconfig command-line tool installed via Homebrew, unknown, unknown
+- fortune: fortune command-line tool installed via Homebrew, low, 2024-11-29 16:55:32
+- fq: fq command-line tool installed via Homebrew, unknown, unknown
+- freeimage: freeimage command-line tool installed via Homebrew, unknown, unknown
+- freetds: freetds command-line tool installed via Homebrew, unknown, unknown
+- freetype: freetype command-line tool installed via Homebrew, unknown, unknown
+- freeze: freeze command-line tool installed via Homebrew, unknown, unknown
+- frei0r: frei0r command-line tool installed via Homebrew, unknown, unknown
+- fribidi: fribidi command-line tool installed via Homebrew, unknown, unknown
+- frogmouth: frogmouth command-line tool installed via Homebrew, unknown, unknown
+- fswatch: fswatch command-line tool installed via Homebrew, unknown, unknown
+- fzf: fuzzy finder for shell workflows, rare, 2025-12-11 17:11:27
+- gawk: gawk command-line tool installed via Homebrew, unknown, unknown
+- gcc: gcc command-line tool installed via Homebrew, medium, 2024-12-18 10:44:48
+- gd: gd command-line tool installed via Homebrew, unknown, unknown
+- gdbm: gdbm command-line tool installed via Homebrew, unknown, unknown
+- gdk-pixbuf: gdk-pixbuf command-line tool installed via Homebrew, unknown, unknown
+- gdu: gdu command-line tool installed via Homebrew, unknown, unknown
+- gemini-cli: gemini-cli command-line tool installed via Homebrew, unknown, unknown
+- gettext: gettext command-line tool installed via Homebrew, unknown, unknown
+- gflags: gflags command-line tool installed via Homebrew, unknown, unknown
+- gh: GitHub CLI for repository and PR workflows, low, 2024-09-08 19:54:45
+- giflib: giflib command-line tool installed via Homebrew, unknown, unknown
+- girara: girara command-line tool installed via Homebrew, unknown, unknown
+- git: distributed version control system, very high, 2026-05-19 13:11:01
+- git-credential-oauth: git-credential-oauth command-line tool installed via Homebrew, unknown, unknown
+- git-delta: git-delta command-line tool installed via Homebrew, unknown, unknown
+- git-flow: git-flow command-line tool installed via Homebrew, unknown, unknown
+- gitui: gitui command-line tool installed via Homebrew, unknown, unknown
+- glab: glab command-line tool installed via Homebrew, unknown, unknown
+- glew: glew command-line tool installed via Homebrew, unknown, unknown
+- glib: glib command-line tool installed via Homebrew, unknown, unknown
+- glm: glm command-line tool installed via Homebrew, unknown, unknown
+- glog: glog command-line tool installed via Homebrew, unknown, unknown
+- glow: glow command-line tool installed via Homebrew, unknown, unknown
+- gmp: gmp command-line tool installed via Homebrew, unknown, unknown
+- gnu-getopt: gnu-getopt command-line tool installed via Homebrew, unknown, unknown
+- gnu-sed: gnu-sed command-line tool installed via Homebrew, unknown, unknown
+- gnupg: gnupg command-line tool installed via Homebrew, unknown, unknown
+- gnutls: gnutls command-line tool installed via Homebrew, unknown, unknown
+- go: Go programming language toolchain, rare, 2024-05-27 21:36:47
+- gogcli: gogcli command-line tool installed via Homebrew, unknown, unknown
+- gpgme: gpgme command-line tool installed via Homebrew, unknown, unknown
+- gpgmepp: gpgmepp command-line tool installed via Homebrew, unknown, unknown
+- gping: gping command-line tool installed via Homebrew, unknown, unknown
+- graphite2: graphite2 command-line tool installed via Homebrew, unknown, unknown
+- graphviz: graphviz command-line tool installed via Homebrew, unknown, unknown
+- gsettings-desktop-schemas: gsettings-desktop-schemas command-line tool installed via Homebrew, unknown, unknown
+- gsl: gsl command-line tool installed via Homebrew, unknown, unknown
+- gtk+3: gtk+3 command-line tool installed via Homebrew, unknown, unknown
+- gtk-mac-integration: gtk-mac-integration command-line tool installed via Homebrew, unknown, unknown
+- gts: gts command-line tool installed via Homebrew, unknown, unknown
+- gum: gum command-line tool installed via Homebrew, rare, 2024-05-11 22:56:58
+- gumbo-parser: gumbo-parser command-line tool installed via Homebrew, unknown, unknown
+- gzip: gzip command-line tool installed via Homebrew, unknown, unknown
+- harfbuzz: harfbuzz command-line tool installed via Homebrew, unknown, unknown
+- hdf5: hdf5 command-line tool installed via Homebrew, unknown, unknown
+- hdrhistogram_c: hdrhistogram_c command-line tool installed via Homebrew, unknown, unknown
+- hexyl: hexyl command-line tool installed via Homebrew, unknown, unknown
+- hicolor-icon-theme: hicolor-icon-theme command-line tool installed via Homebrew, unknown, unknown
+- highlight: highlight command-line tool installed via Homebrew, unknown, unknown
+- highway: highway command-line tool installed via Homebrew, unknown, unknown
+- himalaya: himalaya command-line tool installed via Homebrew, unknown, unknown
+- htop: htop command-line tool installed via Homebrew, unknown, unknown
+- hub: hub command-line tool installed via Homebrew, rare, 2024-05-12 11:08:23
+- hugo: hugo command-line tool installed via Homebrew, rare, 2025-04-29 00:56:44
+- hwloc: hwloc command-line tool installed via Homebrew, unknown, unknown
+- hyperfine: hyperfine command-line tool installed via Homebrew, unknown, unknown
+- icu4c@76: icu4c@76 command-line tool installed via Homebrew, unknown, unknown
+- icu4c@77: icu4c@77 command-line tool installed via Homebrew, unknown, unknown
+- icu4c@78: icu4c@78 command-line tool installed via Homebrew, unknown, unknown
+- imagemagick: imagemagick command-line tool installed via Homebrew, unknown, unknown
+- imath: imath command-line tool installed via Homebrew, unknown, unknown
+- imlib2: imlib2 command-line tool installed via Homebrew, unknown, unknown
+- imsg: imsg command-line tool installed via Homebrew, unknown, unknown
+- intltool: intltool command-line tool installed via Homebrew, unknown, unknown
+- iproute2mac: iproute2mac command-line tool installed via Homebrew, unknown, unknown
+- isl: isl command-line tool installed via Homebrew, unknown, unknown
+- jansson: jansson command-line tool installed via Homebrew, unknown, unknown
+- jasper: jasper command-line tool installed via Homebrew, unknown, unknown
+- jbig2dec: jbig2dec command-line tool installed via Homebrew, unknown, unknown
+- jless: jless command-line tool installed via Homebrew, unknown, unknown
+- jpeg-turbo: jpeg-turbo command-line tool installed via Homebrew, unknown, unknown
+- jpeg-xl: jpeg-xl command-line tool installed via Homebrew, unknown, unknown
+- jq: jq command-line tool installed via Homebrew, unknown, unknown
+- json-c: json-c command-line tool installed via Homebrew, unknown, unknown
+- json-glib: json-glib command-line tool installed via Homebrew, unknown, unknown
+- jsoncpp: jsoncpp command-line tool installed via Homebrew, unknown, unknown
+- jsonnet: jsonnet command-line tool installed via Homebrew, unknown, unknown
+- krb5: krb5 command-line tool installed via Homebrew, unknown, unknown
+- lame: lame command-line tool installed via Homebrew, unknown, unknown
+- lazydocker: lazydocker command-line tool installed via Homebrew, unknown, unknown
+- lazygit: terminal UI for git workflows, low, 2024-11-16 23:30:46
+- lazynpm: lazynpm command-line tool installed via Homebrew, unknown, unknown
+- leptonica: leptonica command-line tool installed via Homebrew, unknown, unknown
+- libaec: libaec command-line tool installed via Homebrew, unknown, unknown
+- libao: libao command-line tool installed via Homebrew, unknown, unknown
+- libapplewm: libapplewm command-line tool installed via Homebrew, unknown, unknown
+- libarchive: libarchive command-line tool installed via Homebrew, unknown, unknown
+- libass: libass command-line tool installed via Homebrew, unknown, unknown
+- libassuan: libassuan command-line tool installed via Homebrew, unknown, unknown
+- libavif: libavif command-line tool installed via Homebrew, unknown, unknown
+- libb2: libb2 command-line tool installed via Homebrew, unknown, unknown
+- libbi: libbi command-line tool installed via Homebrew, unknown, unknown
+- libbluray: libbluray command-line tool installed via Homebrew, unknown, unknown
+- libcaca: libcaca command-line tool installed via Homebrew, unknown, unknown
+- libclc: libclc command-line tool installed via Homebrew, unknown, unknown
+- libcue: libcue command-line tool installed via Homebrew, unknown, unknown
+- libdatrie: libdatrie command-line tool installed via Homebrew, unknown, unknown
+- libde265: libde265 command-line tool installed via Homebrew, unknown, unknown
+- libdeflate: libdeflate command-line tool installed via Homebrew, unknown, unknown
+- libdicom: libdicom command-line tool installed via Homebrew, unknown, unknown
+- libepoxy: libepoxy command-line tool installed via Homebrew, unknown, unknown
+- libevent: libevent command-line tool installed via Homebrew, unknown, unknown
+- libexif: libexif command-line tool installed via Homebrew, unknown, unknown
+- libfontenc: libfontenc command-line tool installed via Homebrew, unknown, unknown
+- libgcrypt: libgcrypt command-line tool installed via Homebrew, unknown, unknown
+- libgit2: libgit2 command-line tool installed via Homebrew, unknown, unknown
+- libgpg-error: libgpg-error command-line tool installed via Homebrew, unknown, unknown
+- libharu: libharu command-line tool installed via Homebrew, unknown, unknown
+- libheif: libheif command-line tool installed via Homebrew, unknown, unknown
+- libice: libice command-line tool installed via Homebrew, unknown, unknown
+- libidn2: libidn2 command-line tool installed via Homebrew, unknown, unknown
+- libimagequant: libimagequant command-line tool installed via Homebrew, unknown, unknown
+- libksba: libksba command-line tool installed via Homebrew, unknown, unknown
+- libmagic: libmagic command-line tool installed via Homebrew, unknown, unknown
+- libmatio: libmatio command-line tool installed via Homebrew, unknown, unknown
+- libmediainfo: libmediainfo command-line tool installed via Homebrew, unknown, unknown
+- libmicrohttpd: libmicrohttpd command-line tool installed via Homebrew, unknown, unknown
+- libmms: libmms command-line tool installed via Homebrew, unknown, unknown
+- libmpc: libmpc command-line tool installed via Homebrew, unknown, unknown
+- libnghttp2: libnghttp2 command-line tool installed via Homebrew, unknown, unknown
+- libnghttp3: libnghttp3 command-line tool installed via Homebrew, unknown, unknown
+- libngtcp2: libngtcp2 command-line tool installed via Homebrew, unknown, unknown
+- libnotify: libnotify command-line tool installed via Homebrew, unknown, unknown
+- libogg: libogg command-line tool installed via Homebrew, unknown, unknown
+- libomp: libomp command-line tool installed via Homebrew, unknown, unknown
+- libplacebo: libplacebo command-line tool installed via Homebrew, unknown, unknown
+- libpng: libpng command-line tool installed via Homebrew, unknown, unknown
+- libpq: libpq command-line tool installed via Homebrew, unknown, unknown
+- libpthread-stubs: libpthread-stubs command-line tool installed via Homebrew, unknown, unknown
+- libraqm: libraqm command-line tool installed via Homebrew, unknown, unknown
+- libraw: libraw command-line tool installed via Homebrew, unknown, unknown
+- librist: librist command-line tool installed via Homebrew, unknown, unknown
+- librsvg: librsvg command-line tool installed via Homebrew, unknown, unknown
+- libsamplerate: libsamplerate command-line tool installed via Homebrew, unknown, unknown
+- libsixel: libsixel command-line tool installed via Homebrew, unknown, unknown
+- libsm: libsm command-line tool installed via Homebrew, unknown, unknown
+- libsndfile: libsndfile command-line tool installed via Homebrew, unknown, unknown
+- libsodium: libsodium command-line tool installed via Homebrew, unknown, unknown
+- libsoxr: libsoxr command-line tool installed via Homebrew, unknown, unknown
+- libssh: libssh command-line tool installed via Homebrew, unknown, unknown
+- libssh2: libssh2 command-line tool installed via Homebrew, unknown, unknown
+- libtasn1: libtasn1 command-line tool installed via Homebrew, unknown, unknown
+- libthai: libthai command-line tool installed via Homebrew, unknown, unknown
+- libtiff: libtiff command-line tool installed via Homebrew, unknown, unknown
+- libtool: libtool command-line tool installed via Homebrew, unknown, unknown
+- libudfread: libudfread command-line tool installed via Homebrew, unknown, unknown
+- libultrahdr: libultrahdr command-line tool installed via Homebrew, unknown, unknown
+- libunibreak: libunibreak command-line tool installed via Homebrew, unknown, unknown
+- libunistring: libunistring command-line tool installed via Homebrew, unknown, unknown
+- libusb: libusb command-line tool installed via Homebrew, unknown, unknown
+- libuv: libuv command-line tool installed via Homebrew, unknown, unknown
+- libvidstab: libvidstab command-line tool installed via Homebrew, unknown, unknown
+- libvmaf: libvmaf command-line tool installed via Homebrew, unknown, unknown
+- libvorbis: libvorbis command-line tool installed via Homebrew, unknown, unknown
+- libvpx: libvpx command-line tool installed via Homebrew, unknown, unknown
+- libwebsockets: libwebsockets command-line tool installed via Homebrew, unknown, unknown
+- libx11: libx11 command-line tool installed via Homebrew, unknown, unknown
+- libxau: libxau command-line tool installed via Homebrew, unknown, unknown
+- libxcb: libxcb command-line tool installed via Homebrew, unknown, unknown
+- libxdmcp: libxdmcp command-line tool installed via Homebrew, unknown, unknown
+- libxext: libxext command-line tool installed via Homebrew, unknown, unknown
+- libxfixes: libxfixes command-line tool installed via Homebrew, unknown, unknown
+- libxfont2: libxfont2 command-line tool installed via Homebrew, unknown, unknown
+- libxi: libxi command-line tool installed via Homebrew, unknown, unknown
+- libxinerama: libxinerama command-line tool installed via Homebrew, unknown, unknown
+- libxkbcommon: libxkbcommon command-line tool installed via Homebrew, unknown, unknown
+- libxkbfile: libxkbfile command-line tool installed via Homebrew, unknown, unknown
+- libxml2: libxml2 command-line tool installed via Homebrew, unknown, unknown
+- libxmu: libxmu command-line tool installed via Homebrew, unknown, unknown
+- libxrender: libxrender command-line tool installed via Homebrew, unknown, unknown
+- libxt: libxt command-line tool installed via Homebrew, unknown, unknown
+- libxtst: libxtst command-line tool installed via Homebrew, unknown, unknown
+- libyaml: libyaml command-line tool installed via Homebrew, unknown, unknown
+- libzen: libzen command-line tool installed via Homebrew, unknown, unknown
+- libzip: libzip command-line tool installed via Homebrew, unknown, unknown
+- little-cms2: little-cms2 command-line tool installed via Homebrew, unknown, unknown
+- llhttp: llhttp command-line tool installed via Homebrew, unknown, unknown
+- llvm: llvm command-line tool installed via Homebrew, unknown, unknown
+- lolcat: lolcat command-line tool installed via Homebrew, unknown, unknown
+- lpeg: lpeg command-line tool installed via Homebrew, unknown, unknown
+- lua: lua command-line tool installed via Homebrew, rare, 2025-04-21 16:57:29
+- luajit: luajit command-line tool installed via Homebrew, unknown, unknown
+- luarocks: luarocks command-line tool installed via Homebrew, unknown, unknown
+- luau: luau command-line tool installed via Homebrew, unknown, unknown
+- luv: luv command-line tool installed via Homebrew, unknown, unknown
+- lynx: lynx command-line tool installed via Homebrew, unknown, unknown
+- lz4: lz4 command-line tool installed via Homebrew, unknown, unknown
+- lzo: lzo command-line tool installed via Homebrew, unknown, unknown
+- m-cli: m-cli command-line tool installed via Homebrew, unknown, unknown
+- m4: m4 command-line tool installed via Homebrew, unknown, unknown
+- macchina: macchina command-line tool installed via Homebrew, unknown, unknown
+- mad: mad command-line tool installed via Homebrew, unknown, unknown
+- markdownlint-cli: markdownlint-cli command-line tool installed via Homebrew, unknown, unknown
+- marksman: marksman command-line tool installed via Homebrew, unknown, unknown
+- mas: Mac App Store command-line client, low, 2024-12-04 13:35:28
+- mbedtls: mbedtls command-line tool installed via Homebrew, unknown, unknown
+- mbedtls@3: mbedtls@3 command-line tool installed via Homebrew, unknown, unknown
+- md4c: md4c command-line tool installed via Homebrew, unknown, unknown
+- media-control: media-control command-line tool installed via Homebrew, unknown, unknown
+- media-info: media-info command-line tool installed via Homebrew, unknown, unknown
+- memo: memo command-line tool installed via Homebrew, unknown, unknown
+- mercurial: mercurial command-line tool installed via Homebrew, unknown, unknown
+- merve: merve command-line tool installed via Homebrew, unknown, unknown
+- mesa: mesa command-line tool installed via Homebrew, unknown, unknown
+- meson: meson command-line tool installed via Homebrew, unknown, unknown
+- metis: metis command-line tool installed via Homebrew, unknown, unknown
+- minizip-ng: minizip-ng command-line tool installed via Homebrew, unknown, unknown
+- modular: modular command-line tool installed via Homebrew, unknown, unknown
+- mole: mole command-line tool installed via Homebrew, unknown, unknown
+- molten-vk: molten-vk command-line tool installed via Homebrew, unknown, unknown
+- mozjpeg: mozjpeg command-line tool installed via Homebrew, unknown, unknown
+- mp4v2: mp4v2 command-line tool installed via Homebrew, unknown, unknown
+- mpdecimal: mpdecimal command-line tool installed via Homebrew, unknown, unknown
+- mpfr: mpfr command-line tool installed via Homebrew, unknown, unknown
+- mpg123: mpg123 command-line tool installed via Homebrew, unknown, unknown
+- mprocs: mprocs command-line tool installed via Homebrew, unknown, unknown
+- mpv: mpv command-line tool installed via Homebrew, low, 2024-11-26 11:46:29
+- msgpack: msgpack command-line tool installed via Homebrew, unknown, unknown
+- mujs: mujs command-line tool installed via Homebrew, unknown, unknown
+- mupdf: mupdf command-line tool installed via Homebrew, unknown, unknown
+- n: n command-line tool installed via Homebrew, low, 2024-05-20 15:38:49
+- navi: navi command-line tool installed via Homebrew, rare, 2026-05-14 13:49:05
+- nbytes: nbytes command-line tool installed via Homebrew, unknown, unknown
+- ncdu: ncdu command-line tool installed via Homebrew, rare, 2026-01-21 21:23:31
+- ncspot: ncspot command-line tool installed via Homebrew, unknown, unknown
+- ncurses: ncurses command-line tool installed via Homebrew, unknown, unknown
+- neovim: neovim command-line tool installed via Homebrew, unknown, unknown
+- nerdfix: nerdfix command-line tool installed via Homebrew, medium, 2024-11-01 15:16:52
+- net-snmp: net-snmp command-line tool installed via Homebrew, unknown, unknown
+- netcdf: netcdf command-line tool installed via Homebrew, unknown, unknown
+- netpbm: netpbm command-line tool installed via Homebrew, unknown, unknown
+- nettle: nettle command-line tool installed via Homebrew, unknown, unknown
+- ninja: ninja command-line tool installed via Homebrew, unknown, unknown
+- nlohmann-json: nlohmann-json command-line tool installed via Homebrew, unknown, unknown
+- node: JavaScript runtime, rare, 2025-11-03 20:02:16
+- nowplaying-cli: nowplaying-cli command-line tool installed via Homebrew, unknown, unknown
+- npth: npth command-line tool installed via Homebrew, unknown, unknown
+- nspr: nspr command-line tool installed via Homebrew, unknown, unknown
+- nss: nss command-line tool installed via Homebrew, unknown, unknown
+- obsidian-cli: obsidian-cli command-line tool installed via Homebrew, unknown, unknown
+- onefetch: onefetch command-line tool installed via Homebrew, unknown, unknown
+- oniguruma: oniguruma command-line tool installed via Homebrew, unknown, unknown
+- onnx: onnx command-line tool installed via Homebrew, unknown, unknown
+- onnxruntime: onnxruntime command-line tool installed via Homebrew, unknown, unknown
+- openblas: openblas command-line tool installed via Homebrew, unknown, unknown
+- opencascade: opencascade command-line tool installed via Homebrew, unknown, unknown
+- opencolorio: opencolorio command-line tool installed via Homebrew, unknown, unknown
+- opencore-amr: opencore-amr command-line tool installed via Homebrew, unknown, unknown
+- openexr: openexr command-line tool installed via Homebrew, unknown, unknown
+- openimageio: openimageio command-line tool installed via Homebrew, unknown, unknown
+- openjpeg: openjpeg command-line tool installed via Homebrew, unknown, unknown
+- openjph: openjph command-line tool installed via Homebrew, unknown, unknown
+- openldap: openldap command-line tool installed via Homebrew, unknown, unknown
+- openslide: openslide command-line tool installed via Homebrew, unknown, unknown
+- openssl@1.1: openssl@1.1 command-line tool installed via Homebrew, unknown, unknown
+- openssl@3: openssl@3 command-line tool installed via Homebrew, unknown, unknown
+- openssl@4: openssl@4 command-line tool installed via Homebrew, unknown, unknown
+- opus: opus command-line tool installed via Homebrew, unknown, unknown
+- opusfile: opusfile command-line tool installed via Homebrew, unknown, unknown
+- p11-kit: p11-kit command-line tool installed via Homebrew, unknown, unknown
+- pandoc: pandoc command-line tool installed via Homebrew, unknown, unknown
+- pandoc-plot: pandoc-plot command-line tool installed via Homebrew, unknown, unknown
+- pango: pango command-line tool installed via Homebrew, unknown, unknown
+- pass: pass command-line tool installed via Homebrew, unknown, unknown
+- pastel: pastel command-line tool installed via Homebrew, unknown, unknown
+- pcre: pcre command-line tool installed via Homebrew, unknown, unknown
+- pcre2: pcre2 command-line tool installed via Homebrew, unknown, unknown
+- php: php command-line tool installed via Homebrew, unknown, unknown
+- pillow: pillow command-line tool installed via Homebrew, unknown, unknown
+- pinentry: pinentry command-line tool installed via Homebrew, unknown, unknown
+- pipx: pipx command-line tool installed via Homebrew, low, 2025-02-23 14:00:56
+- pixman: pixman command-line tool installed via Homebrew, unknown, unknown
+- pkgconf: pkgconf command-line tool installed via Homebrew, unknown, unknown
+- pngpaste: pngpaste command-line tool installed via Homebrew, unknown, unknown
+- poppler: poppler command-line tool installed via Homebrew, unknown, unknown
+- popt: popt command-line tool installed via Homebrew, unknown, unknown
+- portaudio: portaudio command-line tool installed via Homebrew, unknown, unknown
+- poselib: poselib command-line tool installed via Homebrew, unknown, unknown
+- proj: proj command-line tool installed via Homebrew, unknown, unknown
+- protobuf: protobuf command-line tool installed via Homebrew, unknown, unknown
+- pugixml: pugixml command-line tool installed via Homebrew, unknown, unknown
+- py3cairo: py3cairo command-line tool installed via Homebrew, unknown, unknown
+- pystring: pystring command-line tool installed via Homebrew, unknown, unknown
+- python-certifi: python-certifi command-line tool installed via Homebrew, unknown, unknown
+- python-packaging: python-packaging command-line tool installed via Homebrew, unknown, unknown
+- python-tk@3.10: python-tk@3.10 command-line tool installed via Homebrew, unknown, unknown
+- python-yq: python-yq command-line tool installed via Homebrew, unknown, unknown
+- python@3.10: python@3.10 command-line tool installed via Homebrew, unknown, unknown
+- python@3.11: python@3.11 command-line tool installed via Homebrew, unknown, unknown
+- python@3.12: python@3.12 command-line tool installed via Homebrew, unknown, unknown
+- python@3.13: python@3.13 command-line tool installed via Homebrew, unknown, unknown
+- python@3.14: python@3.14 command-line tool installed via Homebrew, unknown, unknown
+- qrencode: qrencode command-line tool installed via Homebrew, unknown, unknown
+- qrupdate: qrupdate command-line tool installed via Homebrew, unknown, unknown
+- qt@5: qt@5 command-line tool installed via Homebrew, unknown, unknown
+- qtbase: qtbase command-line tool installed via Homebrew, unknown, unknown
+- qtdeclarative: qtdeclarative command-line tool installed via Homebrew, unknown, unknown
+- qtsvg: qtsvg command-line tool installed via Homebrew, unknown, unknown
+- range-v3: range-v3 command-line tool installed via Homebrew, unknown, unknown
+- rav1e: rav1e command-line tool installed via Homebrew, unknown, unknown
+- re2: re2 command-line tool installed via Homebrew, unknown, unknown
+- readline: readline command-line tool installed via Homebrew, unknown, unknown
+- reattach-to-user-namespace: reattach-to-user-namespace command-line tool installed via Homebrew, unknown, unknown
+- remindctl: remindctl command-line tool installed via Homebrew, unknown, unknown
+- rename: rename command-line tool installed via Homebrew, unknown, unknown
+- ripgrep: ripgrep command-line tool installed via Homebrew, unknown, unknown
+- rsync: file synchronization and transfer tool, medium, 2026-01-22 18:00:20
+- rsyncy: rsyncy command-line tool installed via Homebrew, unknown, unknown
+- rtk: rtk command-line tool installed via Homebrew, low, 2026-05-19 12:52:53
+- rtmpdump: rtmpdump command-line tool installed via Homebrew, unknown, unknown
+- rubberband: rubberband command-line tool installed via Homebrew, unknown, unknown
+- ruby: ruby command-line tool installed via Homebrew, unknown, unknown
+- ruff: ruff command-line tool installed via Homebrew, unknown, unknown
+- rust: rust command-line tool installed via Homebrew, unknown, unknown
+- rustup: rustup command-line tool installed via Homebrew, unknown, unknown
+- rustup-init: rustup-init command-line tool installed via Homebrew, unknown, unknown
+- sd: sd command-line tool installed via Homebrew, unknown, unknown
+- sdl2: sdl2 command-line tool installed via Homebrew, unknown, unknown
+- sesh: sesh command-line tool installed via Homebrew, medium, 2024-09-12 10:42:03
+- shaderc: shaderc command-line tool installed via Homebrew, unknown, unknown
+- silicon: silicon command-line tool installed via Homebrew, unknown, unknown
+- simdjson: simdjson command-line tool installed via Homebrew, unknown, unknown
+- simdutf: simdutf command-line tool installed via Homebrew, unknown, unknown
+- sk: sk command-line tool installed via Homebrew, low, 2026-05-14 13:53:11
+- smartmontools: smartmontools command-line tool installed via Homebrew, unknown, unknown
+- snappy: snappy command-line tool installed via Homebrew, unknown, unknown
+- sox: sox command-line tool installed via Homebrew, unknown, unknown
+- spdlog: spdlog command-line tool installed via Homebrew, unknown, unknown
+- speedtest-cli: speedtest-cli command-line tool installed via Homebrew, unknown, unknown
+- speex: speex command-line tool installed via Homebrew, unknown, unknown
+- sphinx-doc: sphinx-doc command-line tool installed via Homebrew, unknown, unknown
+- spirv-llvm-translator: spirv-llvm-translator command-line tool installed via Homebrew, unknown, unknown
+- spirv-tools: spirv-tools command-line tool installed via Homebrew, unknown, unknown
+- sqlite: sqlite command-line tool installed via Homebrew, unknown, unknown
+- sqlite-utils: sqlite-utils command-line tool installed via Homebrew, unknown, unknown
+- squirrel-lang: squirrel-lang command-line tool installed via Homebrew, unknown, unknown
+- srt: srt command-line tool installed via Homebrew, unknown, unknown
+- starship: starship command-line tool installed via Homebrew, unknown, unknown
+- stow: stow command-line tool installed via Homebrew, high, 2025-11-04 20:26:34
+- suite-sparse: suite-sparse command-line tool installed via Homebrew, unknown, unknown
+- summarize: summarize command-line tool installed via Homebrew, unknown, unknown
+- svt-av1: svt-av1 command-line tool installed via Homebrew, unknown, unknown
+- synctex: synctex command-line tool installed via Homebrew, unknown, unknown
+- tag: tag command-line tool installed via Homebrew, unknown, unknown
+- taplo: taplo command-line tool installed via Homebrew, unknown, unknown
+- tbb: tbb command-line tool installed via Homebrew, unknown, unknown
+- tcl-tk@8: tcl-tk@8 command-line tool installed via Homebrew, unknown, unknown
+- terminal-notifier: terminal-notifier command-line tool installed via Homebrew, rare, 2024-11-20 13:54:01
+- tesseract: tesseract command-line tool installed via Homebrew, unknown, unknown
+- the_silver_searcher: the_silver_searcher command-line tool installed via Homebrew, unknown, unknown
+- theora: theora command-line tool installed via Homebrew, unknown, unknown
+- tidy-html5: tidy-html5 command-line tool installed via Homebrew, unknown, unknown
+- timer: timer command-line tool installed via Homebrew, rare, 2024-11-20 13:34:13
+- tinc: tinc command-line tool installed via Homebrew, unknown, unknown
+- tinyxml2: tinyxml2 command-line tool installed via Homebrew, unknown, unknown
+- tldr: tldr command-line tool installed via Homebrew, high, 2025-11-06 14:40:26
+- tmate: tmate command-line tool installed via Homebrew, unknown, unknown
+- tmux: terminal multiplexer for persistent sessions, medium, 2026-04-25 15:26:03
+- tokei: tokei command-line tool installed via Homebrew, rare, 2024-05-14 10:43:06
+- tree: tree command-line tool installed via Homebrew, low, 2024-09-12 12:25:23
+- tree-sitter: tree-sitter command-line tool installed via Homebrew, unknown, unknown
+- trzsz-go: trzsz-go command-line tool installed via Homebrew, unknown, unknown
+- ttyd: ttyd command-line tool installed via Homebrew, unknown, unknown
+- typst: typst command-line tool installed via Homebrew, unknown, unknown
+- typstfmt: typstfmt command-line tool installed via Homebrew, unknown, unknown
+- uchardet: uchardet command-line tool installed via Homebrew, unknown, unknown
+- ueberzugpp: ueberzugpp command-line tool installed via Homebrew, unknown, unknown
+- unar: unar command-line tool installed via Homebrew, unknown, unknown
+- unbound: unbound command-line tool installed via Homebrew, unknown, unknown
+- unibilium: unibilium command-line tool installed via Homebrew, unknown, unknown
+- universal-ctags: universal-ctags command-line tool installed via Homebrew, unknown, unknown
+- unixodbc: unixodbc command-line tool installed via Homebrew, unknown, unknown
+- utf8cpp: utf8cpp command-line tool installed via Homebrew, unknown, unknown
+- utf8proc: utf8proc command-line tool installed via Homebrew, unknown, unknown
+- uthash: uthash command-line tool installed via Homebrew, unknown, unknown
+- util-linux: util-linux command-line tool installed via Homebrew, unknown, unknown
+- uvwasi: uvwasi command-line tool installed via Homebrew, unknown, unknown
+- v2ray: v2ray command-line tool installed via Homebrew, unknown, unknown
+- v2raya: v2raya command-line tool installed via Homebrew, unknown, unknown
+- vapoursynth: vapoursynth command-line tool installed via Homebrew, unknown, unknown
+- vhs: vhs command-line tool installed via Homebrew, unknown, unknown
+- vips: vips command-line tool installed via Homebrew, unknown, unknown
+- vtk: vtk command-line tool installed via Homebrew, unknown, unknown
+- vulkan-headers: vulkan-headers command-line tool installed via Homebrew, unknown, unknown
+- vulkan-loader: vulkan-loader command-line tool installed via Homebrew, unknown, unknown
+- w3m: w3m command-line tool installed via Homebrew, unknown, unknown
+- watch: watch command-line tool installed via Homebrew, low, 2025-04-27 15:32:33
+- webp: webp command-line tool installed via Homebrew, unknown, unknown
+- wget: non-interactive file downloader, high, 2026-05-06 16:31:13
+- x264: x264 command-line tool installed via Homebrew, unknown, unknown
+- x265: x265 command-line tool installed via Homebrew, unknown, unknown
+- xauth: xauth command-line tool installed via Homebrew, unknown, unknown
+- xcb-util: xcb-util command-line tool installed via Homebrew, unknown, unknown
+- xcb-util-image: xcb-util-image command-line tool installed via Homebrew, unknown, unknown
+- xcb-util-keysyms: xcb-util-keysyms command-line tool installed via Homebrew, unknown, unknown
+- xcb-util-renderutil: xcb-util-renderutil command-line tool installed via Homebrew, unknown, unknown
+- xcb-util-wm: xcb-util-wm command-line tool installed via Homebrew, unknown, unknown
+- xclip: xclip command-line tool installed via Homebrew, unknown, unknown
+- xdotool: xdotool command-line tool installed via Homebrew, unknown, unknown
+- xkbcomp: xkbcomp command-line tool installed via Homebrew, unknown, unknown
+- xkeyboard-config: xkeyboard-config command-line tool installed via Homebrew, unknown, unknown
+- xkeyboardconfig: xkeyboardconfig command-line tool installed via Homebrew, unknown, unknown
+- xorg-server: xorg-server command-line tool installed via Homebrew, unknown, unknown
+- xorgproto: xorgproto command-line tool installed via Homebrew, unknown, unknown
+- xsv: xsv command-line tool installed via Homebrew, unknown, unknown
+- xvid: xvid command-line tool installed via Homebrew, unknown, unknown
+- xxhash: xxhash command-line tool installed via Homebrew, unknown, unknown
+- xz: xz command-line tool installed via Homebrew, rare, 2026-05-05 15:01:20
+- yaml-cpp: yaml-cpp command-line tool installed via Homebrew, unknown, unknown
+- yazi: yazi command-line tool installed via Homebrew, low, 2026-03-19 16:27:37
+- you-get: you-get command-line tool installed via Homebrew, low, 2024-10-30 18:30:46
+- yt-dlp: video downloader CLI, low, 2025-03-06 14:25:00
+- yyjson: yyjson command-line tool installed via Homebrew, unknown, unknown
+- z3: z3 command-line tool installed via Homebrew, unknown, unknown
+- zathura: zathura command-line tool installed via Homebrew, low, 2024-09-09 15:17:26
+- zathura-pdf-poppler: zathura-pdf-poppler command-line tool installed via Homebrew, unknown, unknown
+- zeromq: zeromq command-line tool installed via Homebrew, unknown, unknown
+- zimg: zimg command-line tool installed via Homebrew, unknown, unknown
+- zlib: zlib command-line tool installed via Homebrew, unknown, unknown
+- zlib-ng-compat: zlib-ng-compat command-line tool installed via Homebrew, unknown, unknown
+- zoxide: smarter cd command based on directory history, rare, 2024-12-28 13:45:24
+- zq: zq command-line tool installed via Homebrew, unknown, unknown
+- zsh: zsh command-line tool installed via Homebrew, unknown, unknown
+- zstd: zstd command-line tool installed via Homebrew, unknown, unknown
+
+## Homebrew Cask Apps
+
+- alacritty: macOS application, unknown, 2026-05-06 14:29:09
+- appcleaner: macOS application, unknown, unknown
+- background-music: music playback or lyric utility, unknown, 2024-09-09 20:17:50
+- bettermouse: input or display management utility, unknown, 2025-10-22 14:03:56
+- cc-switch: macOS application, unknown, 2026-04-23 21:38:58
+- codex: development editor or coding tool, unknown, unknown
+- cursor: development editor or coding tool, unknown, 2022-08-30 21:00:00
+- flowvision: macOS application, unknown, 2025-08-19 16:54:21
+- font-caskaydia-cove-nerd-font: font package installed via Homebrew Cask, unknown, unknown
+- font-caskaydia-mono-nerd-font: font package installed via Homebrew Cask, unknown, unknown
+- font-fira-code: font package installed via Homebrew Cask, unknown, unknown
+- font-fira-code-nerd-font: font package installed via Homebrew Cask, unknown, unknown
+- font-hack-nerd-font: font package installed via Homebrew Cask, unknown, unknown
+- font-inconsolata-for-powerline: font package installed via Homebrew Cask, unknown, unknown
+- font-jetbrains-mono-nerd-font: font package installed via Homebrew Cask, unknown, unknown
+- font-linux-biolinum: font package installed via Homebrew Cask, unknown, unknown
+- font-lxgw-wenkai: font package installed via Homebrew Cask, unknown, unknown
+- font-lxgw-wenkai-gb: font package installed via Homebrew Cask, unknown, unknown
+- font-lxgw-wenkai-gb-lite: font package installed via Homebrew Cask, unknown, unknown
+- font-lxgw-wenkai-lite: font package installed via Homebrew Cask, unknown, unknown
+- font-lxgw-wenkai-tc: font package installed via Homebrew Cask, unknown, unknown
+- font-maple: font package installed via Homebrew Cask, unknown, unknown
+- font-maple-mono: font package installed via Homebrew Cask, unknown, unknown
+- font-maple-mono-cn: font package installed via Homebrew Cask, unknown, unknown
+- font-maple-mono-nf: font package installed via Homebrew Cask, unknown, unknown
+- font-maple-mono-nf-cn: font package installed via Homebrew Cask, unknown, unknown
+- font-meslo-lg-nerd-font: font package installed via Homebrew Cask, unknown, unknown
+- font-monaspace-nerd-font: font package installed via Homebrew Cask, unknown, unknown
+- font-monaspice-nerd-font: font package installed via Homebrew Cask, unknown, 2024-10-29 20:43:31
+- font-noto-sans-symbols-2: font package installed via Homebrew Cask, unknown, unknown
+- font-sf-pro: font package installed via Homebrew Cask, unknown, unknown
+- font-symbols-only-nerd-font: font package installed via Homebrew Cask, unknown, unknown
+- gcloud-cli: macOS application, unknown, unknown
+- ghostty: macOS application, unknown, 2026-03-17 13:04:48
+- google-chrome: web browser application, unknown, 2026-01-07 12:51:44
+- hammerspoon: macOS application, unknown, 2024-09-09 22:37:52
+- iina: macOS application, unknown, 2025-09-22 15:50:04
+- ipynb-quicklook: preview or viewer utility, unknown, unknown
+- iterm2: macOS application, unknown, 2025-09-22 15:50:23
+- jordanbaird-ice: macOS application, unknown, 2024-10-29 20:43:31
+- jupyter-notebook-viewer: preview or viewer utility, unknown, 2023-12-21 08:25:24
+- kakuku: macOS application, unknown, 2026-05-10 09:25:35
+- kap: macOS application, unknown, 2022-10-28 02:12:43
+- karabiner-elements: macOS application, unknown, 2025-09-22 15:51:02
+- keepingyouawake: macOS application, unknown, 2025-09-22 15:51:09
+- keka: macOS application, unknown, 2025-09-22 15:51:26
+- keycastr: macOS application, unknown, 2025-09-22 15:51:31
+- kitty: macOS application, unknown, unknown
+- linearmouse: input or display management utility, unknown, 2025-09-22 15:51:37
+- lyricsx: music playback or lyric utility, unknown, 2023-10-01 21:19:40
+- meshlab: macOS application, unknown, 2025-07-22 14:32:56
+- monitorcontrol: input or display management utility, unknown, 2024-10-27 13:14:56
+- motrix: macOS application, unknown, 2023-05-03 14:51:50
+- mounty: macOS application, unknown, 2023-12-31 13:53:56
+- obsidian: productivity or note-taking app, unknown, 2024-04-06 06:10:52
+- only-switch: macOS application, unknown, 2025-07-03 13:32:49
+- orbstack: macOS application, unknown, 2025-09-22 15:55:04
+- pearcleaner: macOS application, unknown, 2025-09-22 15:55:09
+- puremac: macOS application, unknown, 2026-04-22 08:34:05
+- qlmarkdown: macOS application, unknown, 2025-06-03 21:32:26
+- quicklook-csv: preview or viewer utility, unknown, unknown
+- sf-symbols: macOS application, unknown, 2025-09-22 16:07:22
+- sioyek: macOS application, unknown, 2022-12-17 00:23:25
+- skim: macOS application, unknown, 2025-07-03 13:33:08
+- squirrel: macOS application, unknown, unknown
+- squirrel-app: macOS application, unknown, unknown
+- stolendata-mpv: macOS application, unknown, 2025-05-08 17:38:00
+- syntax-highlight: macOS application, unknown, 2025-07-03 13:33:24
+- termius: macOS application, unknown, 2025-09-22 16:08:44
+- tev: macOS application, unknown, 2026-03-11 15:29:04
+- todesk: macOS application, unknown, 2024-03-07 20:59:15
+- ubersicht: macOS application, unknown, unknown
+- upic: macOS application, unknown, 2020-12-12 01:17:04
+- v2rayx: macOS application, unknown, unknown
+- warp: macOS application, unknown, 2026-03-02 11:31:54
+- xquartz: macOS application, unknown, 2023-08-26 16:47:53
+- zed: development editor or coding tool, unknown, 2026-03-11 23:03:02
+
+## Mac App Store Apps
+
+- Bob: translation and OCR utility, unknown, 2026-03-11 12:45:58
+- Camera Preview: preview or viewer utility, unknown, 2024-12-25 16:42:31
+- Command X: macOS application, unknown, 2024-11-01 13:44:06
+- CotEditor: lightweight plain text and code editor, unknown, 2025-08-25 13:52:19
+- Cursor Pro: alternate Cursor build or channel for AI-assisted coding, unknown, 2022-08-30 21:00:00
+- Developer: Apple developer tools and documentation app, unknown, 2025-09-17 14:14:00
+- FlipClock: macOS application, unknown, 2026-03-11 12:57:09
+- Flow: macOS application, unknown, 2025-08-19 16:54:21
+- Folder Preview: preview or viewer utility, unknown, 2026-05-03 15:13:02
+- Keynote: productivity or note-taking app, unknown, 2026-03-11 13:00:25
+- Micro Sniff: macOS application, unknown, 2023-04-05 22:57:06
+- Microsoft To Do: task list and reminder app, unknown, 2026-03-11 12:47:02
+- Notability: note-taking and annotation app, unknown, 2026-05-03 15:14:43
+- PDF Squeezer: PDF reading or processing utility, unknown, 2022-05-09 18:48:22
+- Pages: document editor from Apple, unknown, 2026-03-11 12:59:36
+- PopClip: macOS application, unknown, 2022-12-05 13:00:00
+- Readest: macOS application, unknown, 2026-05-03 15:13:28
+- RightMenuMaster: macOS application, unknown, 2026-03-11 12:46:15
+- TencentMeeting: macOS application, unknown, 2026-03-11 12:49:36
+- Userscripts: macOS application, unknown, 2026-03-11 13:00:27
+- WeChat: macOS application, unknown, 2026-03-11 13:00:54
+- Windows App: macOS application, unknown, 2026-05-03 15:12:43
+- Yoink: macOS application, unknown, 2026-05-03 15:13:23
+- iMovie: macOS application, unknown, 2024-11-16 22:24:43
+
+## Manually Installed Apps
+
+- .Karabiner-VirtualHIDDevice-Manager: macOS application, unknown, 2025-09-22 15:51:02
+- AlDente: battery charge limiter and health utility, unknown, 2024-05-14 09:46:45
+- AlgerMusicPlayer: music playback or lyric utility, unknown, 2025-12-21 10:46:09
+- Alma: macOS application, unknown, 2026-03-17 01:31:26
+- AltTab: window switcher replacement for macOS, unknown, 2026-05-02 15:26:19
+- Arx: macOS application, unknown, 2023-09-14 12:57:34
+- BaiduNetdisk_mac: macOS application, unknown, 2024-11-14 08:13:19
+- BetterDisplay: display management and virtual display tool, unknown, 2025-04-28 19:38:18
+- BetterZip: archive compression and extraction utility, unknown, 2021-12-14 20:37:21
+- Blender: macOS application, unknown, 2024-07-15 18:26:29
+- Chatbox: desktop AI chat client, unknown, 2025-04-15 14:50:32
+- Cider: macOS application, unknown, 2024-08-16 21:48:38
+- ClashX Pro: network proxy client for rule-based traffic routing, unknown, 2024-09-25 09:41:03
+- ClashX: network proxy client, unknown, 2023-09-26 11:03:20
+- DingTalk: team communication and collaboration app, unknown, 2026-05-19 12:46:22
+- Downie 4: video downloader utility, unknown, 2022-07-29 14:48:22
+- Excalidraw: macOS application, unknown, 2026-03-27 11:22:15
+- FinderGo: macOS application, unknown, 2018-10-15 16:19:13
+- Folo: macOS application, unknown, 2025-11-15 07:53:18
+- HazeOver: macOS application, unknown, 2024-04-05 13:40:06
+- Ice: menu bar management utility, unknown, 2024-10-29 20:43:31
+- Itsycal: macOS application, unknown, 2024-10-25 15:22:45
+- Kaku: macOS application, unknown, 2026-05-10 09:25:35
+- Karabiner-EventViewer: preview or viewer utility, unknown, 2025-09-22 15:51:02
+- Keychron Engine: input or display management utility, unknown, 2024-03-07 13:14:00
+- LANDrop: macOS application, unknown, 2021-06-10 18:11:52
+- Lark: macOS application, unknown, 2023-03-22 11:47:20
+- MeshLab2025.07: macOS application, unknown, 2025-07-22 14:32:56
+- MessAuto: macOS application, unknown, 2023-05-09 22:53:07
+- Microsoft Excel: spreadsheet editor, unknown, 2024-10-24 13:10:36
+- Microsoft PowerPoint: presentation editor, unknown, 2024-10-24 13:10:07
+- Microsoft Word: document editor, unknown, 2024-08-19 10:12:10
+- Min: web browser application, unknown, 2024-04-27 23:12:28
+- NeoHtop: macOS application, unknown, 2024-12-08 23:53:33
+- Notion: workspace for documents and project organization, unknown, 2026-05-11 22:52:02
+- OBS: screen recording and live streaming software, unknown, 2024-04-06 06:10:52
+- OmniDiskSweeper: macOS application, unknown, 2021-02-05 06:51:40
+- OneDrive: macOS application, unknown, 2024-08-19 10:04:43
+- PDF Expert: PDF reading, editing, and annotation app, unknown, 2024-11-22 00:37:26
+- Paseo: macOS application, unknown, 2026-04-16 23:16:23
+- Permute 3: macOS application, unknown, 2022-05-23 15:20:22
+- PiPifier: macOS application, unknown, 2025-10-11 17:05:22
+- PicGo: macOS application, unknown, 2022-06-12 20:40:39
+- PlistEdit Pro: macOS application, unknown, 2023-10-31 13:34:36
+- ProNotes: productivity or note-taking app, unknown, 2024-08-18 15:02:00
+- QQ: macOS application, unknown, 2024-04-11 19:52:34
+- Raycast: macOS application, unknown, 2026-05-19 11:36:02
+- Rectangle Pro: macOS application, unknown, 2022-06-14 10:59:22
+- Safari: macOS application, unknown, 2024-07-11 12:45:54
+- SanDisk Security Uninstaller: macOS application, unknown, 2020-06-30 01:38:09
+- SanDisk Security: macOS application, unknown, 2020-06-30 01:34:00
+- Slack: macOS application, unknown, 2026-03-27 16:26:28
+- Snipaste: macOS application, unknown, 2025-03-19 21:49:14
+- Spotify: macOS application, unknown, 2025-09-11 15:18:41
+- Stats: macOS application, unknown, 2026-04-29 18:07:51
+- Sticky: macOS application, unknown, 2025-07-27 02:56:03
+- Telegram: macOS application, unknown, 2026-03-11 17:18:27
+- Tencent Lemon: macOS application, unknown, 2025-09-15 18:57:18
+- TinkerTool: macOS application, unknown, 2023-06-07 16:17:57
+- Topaz Video AI: macOS application, unknown, 2024-09-18 02:44:38
+- Transmission: macOS application, unknown, 2023-12-08 10:23:01
+- Transmit: macOS application, unknown, 2022-05-18 03:33:22
+- UninstallPKG: macOS application, unknown, 2024-11-06 06:59:45
+- Übersicht: macOS application, unknown, 2023-12-31 13:55:50
+- Visual Studio Code: development editor or coding tool, unknown, 2026-03-07 09:22:38
+- WeRead: macOS application, unknown, 2026-03-27 11:27:40
+- Xmind: web browser application, unknown, 2023-01-10 17:00:00
+- Zotero: macOS application, unknown, 2026-05-08 20:47:51
+- aDrive: macOS application, unknown, 2024-02-22 15:14:51
+- aTrust: macOS application, unknown, 2025-05-20 14:31:05
+- boringNotch: macOS application, unknown, 2025-01-15 03:03:28
+- i4Tools: macOS application, unknown, 2026-02-17 17:47:05
+- iTerm: macOS application, unknown, 2025-09-22 15:50:23
+- iTermAI: macOS application, unknown, 2025-03-31 03:40:26
+- iTermBrowserPlugin: web browser application, unknown, 2025-09-06 14:25:32
+- kazumi: macOS application, unknown, 2025-08-17 21:18:47
+- logioptionsplus: macOS application, unknown, 2025-04-29 21:20:49
+- macOS Assistant: macOS application, unknown, 2021-08-01 18:45:41
+- mpv: macOS application, unknown, 2025-05-08 17:38:00
+- zoom.us: macOS application, unknown, 2024-07-29 23:59:20
+- Feedback Assistant: macOS application, unknown, 2024-08-04 18:31:41
+- LogiPluginService: Logitech background helper and device integration service, unknown, 2025-04-29 21:21:02
+

@@ -1,42 +1,22 @@
 #!/bin/bash
 
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BUNDLE_FILE="$ROOT_DIR/setup/homebrew_install_list.txt"
+
 STATUS=$(which brew)
 
 if [ -z "$STATUS" ]; then
-  echo "[INFO]Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	echo "[INFO]Installing Homebrew..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-  echo "[INFO]Homebrew is already installed..."
+	echo "[INFO]Homebrew is already installed..."
 fi
 
 echo "[INFO]Installing homebrew packages..."
 
-# cli
-brew install bash
-brew install bat
-brew install fd
-brew install fzf
-brew install gh
-brew install git
-brew install git-delta
-brew install lf
-brew install eza
-brew install neofetch
-brew install pgcli
-brew install ripgrep
-brew install starship
-brew install tealdeer
-brew install wakatime-cli
-brew install jq
-brew install poppler
-brew install btop
-brew install navi
-brew install zoxide
-brew install tmux
-brew install lazydocker
-brew install lazygit
-brew install yazi --HEAD
-brew install joshmedeski/sesh/sesh
-brew install neovim
+echo "[INFO]Using bundle file: $BUNDLE_FILE"
+brew bundle --file="$BUNDLE_FILE"
 
 exit 0

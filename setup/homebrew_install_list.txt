@@ -1,0 +1,69 @@
+# Homebrew install list
+# Usage: brew bundle --file=setup/homebrew_install_list.txt
+# Purpose: keep only the CLI and apps that are most worth restoring on a new Mac first.
+
+# Core Terminal Workflow
+brew "git"
+brew "tmux"
+brew "neovim"
+brew "zoxide"
+brew "eza"
+brew "bat"
+brew "btop"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "atuin"
+brew "lazygit"
+brew "gh"
+brew "mas"
+brew "rsync"
+brew "wget"
+
+# Developer / Build Tools
+brew "cmake"
+brew "clang-format"
+brew "ccls"
+brew "ffmpeg"
+brew "pipx"
+brew "commitizen"
+
+# Useful Supporting CLI
+brew "direnv"
+brew "fastfetch"
+brew "onefetch"
+brew "stow"
+
+# Terminal Apps
+cask "ghostty"
+cask "alacritty"
+cask "iterm2"
+cask "warp"
+
+# Coding / AI Apps
+cask "cursor"
+cask "codex"
+cask "zed"
+
+# Browsers
+cask "google-chrome"
+
+# Productivity / Reading / Download
+cask "obsidian"
+cask "termius"
+cask "keka"
+cask "iina"
+cask "skim"
+cask "motrix"
+
+# System Utilities
+cask "karabiner-elements"
+cask "hammerspoon"
+cask "monitorcontrol"
+cask "pearcleaner"
+cask "keepingyouawake"
+cask "keycastr"
+cask "kap"
+cask "linearmouse"
+cask "only-switch"
+cask "orbstack"

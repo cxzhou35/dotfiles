@@ -84,9 +84,12 @@ restow_zsh() {
   stow_package "zsh" "$target"
   remove_path "$target/.zshrc"
   remove_path "$target/.zprofile"
+  remove_path "$target/.zshenv"
+  remove_path "$target/locale.zsh"
   remove_path "$target/theme.zsh"
   link_file "$ROOT_DIR/zsh/.zshrc" "$HOME_DIR/.zshrc"
   link_file "$ROOT_DIR/zsh/.zprofile" "$HOME_DIR/.zprofile"
+  link_file "$ROOT_DIR/zsh/.zshenv" "$HOME_DIR/.zshenv"
 }
 
 stow_package() {

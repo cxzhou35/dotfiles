@@ -1,3 +1,20 @@
+# Normalize invalid locale values injected by some tools on macOS.
+# Apple's locale set usually does not provide C.UTF-8, which makes bash warn
+# before it can run any command.
+if [[ "${LC_ALL:-}" == "C.UTF-8" || "${LC_CTYPE:-}" == "C.UTF-8" ]]; then
+  export LANG="${LANG:-en_US.UTF-8}"
+  if [[ "${LANG}" == "C" || "${LANG}" == "POSIX" ]]; then
+    export LANG="en_US.UTF-8"
+  fi
+
+  unset LC_ALL
+  export LC_CTYPE="${LANG}"
+fi
+
+if [[ -n "${ZSH_EARLY_INIT:-}" ]]; then
+  return 0
+fi
+
 # Basic config
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"

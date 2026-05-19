@@ -2,7 +2,7 @@ model_provider = "OpenAI"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 model = "gpt-5.4"
-approvals_reviewer = "auto_review"
+approvals_reviewer = "user"
 review_model = "gpt-5.4"
 model_reasoning_effort = "xhigh"
 disable_response_storage = true
@@ -22,16 +22,16 @@ requires_openai_auth = true
 [projects."/Users/vercent/workspace"]
 trust_level = "trusted"
 
-[projects."/Users/vercent/Github/dotfiles"]
+[projects."/Users/vercent/Github"]
 trust_level = "trusted"
 
-[projects."/Users/vercent/Projects/3dv/ToG_2026_RealMe/RealMe_overleaf"]
-trust_level = "trusted"
-
-[projects."/Users/vercent/workspace/infomerge"]
+[projects."/Users/vercent/Projects"]
 trust_level = "trusted"
 
 [projects."/Users/vercent/Downloads"]
+trust_level = "trusted"
+
+[projects."/Users/vercent/Github/dotfiles"]
 trust_level = "trusted"
 
 [hooks.state]
@@ -47,9 +47,19 @@ trusted_hash = "sha256:ac371f260e4b23ba1d1b7a4ad68a44a323a8470b61f38471a47aceac1
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 
+[mcp_servers.agentmemory]
+command = "/Users/vercent/.npm-packages/bin/agentmemory"
+args = ["mcp"]
+
+[mcp_servers.agentmemory.env]
+AGENTMEMORY_URL = "http://localhost:3111"
+
 [hooks.state."/Users/vercent/.codex/hooks.json:pre_tool_use:0:0"]
 trusted_hash = "sha256:fc87dbee1cb8a9be4f78ba094c4fa8d5e2fd38cb800854e3717f9b6a52fe2a47"
 
 [memories]
 use_memories = true
 generate_memories = true
+
+[tui]
+vim_mode = true

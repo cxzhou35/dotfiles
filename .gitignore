@@ -25,3 +25,4 @@ vscode/syncLocalSettings.json
 switchyomega/*
 
 codex/auth.json
+.claude/settings.local.json

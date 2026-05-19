@@ -1,0 +1,115 @@
+# Homebrew install list
+# Usage: brew bundle --file=setup/apps/homebrew.txt
+
+# Core Terminal Workflow
+brew "git"
+brew "gh"
+brew "bat"
+brew "btop"
+brew "fastfetch"
+brew "lazygit"
+brew "neovim"
+brew "sesh"
+brew "starship"
+brew "stow"
+brew "tmux"
+brew "yazi"
+brew "zoxide"
+brew "eza"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "rsync"
+brew "wget"
+brew "mas"
+
+# Terminal Apps
+cask "ghostty"
+
+# Coding / AI Apps
+cask "codex"
+cask "cursor"
+cask "raycast"
+cask "visual-studio-code"
+
+# Browsers
+cask "google-chrome"
+
+# Productivity
+cask "notion"
+cask "obsidian"
+
+# Media Apps
+cask "background-music"
+cask "iina"
+cask "kap"
+
+# System Utilities
+cask "aldente"
+cask "alt-tab"
+cask "betterdisplay"
+cask "cc-switch"
+cask "itsycal"
+cask "jordanbaird-ice"
+cask "karabiner-elements"
+cask "keepingyouawake"
+cask "landrop"
+cask "linearmouse"
+cask "keycastr"
+cask "keka"
+cask "monitorcontrol"
+cask "mounty"
+cask "only-switch"
+cask "orbstack"
+cask "picgo"
+cask "puremac"
+cask "rectangle"
+cask "snipaste"
+cask "stats"
+cask "squirrel-app"
+cask "tencent-lemon"
+cask "syntax-highlight"
+cask "tev"
+cask "upic"
+cask "v2rayx"
+cask "xquartz"
+
+# File Transfer / Download
+cask "transmission"
+cask "transmit"
+
+# Desktop / Visual
+cask "ubersicht"
+
+# Socials
+cask "dingtalk"
+cask "slack"
+cask "telegram"
+cask "qq"
+cask "zoom"
+
+# Fonts
+cask "font-caskaydia-cove-nerd-font"
+cask "font-caskaydia-mono-nerd-font"
+cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+cask "font-hack-nerd-font"
+cask "font-inconsolata-for-powerline"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-linux-biolinum"
+cask "font-lxgw-wenkai"
+cask "font-lxgw-wenkai-gb"
+cask "font-lxgw-wenkai-gb-lite"
+cask "font-lxgw-wenkai-lite"
+cask "font-lxgw-wenkai-tc"
+cask "font-maple"
+cask "font-maple-mono"
+cask "font-maple-mono-cn"
+cask "font-maple-mono-nf"
+cask "font-maple-mono-nf-cn"
+cask "font-meslo-lg-nerd-font"
+cask "font-monaspace-nerd-font"
+cask "font-monaspice-nerd-font"
+cask "font-noto-sans-symbols-2"
+cask "font-sf-pro"
+cask "font-symbols-only-nerd-font"

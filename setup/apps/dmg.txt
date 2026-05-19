@@ -1,0 +1,27 @@
+# Manual download install list
+# Usage:
+#   1. Visit the repo or homepage.
+#   2. Download the app archive / dmg / zip / pkg manually.
+#   3. Install the app or CLI manually.
+#
+# Format:
+#   app_name | kind | source_type | repo_or_homepage | download_url | notes
+
+Alma | app | web | https://alma.now/ | https://updates.alma.now/alma-0.0.795-mac-arm64.dmg | from `homebrew_full_list.md`; cask token `alma`
+Blender | app | web | https://www.blender.org/ | https://download.blender.org/release/Blender5.1/blender-5.1.1-macos-arm64.dmg | from `homebrew_full_list.md`; cask token `blender`
+Downie 4 | app | web | https://software.charliemonroe.net/downie.php | https://software.charliemonroe.net/trial/downie/v4/Downie_4_5169.dmg | from `homebrew_full_list.md`; cask token `downie`
+FinderGo | app | github | https://github.com/onmyway133/FinderGo | https://github.com/onmyway133/FinderGo/releases/download/1.4.0/FinderGo.zip | from `homebrew_full_list.md`; cask token `findergo`; Homebrew cask disabled and deprecated
+Kaku | app | github | https://github.com/EragonJ/Kaku | https://github.com/EragonJ/Kaku/releases/download/2.0.2/Kaku-2.0.2-mac.zip | from `homebrew_full_list.md`; cask token `kaku`; Homebrew cask disabled and deprecated
+Microsoft Excel | app | web | https://www.microsoft.com/en-US/microsoft-365/excel | https://officecdnmac.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_Excel_16.109.26051019_Installer.pkg | from `homebrew_full_list.md`; cask token `microsoft-excel`
+Microsoft PowerPoint | app | web | https://www.microsoft.com/en-US/microsoft-365/powerpoint | https://officecdnmac.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_PowerPoint_16.109.26051019_Installer.pkg | from `homebrew_full_list.md`; cask token `microsoft-powerpoint`
+Microsoft Word | app | web | https://www.microsoft.com/en-US/microsoft-365/word | https://officecdnmac.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_Word_16.109.26051019_Installer.pkg | from `homebrew_full_list.md`; cask token `microsoft-word`
+Min | app | github | https://github.com/minbrowser/min | https://github.com/minbrowser/min/releases/download/v1.35.5/min-v1.35.5-mac-arm64.zip | from `homebrew_full_list.md`; cask token `min`; Homebrew cask deprecated
+OBS | app | web | https://obsproject.com/ | https://cdn-fastly.obsproject.com/downloads/obs-studio-32.1.2-macos-apple.dmg | from `homebrew_full_list.md`; cask token `obs`
+OneDrive | app | web | https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage | https://oneclient.sfx.ms/Mac/Installers/26.063.0405.0002/universal/OneDrive.pkg | from `homebrew_full_list.md`; cask token `onedrive`
+Paseo | app | github | https://paseo.sh/ | https://github.com/getpaseo/paseo/releases/download/v0.1.78/Paseo-0.1.78-arm64.dmg | from `homebrew_full_list.md`; cask token `paseo`
+PDF Expert | app | web | https://pdfexpert.com/ | https://downloads.pdfexpert.com/pem3/versions/1150/PDFExpert.zip | from `homebrew_full_list.md`; cask token `pdf-expert`
+Permute 3 | app | web | https://software.charliemonroe.net/permute/ | https://software.charliemonroe.net/trial/permute/v3/Permute_3_4012.dmg | from `homebrew_full_list.md`; cask token `permute`
+Spotify | app | web | https://www.spotify.com/ | https://download.scdn.co/SpotifyARM64.dmg | from `homebrew_full_list.md`; cask token `spotify`
+Xmind | app | web | https://www.xmind.net/ | https://dl3.xmind.net/Xmind-for-macOS-26.03.04129-202605150708.dmg | from `homebrew_full_list.md`; cask token `xmind`
+Zotero | app | web | https://www.zotero.org/ | https://download.zotero.org/client/release/9.0.3/Zotero-9.0.3.dmg | from `homebrew_full_list.md`; cask token `zotero`
+boringNotch | app | github | https://github.com/TheBoredTeam/boring.notch | https://github.com/TheBoredTeam/boring.notch/releases/download/v2.7.3/boringNotch.dmg | from `homebrew_full_list.md` 3b; appcast verified

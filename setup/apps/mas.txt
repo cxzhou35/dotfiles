@@ -1,0 +1,35 @@
+# Mac App Store install list
+# Usage:
+#   1. Sign in to the App Store app on macOS.
+#   2. Confirm `mas` is installed: `brew install mas`
+#   3. Install all apps in this file:
+#      `mas install $(awk '/^[0-9]+/{print $1}' setup/apps/mas.txt)`
+#   4. Reinstall all apps in this file:
+#      `mas install --force $(awk '/^[0-9]+/{print $1}' setup/apps/mas.txt)`
+#   5. List already installed MAS apps with: `mas list`
+#
+# Format:
+#   <app_id>  # app_name | intro
+# Non-installable or unresolved entries stay commented out and will be skipped.
+
+# Utilities / Productivity
+1630034110  # Bob | 翻译与 OCR 工具
+6448461551  # Command X | Finder 剪切粘贴增强工具
+1024640650  # CotEditor | 轻量级纯文本与代码编辑器
+1553591814  # Flip Clock | 翻页时钟与桌面时间显示应用
+6698876601  # Folder Preview | 文件夹内容预览工具
+1274495053  # Microsoft To Do | 任务列表与提醒应用
+360593530   # Notability | 笔记与标注应用
+6737160756  # RightMenuMaster | 右键菜单增强工具
+1463298887  # Userscripts | 浏览器 / Web 脚本管理工具
+1295203466  # Windows App | 微软远程桌面 / Windows 连接应用
+457622435   # Yoink | 拖拽暂存板工具
+
+# Document / Office
+409183694   # Keynote | 演示文稿编辑器
+409201541   # Pages | 文档编辑器
+408981434   # iMovie | 视频剪辑工具
+
+# Communication
+1484048379  # TencentMeeting | 视频会议与协作应用
+836500024   # WeChat | 微信桌面客户端

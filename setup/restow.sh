@@ -141,7 +141,6 @@ main() {
       ghostty
       git
       iterm2
-      joshuto
       karabiner
       kitty
       lazygit

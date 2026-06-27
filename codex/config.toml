@@ -1,10 +1,10 @@
 model_provider = "OpenAI"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-model = "gpt-5.4"
+model = "gpt-5.5"
 approvals_reviewer = "user"
 review_model = "gpt-5.4"
-model_reasoning_effort = "xhigh"
+model_reasoning_effort = "high"
 disable_response_storage = true
 network_access = "enabled"
 windows_wsl_setup_acknowledged = true
@@ -34,6 +34,9 @@ trust_level = "trusted"
 [projects."/Users/vercent/Github/dotfiles"]
 trust_level = "trusted"
 
+[projects."/Users/vercent/ResWiki"]
+trust_level = "trusted"
+
 [hooks.state]
 
 [features]
@@ -46,6 +49,9 @@ trusted_hash = "sha256:ac371f260e4b23ba1d1b7a4ad68a44a323a8470b61f38471a47aceac1
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+
+[plugins."superpowers@openai-curated"]
+enabled = true
 
 [mcp_servers.agentmemory]
 command = "/Users/vercent/.npm-packages/bin/agentmemory"

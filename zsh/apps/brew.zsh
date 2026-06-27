@@ -12,16 +12,16 @@ cleanbrew() {
 
     for folder_path in "${folder_paths[@]}"; do
         if [ ! -d "$folder_path" ]; then
-            rich "[bold blue][Info][/]The folder [bold magenta]$folder_path[/] does not exist." -p
+            rich "[bold blue][Info][/]The folder [bold magenta]${folder_path}[/] does not exist." -p
             continue
         fi
 
         if find "$folder_path" -mindepth 1 -maxdepth 1 | read -r _; then
             find "$folder_path" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
             found_any=1
-            rich "[bold blue][Info][/]Cleared [bold magenta]$folder_path[/]." -p
+            rich "[bold blue][Info][/]Cleared [bold magenta]${folder_path}[/]." -p
         else
-            rich "[bold blue][Info][/]The folder [bold magenta]$folder_path[/] is already empty." -p
+            rich "[bold blue][Info][/]The folder [bold magenta]${folder_path}[/] is already empty." -p
         fi
     done
 

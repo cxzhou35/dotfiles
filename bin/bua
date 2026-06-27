@@ -1,5 +1,37 @@
 #!/bin/bash
 
+set -euo pipefail
+
+DOTFILES_ROOT="${DOTFILES_ROOT:-$HOME/Github/dotfiles}"
+PROXY_ENV_FILE="$DOTFILES_ROOT/zsh/.proxyenv"
+
+load_proxy_env() {
+	if [[ -f "$PROXY_ENV_FILE" ]]; then
+		# shellcheck disable=SC1090
+		source "$PROXY_ENV_FILE"
+	fi
+
+	local proxy_host="${PROXY_IP:-${LABPROXY_IP:-}}"
+	local proxy_port="${PROXY_PORT:-${LABPROXY_PORT:-}}"
+
+	if [[ -n "$proxy_host" && -n "$proxy_port" ]]; then
+		if command -v nc >/dev/null 2>&1 && ! nc -z -G 2 "$proxy_host" "$proxy_port" >/dev/null 2>&1; then
+			printf "Configured proxy %s:%s is unreachable; continuing without proxy.\n" "$proxy_host" "$proxy_port" >&2
+			return
+		fi
+
+		local proxy_url="http://${proxy_host}:${proxy_port}"
+		export http_proxy="${http_proxy:-$proxy_url}"
+		export https_proxy="${https_proxy:-$proxy_url}"
+		export all_proxy="${all_proxy:-$proxy_url}"
+		export HTTP_PROXY="${HTTP_PROXY:-$http_proxy}"
+		export HTTPS_PROXY="${HTTPS_PROXY:-$https_proxy}"
+		export ALL_PROXY="${ALL_PROXY:-$all_proxy}"
+	fi
+}
+
+load_proxy_env
+
 gum style \
 	--foreground 12 --border-foreground 12 --border double \
 	--align center --width 50 --margin "1 0" --padding "1 2" \
@@ -13,11 +45,17 @@ gum style \
 gum spin --show-output --spinner minidot --title "Updating brew..." -- brew update
 printf "\n"
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 OUTDATED=$(gum spin --show-output --spinner minidot --title "Checking for outdated brew packages" -- brew outdated)
 
 if [[ -n "$OUTDATED" ]]; then
 	echo "$OUTDATED"
-	gum confirm --selected.background=2 --selected.foreground=0 "Upgrade the outdated formulae above?" && brew upgrade
+	if [[ -t 0 && -t 1 ]]; then
+		gum confirm --selected.background=2 --selected.foreground=0 "Upgrade the outdated formulae above?" && brew upgrade
+	else
+		brew upgrade
+	fi
 	printf "\n"
 	brew cleanup --prune=all
 	printf "\n"

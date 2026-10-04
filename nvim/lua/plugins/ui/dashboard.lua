@@ -48,11 +48,11 @@ end
 
 local function keys()
   return {
-    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
     { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-    { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-    { icon = " ", key = "o", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-    { icon = " ", key = "g", desc = "Git Files", action = ":lua Snacks.dashboard.pick('git_files')" },
+    { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.picker.grep()" },
+    { icon = " ", key = "o", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
+    { icon = " ", key = "g", desc = "Git Files", action = ":lua Snacks.picker.git_files()" },
     { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
     { icon = " ", key = "x", desc = "Lazy Extras", action = ":LazyExtras" },
     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
@@ -89,15 +89,6 @@ return {
         { section = "header" },
         { section = "keys", gap = 1, padding = 1 },
         { section = "startup" },
-        {
-          pane = 2,
-          { section = "terminal", cmd = "cmatrix", hl = "header", padding = 1, indent = 1, height = 10 },
-          {
-            section = "terminal",
-            cmd = "chafa '/Users/vercent/Pictures/Wallpapers/Steings;Gate/851009.png' -f symbols --symbols vhalf --animate on --size 60x17 --stretch; sleep .1",
-            height = 17,
-          },
-        },
       },
     },
   },

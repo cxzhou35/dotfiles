@@ -26,8 +26,14 @@ return {
       servers = {
         ["*"] = {
           keys = {
-            { "K", false },
-            { "<leader>k", function() return vim.lsp.buf.hover() end, desc = "Hover" },
+            { "K", "5k", desc = "Quick backward" },
+            {
+              "<leader>k",
+              function()
+                return vim.lsp.buf.hover()
+              end,
+              desc = "Hover",
+            },
           },
         },
         lua_ls = {
@@ -82,16 +88,6 @@ return {
     },
     keys = {
       { "<leader>rs", "<cmd>LspRestart<cr>", desc = "Restart LSP Server" },
-    },
-  },
-  {
-    "zeioth/garbage-day.nvim",
-    dependencies = "neovim/nvim-lspconfig",
-    event = "VeryLazy",
-    opts = {
-      -- your options here
-      aggressive_mode = false,
-      excluded_lsp_clients = {},
     },
   },
 }

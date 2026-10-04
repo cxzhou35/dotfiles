@@ -25,7 +25,7 @@ return {
           },
         },
         hide = {
-          cursorline = true,
+          cursorline = "smart",
         },
         ignore = {
           buftypes = {},

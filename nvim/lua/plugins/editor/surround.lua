@@ -2,6 +2,7 @@ return {
   {
     "nvim-mini/mini.surround",
     enabled = true,
+    event = "VeryLazy",
     opts = {
       mappings = {
         add = "ma",
@@ -18,14 +19,6 @@ return {
 
       silent = true,
     },
-  },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup({})
-    end,
   },
   {
     "folke/which-key.nvim",

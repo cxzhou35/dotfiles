@@ -2,41 +2,24 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function()
+    local lualine_require = require("lualine_require")
+    lualine_require.require = require
+
     local icons = LazyVim.config.icons
-    vim.o.laststatus = vim.g.lualine_laststatus
+    local laststatus = vim.g.lualine_laststatus or vim.o.laststatus
+    if vim.bo.filetype ~= "snacks_dashboard" then
+      vim.o.laststatus = laststatus
+    end
 
     local function getLspName()
-      local msg = "No Active Lsp"
-      local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-      local clients = vim.lsp.get_clients()
-      if next(clients) == nil then
-        return msg
-      end
-      for _, client in ipairs(clients) do
-        local filetypes = client.config.filetypes
-        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-          return "  " .. client.name
-        end
-      end
-      return "  " .. msg
+      local clients = vim.lsp.get_clients({ bufnr = 0 })
+      return #clients > 0 and "  " .. clients[1].name or "No Active Lsp"
     end
-
-    local function getCondaEnv()
-      local env_name = require("nvim-conda").utils.get_conda_environments()
-      return "🅒 " .. env_name
-    end
-
-    local colors = {
-      [""] = Snacks.util.color("Special"),
-      ["Normal"] = Snacks.util.color("Special"),
-      ["Warning"] = Snacks.util.color("DiagnosticError"),
-      ["InProgress"] = Snacks.util.color("DiagnosticWarn"),
-    }
 
     local opts = {
       options = {
         theme = "auto",
-        globalstatus = vim.o.laststatus == 3,
+        globalstatus = laststatus == 3,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
         -- increase the default update time
         refresh = {
@@ -55,7 +38,6 @@ return {
             separator = "",
             padding = { left = 1, right = 0 },
             filetype_names = {
-              TelescopePrompt = "Telescope",
               lazy = "Lazy",
               packer = "Packer",
             },
@@ -77,7 +59,6 @@ return {
             },
           },
           { getLspName },
-          -- { getCondaEnv },
           {
             "diagnostics",
             symbols = {
@@ -90,7 +71,6 @@ return {
           },
         },
         lualine_x = {
-          Snacks.profiler.status(),
           -- stylua: ignore
           {
             function() return require("noice").api.status.command.get() end,
@@ -127,13 +107,6 @@ return {
             },
             show_colors = true,
             show_loading = true,
-          },
-          {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            color = function()
-              return { fg = Snacks.util.color("Special") }
-            end,
           },
           {
             "diff",

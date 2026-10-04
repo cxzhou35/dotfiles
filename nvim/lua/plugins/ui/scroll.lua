@@ -1,5 +1,6 @@
 return {
   "petertriho/nvim-scrollbar",
+  event = "LazyFile",
   opts = {
     show = true,
     show_in_active_only = false,
@@ -118,7 +119,6 @@ return {
       "cmp_menu",
       "noice",
       "prompt",
-      "TelescopePrompt",
       "txt",
       "alpha",
       "dashboard",

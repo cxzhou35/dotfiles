@@ -14,13 +14,7 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        version = false,
-        defaults = {
-          autocmds = false, -- lazyvim.config.autocmds
-          keymaps = false, -- lazyvim.config.keymaps
-        },
         news = {
-          lazyvim = true,
           neovim = true,
         },
       },
@@ -38,11 +32,12 @@ require("lazy").setup({
     backdrop = 100,
   },
   defaults = {
-    lazy = false,
+    lazy = true,
     version = false, -- always use the latest git commit
   },
   install = { colorscheme = { "catppuccin", "habamax" } },
-  checker = { enabled = true, notify = false }, -- automatically check for plugin updates
+  -- Keep startup deterministic; check explicitly with :Lazy check when needed.
+  checker = { enabled = false },
   change_detection = {
     enabled = true,
     notify = false,
@@ -51,32 +46,18 @@ require("lazy").setup({
     cmd = "terminal_git",
   },
   performance = {
-    cache = {
-      enabled = true,
-    },
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
         "netrwPlugin",
         "rplugin",
-        "tar",
         "tarPlugin",
-        "tohtml",
         "tutor",
-        "zip",
         "zipPlugin",
-        "getscript",
-        "getscriptPlugin",
-        "vimball",
-        "vimballPlugin",
-        "logiPat",
-        "rrhelper",
-        "health",
         "matchit",
         "matchparen",
       },
     },
   },
-  debug = false,
 })

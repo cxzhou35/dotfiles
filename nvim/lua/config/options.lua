@@ -1,125 +1,53 @@
 local opt = vim.opt
-local wo = vim.wo
 local g = vim.g
-local o = vim.o
 
-g.mapleader = " "
+-- LazyVim defaults are loaded before this file. Keep only personal overrides.
 g.maplocalleader = " "
+g.python3_host_prog = "/opt/homebrew/bin/python3.11"
+g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
 
 -- General
-opt.confirm = true
-opt.autowrite = true
-opt.autoread = true
 opt.iskeyword:append("-")
-opt.backspace = { "start", "eol", "indent" }
-opt.completeopt = "menu,menuone,noselect"
-opt.wildmenu = true
 opt.wildmode = "longest:list,full"
-opt.laststatus = 3
-opt.conceallevel = 2
-opt.syntax = "off"
-opt.confirm = true
-o.ttyfast = true
-o.scrolloff = 10
-g.deprecation_warnings = false
-
--- Window
 opt.title = true
-opt.splitright = true
-opt.splitbelow = true
-opt.splitkeep = "screen"
+opt.scrolloff = 10
 
--- Backup
-o.backup = false
-o.writebackup = false
-o.swapfile = false
+-- Persistence and recovery
+opt.writebackup = false
+opt.swapfile = false
 opt.undofile = false
 
 -- UI
-o.showtabline = 0
-wo.colorcolumn = "100"
+opt.colorcolumn = "100"
 opt.cmdheight = 0
-opt.wrap = false
 opt.showcmd = false
-opt.showmode = false
-opt.cursorline = true
-opt.ruler = false
-opt.number = true
-opt.linebreak = true
-opt.relativenumber = true
-
--- Clipboard
--- opt.clipboard = { "unnamed", "unnamedplus" }
-opt.clipboard = "unnamedplus"
-
--- Search
-opt.ignorecase = true
-opt.smartcase = true
-opt.infercase = true
 opt.hlsearch = false
-
--- Chars
-opt.list = true
+opt.infercase = true
 opt.listchars = {
   extends = "❯",
   precedes = "❮",
   trail = "·",
   tab = "» ",
   nbsp = "+",
-  -- space = "·",
-  -- eol = "↴",
 }
+opt.foldenable = false
 
-o.foldenable = false
-opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
-}
-
--- Match
--- https://vi.stackexchange.com/a/5318/12823
-g.matchparen_timeout = 2
-g.matchparen_insert_timeout = 2
-
--- Spell
--- Loading slowly
-opt.spell = false
-opt.spelllang = { "en" }
-
--- Tab & Indent
-opt.tabstop = 2
-opt.shiftwidth = 2
+-- Tab and indent
 opt.softtabstop = 2
-opt.autoindent = true
-opt.smartindent = true
 opt.breakindent = true
-opt.expandtab = false -- use tab as indent
-opt.smarttab = true
-opt.shiftround = true
-opt.signcolumn = "yes"
+opt.expandtab = false
 opt.inccommand = "split"
 
--- Encoding
-vim.scriptencoding = "utf-8"
-opt.encoding = "utf-8"
+-- File encoding fallback order
 opt.fileencodings = { "utf-8", "gbk", "gb2312" }
--- opt.termencoding = "utf-8"
 
--- Color
-o.pumblend = 0
-o.winblend = 0
-o.cursorlineopt = "number"
-opt.termguicolors = true
+-- Color and popup behavior
+opt.pumblend = 0
+opt.cursorlineopt = "number"
 
--- Add asterisks in block comments
-opt.formatoptions:append({ "r" })
-
--- Wildfire
-g.wildfire_objects = { "i'", 'i"', "i)", "i]", "i}", "ip", "it", "i`", "i*" }
+-- Ignore generated files in command-line completion.
 opt.wildignorecase = true
 opt.wildignore = {
   "*~",
@@ -147,17 +75,8 @@ opt.wildignore = {
   "*.toc",
 }
 
--- Lazyvim
-g.lazyvim_picker = "telescope"
-g.lazyvim_cmp = "auto"
+-- Keep LazyVim picker integrations on Snacks.
+g.lazyvim_picker = "snacks"
 
--- Disable nvim intro
-opt.shortmess:append("sI")
-
--- Fix markdown indentation settings
-g.markdown_recommended_style = 0
-
--- Remove Redundant Virtual Text
--- vim.diagnostic.config({
---   virtual_text = false,
--- })
+-- Disable the intro and search-count messages.
+opt.shortmess:append("s")

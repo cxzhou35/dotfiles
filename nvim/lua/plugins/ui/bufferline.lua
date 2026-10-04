@@ -18,7 +18,7 @@ return {
     options = {
       mode = "buffers",
       separator_style = "thin",
-      always_show_bufferline = true, -- show bufferline always
+      always_show_bufferline = false,
       view = "multiwindow",
       themable = true,
 

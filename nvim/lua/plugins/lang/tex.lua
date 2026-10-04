@@ -31,7 +31,7 @@ return {
       -- viewer
       vim.g.vimtex_view_enabled = 1
       vim.g.vimtex_view_automatic = 1
-      vim.g.vimtex_view_method = "sioyek"
+      vim.g.vimtex_view_method = "skim"
       -- quickfix
       vim.g.vimtex_quickfix_method = vim.fn.executable("pplatex") == 1 and "pplatex" or "latexlog"
       vim.g.vimtex_quickfix_open_on_warning = 0

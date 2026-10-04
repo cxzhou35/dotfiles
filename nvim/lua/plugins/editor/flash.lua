@@ -56,6 +56,19 @@ return {
       desc = "Flash Treesitter",
     },
     {
+      "<M-CR>",
+      mode = { "n", "x" },
+      function()
+        require("flash").treesitter({
+          actions = {
+            ["<M-CR>"] = "next",
+            ["<BS>"] = "prev",
+          },
+        })
+      end,
+      desc = "Treesitter Incremental Selection",
+    },
+    {
       "fw",
       function()
         require("flash").jump({

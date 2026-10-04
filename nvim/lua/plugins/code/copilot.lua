@@ -2,7 +2,6 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    build = ":Copilot auth",
     event = "BufReadPost",
     opts = {
       filetypes = {
@@ -33,9 +32,7 @@ return {
         "<leader>ap",
         function()
           require("CopilotChat").select_prompt({
-            context = {
-              "buffers",
-            },
+            resources = "buffer:listed",
           })
         end,
         desc = "CopilotChat - Prompt actions",
@@ -48,14 +45,12 @@ return {
         mode = "x",
         desc = "CopilotChat - Prompt actions",
       },
-      -- Copilot Chat Agents
-      { "<leader>aa", "<cmd>CopilotChatAgents<cr>", desc = "CopilotChat - Select Agents" },
+      { "<leader>aa", "<cmd>CopilotChat<cr>", desc = "CopilotChat - Open chat" },
       -- Code related commands
       { "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
       { "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
       { "<leader>ar", "<cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
-      { "<leader>aR", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
-      { "<leader>an", "<cmd>CopilotChatBetterNamings<cr>", desc = "CopilotChat - Better Naming" },
+      { "<leader>aR", "<cmd>CopilotChatOptimize<cr>", desc = "CopilotChat - Optimize code" },
       -- Chat with Copilot in visual mode
       {
         "<leader>av",
@@ -110,7 +105,6 @@ return {
       { "<leader>au", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
       -- Copilot Chat Models
       { "<leader>am", "<cmd>CopilotChatModels<cr>", desc = "CopilotChat - Select Models" },
-      { "<leader>ao", "<cmd>CopilotChatAgents<cr>", desc = "CopilotChat - Select Agents" },
     },
     dependencies = {
       { "zbirenbaum/copilot.lua" },
@@ -120,14 +114,12 @@ return {
       local user = vim.env.USER or "User"
       user = user:sub(1, 1):upper() .. user:sub(2)
       return {
-        -- model = "gpt-4o-2024-11-20",
-        -- model = "gpt-4-o-preview",
-        model = "claude-3.7-sonnet-thought",
-        agent = "copilot",
         auto_insert_mode = false,
-        debug = false,
-        question_header = "  " .. user .. " ",
-        answer_header = "  Copilot ",
+        headers = {
+          user = "  " .. user,
+          assistant = "  Copilot",
+          tool = "Tool",
+        },
         show_folds = true,
         window = {
           width = 0.4,
@@ -157,7 +149,7 @@ return {
 
       vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
         chat.ask(args.args, { selection = select.visual })
-      end, { nargs = "*", range = true })
+      end, { nargs = "*", range = true, force = true })
 
       -- Inline chat with Copilot
       vim.api.nvim_create_user_command("CopilotChatInline", function(args)
@@ -171,32 +163,27 @@ return {
             row = 1,
           },
         })
-      end, { nargs = "*", range = true })
+      end, { nargs = "*", range = true, force = true })
 
-      -- Custom buffer for CopilotChat
-      vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = "copilot-*",
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("copilot_chat_options", { clear = true }),
+        pattern = "copilot-chat",
         callback = function()
           vim.opt_local.relativenumber = true
           vim.opt_local.number = true
-
-          -- Get current filetype and set it to markdown if the current filetype is copilot-chat
-          local ft = vim.bo.filetype
-          if ft == "copilot-chat" then
-            vim.bo.filetype = "markdown"
-          end
         end,
       })
 
       -- Restore CopilotChatBuffer
       vim.api.nvim_create_user_command("CopilotChatBuffer", function(args)
         chat.ask(args.args, { selection = select.buffer })
-      end, { nargs = "*", range = true })
+      end, { nargs = "*", range = true, force = true })
     end,
   },
   -- lualine integrations
   {
     "AndreM222/copilot-lualine",
+    event = "VeryLazy",
   },
   -- which-key integration
   {

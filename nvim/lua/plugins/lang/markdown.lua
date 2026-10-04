@@ -46,30 +46,38 @@ return {
     config = function()
       vim.g.mkdp_browser = vim.g.browser
       vim.g.mkdp_auto_close = 1
-      vim.cmd([[do FileType]])
+      vim.cmd("doautocmd mkdp_init FileType")
     end,
   },
   {
-    {
-      "dfendr/clipboard-image.nvim",
-      lazy = true,
-      ft = { "tex", "markdown" },
-      opts = {
+    "HakonHarnes/img-clip.nvim",
+    cmd = { "PasteImage", "ImgClipDebug", "ImgClipConfig" },
+    opts = {
+      default = {
+        dir_path = "assets/img",
+      },
+      filetypes = {
         markdown = {
-          img_dir = { "assets", "img" },
-          img_dir_txt = "assets/img",
-          img_handler = function(img)
-            vim.cmd("normal! f[") -- go to [
-            vim.cmd("normal! a" .. img.name) -- append text with image name
-          end,
+          url_encode_path = true,
+          template = "![$CURSOR]($FILE_PATH)",
+          download_images = false,
         },
         tex = {
-          affix = "\\begin{figure}[htbp]\n\\centering\n\\includegraphics[width=0.5\\textwidth]{%s}\n\\caption{}\n\\label{fig:}\n\\end{figure}",
+          relative_template_path = false,
+          template = table.concat({
+            "\\begin{figure}[htbp]",
+            "\\centering",
+            "\\includegraphics[width=0.5\\textwidth]{$FILE_PATH}",
+            "\\caption{$CURSOR}",
+            "\\label{fig:$LABEL}",
+            "\\end{figure}",
+          }, "\n"),
+          formats = { "jpeg", "jpg", "png", "pdf" },
         },
       },
-      keys = {
-        { "<leader>ri", "<cmd>PasteImg<cr>", desc = "Paste image" },
-      },
+    },
+    keys = {
+      { "<leader>ri", "<cmd>PasteImage<cr>", ft = { "markdown", "tex" }, desc = "Paste image" },
     },
   },
   {

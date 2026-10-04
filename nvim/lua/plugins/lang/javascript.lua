@@ -31,10 +31,8 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
-        tsserver = {
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
-          end,
+        ts_ls = {
+          root_markers = { ".git" },
           single_file_support = false,
           settings = {
             typescript = {

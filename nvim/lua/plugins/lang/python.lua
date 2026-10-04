@@ -23,7 +23,7 @@ return {
         basedpyright = {
           enabled = lsp == "basedpyright",
           filetypes = { "python" },
-          root_makers = {
+          root_markers = {
             "pyproject.toml",
             "setup.py",
             "setup.cfg",
@@ -92,15 +92,6 @@ return {
           },
         },
       },
-    },
-  },
-  {
-    "kmontocam/nvim-conda",
-    ft = { "python" },
-    dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-      -- { "<leader>ac", "<cmd>CondaActivate<cr>", desc = "Activate Conda Env" },
-      -- { "<leader>ad", "<cmd>CondaDeactivate<cr>", desc = "Deactivate Conda Env" },
     },
   },
 }

@@ -156,6 +156,7 @@ the_silver_searcher
 tinc
 tldr
 tmate
+tree-sitter-cli
 trzsz-go
 typst
 typstfmt

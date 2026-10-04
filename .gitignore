@@ -11,7 +11,6 @@ yazi/plugins/*
 !yazi/plugins/zoxide.yazi/
 !yazi/plugins/zoxide.yazi/**
 
-nvim/lazy-lock.json
 nvim/lazyvim.json
 
 btop/btop.log

@@ -13,6 +13,7 @@ This is the home of all my dotfiles. These are files that add custom configurati
 
 - [Table of Contents](#table-of-contents)
 - [Setup](#setup)
+- [News](#news)
 - [Software](#software)
     <!--toc:end-->
 
@@ -49,6 +50,14 @@ You can also restow only specific packages:
 ```sh
 bash setup/restow.sh zsh tmux nvim
 ```
+
+## News
+
+### 2026-10-04: Neovim configuration refresh
+
+- Moved search, file browsing, Git pickers, and dashboard actions to Snacks while keeping Neo-tree for the sidebar.
+- Reduced startup work: plugins load on demand, WakaTime starts when opening a file, and the dashboard no longer runs terminal animations or image rendering.
+- Updated language tooling and editor integrations, removed redundant plugins, and added `nvim/lazy-lock.json` to make plugin versions reproducible.
 
 ## Software
 

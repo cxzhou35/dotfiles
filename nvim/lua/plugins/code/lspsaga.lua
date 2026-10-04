@@ -15,7 +15,6 @@ return {
       { "gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Lspsaga Diagnsotic Jump Next" },
       { "gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Lspsaga Diagnsotic Jump Previous" },
       { "gh", "<cmd>Lspsaga hover_doc<CR>", desc = "Lspsaga Hover" },
-      -- FIXME: resolve the keymap conflicts with `gr` in telescope configuration introduced by LazyVim Extras
       { "gR", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga Rename" },
       {
         "<leader>gh",

@@ -18,9 +18,6 @@ map({ "n", "x" }, "<leader>p", '"0p', { desc = "Paste with register", silent = t
 -- Delete without yanking
 map({ "n", "v" }, "<leader>d", [["_d]])
 
--- Jumplist
-map({ "n", "x", "s" }, "<C-m>", "%", opts)
-
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
@@ -129,6 +126,11 @@ map("n", "<leader>ra", "<cmd>LazyExtras<cr>", { desc = "LazyVim Extras" })
 map("n", "<leader>`", function()
   require("lazy").profile()
 end, { desc = "Lazy Profile" })
+
+-- Git
+map("n", "<leader>gs", function()
+  Snacks.picker.git_status()
+end, { desc = "Git Status" })
 
 -- NerdIcons
 map("n", "<leader>ni", ":NerdIcons<CR>", opts)

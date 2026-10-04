@@ -31,14 +31,14 @@ return {
     -- utils
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
-    input = { enabled = true },
+    input = { enabled = false },
     bigfile = { enabled = true },
     scope = { enabled = true },
 
     -- disabled modules
     words = { enabled = false, debounce = 10, notify_end = false },
     animate = { enabled = false },
-    picker = { enabled = false },
+    picker = { enabled = true },
   },
   keys = {
     {
@@ -47,22 +47,6 @@ return {
         Snacks.notifier.show_history()
       end,
       desc = "Notification History",
-    },
-    {
-      "]]",
-      function()
-        Snacks.words.jump(vim.v.count1)
-      end,
-      desc = "Next Reference",
-      mode = { "n", "t" },
-    },
-    {
-      "[[",
-      function()
-        Snacks.words.jump(-vim.v.count1)
-      end,
-      desc = "Prev Reference",
-      mode = { "n", "t" },
     },
   },
 }

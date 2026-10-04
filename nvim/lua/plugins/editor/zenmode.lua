@@ -1,5 +1,5 @@
 return {
-  "floke/snacks.nvim",
+  "folke/snacks.nvim",
   opts = {
     zen = {
       enabled = true,

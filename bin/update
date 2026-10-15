@@ -1,68 +1,225 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Metadata
-# author: Zicx
-# date: 2025-09-25
-# mail: cxzhou35@zju.edu.cn
+set -u -o pipefail
 
-gum style \
-	--foreground 12 --border-foreground 12 --border double \
-	--align center --width 60 --margin "1 0" --padding "1 0" \
-	'██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗
+script_path=$(realpath "${BASH_SOURCE[0]}") || exit 1
+script_dir=$(dirname "$script_path")
+log_file=$(mktemp "${TMPDIR:-/tmp}/update.XXXXXX") || exit 1
+printf 'Update started: %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" >"$log_file"
+
+trap 'printf "\nInterrupted. Log: %s\n" "$log_file" >&2; exit 130' INT
+trap 'printf "\nTerminated. Log: %s\n" "$log_file" >&2; exit 143' TERM
+
+successful_steps=()
+failed_steps=()
+
+report_success() {
+	local label=$1
+	successful_steps+=("$label")
+	printf '✅ %s\n' "$label" | tee -a "$log_file"
+}
+
+report_failure() {
+	local label=$1
+	local reason=$2
+	failed_steps+=("$label")
+	printf '❌ %s: %s\n' "$label" "$reason" | tee -a "$log_file" >&2
+}
+
+run_step() {
+	local label=$1
+	shift
+	local status
+
+	printf '\n== %s ==\n' "$label" | tee -a "$log_file"
+	if ! command -v "$1" >/dev/null 2>&1; then
+		report_failure "$label" "command not found: $1"
+		return 127
+	fi
+
+	if command -v gum >/dev/null 2>&1 && [[ -t 1 ]]; then
+		gum spin --spinner globe --title "$(progress_title "$label")" --show-output -- "$@" 2>&1 | tee -a "$log_file"
+		status=${PIPESTATUS[0]}
+	else
+		"$@" 2>&1 | tee -a "$log_file"
+		status=${PIPESTATUS[0]}
+	fi
+
+	if ((status == 0)); then
+		report_success "$label"
+	else
+		report_failure "$label" "exit status $status"
+	fi
+	return "$status"
+}
+
+if command -v gum >/dev/null 2>&1 && [[ -t 1 ]]; then
+	gum style \
+		--foreground 12 --border-foreground 12 --border double \
+		--align center --width 60 --margin "1 0" --padding "1 0" \
+		'██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗
 ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝
-██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  
-██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  
+██║   ██║██████╔╝██║  ██║██╔══██║   ██║   █████╗
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝
 ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗
  ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝'
-
-export NOW=$(date "+%Y-%m-%d_%H:%M:%S")
-echo -e "$NOW\n" >>/tmp/u-$NOW.txt
-
-gum spin --spinner globe --title "🪟 tpm plugins updating..." --show-output -- ~/.config/tmux/.tmux/plugins/tpm/bin/update_plugins all >>/tmp/u-$NOW.txt
-echo "\n" >>/tmp/u-$NOW.txt
-echo "✅ 🪟 tpm plugins updated"
-
-gum spin --spinner globe --title "💡 zap updating..." --show-output -- zap update all >>/tmp/u-$NOW.txt
-echo "\n" >>/tmp/u-$NOW.txt
-echo "✅ 💡 zap plugins updated"
-
-gum spin --spinner globe --title "🦆 yazi plugins updating..." --show-output -- ya pack -u >>/tmp/u-$NOW.txt
-echo "\n" >>/tmp/u-$NOW.txt
-echo "✅ 🦆 yazi plugins updated"
-
-gum spin --spinner globe --title "💤 lazy.nvim syncing..." -- nvim --headless "+Lazy! sync" +qa
-echo "\n" >>/tmp/u-$NOW.txt
-echo "✅ 💤 lazy.nvim synced"
-
-gum spin --spinner globe --title "🌳 nvim-treesitter updating" -- nvim --headless -c TSUpdate +qa
-echo "\n" >>/tmp/u-$NOW.txt
-echo "✅ 🌳 nvim-treesitter updated"
-
-gum spin --spinner globe --title "🍻 brew updating" --show-output -- brew update >>/tmp/u-$NOW.txt
-echo "\n" >>/tmp/u-$NOW.txt
-echo "✅ 🍻 brew updated"
-
-OUTDATED=$(brew outdated)
-echo $OUTDATED >>/tmp/u-$NOW.txt
-
-if [[ -n "$OUTDATED" ]]; then
-	gum spin --spinner globe --title "🍻 brew upgrading" --show-output -- brew upgrade >>/tmp/u-$NOW.txt
-	echo "\n" >>/tmp/u-$NOW.txt
-	echo "✅ 🍻 brew upgraded"
-
-	gum spin --spinner globe --title "🍻 brew cleaning up" --show-output -- brew cleanup --prune=all >>/tmp/u-$NOW.txt
-	echo "\n" >>/tmp/u-$NOW.txt
-	echo "✅ 🍻 brew cleaned up"
 else
-	echo "No outdated brew packages" >>/tmp/u-$NOW.txt
+	printf 'Updating tools and plugins\n'
 fi
 
-gum spin --spinner globe --title "🍎 mas upgrading" --show-output -- mas upgrade >>/tmp/u-$NOW.txt
-echo "\n" >>/tmp/u-$NOW.txt
-echo "✅ 🍎 mas upgraded"
+selected_updates=(
+	'tmux plugins'
+	'Zap plugins'
+	'Yazi packages'
+	'Neovim plugins'
+	'Mason tools'
+	'Tree-sitter parsers'
+	'Homebrew'
+)
 
-echo "✅ 🧾 logged to /tmp/u-$NOW.txt"
+if [[ -t 0 && -t 1 ]] && command -v gum >/dev/null 2>&1; then
+	mode=$(gum choose --header 'Choose update mode' \
+		'Default — update all' 'Manual — choose updates') || exit 0
+	if [[ "$mode" == 'Manual — choose updates' ]]; then
+		choices=$(gum choose --no-limit --show-help --height 10 \
+			--header 'x: toggle  •  Enter: start updating' \
+			"${selected_updates[@]}") || exit 0
+		selected_updates=()
+		while IFS= read -r choice; do
+			[[ -n "$choice" ]] && selected_updates+=("$choice")
+		done <<<"$choices"
+	fi
+fi
 
-gum confirm --selected.background=2 --selected.foreground=0 "Show the update log?" && cat /tmp/u-$NOW.txt
+if ((${#selected_updates[@]} == 0)); then
+	printf 'No updates selected.\n'
+	exit 0
+fi
 
-# man /tmp/u-$NOW.txt
+printf '\nSelected updates:\n' | tee -a "$log_file"
+printf '  - %s\n' "${selected_updates[@]}" | tee -a "$log_file"
+
+should_update() {
+	local selected
+	for selected in "${selected_updates[@]}"; do
+		[[ "$selected" == "$1" ]] && return 0
+	done
+	return 1
+}
+
+progress_total=${#selected_updates[@]}
+progress_done=0
+progress_failed_before=0
+successful_updates=0
+failed_updates=0
+
+progress_bar() {
+	local completed=$1
+	local width=20
+	local filled=$((completed * width / progress_total))
+	local empty=$((width - filled))
+	local filled_bar empty_bar
+
+	printf -v filled_bar '%*s' "$filled" ''
+	printf -v empty_bar '%*s' "$empty" ''
+	printf '[%s%s]' "${filled_bar// /█}" "${empty_bar// /░}"
+}
+
+progress_title() {
+	local label=$1
+	printf '%s %d/%d %s' "$(progress_bar "$progress_done")" \
+		"$((progress_done + 1))" "$progress_total" "$label"
+}
+
+begin_update() {
+	local label=$1
+	progress_failed_before=${#failed_steps[@]}
+	printf '\n%s\n' "$(progress_title "$label")" | tee -a "$log_file"
+}
+
+finish_update() {
+	local label=$1
+	local icon='✅'
+
+	if ((${#failed_steps[@]} > progress_failed_before)); then
+		icon='❌'
+		failed_updates=$((failed_updates + 1))
+	else
+		successful_updates=$((successful_updates + 1))
+	fi
+	progress_done=$((progress_done + 1))
+	printf '%s %d/%d %s %s\n' "$(progress_bar "$progress_done")" \
+		"$progress_done" "$progress_total" "$icon" "$label" | tee -a "$log_file"
+}
+
+printf '\n%s 0/%d Ready\n' "$(progress_bar 0)" "$progress_total" | tee -a "$log_file"
+
+if should_update 'tmux plugins'; then
+	begin_update 'tmux plugins'
+	run_step 'tmux plugins' "$HOME/.tmux/plugins/tpm/bin/update_plugins" all
+	finish_update 'tmux plugins'
+fi
+if should_update 'Zap plugins'; then
+	begin_update 'Zap plugins'
+	run_step 'Zap plugins' zsh -ic 'zap update all'
+	finish_update 'Zap plugins'
+fi
+if should_update 'Yazi packages'; then
+	begin_update 'Yazi packages'
+	run_step 'Yazi packages' ya pkg upgrade
+	finish_update 'Yazi packages'
+fi
+
+if should_update 'Neovim plugins'; then
+	begin_update 'Neovim plugins'
+	run_step 'Neovim plugins' nvim --headless '+Lazy! sync' +qa
+	finish_update 'Neovim plugins'
+fi
+if should_update 'Mason tools'; then
+	begin_update 'Mason tools'
+	run_step 'Mason tools' env UPDATE_MASON_SCRIPT="$script_dir/update-mason.lua" \
+		nvim --headless -c 'lua dofile(vim.env.UPDATE_MASON_SCRIPT)' +qa
+	finish_update 'Mason tools'
+fi
+if should_update 'Tree-sitter parsers'; then
+	begin_update 'Tree-sitter parsers'
+	run_step 'Tree-sitter parsers' nvim --headless \
+		-c 'lua require("lazy").load({ plugins = { "nvim-treesitter" } }); local ok, updated = require("nvim-treesitter").update("all", { summary = true }):pwait(1800000); if not ok or not updated then vim.cmd.cq() end' +qa
+	finish_update 'Tree-sitter parsers'
+fi
+
+if should_update 'Homebrew'; then
+	begin_update 'Homebrew'
+	if run_step 'Homebrew metadata' brew update; then
+		export HOMEBREW_NO_AUTO_UPDATE=1
+		printf '\n== Homebrew outdated packages ==\n' | tee -a "$log_file"
+		if outdated=$(brew outdated --quiet 2>>"$log_file"); then
+			if [[ -n "$outdated" ]]; then
+				printf '%s\n' "$outdated" | tee -a "$log_file"
+				run_step 'Homebrew packages' brew upgrade
+			else
+				printf 'All Homebrew packages are up to date.\n' | tee -a "$log_file"
+			fi
+		else
+			report_failure 'Homebrew outdated check' 'brew outdated failed; see log'
+		fi
+	fi
+	run_step 'Homebrew cleanup' brew cleanup
+	finish_update 'Homebrew'
+fi
+
+printf '\nFinished: %d tools succeeded, %d failed.\n' \
+	"$successful_updates" "$failed_updates" | tee -a "$log_file"
+if ((${#failed_steps[@]} > 0)); then
+	printf 'Failed steps:\n' | tee -a "$log_file" >&2
+	printf '  - %s\n' "${failed_steps[@]}" | tee -a "$log_file" >&2
+fi
+printf 'Log: %s\n' "$log_file"
+
+if [[ -t 0 && -t 1 ]] && command -v gum >/dev/null 2>&1; then
+	if gum confirm --selected.background=2 --selected.foreground=0 'Show the update log?'; then
+		cat "$log_file"
+	fi
+fi
+
+((${#failed_steps[@]} == 0))

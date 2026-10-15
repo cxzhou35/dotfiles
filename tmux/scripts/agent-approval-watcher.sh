@@ -6,7 +6,7 @@ export LANG="en_US.UTF-8"
 # Content-based approval tracker for agent CLIs in tmux.
 # Track state at the window level because a window can contain multiple panes.
 
-interval="${AGENT_TMUX_APPROVAL_INTERVAL:-2}"
+interval="${AGENT_TMUX_APPROVAL_INTERVAL:-3}"
 agent_pattern="${AGENT_TMUX_COMMAND_PATTERN:-codex|claude}"
 state_dir="${TMPDIR:-/tmp}/agent-tmux-approval-watcher-${UID}"
 lock_dir="${state_dir}.lock"
@@ -38,6 +38,18 @@ detect_agent_kind() {
   fi
 }
 
+contains_item() {
+  local item="$1"
+  shift
+  local value
+
+  for value in "$@"; do
+    [[ "$value" == "$item" ]] && return 0
+  done
+
+  return 1
+}
+
 has_approval_prompt() {
   local pane="$1"
   local content
@@ -46,6 +58,28 @@ has_approval_prompt() {
   # Match active approval UI only. Avoid stale transcript lines such as "You approved...".
   printf '%s\n' "$content" | grep -Eiq '(^|[[:space:]])(Do you want|Would you like|allow this command|approve command|approval required|requires approval|sandbox_permissions|require_escalated|授权|允许.*(执行|操作|命令))' || return 1
   printf '%s\n' "$content" | grep -Eiq '^[[:space:]┃│>›❯●○-]*([0-9]+[.)][[:space:]]*)?(Yes|No)([[:space:],.)]|$)|^[[:space:]┃│>›❯●○-]*[\[(](y|Y)/(n|N)[\])]'
+}
+
+apply_window_state() {
+  local window_id
+
+  for window_id in "${window_ids[@]}"; do
+    if contains_item "$window_id" "${agent_window_ids[@]}"; then
+      tmux set-window-option -t "$window_id" -q @agent_window_has_agent 1 2>/dev/null || true
+      tmux set-window-option -t "$window_id" -q @codex_window_has_codex 1 2>/dev/null || true
+    else
+      tmux set-window-option -t "$window_id" -q @agent_window_has_agent 0 2>/dev/null || true
+      tmux set-window-option -t "$window_id" -q @codex_window_has_codex 0 2>/dev/null || true
+    fi
+
+    if contains_item "$window_id" "${approval_window_ids[@]}"; then
+      tmux set-window-option -t "$window_id" -q @agent_window_approval_waiting 1 2>/dev/null || true
+      tmux set-window-option -t "$window_id" -q @codex_window_approval_waiting 1 2>/dev/null || true
+    else
+      tmux set-window-option -t "$window_id" -q @agent_window_approval_waiting 0 2>/dev/null || true
+      tmux set-window-option -t "$window_id" -q @codex_window_approval_waiting 0 2>/dev/null || true
+    fi
+  done
 }
 
 update_status_widget() {
@@ -78,12 +112,15 @@ update_status_widget() {
   tmux set-option -gq @codex_status_widget "$widget" 2>/dev/null || true
 }
 
+last_state=""
+
 while tmux list-sessions >/dev/null 2>&1; do
   has_any=0
   has_codex=0
   has_claude=0
   window_ids=()
-  agent_windows=()
+  agent_window_ids=()
+  approval_window_ids=()
   approval_windows=()
 
   while IFS= read -r window_id; do
@@ -101,49 +138,21 @@ while tmux list-sessions >/dev/null 2>&1; do
       codex) has_codex=1 ;;
       claude) has_claude=1 ;;
     esac
-    case " ${agent_windows[*]} " in
-      *" $window_id "*) ;;
-      *) agent_windows+=("$window_id") ;;
-    esac
+    contains_item "$window_id" "${agent_window_ids[@]}" || agent_window_ids+=("$window_id")
 
     if has_approval_prompt "$pane"; then
-      case " ${approval_windows[*]} " in
-        *" $window_index "*) ;;
-        *) approval_windows+=("$window_index") ;;
-      esac
-      tmux set-window-option -t "$window_id" -q @agent_window_approval_waiting 1 2>/dev/null || true
-      tmux set-window-option -t "$window_id" -q @codex_window_approval_waiting 1 2>/dev/null || true
+      contains_item "$window_id" "${approval_window_ids[@]}" || approval_window_ids+=("$window_id")
+      contains_item "$window_index" "${approval_windows[@]}" || approval_windows+=("$window_index")
     fi
   done < <(tmux list-panes -a -F '#{pane_id}|#{window_id}|#{window_index}|#{window_name}|#{pane_current_command}' 2>/dev/null || true)
 
-  # Apply the collected state after scanning to avoid transient reset flicker.
-  for window_id in "${window_ids[@]}"; do
-    if [[ " ${agent_windows[*]} " == *" $window_id "* ]]; then
-      tmux set-window-option -t "$window_id" -q @agent_window_has_agent 1 2>/dev/null || true
-      tmux set-window-option -t "$window_id" -q @codex_window_has_codex 1 2>/dev/null || true
-    else
-      tmux set-window-option -t "$window_id" -q @agent_window_has_agent 0 2>/dev/null || true
-      tmux set-window-option -t "$window_id" -q @codex_window_has_codex 0 2>/dev/null || true
-    fi
-  done
+  current_state="${has_any}|${has_codex}|${has_claude}|windows:${window_ids[*]}|agents:${agent_window_ids[*]}|approvals:${approval_window_ids[*]}|approval_indexes:${approval_windows[*]}"
+  if [[ "$current_state" != "$last_state" ]]; then
+    apply_window_state
+    update_status_widget "$has_any" "$has_codex" "$has_claude" "${approval_windows[@]}"
+    tmux refresh-client -S 2>/dev/null || true
+    last_state="$current_state"
+  fi
 
-  # Clear approval marks for windows that were not detected this round.
-  for window_id in "${window_ids[@]}"; do
-    found=0
-    while IFS='|' read -r idx id; do
-      [[ "$id" == "$window_id" ]] || continue
-      if [[ " ${approval_windows[*]} " == *" $idx "* ]]; then
-        found=1
-      fi
-      break
-    done < <(tmux list-windows -a -F '#{window_index}|#{window_id}' 2>/dev/null || true)
-    if [[ "$found" == "0" ]]; then
-      tmux set-window-option -t "$window_id" -q @agent_window_approval_waiting 0 2>/dev/null || true
-      tmux set-window-option -t "$window_id" -q @codex_window_approval_waiting 0 2>/dev/null || true
-    fi
-  done
-
-  update_status_widget "$has_any" "$has_codex" "$has_claude" "${approval_windows[@]}"
-  tmux refresh-client -S 2>/dev/null || true
   sleep "$interval"
 done

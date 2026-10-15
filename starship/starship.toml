@@ -21,6 +21,9 @@ $time\
 $line_break\
 $character"""
 
+scan_timeout = 50
+add_newline = true
+
 [os]
 style = "fg:#f5c2e7"
 format = '[$symbol]($style)'

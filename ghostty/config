@@ -8,7 +8,7 @@ theme = "catppuccin-mocha.conf"
 background-opacity = 0.85
 background-blur = 20
 window-padding-x = 10,0
-window-padding-y = 0
+window-padding-y = 5,0
 window-padding-balance = true
 window-padding-color = background
 window-decoration = auto
@@ -20,7 +20,8 @@ adjust-cell-height = 0%
 # window-subtitle = working-directory
 
 # macOS specific
-macos-titlebar-style = transparent
+# macos-titlebar-style = transparent
+macos-titlebar-style = tabs
 macos-window-buttons = hidden
 macos-window-shadow = true
 macos-option-as-alt = true

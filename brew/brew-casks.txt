@@ -1,4 +1,3 @@
-alacritty
 appcleaner
 background-music
 bettermouse
@@ -19,9 +18,7 @@ font-symbols-only-nerd-font
 hammerspoon
 hazeover
 inkscape
-ipynb-quicklook
 iterm2
-jupyter-notebook-viewer
 kap
 karabiner-elements
 keepingyouawake
@@ -39,10 +36,8 @@ mounty
 only-switch
 orbstack
 qlmarkdown
-quicklook-csv
 quickrecorder
 sf-symbols
-sioyek
 skim
 syncthing
 syntax-highlight

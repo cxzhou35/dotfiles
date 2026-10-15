@@ -122,11 +122,13 @@ bash setup/restow.sh zsh tmux nvim codex
 
 ## Stow
 
-After packages and apps are ready, re-stow dotfiles as needed:
+After packages and apps are ready, check for existing-file conflicts with `bash setup/restow.sh --dry-run`, then create the dotfile links once:
 
 ```bash
 bash setup/restow.sh
 ```
+
+Edits to linked files do not need re-stowing. Re-stow the affected package after adding, moving, or deleting paths outside an already linked directory.
 
 Dry run:
 

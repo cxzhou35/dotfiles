@@ -35,17 +35,11 @@ target_for_package() {
     codex)
       printf '%s/.codex' "$HOME_DIR"
       ;;
-    zsh)
-      printf '%s/.config/zsh' "$HOME_DIR"
-      ;;
-    tmux)
-      printf '%s' "$HOME_DIR"
-      ;;
-    bin)
-      printf '%s/.config' "$HOME_DIR"
+    starship)
+      printf '%s' "$CONFIG_DIR"
       ;;
     *)
-      printf '%s' "$CONFIG_DIR"
+      printf '%s/%s' "$CONFIG_DIR" "$package"
       ;;
   esac
 }
@@ -59,12 +53,19 @@ link_file() {
   local src="$1"
   local dst="$2"
 
+  if [ -L "$dst" ] && [ "$(realpath "$dst")" = "$src" ]; then
+    return 0
+  fi
+  if [ -e "$dst" ] || [ -L "$dst" ]; then
+    echo "refusing to replace existing path: $dst" >&2
+    return 1
+  fi
   if [ "$DRY_RUN" -eq 1 ]; then
     echo "dry-run link $dst -> $src"
     return 0
   fi
 
-  ln -sf "$src" "$dst"
+  ln -s "$src" "$dst"
 }
 
 remove_path() {
@@ -80,7 +81,6 @@ remove_path() {
 restow_zsh() {
   local target="$CONFIG_DIR/zsh"
 
-  mkdir -p "$target"
   stow_package "zsh" "$target"
   remove_path "$target/.zshrc"
   remove_path "$target/.zprofile"
@@ -92,12 +92,25 @@ restow_zsh() {
   link_file "$ROOT_DIR/zsh/.zshenv" "$HOME_DIR/.zshenv"
 }
 
+restow_tmux() {
+  stow_package "tmux" "$CONFIG_DIR/tmux"
+  link_file "$ROOT_DIR/tmux/.tmux" "$HOME_DIR/.tmux"
+  link_file "$ROOT_DIR/tmux/.tmux.conf" "$HOME_DIR/.tmux.conf"
+}
+
 stow_package() {
   local package="$1"
   local target="$2"
-  local -a cmd=("$STOW_BIN" -R -t "$target")
+  local -a cmd=("$STOW_BIN" -d "$ROOT_DIR" -R -t "$target")
 
-  mkdir -p "$target"
+  if [ ! -d "$target" ]; then
+    if [ "$DRY_RUN" -eq 1 ]; then
+      # shortcut: dry-run only reports missing targets, simulate them if full new-machine previews are needed.
+      echo "dry-run create target $target"
+      return 0
+    fi
+    mkdir -p "$target"
+  fi
   if [ "$DRY_RUN" -eq 1 ]; then
     cmd+=(-n -v)
     echo "dry-run restow $package -> $target"
@@ -176,6 +189,18 @@ main() {
     fi
     if [ "$package" = "zsh" ]; then
       restow_zsh
+      continue
+    fi
+    if [ "$package" = "tmux" ]; then
+      restow_tmux
+      continue
+    fi
+    if [ "$package" = "git" ]; then
+      link_file "$ROOT_DIR/git/.gitconfig" "$HOME_DIR/.gitconfig"
+      continue
+    fi
+    if [ "$package" = "vim" ]; then
+      link_file "$ROOT_DIR/vim/.vimrc" "$HOME_DIR/.vimrc"
       continue
     fi
     target="$(target_for_package "$package")"

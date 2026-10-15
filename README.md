@@ -39,13 +39,13 @@ git clone https://github.com/cxzhou35/dotfiles.git ~/Github/dotfiles
 bash setup/install.sh
 ```
 
-When you update existing config files or add new files that need to be linked, re-run Stow with:
+Run Stow once to create the links after setup. Check for conflicts first with `bash setup/restow.sh --dry-run`:
 
 ```sh
 bash setup/restow.sh
 ```
 
-You can also restow only specific packages:
+Edits to linked files take effect through the links; no re-stow is needed. When adding, moving, or deleting files outside an already linked directory, re-stow only the affected packages:
 
 ```sh
 bash setup/restow.sh zsh tmux nvim
